@@ -30,7 +30,7 @@
 
 ## 索引
 
-- [安装](./install.md)
+- [安装](./installation.md)
 
 - [使用](./usage.md)
 
