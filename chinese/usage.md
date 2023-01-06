@@ -38,7 +38,7 @@
 
 * 右键拓展
 
-	安装 **Windows 资源管理器拓展** 后，选择任意文件或目录并唤出右键菜单，会出现 [ TwinKleS ] 选项菜单，它为大多数功能提供了快捷入口。
+	安装 **Windows 资源管理器拓展** 后，选择任意文件或目录并唤出右键菜单，会出现 [ TwinStar ] 选项菜单，它为大多数功能提供了快捷入口。
 
 	选项菜单中的首项 [ Launch ] 是工具的启动入口，点击后系统会将所选文件或目录转发给工具。
 
@@ -159,7 +159,7 @@ type JS_MainFunction = (
 
 根据前述，用户可以自行重写主脚本的运行逻辑，但更推荐在已有的配套脚本基础上拓展开发，它已为用户提供了丰富的功能与良好的交互机制。
 
-若要进行脚本拓展开发，请查看本项目的 [Script 模块](https://github.com/TwinKleS-C/TwinKleS.ToolKit/tree/master/Script) 。
+若要进行脚本拓展开发，请查看本项目的 [Script 模块](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Script) 。
 
 ## 命令行传参
 
@@ -196,6 +196,6 @@ type JS_MainFunction = (
 
 > 例 - 使用工具解码桌面上的 test.pam 文件
 > 
-> **launch.bat "C:\Users\TwinKleS\Desktop\test.pam" "-method" "animation.popcap_animation.decode"**
+> **launch.bat "C:\Users\TwinStar\Desktop\test.pam" "-method" "animation.popcap_animation.decode"**
 > 
 > 该命令以 ⌈ test.pam ⌋ 文件路径作为 input ，并指定需执行的功能为 ⌈ PopCap-Animation 解码 ⌋ 。执行完毕后，可在桌面看到一个名为 ⌈ test.pam.json ⌋ 的新文件，即为解码后的 PAM 数据。

@@ -1,6 +1,6 @@
 # 介绍
 
-⌈ TwinKleS.ToolKit ⌋ 是一款主要应用于 PvZ-2 静态数据修改的工具，提供了如 RTON 编码、RSB 打包等 PvZ-2 Mod 制作所必需的功能。
+⌈ TwinStar.ToolKit ⌋ 是一款主要应用于 PvZ-2 静态数据修改的工具，提供了如 RTON 编码、RSB 打包等 PvZ-2 Mod 制作所必需的功能。
 
 本工具是 ⌈ PvZTool ⌋、⌈ SPCUtil ⌋、⌈ TaiJi ⌋ 的重开发，功能更加丰富、完善；前三者已停止维护，建议弃用并使用本工具。
 
@@ -10,7 +10,7 @@
 > 
 > * WEM 解码
 > 
-> * BNK 打包、解包
+> * BNK 编码、解码
 > 
 > * DZip 打包、解包
 > 
@@ -38,13 +38,13 @@
 
 ## 与我联系
 
-* GitHub : [TwinKleS-C](https://github.com/TwinKleS-C/)
+* GitHub : [TwinStar](https://github.com/twinkles-twinstar/)
 
-* BILIBILI : [-TwinKleS-](https://space.bilibili.com/12258540)
+* BILIBILI : [-TwinStar-](https://space.bilibili.com/12258540)
 
-* QQ邮箱 : smallpc@qq.com
+* Outlook : twinkles.twinstar@outlook.com
 
-* Gmail : twinkles.china@gmail.com
+* QQMail : smallpc@qq.com
 
 ## 捐赠
 

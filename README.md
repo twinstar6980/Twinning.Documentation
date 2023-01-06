@@ -1,6 +1,6 @@
-# TwinKleS ToolKit - Document
+# TwinStar ToolKit - Document
 
-TwinKleS ToolKit 的说明文档。
+TwinStar ToolKit 的说明文档。
 
 ## 文档列表 / document list
 
