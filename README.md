@@ -2,7 +2,7 @@
 
 TwinStar ToolKit 的说明文档。
 
-## 文档列表 / document list
+## 文档列表 | document list
 
 * [介绍](/chinese/introduction.md)
 
