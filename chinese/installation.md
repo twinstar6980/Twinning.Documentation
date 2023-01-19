@@ -16,15 +16,15 @@
 
 ## 平台支持
 
-* 操作系统：`Windows 7+` 、`Linux ?+` 、`MacOS 12.0+(maybe below)` 、`Android 9+` 、`iOS 13.0+` 。
+* 操作系统：`Windows 7+` 、`Linux ?+` 、`Macintosh 13.1+` 、`Android 9+` 、`iPhone 16.2+` 。
 
 * 处理器架构：`x86 32|64` 、`arm 32|64` 。
 
-> 对于 `Windows` 、`Linux` 、`MacOS` ，只提供面向 `x86_64` 的分发；\
-> 对于 `Android` 、`iOS` ，只提供面向 `arm_64` 的分发；\
+> 对于 `Windows` 、`Linux` 、`Macintosh` ，只提供面向 `x86_64` 的分发；\
+> 对于 `Android` 、`iPhone` ，只提供面向 `arm_64` 的分发；\
 > 如有面向其他平台的需要，请自行克隆并编译本项目。
 > 
-> @ `Android` `iOS` \
+> @ `Android` `iPhone` \
 > 由于目前仅提供基于终端的交互程序，因此需要 **ROOT | 越狱** 环境。
 
 ## 模块组成
@@ -49,9 +49,9 @@
 
 `Core` 、`Shell` 、`Script` 是运行所需的 **必要模块** ，按照以下步骤进行安装。
 
-1. 创建 `主目录`
+1. 创建 **主目录**
 	
-	请在存储空间中创建一个空目录，它用于存放工具运行所需的所有文件，称为主目录。
+	在存储空间中创建一个空目录，它用于存放工具运行所需的所有文件，称为主目录。
 	
 	> 主目录的位置可以随意，但要确保用户有对该目录及其内容的 **读写执行权限** 。
 	
@@ -93,23 +93,19 @@
 	
 	下载完毕后，将该文件移动到主目录内，创建 **script** 目录，将压缩包的所有内容解压至其中。
 
-4. 创建 *`工作目录`*
-	
-	请在主目录内创建名为 *`workspace`* 的空目录，它用于存放工具运行时可能产生的一些缓存文件，称为工作目录。
-
-5. 安装 **启动脚本**
+4. 安装 **启动脚本**
 	
 	查看本项目的 [Miscellaneous 分发](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous) ，下载所需文件。
 	
-	* Windows 用户下载 **launch.bat** 。
-	
-	* Linux | MacOS | iOS 用户下载 **launch.sh** 。
-	
-	* Android 用户下载 **launch_android.sh** 。
+	> Windows 用户下载 **launch.bat** 。
+	> 
+	> Linux | Macintosh | iPhone 用户下载 **launch.sh** 。
+	> 
+	> Android 用户下载 **launch_android.sh** 。
 	
 	下载完毕后，将该文件移动到主目录内，保留原有文件名。
 
-6. 检查 **主目录结构**
+5. 检查 **主目录结构**
 	
 	如果操作无误，主目录内的组织结构将如下所示：
 	
@@ -120,11 +116,10 @@
 	  + script
 	      - main.js
 	      - ...
-	  + workspace
 	  - launch.[sh|bat]
 	```
 
-7. 安装 **libc++_shared.so**
+6. 安装 **libc++_shared.so**
 	
 	> **此步骤只需要 Android 用户执行。**
 	
@@ -132,15 +127,15 @@
 	
 	> 该文件可从 Android NDK 工具链中提取，也可在 [Miscellaneous 分发](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous) 中找到。
 
-8. 签名 **程序文件**
+7. 签名 **程序文件**
 	
-	> **此步骤只需要 iOS 用户执行。**
+	> **此步骤只需要 iPhone 用户执行。**
 	
-	在 iOS 上运行可执行文件需要通过签名验证，Release 页所分发的程序文件（ **core | shell** ）未经过签名，用户需要自行对其进行签名，才能在 iOS 中正常运行。
+	在 iPhone 上运行可执行文件需要通过签名验证，Release 页所分发的程序文件（ **core | shell** ）未经过签名，用户需要自行对其进行签名，才能在 iPhone 中正常运行。
 	
-	> 可以在 **MacOS** 上使用 **codesign** 工具进行签名。
+	> 可以在 **Macintosh** 上使用 **codesign** 工具进行签名。
 
-9. 测试 **启动脚本**
+8. 测试 **启动脚本**
 	
 	最后一步是测试启动脚本能否成功运行。
 	
@@ -189,7 +184,7 @@
 
 4. 你可以在任意文件或目录的右键菜单内看到 ⌈ TwinStar ToolKit ⌋ 选项，它为大多数功能提供了快捷入口。如果没有看到该选项，请尝试重启资源管理器 explorer.exe ，或重启计算机。
 
-5. 安装成功后，进入系统环境变量设置，添加用户环境变量：变量名为 `TwinStar.ToolKit.WindowsExplorerExtension.launch_file` ，变量值为主目录内启动脚本的完整路径（不可使用引号包围），例如 `C:\TwinStar.ToolKit\launch.bat` 。
+5. 安装成功后，进入系统环境变量设置，添加环境变量：变量名为 `TwinStar.ToolKit.WindowsExplorerExtension.launch_file` ，变量值为主目录内启动脚本的完整路径（不可使用引号包围），例如 `C:\TwinStar.ToolKit\launch.bat` 。
 
 6. 现在，你可以通过右键菜单拓展来快速启动本工具；卸载拓展程序后，这些选项将不再出现。
 
@@ -210,7 +205,7 @@
 
 2. 文本中的第二行为 `"language": "Chinese"` ，表示目前所使用的交互语言为中文，若需切换为英文，请将 **Chinese** 改为 **English** 。
 
-> 多语言文本通过 `script/Language/Language.json` 定义，如果需要修正文本错误，或增加对其他语言的支持，请修改该文件（方便的话，也请提交PR为本项目做贡献）。
+> 多语言文本通过 `script/Language/<Language-ID>.json` 定义，如果需要修正文本错误，或增加对其他语言的支持，请修改该文件（方便的话，也请提交PR为本项目做贡献）。
 
 ## 对宿主终端的要求
 
@@ -236,7 +231,7 @@ Shell 模块提供了基于终端的命令行界面，但需要宿主终端支�
 	
 	自带 cmd 默认关闭支持，自带 Windows Terminal 提供支持，请将其设置为系统的默认终端。
 
-* MacOS Monterey+
+* Macintosh 12.0.1+
 	
 	自带终端提供支持。
 
