@@ -1,6 +1,6 @@
 # 介绍
 
-`TwinStar.ToolKit` 是一款主要应用于 **PvZ-2** 静态数据修改的工具，提供了如 RTON 编码、RSB 打包等 PvZ-2 Mod 制作所必需的功能。
+`TwinStar.ToolKit` 是一款主要应用于 **PvZ-2** 静态数据修改的工具，提供了如 RTON 编码、RSB 打包等 PvZ-2 MOD 创作所必需的功能。
 
 本工具是 `PvZTool` 、`SPCUtil` 、`TaiJi` 的重开发，功能更加丰富、完善；前三者已停止维护，建议弃用并使用本工具。
 
@@ -22,7 +22,7 @@
 > 
 > * PopCap PTX 编码、解码
 > 
-> * PopCap PAM 编码、解码、与FLash格式相互转换
+> * PopCap PAM 编码、解码、与Flash格式相互转换
 > 
 > * PopCap PAK 打包、解包
 > 
@@ -54,5 +54,5 @@
 
 本项目将一直保持开源、免费，但如果你喜欢我的工具，可以考虑为我捐赠一些金钱，支持我进行后续开发。
 
-![支付宝](/donate/alipay.jpg "支付宝")
-![微信](/donate/wechat.jpg "微信")
+![支付宝](../donate/alipay.jpg "支付宝")
+![微信](../donate/wechat.jpg "微信")
