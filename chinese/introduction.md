@@ -30,6 +30,8 @@
 > 
 > * PopCap RSB 打包、解包
 > 
+> * PopCap RSB-Patch 编码、解码
+> 
 > * 等等 ......
 
 ## 索引

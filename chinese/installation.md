@@ -156,6 +156,12 @@
 	
 	> 该项目的作者只分发了适用于 Windows 的可执行程序，其他系统的用户须自行下载源码构建。
 
+* [adb](https://developer.android.com/studio/command-line/adb)
+	
+	用于 **远程安卓辅助** 。
+	
+	下载 [`Android SDK Platform Tools`](https://developer.android.com/studio/releases/platform-tools) ，解压并配置 `PATH` 环境变量中。
+
 ## Windows 资源管理器拓展
 
 对于 Windows 系统，还可向资源管理器的右键菜单植入功能选项，只需几步鼠标点击即可完成大部分文件处理操作，这需要用户额外安装一个拓展程序，以下的安装步骤适用于 `Windows 10+` 。

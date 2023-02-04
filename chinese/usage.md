@@ -192,11 +192,11 @@ type JS_MainFunction = (
 
 若禁用 ⌈ 候选功能过滤 ⌋ ，则将列出所有功能供用户选择。
 
-* `[ -method \<method-id> ]`
+* `[ -method <method-id> ]`
 
 指定需执行的功能，后跟该功能的 ID ，若未指定功能，将在运行时等待用户选择功能。
 
-* `[ -argument \<argument-json> ]`
+* `[ -argument <argument-json> ]`
 
 指定需要传给功能工作函数的参数，后跟一个 JSON 字符串，且必须可解析为一个 Object 。
 
