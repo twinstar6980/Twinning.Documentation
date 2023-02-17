@@ -60,9 +60,9 @@
 
 1. 创建 **主目录**
 	
-	在存储空间中创建一个空目录，它用于存放工具运行所需的所有文件，称为主目录，若想卸载本工具，只需删除主目录，工具不会有任何数据残留。
+	在存储空间中创建一个空目录，它用于存放工具运行所需的所有文件，称为主目录。
 	
-	`Core` 、`Shell` 、`Script` 是便携式的，请将它们放置在主目录中，这样不会在其他位置留下残留文件。
+	`Core` 、`Shell` 、`Script` 是便携式的，请将它们放置在主目录中，这样不会在其他位置残留数据。
 	
 	`Shell GUI` 、`Windows Explorer Extension` 是需要安装的应用，需要用户自行卸载，并清除应用数据。
 	
@@ -103,18 +103,12 @@
 
 对于 `Android` 系统，还需要执行以下操作：
 
-1. 迁移 `core` 至系统库目录。
-	
-	> **此步骤只需要 `Android` 用户执行。**
-	
-	由于 **Android 7** 引入的 **链接器命名空间** 机制，程序无法加载 `+ <system-library>` 与 `+ <private-library>` 之外的动态库，对于单纯的命令行程序而言，后者是不存在的；因此，须将主目录内的 `- core` 重命名为 `- TwinStar.ToolKit.core` ，并移动到 `+ <system-library>` 中。
-	
-	`+ <system-library>` 在 32 位系统中为  `+ /system/lib` ，在 64 位系统中为 `+ /system/lib64` 。
-
-2. 安装 **C++ 共享库** 至系统库目录。
+1. 安装 **C++ 共享库** 至系统库目录。
 	
 	出于安全性与减小体积的考虑，程序使用的 C++ 运行时 为 c++_shared 。因此，用户还需要将对应处理器架构的 `libc++_shared.so` 文件复制到系统库目录中。
 	
+	> 系统库目录在 32 位系统中为 `+ /system/lib` ，在 64 位系统中为 `+ /system/lib64` 。
+	> 
 	> 该文件可从 Android NDK 工具链中提取，也可在 [Miscellaneous 分发](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous) 中找到。
 
 对于 `iPhone` 系统，还需要执行以下操作：
