@@ -16,12 +16,24 @@ TwinStar ToolKit 的说明文档。
 
 ## 预览 | preview
 
-![1-1](./image/preview/1-1.png)
+* **提供中文与英文支持。 Support Chinese and English.**
+	
+	![1](./image/preview/lang-1.png)
 
-![2-1](./image/preview/2-1.png)
+* **提供用于 Windows 的 Explorer 集成。 Explorer integration for Windows.**
+	
+	![1](./image/preview/wee-1.png)
 
-![3-1](./image/preview/3-1.png)
+* **为所有操作系统提供 GUI 支持。GUI support for any operation system.**
+	
+	![1](./image/preview/gui-1.png)
 
-![3-1](./image/preview/3-2.png)
-
-![4-1](./image/preview/4-1.png)
+* **通过简单易用的 CLI 处理任意 PvZ-2 文件。 Process any PvZ-2 file by an easy CLI program.**
+	
+	![1](./image/preview/func-1.png)
+	
+	![2](./image/preview/func-2.png)
+	
+	![3](./image/preview/func-3.png)
+	
+	![4](./image/preview/func-4.png)
