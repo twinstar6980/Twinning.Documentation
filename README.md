@@ -14,6 +14,8 @@ TwinStar ToolKit 的说明文档。
 
 * [使用](./chinese/usage.md)
 
+* [参见问题](./chinese/question.md)
+
 ## 预览 | preview
 
 * **提供中文与英文支持。 Support Chinese and English.**

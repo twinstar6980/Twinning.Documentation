@@ -42,6 +42,8 @@
 
 - [功能](./method.md)
 
+- [常见问题](./question.md)
+
 ## 与我联系
 
 * GitHub : [TwinStar](https://github.com/twinkles-twinstar/)
