@@ -13,3 +13,15 @@ TwinStar ToolKit 的说明文档。
 * [安装](./chinese/installation.md)
 
 * [使用](./chinese/usage.md)
+
+## 预览 | preview
+
+![1-1](./image/preview/1-1.png)
+
+![2-1](./image/preview/2-1.png)
+
+![3-1](./image/preview/3-1.png)
+
+![3-1](./image/preview/3-2.png)
+
+![4-1](./image/preview/4-1.png)
