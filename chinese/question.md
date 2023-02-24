@@ -43,7 +43,7 @@
 	> ],
 	> ```
 	> 
-	> 其中，`allowTrailingCommas` 是 `VS Code` 的扩展，并不是 `JSON-Schema` 的标准功能。
+	> 其中，`allowTrailingCommas` 是 `VS Code` 的扩展，并不符合 `JSON-Schema` 标准。
 
 3. 转义字符
 	
@@ -55,13 +55,13 @@
 	
 	* `\0` 转义为空字符。
 	
-	* `\onnn` 3 位八进制数，允许值超过 0xFF 。
+	* `\onnn` 3 位八进制数表示的 Unicode 字符，允许值超过 0xFF 。
 	
-	* `\xnn` 2 位十六进制数。
+	* `\xnn` 2 位十六进制数表示的 Unicode 字符。
 	
-	* `\unnnn` 4 位十六进制数。
+	* `\unnnn` 4 位十六进制数表示的 Unicode 字符。
 	
-	* `\Unnnnnnnn` 8 位十六进制数。
+	* `\Unnnnnnnn` 8 位十六进制数表示的 Unicode 字符。
 
 4. 数字格式
 	
