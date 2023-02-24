@@ -14,7 +14,7 @@ TwinStar ToolKit 的说明文档。
 
 * [使用](./chinese/usage.md)
 
-* [参见问题](./chinese/question.md)
+- [常见问题](./chinese/question.md)
 
 ## 预览 | preview
 
