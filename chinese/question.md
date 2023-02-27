@@ -6,6 +6,8 @@
 
 - [Shell 对宿主终端的要求](#Shell-对宿主终端的要求)
 
+- [处理大端序文件](#处理大端序文件)
+
 ## Windows 文件路径长度限制
 
 在 Windows 中，系统的文件路径的长度限制在了 260 字符内，这使得系统中不会存在长路径文件，工具也无法处理任何长路径文件。
@@ -55,13 +57,13 @@
 	
 	* `\0` 转义为空字符。
 	
-	* `\onnn` 3 位八进制数表示的 Unicode 字符，允许值超过 0xFF 。
+	* `\oNNN` 3 位八进制数表示的 Unicode 字符，允许值超过 0xFF 。
 	
-	* `\xnn` 2 位十六进制数表示的 Unicode 字符。
+	* `\xNN` 2 位十六进制数表示的 Unicode 字符。
 	
-	* `\unnnn` 4 位十六进制数表示的 Unicode 字符。
+	* `\uNNNN` 4 位十六进制数表示的 Unicode 字符。
 	
-	* `\Unnnnnnnn` 8 位十六进制数表示的 Unicode 字符。
+	* `\UNNNNNNNN` 8 位十六进制数表示的 Unicode 字符。
 
 4. 数字格式
 	
@@ -91,7 +93,7 @@
 	
 	> 默认情况下，工具会使用控制序列来优化输出效果，但如果运行在不支持控制序列的终端中，控制序列将直接输出为字符串，影响用户的阅读。
 	> 
-	> 用户可以通过修改 `- <home>/script/Entry/Entry.json` 配置中的 `cli_disable_virtual_terminal_sequences` 项为 `true` 以禁用控制序列的使用。
+	> 用户可以通过修改 `- <home>/script/Entry/Entry.json` 配置中的 `cli_disable_virtual_terminal_sequence` 项为 `true` 以禁用控制序列的使用。
 
 3. 完备的字体：可选，若不支持，一些字符（如汉字、emoji ）将无法正常显示。
 
@@ -125,3 +127,13 @@
 
 > @ `Windows` \
 > 双击以运行启动脚本时，将在系统默认终端中运行程序，若想更改为在指定第三方终端中运行，请修改 `launch.cmd` ，但切换终端将导致一次 cmd 窗口闪烁，除非你使用 Windows 11 并将 Windows Terminal 设为系统默认终端。
+
+## 处理大端序文件
+
+工具默认将处理的文件始终视为小端序。但是，用户也可能需要对大端序文件进行处理，例如对从大端序设备 Xbox 中提取的 RSB 文件进行解包。
+
+在将大端序文件转发给工具进行处理前，用户需要修改 `- <home>/script/Entry/Entry.json` 配置中的 `byte_stream_use_big_endian` 项为 `true` ，告知工具将传入的文件视为大端序。
+
+之后，将大端序文件转发给工具，如果文件本身没有错误，程序将能正常处理这些大端序文件。
+
+> 如果后续需要处理小端序文件，应当恢复 `byte_stream_use_big_endian` 项为 `false` 。
