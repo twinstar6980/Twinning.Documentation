@@ -94,8 +94,8 @@
 
 3. 赋予 `shell` 可执行权限。
 	
-	> **Windows** 上一般不需操作，其他系统的用户可能要在终端中执行 `> chmod +x shell` 为 `- shell` 添加可执行权限。
-	> 
+	**Windows** 上一般不需操作，其他系统的用户可能要在终端中执行 `> chmod +x shell` 为 `- shell` 添加可执行权限。
+	
 	> @ `Android` \
 	> 在采用了 FUSE 方案的系统中，`+ /storage/emulated/<id>` 实际上是 `+ /data/media/<id>` 的映射，但 FUSE 的限制使用户无法通过 `+ /storage/emulated/<id>` 进行文件的权限修改与执行，必须通过真实路径 `+ /data/media/<id>` 进行访问。
 
@@ -107,7 +107,7 @@
 	
 	> 系统库目录在 32 位系统中为 `+ /system/lib` ，在 64 位系统中为 `+ /system/lib64` 。
 	> 
-	> 该文件可从 Android NDK 工具链中提取，也可在 [Miscellaneous 分发](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous) 中找到。
+	> 该文件可从 Android NDK 工具链中提取，也可在 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous) 中找到。
 
 对于 `iPhone` 系统，还需要执行以下操作：
 
@@ -136,9 +136,9 @@
 对于 `Android` 系统，还需要执行以下操作：
 
 1. 在系统设置中为应用授予完全的外部存储空间读写权限。
-
-	> 如果应用未取得这一权限，将在启动控制台时出现 ⌈ Permission denied ⌋ 错误。
-	> 
+	
+	如果应用未取得这一权限，将在启动控制台时出现 ⌈ Permission denied ⌋ 错误。
+	
 	> 在不同版本与厂商定制的系统中，该权限一般会被表述为 ⌈ 读写存储空间 ⌋ 、⌈ 管理所有文件 ⌋ 等。\
 	> 原生系统中，可以在应用设置中找到授权页面；\
 	> 对于一些厂商定制系统，可能需要在别处进行授权，比如 MIUI 需要在 ⌈ 保护隐私 ⌋ 中授予应用 ⌈ 所有文件访问权限 ⌋ 。
@@ -160,26 +160,43 @@ Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
 这是可选安装项，分发为应用包。
 
 1. 查看 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/WindowsExplorerExtension) ，下载适用于你设备的分发。
+	
+	扩展分为两个子版本，需按个人需要进行选择：
+	
+	* `<n>_0` 只提供普通的文件转发入口；在新、旧式右键菜单中均显示为单个菜单项。
+	
+	* `<n>_1` 额外提供了各功能的快捷转发入口，但对右键菜单的调出速度有较大影响；在新式右键菜单中显示为单个二级菜单，在旧式右键菜单中显示为多个一级菜单。
 
 2. 安装应用包。
 	
 	> 安装前需要先信任 MSIX 中的签名证书。\
 	> 右键查看 `.msix` 的属性，切换到 ⌈ 数字签名 ⌋ 页，选择列表中第一项，再点击 ⌈ 详细信息 ⌋ ，在弹出的窗口中依次选择 ⌈ 查看证书 ⌋ - ⌈ 安装证书 ⌋ - ⌈ 本地计算机 ⌋ - ⌈ 将所有证书都放入下列存储 ⌋ - ⌈ 受信任人 ⌋ ，完成证书的安装。
 
-3. 现在，你可以在任意文件或目录的右键菜单内看到 `⌈ TwinStar ToolKit ⌋` 选项，它为大多数功能提供了快捷入口。如果没有看到该选项，请尝试重启资源管理器 `explorer.exe` ，或重启计算机。
-
-4. 最后，还需要进入系统环境变量设置，添加环境变量：变量名为 `TwinStar.ToolKit.WindowsExplorerExtension.launch_file` ，变量值为启动脚本的完整路径（不要使用引号包围），例如 `C:\TwinStar.ToolKit\launch.cmd` 。
+3. 以文本方式打开 `create_setting.reg` 文件，在其中编辑配置项，完成后右键选择注册表编辑器打开该文件以合并注册表。
 	
-	> 扩展程序将执行指定的启动脚本，并将所选文件的路径传递给它。因此，必须创建一个启动脚本，在其中启动 Shell 并传递参数。
+	扩展将从系统注册表中读取扩展配置数据，所有配置均位于 `HKEY_CURRENT_USER\Software\TwinStar\ToolKit\WindowsExplorerExtension` ，以下是配置项：
+	
+	* `launch_script`
+		
+		字符串，启动脚本的路径，默认为空串。扩展程序将执行指定的启动脚本，并将所选文件的路径传递给它。因此，必须创建一个启动脚本，在其中启动外壳并传递参数。
+		
+		> 提供了适用于 `Shell` 的启动脚本，可以在 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous) 中找到。
+	
+	* `language`
+		
+		字符串，扩展使用的语言，可为 `Chinese` 或 `English` ，默认为 `Chinese` 。
+	
+	* `visible_<group>`
+		
+		DWORD，控制是否显示各功能组，值为 `0` 时将隐藏对应功能组，否则显示对应功能组，默认为 `0` 。可以将不常用的功能组隐藏，以减少对右键菜单空间的占用，并降低右扩展对右键菜单调出速度的影响。
 
-> 请注意，由于 Windows 的限制，每次最多只能选择 16 项文件对象，超出该数目则无法正常启动扩展。
-> 
-> 扩展程序在新、旧式右键菜单上的表现有所区别：\
-> 在新式右键菜单（即 Windows 11 式）中，所有功能选项将合并为一个二级菜单；\
-> 在旧式右键菜单（即 Windows 10 式）中，各个功能选项都单独显示为一项一级菜单，这将导致右键菜单的面积大大增加；\
-> 因此，对旧式右键菜单有所依赖的用户请衡量利弊以决定是否安装。
-> 
-> *如此设计是因为新式右键菜单不允许单个右键扩展提供二级菜单，需为扩展程序绑定多个右键扩展以达到二级菜单效果，而旧式右键菜单中单个右键扩展只能提供至多 16 项选项。*
+4. 现在，你可以在任意文件或目录的右键菜单内看到 `⌈ TwinStar ToolKit - Extension ⌋` 选项，并通过这些选项将文件对象快速转发至工具。
+	
+	如果没有看到该选项，请尝试重启资源管理器 `explorer.exe` ，或重启计算机。
+	
+	> 请注意，由于 Windows 的限制，每次最多只能选择 16 项文件对象，超出该数目则无法成功转发文件对象。
+
+5. 卸载扩展程序后，可以使用 `remove_setting.reg` 文件以清除系统注册表中残留的扩展配置数据。
 
 ## 外部程序
 
