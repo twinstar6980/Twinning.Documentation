@@ -68,6 +68,62 @@
 
 各功能根据性质分为多个功能组，并存放于 `+ <home>/script/Entry/method` ，其中的每个 `JS` 文件提供一组功能，与之同名的 `JSON` 文件则保存了该组功能的配置，用户可根据需要修改配置。
 
+用户可以通过命令行参数使工具直接执行某项功能，而无需运行时输入，具体参见 [附加参数](./usage.md#附加参数) 段落。
+
+下面将列出各功能与对应的配置规则，约定格式如下：
+
+> ## `<method-group-id>`
+> 
+> 功能的组 ID ，作为所有子功能 ID 的前缀。
+> 
+> * `<method-item-id` [ `*` ]
+> 	
+> 	功能的项 ID ，与功能的组 ID 组合成功能的 ID 。例如组 ID 为 `popcap.rton` 、项 ID 为 `decode` ，则该功能 ID 为 `popcap.rton.decode` 。如果带有 `*` 标识，则表示该功能提供批处理版本。
+> 	
+> 	* `variable-name` : `<filter-rule>`
+> 		
+> 		首项参数是输入参数，由当前命令的 `input` 指定，类型始终为 `string` ；`<filter-rule>` 指定了该功能的输入值过滤规则，如 `*.rsb` 表示只有在输入文件的扩展名为 `rsb` 时才显示该功能。
+> 	
+> 	* `variable-name` : `variable-type` [ ~ `<default-value>` ] = `<value>`
+> 		
+> 		剩余的参数则由当前命令的 `argument` 指定，第二项一般是输出参数，其后则为配置参数。
+> 		
+> 		参数值为字符串 `?input` 时，将在执行时要求用户输入参数。
+> 		
+>		有些参数存在默认行为，用户可以指定参数值为字符串 `?default` 以启用默认行为，文档中将以 `~` 做出标识，并在其后跟随默认行为的取值。 一般地，输出参数具有默认行为，即以输入参数的值生成输出参数的值，例如 `popcap.rton.decode` 功能以 `*.rton` 文件作为输入参数，由此生成同名的 `*.json` 文件作为输出参数。
+> 		
+> 		`<value>` 则是当用户未指定参数值时的默认参数值，一般是显式的 `?input` 或 `?default` ，或者从对应的配置文件中获取默认参数值。
+
+下面列出的所有功能都是常规功能，部分常规功能存在对应的批处理版本，批处理版本的功能与常规功能保持一致，但功能 ID 附加了 `.batch` 后缀，并且输入参数、输出参数附加了 `_directory` 后缀。
+
+例如，以下是 `popcap.rton.encode` 功能的定义：
+
+> ## `popcap.rton`
+> 
+> * `encode` `*`
+> 	
+> 	* `value_file` : `*.json`
+> 	
+> 	* `data_file` : `string` ~ `*.rton` = `?default`
+> 	
+> 	* `version_number` : `bigint` = `config.version_number`
+> 	
+> 	* `buffer_size` : `string` = `config.encode_buffer_size`
+
+则对应的批处理版本如下：
+
+> ## `popcap.rton`
+> 
+> * `encode.batch`
+> 	
+> 	* `value_file_directory` : `*`
+> 	
+> 	* `data_file_directory` : `string` ~ `*.rton_encode` = `?default`
+> 	
+> 	* `version_number` : `bigint` = `config.version_number`
+> 	
+> 	* `buffer_size` : `string` = `config.encode_buffer_size`
+
 ## 通用配置
 
 `- <home>/script/Entry/Entry.json` 定义了工具运行期间的通用配置。
