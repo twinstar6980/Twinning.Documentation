@@ -8,49 +8,49 @@
 
 - [json](#json)
 
-- [data.hash](#data.hash)
+- [data.hash](#datahash)
 
-- [data.encoding](#data.encoding)
+- [data.encoding](#dataencoding)
 
-- [data.encryption](#data.encryption)
+- [data.encryption](#dataencryption)
 
-- [data.compression](#data.compression)
+- [data.compression](#datacompression)
 
-- [data.differentiation](#data.differentiation)
+- [data.differentiation](#datadifferentiation)
 
-- [image.transformation](#image.transformation)
+- [image.transformation](#imagetransformation)
 
-- [image.atlas](#image.atlas)
+- [image.atlas](#imageatlas)
 
-- [wwise.encoded_media](#wwise.encoded_media)
+- [wwise.encoded_media](#wwiseencoded_media)
 
-- [wwise.sound_bank](#wwise.sound_bank)
+- [wwise.sound_bank](#wwisesound_bank)
 
-- [marmalade.dzip](#marmalade.dzip)
+- [marmalade.dzip](#marmaladedzip)
 
-- [popcap.zlib](#popcap.zlib)
+- [popcap.zlib](#popcapzlib)
 
-- [popcap.reanim](#popcap.reanim)
+- [popcap.reanim](#popcapreanim)
 
-- [popcap.particle](#popcap.particle)
+- [popcap.particle](#popcapparticle)
 
-- [popcap.rton](#popcap.rton)
+- [popcap.rton](#popcaprton)
 
-- [popcap.ptx](#popcap.ptx)
+- [popcap.ptx](#popcapptx)
 
-- [popcap.pam](#popcap.pam)
+- [popcap.pam](#popcappam)
 
-- [popcap.pak](#popcap.pak)
+- [popcap.pak](#popcappak)
 
-- [popcap.rsgp](#popcap.rsgp)
+- [popcap.rsgp](#popcaprsgp)
 
-- [popcap.rsb](#popcap.rsb)
+- [popcap.rsb](#popcaprsb)
 
-- [popcap.rsb_patch](#popcap.rsb_patch)
+- [popcap.rsb_patch](#popcaprsb_patch)
 
-- [pvz2.lawn_string_text](#pvz2.lawn_string_text)
+- [pvz2.lawn_string_text](#pvz2lawn_string_text)
 
-- [pvz2.remote_android_helper](#pvz2.remote_android_helper)
+- [pvz2.remote_android_helper](#pvz2remote_android_helper)
 
 ## 介绍
 
