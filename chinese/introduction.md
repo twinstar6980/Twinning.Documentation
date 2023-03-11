@@ -16,7 +16,9 @@
 > 
 > * PopCap ZLib 压缩、解压
 > 
-> * PopCap Reanim 编码、解码
+> * PopCap REANIM 编码、解码
+> 
+> * PopCap PARTICLE 编码、解码
 > 
 > * PopCap RTON 编码、解码、加密、解密
 > 
@@ -24,11 +26,11 @@
 > 
 > * PopCap PAM 编码、解码、与Flash格式相互转换
 > 
-> * PopCap PAK 打包、解包
+> * PopCap PAK 打包、解包、加密
 > 
 > * PopCap RSGP 打包、解包
 > 
-> * PopCap RSB 打包、解包
+> * PopCap RSB 打包、解包、资源转换
 > 
 > * PopCap RSB-Patch 编码、解码
 > 
