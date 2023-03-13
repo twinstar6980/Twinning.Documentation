@@ -98,8 +98,6 @@
 
 例如，以下是 `popcap.rton.encode` 功能的定义：
 
-> ## `popcap.rton`
-> 
 > * `encode` `*`
 > 	
 > 	* `value_file` : `*.json`
@@ -112,8 +110,6 @@
 
 则对应的批处理版本如下：
 
-> ## `popcap.rton`
-> 
 > * `encode.batch`
 > 	
 > 	* `value_file_directory` : `*`
@@ -590,6 +586,8 @@
 	
 	* `value_file` : `string` ~ `*.json` = `?default`
 	
+	* `native_string_encoding_use_extended_ascii` : `boolean` = `config.native_string_encoding_use_extended_ascii`
+	
 	* `version_number` : `bigint` = `config.version_number`
 
 * `encrypt` `*`
@@ -626,13 +624,27 @@
 	
 	* `value_file` : `string` ~ `*.json` = `?default`
 	
+	* `native_string_encoding_use_extended_ascii` : `boolean` = `config.native_string_encoding_use_extended_ascii`
+	
 	* `version_number` : `bigint` = `config.version_number`
 	
 	* `key` : `string` = `config.key`
 
+* `decode_lenient`
+	
+	* `data_file` : `*.rton`
+	
+	* `value_file` : `string` ~ `*.json` = `?default`
+	
+	* `native_string_encoding_use_extended_ascii` : `boolean` = `config.native_string_encoding_use_extended_ascii`
+	
+	* `version_number` : `bigint` = `config.version_number`
+
 * `<config>`
 	
 	* `version_number` : `bigint` = `1`
+	
+	* `native_string_encoding_use_extended_ascii` : `boolean` = `false`
 	
 	* `key` : `string` = `?input`
 	
