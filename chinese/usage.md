@@ -204,9 +204,9 @@
 
 > 例 - 使用工具解码桌面上的 `test.pam` 文件：
 > 
-> `> .\launch.cmd "C:\Users\TwinStar\Desktop\test.pam" "-method" "popcap.pam.decode"`
+> `> .\launch.cmd "C:\Users\TwinStar\Desktop\test.pam" "-method" "popcap.animation.decode"`
 > 
-> 该命令以 `test.pam` 文件的路径作为输入参数，并指定需执行的功能为 `PopCap PAM 解码` 。执行完毕后，可在桌面看到一个名为 `test.pam.json` 的新文件，即为解码后的 PAM 数据。
+> 该命令以 `test.pam` 文件的路径作为输入参数，并指定需执行的功能为 `PopCap Animation 解码` 。执行完毕后，可在桌面看到一个名为 `test.pam.json` 的新文件，即为解码后的 PAM 数据。
 
 ## 转发文件对象
 

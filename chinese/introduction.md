@@ -8,31 +8,35 @@
 
 > 目前提供以下功能
 > 
-> * Wwise Encoded-Media 解码
+> * Wwise Media (.wem) 解码
 > 
-> * Wwise Sound-Bank 编码、解码
+> * Wwise Sound-Bank (.bnk) 编码、解码
 > 
-> * Marmalade DZip 打包、解包
+> * Marmalade DZip (.dz) 打包、解包
 > 
-> * PopCap ZLib 压缩、解压
+> * PopCap ZLib (.*) 压缩、解压
 > 
-> * PopCap REANIM 编码、解码
+> * PopCap Crypt-Data (.cdat) 压缩、解压
 > 
-> * PopCap PARTICLE 编码、解码
+> * PopCap Reflection-Object-Notation (.rton) 编码、解码、加密、解密
 > 
-> * PopCap RTON 编码、解码、加密、解密
+> * PopCap Texture (.ptx) 编码、解码
 > 
-> * PopCap PTX 编码、解码
+> * PopCap Animation (.pam) 编码、解码、与Flash格式相互转换
 > 
-> * PopCap PAM 编码、解码、与Flash格式相互转换
+> * PopCap Re-Animation (.reanim.compiled) 编码、解码
 > 
-> * PopCap PAK 打包、解包、加密
+> * PopCap Particle (.xml.compiled) 编码、解码
 > 
-> * PopCap RSGP 打包、解包
+> * PopCap Trail (.trail.compiled) 编码、解码
 > 
-> * PopCap RSB 打包、解包、资源转换
+> * PopCap Package (.pak) 打包、解包、加密
 > 
-> * PopCap RSB-Patch 编码、解码
+> * PopCap Resource-Stream-Group (.rsg) 打包、解包
+> 
+> * PopCap Resource-Stream-Bundle (.rsgp) 打包、解包、资源转换
+> 
+> * PopCap Resource-Stream-Bundle-Patch (.rsbpatch) 编码、解码
 > 
 > * 等等 ......
 

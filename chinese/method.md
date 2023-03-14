@@ -22,7 +22,7 @@
 
 - [image.atlas](#imageatlas)
 
-- [wwise.encoded_media](#wwiseencoded_media)
+- [wwise.media](#wwisemedia)
 
 - [wwise.sound_bank](#wwisesound_bank)
 
@@ -30,25 +30,29 @@
 
 - [popcap.zlib](#popcapzlib)
 
-- [popcap.reanim](#popcapreanim)
+- [popcap.crypt_data](#popcapcrypt_data)
+
+- [popcap.reflection_object_notation](#popcapreflection_object_notation)
+
+- [popcap.texture](#popcaptexture)
+
+- [popcap.animation](#popcapanimation)
+
+- [popcap.re_animation](#popcapre_animation)
 
 - [popcap.particle](#popcapparticle)
 
-- [popcap.rton](#popcaprton)
+- [popcap.trail](#popcaptrail)
 
-- [popcap.ptx](#popcapptx)
+- [popcap.package](#popcappackage)
 
-- [popcap.pam](#popcappam)
+- [popcap.resource_stream_group](#popcapresource_stream_group)
 
-- [popcap.pak](#popcappak)
+- [popcap.resource_stream_bundle](#popcapresource_stream_bundle)
 
-- [popcap.rsgp](#popcaprsgp)
+- [popcap.resource_stream_bundle_patch](#popcapresource_stream_bundle_patch)
 
-- [popcap.rsb](#popcaprsb)
-
-- [popcap.rsb_patch](#popcaprsb_patch)
-
-- [pvz2.lawn_string_text](#pvz2lawn_string_text)
+- [pvz2.text_table](#pvz2text_table)
 
 - [pvz2.remote_android_helper](#pvz2remote_android_helper)
 
@@ -96,7 +100,7 @@
 
 下面列出的所有功能都是常规功能，部分常规功能存在对应的批处理版本，批处理版本的功能与常规功能保持一致，但功能 ID 附加了 `.batch` 后缀，并且输入参数、输出参数附加了 `_directory` 后缀。
 
-例如，以下是 `popcap.rton.encode` 功能的定义：
+例如，以下是 `popcap.reflection_object_notation.encode` 功能的定义：
 
 > * `encode` `*`
 > 	
@@ -400,7 +404,7 @@
 
 * `<config>`
 
-## `wwise.encoded_media`
+## `wwise.media`
 
 * `decode` `*`
 	
@@ -504,71 +508,35 @@
 	
 	* `version_variant_64` : `boolean` = `?input`
 
-## `popcap.reanim`
+## `popcap.crypt_data`
 
-* `encode` `*`
+* `encrypt`
 	
-	* `manifest_file` : `*.reanim.json`
+	* `plain_file` : `*`
 	
-	* `data_file` : `string` ~ `*.reanim.compiled` = `?default`
+	* `cipher_file` : `string` ~ `*.cdat` = `?default`
 	
-	* `version_platform` : `string` = `config.version_platform`
+	* `limit` : `bigint` = `config.limit`
 	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
-	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `key` : `string` = `config.key`
 
-* `decode` `*`
+* `decrypt`
 	
-	* `data_file` : `*.reanim.compiled`
+	* `cipher_file` : `*.cdat`
 	
-	* `manifest_file` : `string` ~ `*.reanim.json` = `?default`
+	* `plain_file` : `string` ~ `*` = `?default`
 	
-	* `version_platform` : `string` = `config.version_platform`
+	* `limit` : `bigint` = `config.limit`
 	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	* `key` : `string` = `config.key`
 
 * `<config>`
 	
-	* `version_platform` : `string` = `?input`
+	* `limit` : `bigint` = `256`
 	
-	* `version_variant_64` : `boolean` = `?input`
-	
-	* `encode_buffer_size` : `string` = `8.0m`
+	* `key` : `string` = `AS23DSREPLKL335KO4439032N8345NF`
 
-## `popcap.particle`
-
-* `encode` `*`
-	
-	* `manifest_file` : `*.particle.json`
-	
-	* `data_file` : `string` ~ `*.xml.compiled` = `?default`
-	
-	* `version_platform` : `string` = `config.version_platform`
-	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
-	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
-
-* `decode` `*`
-	
-	* `data_file` : `*.xml.compiled`
-	
-	* `manifest_file` : `string` ~ `*.particle.json` = `?default`
-	
-	* `version_platform` : `string` = `config.version_platform`
-	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
-
-* `<config>`
-	
-	* `version_platform` : `string` = `?input`
-	
-	* `version_variant_64` : `boolean` = `?input`
-	
-	* `encode_buffer_size` : `string` = `8.0m`
-
-## `popcap.rton`
+## `popcap.reflection_object_notation`
 
 * `encode` `*`
 	
@@ -650,7 +618,7 @@
 	
 	* `encode_buffer_size` : `string` = `64.0m`
 
-## `popcap.ptx`
+## `popcap.texture`
 
 * `encode`
 	
@@ -674,7 +642,7 @@
 
 * `<config>`
 
-## `popcap.pam`
+## `popcap.animation`
 
 * `encode` `*`
 	
@@ -722,7 +690,103 @@
 	
 	* `encode_buffer_size` : `string` = `8.0m`
 
-## `popcap.pak`
+## `popcap.re_animation`
+
+* `encode` `*`
+	
+	* `manifest_file` : `*.reanim.json`
+	
+	* `data_file` : `string` ~ `*.reanim.compiled` = `?default`
+	
+	* `version_platform` : `string` = `config.version_platform`
+	
+	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	
+	* `buffer_size` : `string` = `config.encode_buffer_size`
+
+* `decode` `*`
+	
+	* `data_file` : `*.reanim.compiled`
+	
+	* `manifest_file` : `string` ~ `*.reanim.json` = `?default`
+	
+	* `version_platform` : `string` = `config.version_platform`
+	
+	* `version_variant_64` : `boolean` = `config.version_variant_64`
+
+* `<config>`
+	
+	* `version_platform` : `string` = `?input`
+	
+	* `version_variant_64` : `boolean` = `?input`
+	
+	* `encode_buffer_size` : `string` = `8.0m`
+
+## `popcap.particle`
+
+* `encode` `*`
+	
+	* `manifest_file` : `*.particle.json`
+	
+	* `data_file` : `string` ~ `*.xml.compiled` = `?default`
+	
+	* `version_platform` : `string` = `config.version_platform`
+	
+	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	
+	* `buffer_size` : `string` = `config.encode_buffer_size`
+
+* `decode` `*`
+	
+	* `data_file` : `*.xml.compiled`
+	
+	* `manifest_file` : `string` ~ `*.particle.json` = `?default`
+	
+	* `version_platform` : `string` = `config.version_platform`
+	
+	* `version_variant_64` : `boolean` = `config.version_variant_64`
+
+* `<config>`
+	
+	* `version_platform` : `string` = `?input`
+	
+	* `version_variant_64` : `boolean` = `?input`
+	
+	* `encode_buffer_size` : `string` = `8.0m`
+
+## `popcap.trail`
+
+* `encode` `*`
+	
+	* `manifest_file` : `*.trail.json`
+	
+	* `data_file` : `string` ~ `*.trail.compiled` = `?default`
+	
+	* `version_platform` : `string` = `config.version_platform`
+	
+	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	
+	* `buffer_size` : `string` = `config.encode_buffer_size`
+
+* `decode` `*`
+	
+	* `data_file` : `*.trail.compiled`
+	
+	* `manifest_file` : `string` ~ `*.trail.json` = `?default`
+	
+	* `version_platform` : `string` = `config.version_platform`
+	
+	* `version_variant_64` : `boolean` = `config.version_variant_64`
+
+* `<config>`
+	
+	* `version_platform` : `string` = `?input`
+	
+	* `version_variant_64` : `boolean` = `?input`
+	
+	* `encode_buffer_size` : `string` = `8.0m`
+
+## `popcap.package`
 
 * `pack`
 	
@@ -770,13 +834,13 @@
 	
 	* `pack_buffer_size` : `string` = `256.0m`
 
-## `popcap.rsgp`
+## `popcap.resource_stream_group`
 
 * `pack`
 	
-	* `bundle_directory` : `*.rsgp.bundle`
+	* `bundle_directory` : `*.rsg.bundle`
 	
-	* `data_file` : `string` ~ `*.rsgp` = `?default`
+	* `data_file` : `string` ~ `*.rsg` = `?default`
 	
 	* `version_number` : `bigint` = `config.version_number`
 	
@@ -784,9 +848,9 @@
 
 * `unpack`
 	
-	* `data_file` : `*.rsgp`
+	* `data_file` : `*.rsg`
 	
-	* `bundle_directory` : `string` ~ `*.rsgp.bundle` = `?default`
+	* `bundle_directory` : `string` ~ `*.rsg.bundle` = `?default`
 	
 	* `version_number` : `bigint` = `config.version_number`
 
@@ -796,7 +860,7 @@
 	
 	* `pack_buffer_size` : `string` = `256.0m`
 
-## `popcap.rsb`
+## `popcap.resource_stream_bundle`
 
 * `pack`
 	
@@ -860,7 +924,7 @@
 	
 	* `resource_convert_option` : `{ ... }` = `...`
 
-## `popcap.rsb_patch`
+## `popcap.resource_stream_bundle_patch`
 
 * `encode`
 	
@@ -900,7 +964,7 @@
 	
 	* `decode_buffer_size` : `string` = `1024.0m`
 
-## `pvz2.lawn_string_text`
+## `pvz2.text_table`
 
 * `convert`
 	
