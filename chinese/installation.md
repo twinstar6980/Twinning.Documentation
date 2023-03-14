@@ -34,15 +34,15 @@
 
 * `Core`
 	
-	核心库，负责内部功能的实现。
+	核心，负责内部功能的实现。
 
 * `Shell`
 	
-	外壳程序，提供命令行界面。
+	外壳，提供命令行界面。
 
 * `Shell GUI`
 	
-	外壳程序，提供图形界面。
+	外壳，提供图形界面。
 
 * `Script`
 	
@@ -51,6 +51,10 @@
 * `Windows Explorer Extension`
 	
 	Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
+
+* `Helper`
+	
+	助手，提供额外的高级功能。
 
 ## 安装准备
 
@@ -62,7 +66,7 @@
 	
 	`Core` 、`Shell` 、`Script` 是便携式的，请将它们放置在主目录中，这样不会在其他位置残留数据。
 	
-	`Shell GUI` 、`Windows Explorer Extension` 是需要安装的应用，需要用户自行卸载，并清除应用数据。
+	`Shell GUI` 、`Windows Explorer Extension` 、`Helper` 是需要安装的应用，需要用户自行卸载，并清除应用数据。
 	
 	> 主目录的位置可以随意，但要确保用户有对该目录及其内容的 **读写执行权限** 。
 
@@ -157,6 +161,8 @@
 
 Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
 
+> 该模块专用于 Windows 系统，其他系统无法使用。
+
 这是可选安装项，分发为应用包。
 
 1. 查看 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/WindowsExplorerExtension) ，下载适用于你设备的分发。
@@ -197,6 +203,21 @@ Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
 	> 请注意，由于 Windows 的限制，每次最多只能选择 16 项文件对象，超出该数目则无法成功转发文件对象。
 
 5. 卸载扩展程序后，可以使用 `remove_setting.reg` 文件以清除系统注册表中残留的扩展配置数据。
+
+## 安装 `Helper`
+
+助手，提供额外的高级功能。
+
+> 该模块专用于 Windows 系统，其他系统无法使用。
+
+这是可选安装项，分发为应用包。
+
+1. 查看 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Helper) ，下载适用于你设备的分发。
+
+2. 安装应用包。
+	
+	> 安装前需要先信任 MSIX 中的签名证书。\
+	> 右键查看 `.msix` 的属性，切换到 ⌈ 数字签名 ⌋ 页，选择列表中第一项，再点击 ⌈ 详细信息 ⌋ ，在弹出的窗口中依次选择 ⌈ 查看证书 ⌋ - ⌈ 安装证书 ⌋ - ⌈ 本地计算机 ⌋ - ⌈ 将所有证书都放入下列存储 ⌋ - ⌈ 受信任人 ⌋ ，完成证书的安装。
 
 ## 外部程序
 
