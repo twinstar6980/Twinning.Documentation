@@ -34,7 +34,7 @@
 > 
 > * PopCap Resource-Stream-Group (.rsg) 打包、解包
 > 
-> * PopCap Resource-Stream-Bundle (.rsgp) 打包、解包、资源转换
+> * PopCap Resource-Stream-Bundle (.rsb) 打包、解包、资源转换
 > 
 > * PopCap Resource-Stream-Bundle-Patch (.rsbpatch) 编码、解码
 > 
