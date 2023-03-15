@@ -80,13 +80,15 @@
 
 1. 下载 [安装脚本](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/download/Miscellaneous/install.py) 。
 
-2. 运行安装脚本 `python "./install.py"` 。
+2. 将下载所得文件移动到主目录内。
+
+3. 在命令行中运行脚本 `python "./install.py"` 。
 	
 	该脚本的运行需要 `Python` 环境，请确保你的计算机已安装了 [`Python`](https://www.python.org/downloads/) 。 
 
-3. 在脚本执行窗口中，选择适合你设备的操作系统与处理器架构，脚本将从本项目的 GitHub Release 中查找并下载所需文件，最后安装至脚本当前工作目录内。
+4. 在脚本执行窗口中，选择适合你设备的操作系统与处理器架构，脚本将从本项目的 GitHub Release 中查找与下载所需文件，并安装至主目录内。
 
-安装脚本会自动为你安装 `Core` 、`Shell` 、`Script` 三个模块，但如果你还需要使用其他模块，请参照下文手动安装。
+安装脚本会自动安装 `Core` 、`Shell` 、`Script` 三个模块，但如果你还需要使用其他模块，请参照下文手动安装。
 
 ## 安装 `Core`
 
