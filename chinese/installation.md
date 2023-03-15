@@ -6,6 +6,8 @@
 
 - [安装准备](#安装准备)
 
+- [使用安装脚本](#使用安装脚本)
+
 - [安装 `Core`](#安装-Core)
 
 - [安装 `Shell`](#安装-Shell)
@@ -15,6 +17,8 @@
 - [安装 `Script`](#安装-Script)
 
 - [安装 `Windows Explorer Extension`](#安装-Windows-Explorer-Extension)
+
+- [安装 `Helper`](#安装-Helper)
 
 - [外部程序](#外部程序)
 
@@ -69,6 +73,20 @@
 	`Shell GUI` 、`Windows Explorer Extension` 、`Helper` 是需要安装的应用，需要用户自行卸载，并清除应用数据。
 	
 	> 主目录的位置可以随意，但要确保用户有对该目录及其内容的 **读写执行权限** 。
+
+## 使用安装脚本
+
+可以使用安装脚本来快速安装或更新工具的 CLI 版本。
+
+1. 下载 [安装脚本](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous/install.py) 。
+
+2. 运行安装脚本 `install.py` 。
+	
+	该脚本的运行需要 `Python` 环境，请确保你的计算机已安装了 [`Python`](https://www.python.org/downloads/) 。 
+
+3. 在脚本执行窗口中，选择适合你设备的操作系统与处理器架构，脚本将从本项目的 GitHub Release 中查找并下载所需文件，最后安装至脚本当前工作目录内。
+
+安装脚本会自动为你安装 `Core` 、`Shell` 、`Script` 三个模块，但如果你还需要使用其他模块，请参照下文手动安装。
 
 ## 安装 `Core`
 
