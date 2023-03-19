@@ -22,6 +22,10 @@
 > 
 > * PopCap Texture (.ptx) 编码、解码
 > 
+> * PopCap U-Texture (.tex|txz) 编码、解码
+> 
+> * PopCap Sexy-Texture (.tex) 编码、解码
+> 
 > * PopCap Animation (.pam) 编码、解码、与Flash格式相互转换
 > 
 > * PopCap Re-Animation (.reanim.compiled) 编码、解码
@@ -30,6 +34,8 @@
 > 
 > * PopCap Trail (.trail.compiled) 编码、解码
 > 
+> * PopCap Effect (.popfx) 编码、解码
+> 
 > * PopCap Package (.pak) 打包、解包、加密
 > 
 > * PopCap Resource-Stream-Group (.rsg) 打包、解包
@@ -37,6 +43,8 @@
 > * PopCap Resource-Stream-Bundle (.rsb) 打包、解包、资源转换
 > 
 > * PopCap Resource-Stream-Bundle-Patch (.rsbpatch) 编码、解码
+> 
+> * PvZ-2 字符串表 (.txt|json) 版本转换
 > 
 > * 等等 ......
 

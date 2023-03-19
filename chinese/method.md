@@ -36,6 +36,10 @@
 
 - [popcap.texture](#popcaptexture)
 
+- [popcap.u_texture](#popcapu_texture)
+
+- [popcap.sexy_texture](#popcapsexy_texture)
+
 - [popcap.animation](#popcapanimation)
 
 - [popcap.re_animation](#popcapre_animation)
@@ -43,6 +47,8 @@
 - [popcap.particle](#popcapparticle)
 
 - [popcap.trail](#popcaptrail)
+
+- [popcap.effect](#popcapeffect)
 
 - [popcap.package](#popcappackage)
 
@@ -178,7 +184,7 @@
 	
 	* `source_file` : `*.json`
 	
-	* `destination_file` : `string` ~ `*.formatted.json` = `?default`
+	* `destination_file` : `string` ~ `*.format.json` = `?default`
 	
 	* `disable_trailing_comma` : `boolean` ~ `CoreX.JSON.g_format.disable_trailing_comma` = `config.disable_trailing_comma`
 	
@@ -305,6 +311,20 @@
 	* `ripe_file` : `string` ~ `*.bin` = `?default`
 
 * `bzip2.uncompress`
+	
+	* `ripe_file` : `*`
+	
+	* `raw_file` : `string` ~ `*.bin` = `?default`
+	
+	* `buffer_size` : `string` = `config.uncompress_buffer_size`
+
+* `lzma.compress`
+	
+	* `raw_file` : `*`
+	
+	* `ripe_file` : `string` ~ `*.bin` = `?default`
+
+* `lzma.uncompress`
 	
 	* `ripe_file` : `*`
 	
@@ -546,6 +566,8 @@
 	
 	* `version_number` : `bigint` = `config.version_number`
 	
+	* `version_native_string_encoding_use_utf8` : `boolean` = `config.version_native_string_encoding_use_utf8`
+	
 	* `buffer_size` : `string` = `config.encode_buffer_size`
 
 * `decode` `*`
@@ -554,9 +576,9 @@
 	
 	* `value_file` : `string` ~ `*.json` = `?default`
 	
-	* `native_string_encoding_use_extended_ascii` : `boolean` = `config.native_string_encoding_use_extended_ascii`
-	
 	* `version_number` : `bigint` = `config.version_number`
+	
+	* `version_native_string_encoding_use_utf8` : `boolean` = `config.version_native_string_encoding_use_utf8`
 
 * `encrypt` `*`
 	
@@ -582,6 +604,8 @@
 	
 	* `version_number` : `bigint` = `config.version_number`
 	
+	* `version_native_string_encoding_use_utf8` : `boolean` = `config.version_native_string_encoding_use_utf8`
+	
 	* `key` : `string` = `config.key`
 	
 	* `buffer_size` : `string` = `config.encode_buffer_size`
@@ -592,9 +616,9 @@
 	
 	* `value_file` : `string` ~ `*.json` = `?default`
 	
-	* `native_string_encoding_use_extended_ascii` : `boolean` = `config.native_string_encoding_use_extended_ascii`
-	
 	* `version_number` : `bigint` = `config.version_number`
+	
+	* `version_native_string_encoding_use_utf8` : `boolean` = `config.version_native_string_encoding_use_utf8`
 	
 	* `key` : `string` = `config.key`
 
@@ -604,15 +628,15 @@
 	
 	* `value_file` : `string` ~ `*.json` = `?default`
 	
-	* `native_string_encoding_use_extended_ascii` : `boolean` = `config.native_string_encoding_use_extended_ascii`
-	
 	* `version_number` : `bigint` = `config.version_number`
+	
+	* `version_native_string_encoding_use_utf8` : `boolean` = `config.version_native_string_encoding_use_utf8`
 
 * `<config>`
 	
 	* `version_number` : `bigint` = `1`
 	
-	* `native_string_encoding_use_extended_ascii` : `boolean` = `false`
+	* `version_native_string_encoding_use_utf8` : `boolean` = `true`
 	
 	* `key` : `string` = `?input`
 	
@@ -641,6 +665,58 @@
 	* `image_height` : `bigint` = `?input`
 
 * `<config>`
+
+## `popcap.u_texture`
+
+* `encode`
+	
+	* `image_file` : `*.png`
+	
+	* `data_file` : `string` ~ `*.tex` = `?default`
+	
+	* `format` : `string` = `?input`
+	
+	* `version_compress_texture_data` : `boolean` = `config.version_compress_texture_data`
+
+* `decode`
+	
+	* `data_file` : `*.tex`
+	
+	* `image_file` : `string` ~ `*.png` = `?default`
+	
+	* `version_compress_texture_data` : `boolean` = `config.version_compress_texture_data`
+
+* `<config>`
+	
+	* `version_compress_texture_data` : `boolean` = `?input`
+
+## `popcap.sexy_texture`
+
+* `encode`
+	
+	* `image_file` : `*.png`
+	
+	* `data_file` : `string` ~ `*.tex` = `?default`
+	
+	* `format` : `string` = `?input`
+	
+	* `compress_texture_data` : `boolean` = `config.encode_compress_texture_data`
+	
+	* `version_number` : `bigint` = `config.version_number`
+
+* `decode`
+	
+	* `data_file` : `*.tex`
+	
+	* `image_file` : `string` ~ `*.png` = `?default`
+	
+	* `version_number` : `bigint` = `config.version_number`
+
+* `<config>`
+	
+	* `version_number` : `bigint` = `0`
+	
+	* `encode_compress_texture_data` : `boolean` = `?input`
 
 ## `popcap.animation`
 
@@ -783,6 +859,32 @@
 	* `version_platform` : `string` = `?input`
 	
 	* `version_variant_64` : `boolean` = `?input`
+	
+	* `encode_buffer_size` : `string` = `8.0m`
+
+## `popcap.effect`
+
+* `encode` `*`
+	
+	* `manifest_file` : `*.popfx.json`
+	
+	* `data_file` : `string` ~ `*.popfx` = `?default`
+	
+	* `version_number` : `bigint` = `config.version_number`
+	
+	* `buffer_size` : `string` = `config.encode_buffer_size`
+
+* `decode` `*`
+	
+	* `data_file` : `*.popfx`
+	
+	* `manifest_file` : `string` ~ `*.popfx.json` = `?default`
+	
+	* `version_number` : `bigint` = `config.version_number`
+
+* `<config>`
+	
+	* `version_number` : `bigint` = `1`
 	
 	* `encode_buffer_size` : `string` = `8.0m`
 
@@ -968,11 +1070,11 @@
 
 * `convert`
 	
-	* `source_file` : `*.LawnStrings.txt|json`
+	* `source_file` : `*.txt|json`
 	
 	* `destination_version` : `string` = `?input`
 	
-	* `destination_file` : `string` ~ `*.LawnStrings.converted.txt|map.json|list.json` = `?default`
+	* `destination_file` : `string` ~ `*.convert.txt|json` = `?default`
 
 * `<config>`
 
