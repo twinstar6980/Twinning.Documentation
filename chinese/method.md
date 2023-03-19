@@ -530,7 +530,7 @@
 
 ## `popcap.crypt_data`
 
-* `encrypt`
+* `encrypt` `*`
 	
 	* `plain_file` : `*`
 	
@@ -540,7 +540,7 @@
 	
 	* `key` : `string` = `config.key`
 
-* `decrypt`
+* `decrypt` `*`
 	
 	* `cipher_file` : `*.cdat`
 	
@@ -668,7 +668,7 @@
 
 ## `popcap.u_texture`
 
-* `encode`
+* `encode` `*`
 	
 	* `image_file` : `*.png`
 	
@@ -678,7 +678,7 @@
 	
 	* `version_compress_texture_data` : `boolean` = `config.version_compress_texture_data`
 
-* `decode`
+* `decode` `*`
 	
 	* `data_file` : `*.tex`
 	
@@ -692,7 +692,7 @@
 
 ## `popcap.sexy_texture`
 
-* `encode`
+* `encode` `*`
 	
 	* `image_file` : `*.png`
 	
@@ -704,7 +704,7 @@
 	
 	* `version_number` : `bigint` = `config.version_number`
 
-* `decode`
+* `decode` `*`
 	
 	* `data_file` : `*.tex`
 	
