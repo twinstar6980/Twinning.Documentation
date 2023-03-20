@@ -50,6 +50,8 @@
 
 - [popcap.effect](#popcapeffect)
 
+- [popcap.character_font_widget_2](#popcapcharacter_font_widget_2)
+
 - [popcap.package](#popcappackage)
 
 - [popcap.resource_stream_group](#popcapresource_stream_group)
@@ -885,6 +887,26 @@
 * `<config>`
 	
 	* `version_number` : `bigint` = `1`
+	
+	* `encode_buffer_size` : `string` = `8.0m`
+
+## `popcap.character_font_widget_2`
+
+* `encode` `*`
+	
+	* `manifest_file` : `*.cfw2.json`
+	
+	* `data_file` : `string` ~ `*.cfw2` = `?default`
+	
+	* `buffer_size` : `string` = `config.encode_buffer_size`
+
+* `decode` `*`
+	
+	* `data_file` : `*.cfw2`
+	
+	* `manifest_file` : `string` ~ `*.cfw2.json` = `?default`
+
+* `<config>`
 	
 	* `encode_buffer_size` : `string` = `8.0m`
 

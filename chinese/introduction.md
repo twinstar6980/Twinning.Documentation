@@ -36,6 +36,8 @@
 > 
 > * PopCap Effect (.popfx) 编码、解码
 > 
+> * PopCap Character-Font-Widget-2 (.cfw2) 编码、解码
+> 
 > * PopCap Package (.pak) 打包、解包、加密
 > 
 > * PopCap Resource-Stream-Group (.rsg) 打包、解包
