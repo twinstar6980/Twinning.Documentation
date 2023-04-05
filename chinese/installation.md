@@ -78,7 +78,7 @@
 
 可以使用安装脚本来快速安装或更新工具的 CLI 版本。
 
-1. 下载 [安装脚本](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/download/Miscellaneous/install.py) 。
+1. 下载安装脚本 [install.py](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/download/Miscellaneous) 。
 
 2. 将下载所得文件移动到主目录内。
 

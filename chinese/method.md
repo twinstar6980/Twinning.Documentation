@@ -146,6 +146,14 @@
 		
 		禁用命令行虚拟终端序列。仅当使用命令行外壳时有效。
 	
+	* `pause_when_finish` : `boolean` = `true`
+		
+		在完成所有工作后暂停程序，等待用户关闭。
+	
+	* `thread_limit` : `bigint` = `0`
+		
+		线程池上限数。目前无实际作用。
+	
 	* `byte_stream_use_big_endian` : `boolean` = `false`
 		
 		内部字节流操作时使用大端序。这个选项对一些大端序文件的处理是必要的。默认禁用，因为大多数时候用户处理的都是小端序文件。
@@ -165,14 +173,6 @@
 		* `disable_array_wrap_line` : `boolean` = `false`
 			
 			禁用数组元素间的换行。
-	
-	* `pause_when_finish` : `boolean` = `true`
-		
-		在完成所有工作后暂停程序，等待用户关闭。
-	
-	* `thread_limit` : `bigint` = `0`
-		
-		线程池上限数。目前无实际作用。
 
 ## `js`
 
