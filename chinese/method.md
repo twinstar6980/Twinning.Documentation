@@ -116,9 +116,9 @@
 > 	
 > 	* `data_file` : `string` ~ `*.rton` = `?default`
 > 	
-> 	* `version_number` : `bigint` = `config.version_number`
+> 	* `version_number` : `bigint` = `configuration.version_number`
 > 	
-> 	* `buffer_size` : `string` = `config.encode_buffer_size`
+> 	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 则对应的批处理版本如下：
 
@@ -128,15 +128,15 @@
 > 	
 > 	* `data_file_directory` : `string` ~ `*.rton_encode` = `?default`
 > 	
-> 	* `version_number` : `bigint` = `config.version_number`
+> 	* `version_number` : `bigint` = `configuration.version_number`
 > 	
-> 	* `buffer_size` : `string` = `config.encode_buffer_size`
+> 	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 ## 通用配置
 
 `- <home>/script/Entry/Entry.json` 定义了工具运行期间的通用配置。
 
-* `<config>`
+* `<configuration>`
 
 	* `language` : `string` = `Chinese`
 		
@@ -173,6 +173,23 @@
 		* `disable_array_wrap_line` : `boolean` = `false`
 			
 			禁用数组元素间的换行。
+	
+	* `common_file_system_argument` : `{ ... }`
+		
+		文件对象相关参数。
+		
+		* `fs_tactic_if_exist` : `string` = `none`
+			
+			当输入路径指向的文件对象存在时的策略。取值如下：
+			
+			+ `none`: 无，由用户在运行时选择。
+			
+			+ `trash`: 将已有文件对象移动至回收目录中 `+ <home>/trash` 。
+			
+			+ `delete`: 删除已有文件对象。
+			
+			+ `override`: 覆盖已有文件对象。
+		
 
 ## `js`
 
@@ -188,11 +205,11 @@
 	
 	* `destination_file` : `string` ~ `*.format.json` = `?default`
 	
-	* `disable_trailing_comma` : `boolean` ~ `CoreX.JSON.g_format.disable_trailing_comma` = `config.disable_trailing_comma`
+	* `disable_trailing_comma` : `boolean` ~ `CoreX.JSON.g_format.disable_trailing_comma` = `configuration.disable_trailing_comma`
 	
-	* `disable_array_wrap_line` : `boolean` ~ `CoreX.JSON.g_format.disable_array_wrap_line` = `config.disable_array_wrap_line`
+	* `disable_array_wrap_line` : `boolean` ~ `CoreX.JSON.g_format.disable_array_wrap_line` = `configuration.disable_array_wrap_line`
 
-* `<config>`
+* `<configuration>`
 	
 	* `disable_trailing_comma` : `boolean` = `?input`
 	
@@ -204,7 +221,7 @@
 	
 	* `target_file` : `*`
 
-* `<config>`
+* `<configuration>`
 
 ## `data.encoding`
 
@@ -220,7 +237,7 @@
 	
 	* `raw_file` : `string` ~ `*.bin` = `?default`
 
-* `<config>`
+* `<configuration>`
 
 ## `data.encryption`
 
@@ -260,7 +277,7 @@
 	
 	* `iv` : `string` = `?input`
 
-* `<config>`
+* `<configuration>`
 
 ## `data.compression`
 
@@ -276,7 +293,7 @@
 	
 	* `raw_file` : `string` ~ `*.bin` = `?default`
 	
-	* `buffer_size` : `string` = `config.uncompress_buffer_size`
+	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
 
 * `zlib.compress`
 	
@@ -290,7 +307,7 @@
 	
 	* `raw_file` : `string` ~ `*.bin` = `?default`
 	
-	* `buffer_size` : `string` = `config.uncompress_buffer_size`
+	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
 
 * `gzip.compress`
 	
@@ -304,7 +321,7 @@
 	
 	* `raw_file` : `string` ~ `*.bin` = `?default`
 	
-	* `buffer_size` : `string` = `config.uncompress_buffer_size`
+	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
 
 * `bzip2.compress`
 	
@@ -318,7 +335,7 @@
 	
 	* `raw_file` : `string` ~ `*.bin` = `?default`
 	
-	* `buffer_size` : `string` = `config.uncompress_buffer_size`
+	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
 
 * `lzma.compress`
 	
@@ -332,9 +349,9 @@
 	
 	* `raw_file` : `string` ~ `*.bin` = `?default`
 	
-	* `buffer_size` : `string` = `config.uncompress_buffer_size`
+	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
 
-* `<config>`
+* `<configuration>`
 	
 	* `uncompress_buffer_size` : `string` = `?input`
 
@@ -348,7 +365,7 @@
 	
 	* `patch_file` : `string` ~ `<after_file>.patch.bin` = `?default`
 	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `vcdiff.decode`
 	
@@ -358,9 +375,9 @@
 	
 	* `after_file` : `string` ~ `<patch_file>.after.bin` = `?default`
 	
-	* `buffer_size` : `string` = `config.decode_buffer_size`
+	* `buffer_size` : `string` = `configuration.decode_buffer_size`
 
-* `<config>`
+* `<configuration>`
 	
 	* `encode_buffer_size` : `string` = `1024.0m`
 	
@@ -396,7 +413,7 @@
 	
 	* `size_rate` : `number` = `?input`
 
-* `<config>`
+* `<configuration>`
 
 ## `image.atlas`
 
@@ -424,7 +441,7 @@
 	
 	* `atlas_file` : `string` ~ `*.atlas.png` = `?default`
 
-* `<config>`
+* `<configuration>`
 
 ## `wwise.media`
 
@@ -434,13 +451,13 @@
 	
 	* `raw_file` : `string` ~ `*.wav` = `?default`
 	
-	* `tool_ffmpeg_program_file` : `string` = `config.tool_ffmpeg_program_file`
+	* `tool_ffmpeg_program_file` : `string` = `configuration.tool_ffmpeg_program_file`
 	
-	* `tool_ww2ogg_program_file` : `string` = `config.tool_ww2ogg_program_file`
+	* `tool_ww2ogg_program_file` : `string` = `configuration.tool_ww2ogg_program_file`
 	
-	* `tool_ww2ogg_code_book_file` : `string` = `config.tool_ww2ogg_code_book_file`
+	* `tool_ww2ogg_code_book_file` : `string` = `configuration.tool_ww2ogg_code_book_file`
 
-* `<config>`
+* `<configuration>`
 	
 	* `tool_ffmpeg_program_file` : `string` = `~/external/ffmpeg/ffmpeg`
 	
@@ -456,9 +473,9 @@
 	
 	* `data_file` : `string` ~ `*.bnk` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `decode` `*`
 	
@@ -466,9 +483,9 @@
 	
 	* `bundle_directory` : `string` ~ `*.bnk.bundle` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_number` : `bigint` = `?input`
 	
@@ -482,9 +499,9 @@
 	
 	* `data_file` : `string` ~ `*.dz` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `buffer_size` : `string` = `config.pack_buffer_size`
+	* `buffer_size` : `string` = `configuration.pack_buffer_size`
 
 * `unpack`
 	
@@ -492,7 +509,7 @@
 	
 	* `bundle_directory` : `string` ~ `*.dz.bundle` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 
 * `pack_automatic`
 	
@@ -500,9 +517,9 @@
 	
 	* `data_file` : `string` ~ `*.dz` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_number` : `bigint` = `0`
 	
@@ -516,7 +533,7 @@
 	
 	* `ripe_file` : `string` ~ `*.bin` = `?default`
 	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
 
 * `uncompress` `*`
 	
@@ -524,9 +541,9 @@
 	
 	* `raw_file` : `string` ~ `*.bin` = `?default`
 	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_variant_64` : `boolean` = `?input`
 
@@ -538,9 +555,9 @@
 	
 	* `cipher_file` : `string` ~ `*.cdat` = `?default`
 	
-	* `limit` : `bigint` = `config.limit`
+	* `limit` : `bigint` = `configuration.limit`
 	
-	* `key` : `string` = `config.key`
+	* `key` : `string` = `configuration.key`
 
 * `decrypt` `*`
 	
@@ -548,11 +565,11 @@
 	
 	* `plain_file` : `string` ~ `*` = `?default`
 	
-	* `limit` : `bigint` = `config.limit`
+	* `limit` : `bigint` = `configuration.limit`
 	
-	* `key` : `string` = `config.key`
+	* `key` : `string` = `configuration.key`
 
-* `<config>`
+* `<configuration>`
 	
 	* `limit` : `bigint` = `256`
 	
@@ -566,11 +583,11 @@
 	
 	* `data_file` : `string` ~ `*.rton` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `version_native_string_encoding_use_utf8` : `boolean` = `config.version_native_string_encoding_use_utf8`
+	* `version_native_string_encoding_use_utf8` : `boolean` = `configuration.version_native_string_encoding_use_utf8`
 	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `decode` `*`
 	
@@ -578,9 +595,9 @@
 	
 	* `value_file` : `string` ~ `*.json` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `version_native_string_encoding_use_utf8` : `boolean` = `config.version_native_string_encoding_use_utf8`
+	* `version_native_string_encoding_use_utf8` : `boolean` = `configuration.version_native_string_encoding_use_utf8`
 
 * `encrypt` `*`
 	
@@ -588,7 +605,7 @@
 	
 	* `cipher_file` : `string` ~ `*.cipher.rton` = `?default`
 	
-	* `key` : `string` = `config.key`
+	* `key` : `string` = `configuration.key`
 
 * `decrypt` `*`
 	
@@ -596,7 +613,7 @@
 	
 	* `plain_file` : `string` ~ `*.plain.rton` = `?default`
 	
-	* `key` : `string` = `config.key`
+	* `key` : `string` = `configuration.key`
 
 * `encode_then_encrypt` `*`
 	
@@ -604,13 +621,13 @@
 	
 	* `data_file` : `string` ~ `*.rton` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `version_native_string_encoding_use_utf8` : `boolean` = `config.version_native_string_encoding_use_utf8`
+	* `version_native_string_encoding_use_utf8` : `boolean` = `configuration.version_native_string_encoding_use_utf8`
 	
-	* `key` : `string` = `config.key`
+	* `key` : `string` = `configuration.key`
 	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `decrypt_then_decode` `*`
 	
@@ -618,11 +635,11 @@
 	
 	* `value_file` : `string` ~ `*.json` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `version_native_string_encoding_use_utf8` : `boolean` = `config.version_native_string_encoding_use_utf8`
+	* `version_native_string_encoding_use_utf8` : `boolean` = `configuration.version_native_string_encoding_use_utf8`
 	
-	* `key` : `string` = `config.key`
+	* `key` : `string` = `configuration.key`
 
 * `decode_lenient`
 	
@@ -630,11 +647,11 @@
 	
 	* `value_file` : `string` ~ `*.json` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `version_native_string_encoding_use_utf8` : `boolean` = `config.version_native_string_encoding_use_utf8`
+	* `version_native_string_encoding_use_utf8` : `boolean` = `configuration.version_native_string_encoding_use_utf8`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_number` : `bigint` = `1`
 	
@@ -666,7 +683,7 @@
 	
 	* `image_height` : `bigint` = `?input`
 
-* `<config>`
+* `<configuration>`
 
 ## `popcap.u_texture`
 
@@ -678,7 +695,7 @@
 	
 	* `format` : `string` = `?input`
 	
-	* `version_compress_texture_data` : `boolean` = `config.version_compress_texture_data`
+	* `version_compress_texture_data` : `boolean` = `configuration.version_compress_texture_data`
 
 * `decode` `*`
 	
@@ -686,9 +703,9 @@
 	
 	* `image_file` : `string` ~ `*.png` = `?default`
 	
-	* `version_compress_texture_data` : `boolean` = `config.version_compress_texture_data`
+	* `version_compress_texture_data` : `boolean` = `configuration.version_compress_texture_data`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_compress_texture_data` : `boolean` = `?input`
 
@@ -702,9 +719,9 @@
 	
 	* `format` : `string` = `?input`
 	
-	* `compress_texture_data` : `boolean` = `config.encode_compress_texture_data`
+	* `compress_texture_data` : `boolean` = `configuration.encode_compress_texture_data`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 
 * `decode` `*`
 	
@@ -712,9 +729,9 @@
 	
 	* `image_file` : `string` ~ `*.png` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_number` : `bigint` = `0`
 	
@@ -728,9 +745,9 @@
 	
 	* `data_file` : `string` ~ `*.pam` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `decode` `*`
 	
@@ -738,7 +755,7 @@
 	
 	* `manifest_file` : `string` ~ `*.pam.json` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 
 * `convert.flash.from` `*`
 	
@@ -762,7 +779,7 @@
 	
 	* `target_directory` : `*.pam.xfl`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_number` : `bigint` = `?input`
 	
@@ -776,11 +793,11 @@
 	
 	* `data_file` : `string` ~ `*.reanim.compiled` = `?default`
 	
-	* `version_platform` : `string` = `config.version_platform`
+	* `version_platform` : `string` = `configuration.version_platform`
 	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
 	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `decode` `*`
 	
@@ -788,11 +805,11 @@
 	
 	* `manifest_file` : `string` ~ `*.reanim.json` = `?default`
 	
-	* `version_platform` : `string` = `config.version_platform`
+	* `version_platform` : `string` = `configuration.version_platform`
 	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_platform` : `string` = `?input`
 	
@@ -808,11 +825,11 @@
 	
 	* `data_file` : `string` ~ `*.xml.compiled` = `?default`
 	
-	* `version_platform` : `string` = `config.version_platform`
+	* `version_platform` : `string` = `configuration.version_platform`
 	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
 	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `decode` `*`
 	
@@ -820,11 +837,11 @@
 	
 	* `manifest_file` : `string` ~ `*.particle.json` = `?default`
 	
-	* `version_platform` : `string` = `config.version_platform`
+	* `version_platform` : `string` = `configuration.version_platform`
 	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_platform` : `string` = `?input`
 	
@@ -840,11 +857,11 @@
 	
 	* `data_file` : `string` ~ `*.trail.compiled` = `?default`
 	
-	* `version_platform` : `string` = `config.version_platform`
+	* `version_platform` : `string` = `configuration.version_platform`
 	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
 	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `decode` `*`
 	
@@ -852,11 +869,11 @@
 	
 	* `manifest_file` : `string` ~ `*.trail.json` = `?default`
 	
-	* `version_platform` : `string` = `config.version_platform`
+	* `version_platform` : `string` = `configuration.version_platform`
 	
-	* `version_variant_64` : `boolean` = `config.version_variant_64`
+	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_platform` : `string` = `?input`
 	
@@ -872,9 +889,9 @@
 	
 	* `data_file` : `string` ~ `*.popfx` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `decode` `*`
 	
@@ -882,9 +899,9 @@
 	
 	* `manifest_file` : `string` ~ `*.popfx.json` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_number` : `bigint` = `1`
 	
@@ -898,7 +915,7 @@
 	
 	* `data_file` : `string` ~ `*.cfw2` = `?default`
 	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `decode` `*`
 	
@@ -906,7 +923,7 @@
 	
 	* `manifest_file` : `string` ~ `*.cfw2.json` = `?default`
 
-* `<config>`
+* `<configuration>`
 	
 	* `encode_buffer_size` : `string` = `8.0m`
 
@@ -918,11 +935,11 @@
 	
 	* `data_file` : `string` ~ `*.pak` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `version_compress_resource_data` : `boolean` = `config.version_compress_resource_data`
+	* `version_compress_resource_data` : `boolean` = `configuration.version_compress_resource_data`
 	
-	* `buffer_size` : `string` = `config.pack_buffer_size`
+	* `buffer_size` : `string` = `configuration.pack_buffer_size`
 
 * `unpack`
 	
@@ -930,9 +947,9 @@
 	
 	* `bundle_directory` : `string` ~ `*.pak.bundle` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `version_compress_resource_data` : `boolean` = `config.version_compress_resource_data`
+	* `version_compress_resource_data` : `boolean` = `configuration.version_compress_resource_data`
 
 * `pack_automatic`
 	
@@ -940,9 +957,9 @@
 	
 	* `data_file` : `string` ~ `*.pak` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `version_compress_resource_data` : `boolean` = `config.version_compress_resource_data`
+	* `version_compress_resource_data` : `boolean` = `configuration.version_compress_resource_data`
 
 * `encrypt`
 	
@@ -950,7 +967,7 @@
 	
 	* `cipher_file` : `string` ~ `*.cipher.pak` = `?default`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_number` : `bigint` = `0`
 	
@@ -966,9 +983,9 @@
 	
 	* `data_file` : `string` ~ `*.rsg` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `buffer_size` : `string` = `config.pack_buffer_size`
+	* `buffer_size` : `string` = `configuration.pack_buffer_size`
 
 * `unpack`
 	
@@ -976,9 +993,9 @@
 	
 	* `bundle_directory` : `string` ~ `*.rsg.bundle` = `?default`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 
-* `<config>`
+* `<configuration>`
 	
 	* `version_number` : `bigint` = `?input`
 	
@@ -992,13 +1009,13 @@
 	
 	* `data_file` : `string` ~ `*.rsb` = `?default`
 	
-	* `mode` : `string` = `config.mode`
+	* `mode` : `string` = `configuration.mode`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `version_additional_texture_information_for_pvz_2_chinese_android` : `bigint` = `config.version_additional_texture_information_for_pvz_2_chinese_android`
+	* `version_extended_texture_information_for_pvz2_cn` : `bigint` = `configuration.version_extended_texture_information_for_pvz2_cn`
 	
-	* `buffer_size` : `string` = `config.pack_buffer_size`
+	* `buffer_size` : `string` = `configuration.pack_buffer_size`
 	
 	* `input_packet` : `boolean` = `?input`
 	
@@ -1010,11 +1027,11 @@
 	
 	* `bundle_directory` : `string` ~ `*.rsb.bundle` = `?default`
 	
-	* `mode` : `string` = `config.mode`
+	* `mode` : `string` = `configuration.mode`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `version_additional_texture_information_for_pvz_2_chinese_android` : `bigint` = `config.version_additional_texture_information_for_pvz_2_chinese_android`
+	* `version_extended_texture_information_for_pvz2_cn` : `bigint` = `configuration.version_extended_texture_information_for_pvz2_cn`
 	
 	* `output_resource` : `boolean` = `?input`
 	
@@ -1024,11 +1041,11 @@
 	
 	* `bundle_directory` : `*.rsb.bundle`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `version_additional_texture_information_for_pvz_2_chinese_android` : `bigint` = `config.version_additional_texture_information_for_pvz_2_chinese_android`
+	* `version_extended_texture_information_for_pvz2_cn` : `bigint` = `configuration.version_extended_texture_information_for_pvz2_cn`
 	
-	* `option` : `{ ... }` = `config.resource_convert_option`
+	* `option` : `{ ... }` = `configuration.resource_convert_option`
 
 * `repair`
 	
@@ -1036,15 +1053,15 @@
 	
 	* `ripe_file` : `string` ~ `*.repair.rsb` = `?default`
 
-* `<config>`
+* `<configuration>`
 	
 	* `mode` : `string` = `?input`
 	
 	* `version_number` : `bigint` = `?input`
 	
-	* `version_additional_texture_information_for_pvz_2_chinese_android` : `bigint` = `?input`
+	* `version_extended_texture_information_for_pvz2_cn` : `bigint` = `?input`
 	
-	* `pack_buffer_size` : `string` = `256.0m`
+	* `pack_buffer_size` : `string` = `1.2g`
 	
 	* `resource_convert_option` : `{ ... }` = `...`
 
@@ -1058,11 +1075,11 @@
 	
 	* `patch_file` : `string` ~ `<after_file>.rsbpatch` = `?default`
 	
-	* `use_raw_packet` : `boolean` = `config.use_raw_packet`
+	* `use_raw_packet` : `boolean` = `configuration.use_raw_packet`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `buffer_size` : `string` = `config.encode_buffer_size`
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `decode`
 	
@@ -1072,13 +1089,13 @@
 	
 	* `after_file` : `string` ~ `<patch_file>.rsb` = `?default`
 	
-	* `use_raw_packet` : `boolean` = `config.use_raw_packet`
+	* `use_raw_packet` : `boolean` = `configuration.use_raw_packet`
 	
-	* `version_number` : `bigint` = `config.version_number`
+	* `version_number` : `bigint` = `configuration.version_number`
 	
-	* `buffer_size` : `string` = `config.decode_buffer_size`
+	* `buffer_size` : `string` = `configuration.decode_buffer_size`
 
-* `<config>`
+* `<configuration>`
 	
 	* `use_raw_packet` : `boolean` = `?input`
 	
@@ -1098,7 +1115,7 @@
 	
 	* `destination_file` : `string` ~ `*.convert.txt|json` = `?default`
 
-* `<config>`
+* `<configuration>`
 
 ## `pvz2.remote_android_helper`
 
@@ -1108,5 +1125,5 @@
 	
 	* `action` : `string` = `?input`
 
-* `<config>`
+* `<configuration>`
 
