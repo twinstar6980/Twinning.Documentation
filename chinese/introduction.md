@@ -106,7 +106,7 @@
 
 - [功能](./method.md)
 
-- [常见问题](./question.md)
+- [问题](./question.md)
 
 ## 与我联系
 
