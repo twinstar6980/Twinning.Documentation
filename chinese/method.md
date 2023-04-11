@@ -178,13 +178,13 @@
 			
 			禁用数组元素间的换行。
 	
-	* `common_file_system_argument` : `{ ... }`
+	* `method_common_argument` : `{ ... }`
 		
 		文件对象相关参数。
 		
-		* `fs_tactic_if_exist` : `string` = `none`
+		* `path_tactic_if_out_exist` : `string` = `none`
 			
-			当输入路径指向的文件对象存在时的策略。取值如下：
+			当输出路径指向的文件对象存在时的策略。取值如下：
 			
 			+ `none`: 无，由用户在运行时选择。
 			
