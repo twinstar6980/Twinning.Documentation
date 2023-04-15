@@ -30,7 +30,7 @@
 
 - Processor architectures: `x86 32|64`, `arm 32|64`.
 
-> For `Windows`, `Linux`, `Macintosh`, only `x86_64` is provided for distribution; for `Android`, `iPhone`, only `arm_64` is provided for distribution; if you have needs for other platforms, you need to clone and compile this project by yourself.
+> Release Page only provided the binary distributions of `Windows x86_64` and `Android arm_64`. if you have needs for other platforms, you need to clone and compile this project by yourself.
 
 ## Module
 
