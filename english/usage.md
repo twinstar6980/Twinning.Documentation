@@ -24,17 +24,17 @@ The `Shell` provides a command line interface for the user.
 
 The user needs to start `Shell` in the terminal with command line arguments in the following format:
 
-`<core> <script> <argument>... `
+`<core> <script> <argument>...`
 
 - `<core>`
 
   The first argument is the path to the core file.
 
-- ``<script>`
+- `<script>`
 
   The second argument is the script to be passed to the core processing logic. This parameter is a string representing the JS script, or a script file path identified by the `@` as the first character of the script file path.
 
-- ``<argument>... `
+- `<argument>...`
 
   The remaining arguments are passed as parameters to the core processing logic.
 
@@ -73,11 +73,11 @@ Launching the `Shell GUI` in the terminal is also supported, with command line a
 
 `[<ignore> <additional-argument>...] `
 
-- ``<ignore>`
+- `<ignore>`
 
   The first argument is used as an identifier for the command start mode, and its value is ignored.
 
-- ``<additional-argument>... `
+- `<additional-argument>...`
 
   The remaining arguments are used as additional arguments to be passed to the core processing logic.
 
@@ -243,15 +243,13 @@ In short, the shell `Shell` does only two things:
 
    The tool requires the value computed by the main script to be a function, i.e., a script-level ⌈main function ⌋ which has the following type:
 
-   ``ts
+   ```ts
    type JS_MainFunction = (
-   argument: Array<string>.
-   ) => string.
-
+     argument: Array<string>,
+   ) => string;
    ```
 
-   // The tool passes the start argument to call the function until it finishes executing and the tool finishes running.
-   ```
+   The tool passes the start argument to call the function until it finishes executing and the tool finishes running.
 
 Users can rewrite the logic of the main script themselves, but it is recommended to build on the existing [Script](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Script), which already provides users with a various set of features with a good interaction and implementatation mechanism.
 
