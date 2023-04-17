@@ -32,7 +32,7 @@ The user needs to start `Shell` in the terminal with command line arguments in t
 
 - ``<script>`
 
-  The second argument is the script to be passed to the core processing logic. This parameter is a string representing the JS script, or a script file path identified by the `? ` as the first character of the script file path.
+  The second argument is the script to be passed to the core processing logic. This parameter is a string representing the JS script, or a script file path identified by the `@` as the first character of the script file path.
 
 - ``<argument>... `
 
@@ -58,11 +58,11 @@ The user can use `Shell GUI` as if it were a normal application.
 
 When you open the application for the first time, you need to specify the core, scripts, and parameters to be used at runtime in the application settings, and a typical configuration is as follows:
 
-1. Set the value of the `core` item to `<home>/core`
+1. Set the value of the `Core` item to `<home>/core`
 
-2. Set the value of the `script` item to `? <home>/script/main.js`
+2. Set the value of the `Script` item to `@<home>/script/main.js`
 
-3. Set the value of the `parameters` item to `<home>`
+3. Set the value of the `Argument` item to `<home>`
 
 > The `<home>` in the above settings needs to be replaced with the path to the home directory.
 >
