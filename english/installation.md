@@ -6,7 +6,9 @@
 
 - [Preparation](#Preparation)
 
-- [Script-Usage](#Script-Usage)
+- [Compile or download precompiled distribution](#Compile-or-download-precompiled-distribution)
+
+- [Use Bundle Package](#Use-Bundle-Package)
 
 - [Install `Core`](#Install-Core)
 
@@ -29,8 +31,6 @@
 - Operating systems: `Windows 7+`, `Linux ? `, `Macintosh 13.1~`, `Android 9~`, `iPhone 16.2~`.
 
 - Processor architectures: `x86 32|64`, `arm 32|64`.
-
-> Release Page only provided the binary distributions of `Windows x86_64` and `Android arm_64`. if you have needs for other platforms, you need to clone and compile this project by yourself.
 
 ## Module
 
@@ -74,21 +74,36 @@ Before installing each component, you need to do some preparations:
 
    > The location of the home directory can be optional, but make sure the user has **read and write allows permission** to the directory and its contents.
 
-## Script-Usage
+## Compile or download pre-compiled distributions
 
-The installation script can be used to quickly install or update the CLI version of the tool.
+You can clone this project and compile it yourself. Pre-compiled binary distribution is also available in [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest).
 
-1. Download the installation Python script [install.py](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/download/Miscellaneous) 。
+> Only the binary distributions for `windows x86_64` and `android arm_64` are provided in the Release, so please clone and compile the project yourself if you need it for other platforms.
 
-2. Move the downloaded file to the home directory.
+> If you need only individual modules, you can find them on my [Personal Onedrive](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9), which contains all the history of this tool.
 
-3. Launch the script with `python "./install.py"` 。
+## Use Bundle Package
 
-   The script requires the `Python` environment to run, so make sure your computer has [`Python`](https://www.python.org/downloads/) 。
+The bundle package is already organized the `Core`, `Shell`, `Script` and script for launch `Shell`, so it is not necessary to follow the detailed steps below to install the releases.
 
-4. In the script execution window, select the appropriate operating system and processor architecture for your device, and the script will find and download the required files from the project's GitHub Release and install them in the home directory.
+1. Check [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) and download the distribution for your device.
 
-The install script will automatically install the `Core`, `Shell`, and `Script` modules, but if you need to use other modules, please see below to install them manually.
+2. Uncompress the downloaded zip file to the home directory.
+
+   > @ `Android` \
+   > You also need to do the following additional configuration: Install **C++ shared libraries** to the system library directory. \
+   > See below for the detailed steps.
+   >
+   > @ `iPhone` \
+   > You will also need to do the following additional configuration: sign `core` and `shell`. \
+   > See below for details.
+
+3. Execute the `launch.[sh|cmd]` scripts to launch the program, the tool should start and run properly.
+
+   > @ `Windows` \
+   > Either double-click `launch.cmd` directly to run it, or drag and drop the file object onto it and release it.
+
+The bundle package also contains install package for `Shell GUI`, `Windows Explorer Extension` modules, please refer below to install them manually if you need them.
 
 ## Install `Core`
 
@@ -96,7 +111,7 @@ Core, which is responsible for the implementation of internal functions.
 
 This is a required installation and is distributed as a dynamic library.
 
-1. Check the [Release page](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Core) ，and download the distribution for your device.
+1. Compile or download the distribution for your device.
 
 2. Move the downloaded file to the home directory and rename it to `core` 。
 
@@ -111,7 +126,7 @@ This is an optional installation, distributed as an executable.
 > @ `Android` `iPhone` \
 > Using `Shell` on Android and iPhone requires ROOT or JAILBREAK permission, if your device does not get ROOT, please use `Shell GUI`.
 
-1. Check [Release Page](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Shell) ，and download the distribution for your device.
+1. Compile or download the distribution for your device.
 
 2. Move the downloaded file to your home directory and rename it to `shell`.
 
@@ -132,7 +147,7 @@ For `Android` systems, you also need to perform the following actions:
    For security and size reduction reasons, the C++ runtime used is c++\_shared. Therefore, you also need to copy the `libc++_shared.so` file of the corresponding processor architecture to the system library directory.
 
    > The system library directory is `+ /system/lib` on 32-bit systems and `+ /system/lib64` on 64-bit systems.
-   > This file can be extracted from the Android NDK toolchain or found in the [Release page](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous).
+   > This file can be found in the Android NDK toolchain, and the corresponding `core` version of `libc++_shared.so` is pre-set in the bundle package.
 
 For `iPhone` systems, you also need to do the following:
 
@@ -148,7 +163,7 @@ Shell, which provides a graphical interface.
 
 This is an optional installation item, distributed as an application package.
 
-1. Check the [Release Page](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/ShellGUI) to download the distribution for your device.
+1. Compile or download the distribution for your device.
 
    > Currently, only `Windows X86-64` and `Android ARM-64` distributions are available. Users of other platforms need to clone this project and build and sign the application package by themselves.
 
@@ -174,7 +189,7 @@ Scripts that control the flow of the tool's operation.
 
 This is a required installation item, issued as a script package.
 
-1. Check the [Release page](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Script) and download the distribution for your device.
+1. Compile or download the distribution for your device.
 
 2. Move the downloaded files to your home directory, create a `script` directory, and uncompress all the contents of the zip package to it.
 
@@ -186,13 +201,15 @@ Windows Explorer Extension, which integrates tools into the Windows Explorer rig
 
 This is an optional installation and is distributed as an application package.
 
-Check the [Release page](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/WindowsExplorerExtension) to download the distribution for your device.
+1. Compile or download the distribution for your device.
+
+2. Install the application package.
 
 There are two sub-versions of the extension, which need to be selected according to your needs:
 
-- `<n>_0` provides only the normal file forwarding portal; it appears as a single menu item in both the new and old-style right-click menus.
+- `0_...` provides only the normal file forwarding portal; it appears as a single menu item in both the new and old-style right-click menus.
 
-- `<n>_1` additionally provides a quick forwarding entry for each function, but has a greater impact on the speed of the right-click menu call-out; it is displayed as a single secondary menu in the new-style right-click menu, and as multiple primary menus in the old-style right-click menu.
+- `1_...` additionally provides a quick forwarding entry for each function, but has a greater impact on the speed of the right-click menu call-out; it is displayed as a single secondary menu in the new-style right-click menu, and as multiple primary menus in the old-style right-click menu.
 
 2. Install the application package.
 
@@ -209,7 +226,7 @@ There are two sub-versions of the extension, which need to be selected according
 
      The extension will execute the specified launch script and pass the path to the selected file to it. Therefore, a launch script must be created in which to launch the shell and pass the parameters.
 
-     > Launch file for `Shell` are provided and can be found in the [Release page](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous).
+     > The launch script should properly launch the `Shell` or `Shell GUI` of the tool, you need to write the launch script `*.cmd` by yourself, or use the pre-set launch script `launch.cmd` in the bundle package.
 
    - `launch_limit`
 
@@ -259,7 +276,7 @@ Helper, which provides additional advanced features.
 
 This is an optional installation item, distributed as an application package.
 
-Check the [Release page](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Helper) to download the distribution for your device.
+1. Compile or download the distribution for your device.
 
 2. Install the application package.
 

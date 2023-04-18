@@ -40,15 +40,7 @@ The user needs to start `Shell` in the terminal with command line arguments in t
 
 The main function returns 0 if no errors occur during execution, otherwise 1.
 
-For ease of use, a startup script can be created to start the `Shell` and pass some required arguments. Startup scripts for each platform are provided in the distribution and can be installed by following these steps:
-
-1. Check the [Release page](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous) and download the launch file for your device.
-
-2. Move the downloaded file to your home directory and rename it to `launch`, but keep the original extension.
-
-3. Run to test the launch script and if it works correctly, you will see `Shell` being launched successfully in the terminal.
-
-   > You can pass additional parameters to the launch script and all additional parameters will be forwarded to `Shell` automatically.
+For ease of use, a launch script can be created to start the `Shell` and pass some required arguments. The launch script is also pre-set in the bundle package.
 
 ## Using the `Shell GUI`
 

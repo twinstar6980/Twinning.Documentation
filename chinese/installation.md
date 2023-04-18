@@ -146,7 +146,7 @@
 	
 	> 系统库目录在 32 位系统中为 `+ /system/lib` ，在 64 位系统中为 `+ /system/lib64` 。
 	> 
-	> 该文件可从 Android NDK 工具链中提取。
+	> 该文件可从 Android NDK 工具链中找到，捆绑包中也预置了与其中的 `core` 版本相对应的 `libc++_shared.so` 。
 
 对于 `iPhone` 系统，还需要执行以下操作：
 

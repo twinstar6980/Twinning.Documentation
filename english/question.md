@@ -8,9 +8,9 @@
 
 - [Strict file handling mechanism](#Strict-file-handling-mechanism)
 
-- [Version compatibility and old version downloads](# Version compatibility and old version downloads)
+- [Version compatibility and old version downloads](#Version-compatibility-and-old-version-downloads)
 
-- [Handling of big-endian files](# Handling of big-endian files)
+- [Processing big-endian files](#Processing-big-endian-files)
 
 - [Processing OBB files](#Processing-OBB-files)
 
