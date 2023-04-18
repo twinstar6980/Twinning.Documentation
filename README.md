@@ -4,7 +4,7 @@ TwinStar ToolKit 的说明文档。
 
 TwinStar ToolKit Documentation.
 
-> English document translated by [Haruma](https://github.com/Haruma-VN) .
+> The English version is translated by [Haruma](https://github.com/Haruma-VN) .
 
 ## 文档列表 | document list
 
