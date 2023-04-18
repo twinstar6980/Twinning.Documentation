@@ -146,7 +146,7 @@
 	
 	> 系统库目录在 32 位系统中为 `+ /system/lib` ，在 64 位系统中为 `+ /system/lib64` 。
 	> 
-	> 该文件可从 Android NDK 工具链中提取，也可在 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous) 中找到。
+	> 该文件可从 Android NDK 工具链中提取。
 
 对于 `iPhone` 系统，还需要执行以下操作：
 
@@ -221,7 +221,7 @@ Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
 		
 		扩展程序将执行指定的启动脚本，并将所选文件的路径传递给它。因此，必须创建一个启动脚本，在其中启动外壳并传递参数。
 		
-		> 提供了适用于 `Shell` 的启动脚本，可以在 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Miscellaneous) 中找到。
+		> 启动脚本应当正确地启动工具的 `Shell` 或 `Shell GUI` ，你需要自行编写启动脚本 `*.cmd` ，或使用捆绑包中预置的启动脚本 `launch.cmd` 。
 	
 	* `launch_limit`
 		
