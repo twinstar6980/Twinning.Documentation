@@ -1,4 +1,4 @@
-# 介绍
+# 工具介绍
 
 `TwinStar.ToolKit` 是一款主要应用于 **PvZ-2** 静态数据修改的工具，提供了如 RTON 编码、RSB 打包等 PvZ-2 MOD 创作所必需的功能。
 
@@ -100,13 +100,15 @@
 
 ## 索引
 
-- [安装](./installation.md)
+- [安装步骤](./installation.md)
 
-- [使用](./usage.md)
+- [基础使用](./usage.md)
 
-- [功能](./method.md)
+- [功能列表](./method.md)
 
-- [问题](./question.md)
+- [常见问题](./question.md)
+
+- [高级应用](./advanced.md)
 
 ## 与我联系
 

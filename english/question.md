@@ -170,7 +170,7 @@ After that, the big-endian files are forwarded to the tool, and if there are no 
 
 > If you need to process little-endian files later, you should restore the `byte_stream_use_big_endian` item to `false`.
 
-## Handling OBB files
+## Processing OBB files
 
 PvZ-2 for the Android platform stores RSB packet files as `OBB` extension packet files, which is a generic extension for Android application extension packets and is not discernible; OBB files can store data in any format, not just RSB packet format.
 
@@ -180,7 +180,7 @@ In addition, it is possible to create soft links to `.obb` files with `.rsb` as 
 
 > The regular expression for filtering RSB files in `- <home>/script/Entry/method/popcap.resource_stream_bundle.ts` can be modified to allow the tool to recognize `*.obb` files as RSB files.
 
-## Handling SMF files
+## Processing SMF files
 
 `SMF` itself is a media file extension, and the tool does not support handling real SMF files.
 

@@ -1,4 +1,4 @@
-# 使用
+# 基础使用
 
 - [使用 `Shell`](#使用-Shell)
 
@@ -12,9 +12,7 @@
 
 - [转发文件对象](#转发文件对象)
 
-- [脚本概述](#脚本概述)
-
-- [第三方集成](#第三方集成)
+- [高级应用](#高级应用)
 
 - [使用 `Helper`](#使用-Helper)
 
@@ -165,7 +163,7 @@
 
 > 例如，脚本目录下的一个脚本 `- Entry/Entry.js` 拥有配置文件，配置文件为 `- Entry/Entry.json` 。
 
-用户可以自行修改配置文件，各配置文件的规范可以参考 [功能](./method.md) 章节。
+用户可以自行修改配置文件，各配置文件的规范可以参考 [功能列表](./method.md) 章节。
 
 ## 附加参数
 
@@ -214,66 +212,11 @@
 
 将需要处理的文件对象转发给工具，工具启动后，会根据该文件对象的类型列出可用功能，用户输入需要执行的功能序号即可。
 
-工具预置了丰富的功能，如 RTON 编解码、RSB 解包，详见 [功能](./method.md) 章节。
+工具预置了丰富的功能，如 RTON 编解码、RSB 解包，详见 [功能列表](./method.md) 章节。
 
-## 脚本概述
+## 高级应用
 
-> **对于大多用户，预置功能已经足够使用，但如果你希望通过自定义脚本来提高你的工作效率，可以继续了解。**\
-> **以下内容面向有编程基础的用户。**
-
-本工具以 `JavaScript` 作为脚本语言。JS 引擎为第三方开源项目 `quickjs` 。
-
-简单来说，外壳 `Shell` 所做的工作只有两件：
-
-1. 加载 ⌈ 核心库 ⌋ ，其中了定义了面向 JS 的 `Core interface` 。
-	
-	工具的各类功能都是由脚本以直接或间接调用 `Core interface` 的方式提供给用户的，它提供了文件读写、数据操作等基本功能与 BNK 、PAM 编解码等高级功能。
-	
-	> `Core interface` 的接口具有严格的类型限制，因此，在开发层面，应使用 `TypeScript` 作为开发语言，并编译为 JS 供工具使用。其 `.d.ts` 声明包含在脚本模块项目中。
-
-2. 执行 ⌈ 主脚本 ⌋ ，其路径通过启动脚本被设定为 `- <home>/script/main.js` 。
-	
-	工具要求主脚本计算出的值为一个函数，即脚本层的 ⌈ 主函数 ⌋ ，其拥有如下类型：
-	
-	```ts
-	type JS_MainFunction = (
-		data: {
-			argument: Array<string>;
-			result: string | undefined;
-			error: any | undefined;
-		},
-	) => void;
-	```
-	
-	工具传递启动参数以调用该函数，直到该函数执行完毕，工具结束运行。
-
-用户可以自行重写主脚本的运行逻辑，但更推荐在已有的 [Script 模块](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Script) 基础上扩展开发，它已为用户提供了丰富的功能与良好的交互机制。
-
-## 第三方集成
-
-> **以下内容面向有编程基础的用户。**
-
-本工具采用前后端分离架构，分为三个层级：
-
-* 核心：后端，负责数据处理，不会进行任何用户交互；核心被分发为面向各平台的本机动态库文件。
-
-* 外壳：前端，负责用户交互，不会进行任何数据处理；外壳会加载核心动态库，并以用户提供的脚本作为参数调用核心动态库的接口函数。
-
-* 脚本：前后端的桥梁，通过调用核心与外壳提供的接口函数进行数据处理与用户交互。
-
-工具的前后端完全解耦，用户可以通过 `C` 、`C++` 、`C#` 、`Java` 、`Kotlin` 、`Python` 在内的各类编程语言所提供的 `Foreign Function Interface` 机制将工具后端（核心）集成至自己的项目中，主要步骤如下：
-
-1. 在自定义项目中加载本工具的后端（即核心模块分发的动态库文件），获取核心的接口函数。
-
-2. 调用核心的接口函数，接口函数中的 `callback` 参数是自定义项目所需要提供的外壳回调实现。
-
-具体参照本工具内的几个外壳实现：
-
-* `Shell` with [`C++`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/core)
-
-* `Shell GUI` with [`Dart`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellGUI/lib/core)
-
-* `Helper` with [`C#`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Helper/Core)
+如果你具备一定的编程技能，还可以将工具集成至你自己的项目中，或通过自定义脚本辅助你的使用，参见 [高级应用](./advanced.md) 章节。
 
 ## 使用 `Helper`
 

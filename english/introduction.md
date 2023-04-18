@@ -110,6 +110,8 @@ The following functions are currently available:
 
 - [Questions](./question.md)
 
+- [Advanced](./advanced.md)
+
 ## How to reach me
 
 - GitHub : [TwinStar](https://github.com/twinkles-twinstar/)

@@ -8,15 +8,17 @@ TwinStar ToolKit Documentation.
 
 ## 文档列表 | document list
 
-- [介绍](./chinese/introduction.md) | [Introduction](./english/introduction.md)
+- [工具介绍](./chinese/introduction.md) | [Introduction](./english/introduction.md)
 
-- [安装](./chinese/installation.md) | [Installation](./english/installation.md)
+- [安装步骤](./chinese/installation.md) | [Installation](./english/installation.md)
 
-- [使用](./chinese/usage.md) | [Usage](./english/usage.md)
+- [基础使用](./chinese/usage.md) | [Usage](./english/usage.md)
 
-* [功能](./chinese/method.md) | [Method](./english/method.md)
+* [功能列表](./chinese/method.md) | [Method](./english/method.md)
 
-* [问题](./chinese/question.md) | [Question](./english/question.md)
+* [常见问题](./chinese/question.md) | [Question](./english/question.md)
+
+- [高级应用](./chinese/advanced.md) | [Advanced](./english/advanced.md)
 
 ## 预览 | preview
 
