@@ -151,27 +151,39 @@ type JS_MainFunction = (
 以下是一些例子：
 
 ```ts
-let b1 = Core.Boolean.value(true); // 构造一个值为 true 的核心布尔对象
-let b2 = Core.Boolean.copy(b1); // 通过复制 b1 构造核心布尔对象，b2 值为 true
-b1 == b2; // false ，b1 与 b2 是内存中的不同对象，即使其中的值相等，他们也在 JS 层面上不等
-b1.value === true; // true ，通过值访问器可以获取核心对象中对应的 JS 值
-b1.value === b2.value; // true ，此时二者存储的值相等
-b1.value = !b2.value; // 通过值设定器将 b1 的值设为 false
-b1.value !== b2.value; // true ，此时二者存储的值不等
+/ 构造一个值为 true 的核心布尔对象
+let b1 = Core.Boolean.value(true); 
+// 通过复制 b1 构造核心布尔对象，b2 值为 true
+let b2 = Core.Boolean.copy(b1);
+// false ，b1 与 b2 是内存中的不同对象，即使其中的值相等
+b1 == b2;
+// true ，通过值访问器可以获取核心对象中对应的 JS 值
+b1.value === true;
+// true ，此时二者存储的值相等
+b1.value === b2.value;
+// 通过值设定器将 b1 的值设为 false
+b1.value = !b2.value;
+// true ，此时二者存储的值不等
+b1.value !== b2.value;
 ```
 
 ```ts
-let s1 = Core.String.value('this is a string value.'); // 通过 JS 字符串构造核心字符串对象
-s1.value === 'this is a string value.' // true
+// 通过 JS 字符串构造核心字符串对象
+let s1 = Core.String.value('this is a string value.');
+// true
+s1.value === 'this is a string value.'
 ```
 
 ```ts
 // 测试C盘根目录下是否存在 sample.txt 文件
-let target_path = Core.Path.value(`C:/sample.txt`); // 设定路径对象
-let state = Core.FileSystem.exist_file(target_path); // 调用核心函数，传递路径对象，得到 Core.Boolean 对象
-let state_value = state.value; // 取出 Core.Boolean 对象的值
-if (state_value) { // 如果存在 C:/sample.txt 文件，则该值为 true
-	// ...
+// 设定路径对象
+let target_path = Core.Path.value(`C:/sample.txt`);
+// 调用核心函数，传递路径对象，得到 Core.Boolean 对象
+let state = Core.FileSystem.exist_file(target_path);
+// 取出 Core.Boolean 对象的值
+let state_value = state.value;
+if (state_value) {
+	// 如果存在 C:/sample.txt 文件，则该值为 true
 }
 ```
 
@@ -295,12 +307,13 @@ export function decode_fs(
 	let stream = Core.ByteStreamView.watch(data.view());
 	// 构造清单对象，作为解码函数的输出
 	let manifest = Core.Tool.Wwise.SoundBank.Manifest.SoundBank.default();
-	// 调用解码函数，完成只后，stream.position() 将存储已读取的数据总数，这可以用于判别BNK文件的实际尺寸
+	// 调用解码函数，完成之后，stream.position() 将存储已读取的数据总数，这可以用于判别BNK文件的实际尺寸
 	Core.Tool.Wwise.SoundBank.Decode.process_sound_bank(stream, manifest, Core.PathOptional.value(embedded_media_directory), version_c);
 	// 将解码得到的清单数据存储保存为文件
 	CoreX.JSON.write_fs(manifest_file, manifest.get_json(version_c));
 	return;
 }
+// 解码BNK文件
 decode_fs(
 	'C:/sample.bnk',
 	'C:/sample.bnk.bundle/manifest.json',
