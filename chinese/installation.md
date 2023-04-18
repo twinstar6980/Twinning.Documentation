@@ -6,7 +6,9 @@
 
 - [安装准备](#安装准备)
 
-- [使用安装脚本](#使用安装脚本)
+- [编译或下载预编译分发](#编译或下载预编译分发)
+
+- [使用捆绑包](#使用捆绑包)
 
 - [安装 `Core`](#安装-Core)
 
@@ -29,8 +31,6 @@
 * 操作系统：`Windows 7+` 、`Linux ?` 、`Macintosh 13.1~` 、`Android 9~` 、`iPhone 16.2~` 。
 
 * 处理器架构：`x86 32|64` 、`arm 32|64` 。
-
-> Release 中只提供 `Windows x86_64` 与 `Android arm_64` 的二进制分发，如有面向其他平台的需要，请自行克隆并编译本项目。
 
 ## 模块组成
 
@@ -74,21 +74,36 @@
 	
 	> 主目录的位置可以随意，但要确保用户有对该目录及其内容的 **读写执行权限** 。
 
-## 使用安装脚本
+## 编译或下载预编译分发
 
-可以使用安装脚本来快速安装或更新工具的 CLI 版本。
+你可以克隆本项目并自行编译，本项目的 [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) 中也提供了预编译的二进制分发。
 
-1. 下载安装脚本 [install.py](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/download/Miscellaneous) 。
+> Release 中只提供 `windows x86_64` 与 `android arm_64` 的二进制分发，如有面向其他平台的需要，请自行克隆并编译本项目。
 
-2. 将下载所得文件移动到主目录内。
+> Release 中只分发了捆绑包，如果你只需要其中的个别模块，可以在我的 [个人网盘](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9) 中找到，其中也提供了历史版本的下载。
 
-3. 在命令行中运行脚本 `python "./install.py"` 。
+## 使用捆绑包
+
+捆绑包已经组织好了 `Core` 、`Shell` 、`Script` 与 `Shell` 的启动脚本，使用捆绑包就不必依照下面的详细步骤进行安装。
+
+1. 查看 [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) ，下载适用于你设备的分发。
+
+2. 将下载所得的压缩包文件解压至主目录内。
 	
-	该脚本的运行需要 `Python` 环境，请确保你的计算机已安装了 [`Python`](https://www.python.org/downloads/) 。 
+	> @ `Android` \
+	> 你还需要进行以下额外配置：安装 **C++ 共享库** 至系统库目录。\
+	> 具体操作步骤参见下文。
+	> 
+	> @ `iPhone` \
+	> 你还需要进行以下额外配置：对 `core` 与 `shell` 进行签名。\
+	> 具体操作步骤参见下文。
 
-4. 在脚本执行窗口中，选择适合你设备的操作系统与处理器架构，脚本将从本项目的 GitHub Release 中查找与下载所需文件，并安装至主目录内。
+3. 执行其中的 `launch.[sh|cmd]` 脚本以启动应用，工具应当能够正常启动与运行。
+	
+	> @ `Windows` \
+	> 可以直接双击 `launch.cmd` 以运行，或将文件对象拖拽至其上并释放。
 
-安装脚本会自动安装 `Core` 、`Shell` 、`Script` 三个模块，但如果你还需要使用其他模块，请参照下文手动安装。
+捆绑包中还包含了 `Shell GUI` 、`Windows Explorer Extension` 模块的安装包，如有需要请参照下文手动安装。
 
 ## 安装 `Core`
 
@@ -96,7 +111,7 @@
 
 这是必需安装项，分发为动态库。
 
-1. 查看 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Core) ，下载适用于你设备的分发。
+1. 编译或下载适用于你设备的分发。
 
 2. 将下载所得文件移动到主目录内，并重命名为 `core` 。
 
@@ -109,7 +124,7 @@
 > @ `Android` `iPhone` \
 > 在 Android 与 iPhone 上使用 `Shell` 需要 ROOT 权限，若你的设备未获取 ROOT ，请使用 `Shell GUI` 。
 
-1. 查看 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Shell) ，下载适用于你设备的分发。
+1. 编译或下载适用于你设备的分发。
 
 2. 将下载所得文件移动到主目录内，并重命名为 `shell` 。
 	
@@ -147,9 +162,7 @@
 
 这是可选安装项，分发为应用包。
 
-1. 查看 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/ShellGUI) ，下载适用于你设备的分发。
-	
-	> 目前只提供 `Windows X86-64` 与 `Android ARM-64` 的分发，其他平台的用户需要自行克隆本项目，并构建与签名应用包。
+1. 编译或下载适用于你设备的分发。
 
 2. 安装应用包。
 	
@@ -173,7 +186,7 @@
 
 这是必需安装项，发为脚本包。
 
-1. 查看 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Script) ，下载适用于你设备的分发。
+1. 编译或下载适用于你设备的分发。
 
 2. 将下载所得文件移动到主目录内，创建 `script` 目录，并将压缩包的所有内容解压至其中。
 
@@ -185,15 +198,15 @@ Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
 
 这是可选安装项，分发为应用包。
 
-1. 查看 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/WindowsExplorerExtension) ，下载适用于你设备的分发。
+1. 编译或下载适用于你设备的分发。
+
+2. 安装应用包。
 	
 	扩展分为两个子版本，需按个人需要进行选择：
 	
-	* `<n>_0` 只提供普通的文件转发入口；在新、旧式右键菜单中均显示为单个菜单项。
+	* `0_...` 只提供普通的文件转发入口；在新、旧式右键菜单中均显示为单个菜单项。
 	
-	* `<n>_1` 额外提供了各功能的快捷转发入口，但对右键菜单的调出速度有较大影响；在新式右键菜单中显示为单个二级菜单，在旧式右键菜单中显示为多个一级菜单。
-
-2. 安装应用包。
+	* `1_...` 额外提供了各功能的快捷转发入口，但对右键菜单的调出速度有较大影响；在新式右键菜单中显示为单个二级菜单，在旧式右键菜单中显示为多个一级菜单。
 	
 	> 安装前需要先信任 MSIX 中的签名证书。\
 	> 右键查看 `.msix` 的属性，切换到 ⌈ 数字签名 ⌋ 页，选择列表中第一项，再点击 ⌈ 详细信息 ⌋ ，在弹出的窗口中依次选择 ⌈ 查看证书 ⌋ - ⌈ 安装证书 ⌋ - ⌈ 本地计算机 ⌋ - ⌈ 将所有证书都放入下列存储 ⌋ - ⌈ 受信任人 ⌋ ，完成证书的安装。
@@ -258,7 +271,7 @@ Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
 
 这是可选安装项，分发为应用包。
 
-1. 查看 [分发页面](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Helper) ，下载适用于你设备的分发。
+1. 编译或下载适用于你设备的分发。
 
 2. 安装应用包。
 	

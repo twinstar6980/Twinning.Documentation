@@ -245,8 +245,12 @@
 	
 	```ts
 	type JS_MainFunction = (
-		argument: Array<string>,
-	) => string;
+		data: {
+			argument: Array<string>;
+			result: string | undefined;
+			error: any | undefined;
+		},
+	) => void;
 	```
 	
 	工具传递启动参数以调用该函数，直到该函数执行完毕，工具结束运行。

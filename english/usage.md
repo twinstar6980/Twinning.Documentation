@@ -243,11 +243,15 @@ In short, the shell `Shell` does only two things:
 
    The tool requires the value computed by the main script to be a function, i.e., a script-level ⌈main function ⌋ which has the following type:
 
-   ```ts
-   type JS_MainFunction = (
-     argument: Array<string>,
-   ) => string;
-   ```
+  ```ts
+  type JS_MainFunction = (
+    data: {
+      argument: Array<string>;
+      result: string | undefined;
+      error: any | undefined;
+    },
+  ) => void;
+  ```
 
    The tool passes the start argument to call the function until it finishes executing and the tool finishes running.
 
