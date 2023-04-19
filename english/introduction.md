@@ -10,93 +10,93 @@ The following functions are currently available:
 
 - `Wwise Media` (.wem)
 
-  - Decode
+	- Decode
 
 - `Wwise Sound-Bank` (.bnk)
 
-  - Decode, Encode
+	- Decode, Encode
 
 - `Marmalade DZip` (.dz)
 
-  - Unpack, pack
+	- Unpack, pack
 
 - `PopCap ZLib` (.\*)
 
-  - Compress, Uncompress
+	- Compress, Uncompress
 
 - `PopCap Crypt-Data` (.cdat)
 
-  - Decrypt, encrypt
+	- Decrypt, encrypt
 
 - `PopCap Reflection-Object-Notation` (.rton)
 
-  - Decode, Encode
+	- Decode, Encode
 
-  - Decrypt, encrypt
+	- Decrypt, encrypt
 
 - `PopCap Texture` (.ptx)
 
-  - Decode, Encode
+	- Decode, Encode
 
 - `PopCap U-Texture` (.tex|txz)
 
-  - Decode, Encode
+	- Decode, Encode
 
 - `PopCap Sexy-Texture` (.tex)
 
-  - Decode, Encode
+	- Decode, Encode
 
 - `PopCap Animation` (.pam)
 
-  - Decode, Encode
+	- Decode, Encode
 
-  - Resize Flash Animation
+	- Resize Flash Animation
 
 - `PopCap Re-Animation` (.reanim.compiled)
 
-  - Decode, Encode
+	- Decode, Encode
 
 - `PopCap Particle` (.xml.compiled)
 
-  - Decode, Encode
+	- Decode, Encode
 
 - `PopCap Trail` (.trail.compiled)
 
-  - Decode, Encode
+	- Decode, Encode
 
 - `PopCap Effect` (.popfx)
 
-  - Decode, Encode
+	- Decode, Encode
 
 - `PopCap Character-Font-Widget-2` (.cfw2)
 
-  - Decode, Encode
+	- Decode, Encode
 
 - `PopCap Package` (.pak)
 
-  - Unpack, pack
+	- Unpack, pack
 
-  - Encryption
+	- Encryption
 
 - `PopCap Resource-Stream-Group` (.rsg)
 
-  - Unpack, pack
+	- Unpack, pack
 
 - `PopCap Resource-Stream-Bundle` (.rsb)
 
-  - Unpack, pack
+	- Unpack, pack
 
-  - Resource Conversion
+	- Resource Conversion
 
-  - Repair Disturb packet
+	- Repair Disturb packet
 
 - `PopCap Resource-Stream-Bundle-Patch` (.rsbpatch)
 
-  - Decode, Encode
+	- Decode, Encode
 
 - `PvZ-2 字符串表` (.txt|json)
 
-  - Versions conversion
+	- Versions conversion
 
 - ......
 

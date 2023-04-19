@@ -38,27 +38,27 @@ The tool consists of several modules, different modules provide different functi
 
 - `Core`
 
-  Core, responsible for the implementation of internal functions.
+	Core, responsible for the implementation of internal functions.
 
 - `Shell`
 
-  Shell, which provides the command line interface.
+	Shell, which provides the command line interface.
 
 - `Shell GUI`
 
-  Shell, providing the graphical interface.
+	Shell, providing the graphical interface.
 
 - `Script`
 
-  Script that controls the flow of the tool.
+	Script that controls the flow of the tool.
 
 - `Windows Explorer Extension`
 
-  Windows Explorer extension that integrates the tool into the Windows Explorer right-click menu.
+	Windows Explorer extension that integrates the tool into the Windows Explorer right-click menu.
 
 - `Helper`
 
-  Helper, which provides additional advanced functionality.
+	Helper, which provides additional advanced functionality.
 
 ## Preparation
 
@@ -66,13 +66,13 @@ Before installing each component, you need to do some preparations:
 
 1. Locate **home directory**
 
-   Create an empty directory in the storage space which will hold all the files needed to run the tool, called the home directory.
+	Create an empty directory in the storage space which will hold all the files needed to run the tool, called the home directory.
 
-   `Core` 、`Shell` 、`Script` are portable, so place them in the home directory so that no data remains in other locations.
+	`Core` 、`Shell` 、`Script` are portable, so place them in the home directory so that no data remains in other locations.
 
-   `Shell GUI` 、`Windows Explorer Extension` 、`Helper` are applications that need to be installed and need to be uninstalled by the user and cleared of application data.
+	`Shell GUI` 、`Windows Explorer Extension` 、`Helper` are applications that need to be installed and need to be uninstalled by the user and cleared of application data.
 
-   > The location of the home directory can be optional, but make sure the user has **read and write allows permission** to the directory and its contents.
+	> The location of the home directory can be optional, but make sure the user has **read and write allows permission** to the directory and its contents.
 
 ## Compile or download pre-compiled distributions
 
@@ -90,18 +90,18 @@ The bundle package is already organized the `Core`, `Shell`, `Script` and script
 
 2. Uncompress the downloaded zip file to the home directory.
 
-   > @ `Android` \
-   > You also need to do the following additional configuration: Install **C++ shared libraries** to the system library directory. \
-   > See below for the detailed steps.
-   >
-   > @ `iPhone` \
-   > You will also need to do the following additional configuration: sign `core` and `shell`. \
-   > See below for details.
+	> @ `Android` \
+	> You also need to do the following additional configuration: Install **C++ shared libraries** to the system library directory. \
+	> See below for the detailed steps.
+	>
+	> @ `iPhone` \
+	> You will also need to do the following additional configuration: sign `core` and `shell`. \
+	> See below for details.
 
 3. Execute the `launch.[sh|cmd]` scripts to launch the program, the tool should start and run properly.
 
-   > @ `Windows` \
-   > Either double-click `launch.cmd` directly to run it, or drag and drop the file object onto it and release it.
+	> @ `Windows` \
+	> Either double-click `launch.cmd` directly to run it, or drag and drop the file object onto it and release it.
 
 The bundle package also contains install package for `Shell GUI`, `Windows Explorer Extension` modules, please refer below to install them manually if you need them.
 
@@ -130,32 +130,32 @@ This is an optional installation, distributed as an executable.
 
 2. Move the downloaded file to your home directory and rename it to `shell`.
 
-> @ `Windows` \
-> Windows does not support calling executables without the `.exe` extension non-programmatically, so you need to run `> mklink shell.exe shell` in the terminal to create a soft link `- shell.exe` to `- shell`; or just rename `- shell` to `- shell.exe`. 3.
+	> @ `Windows` \
+	> Windows does not support calling executables without the `.exe` extension non-programmatically, so you need to run `> mklink shell.exe shell` in the terminal to create a soft link `- shell.exe` to `- shell`; or just rename `- shell` to `- shell.exe`.
 
 3. Give `shell` executable privileges.
 
-   \*\*Users on other systems may have to do `> chmod +x shell` in the terminal to add executable permissions to `- shell`.
+	**Windows** users don't need anymore operation, users on other systems may have to do `> chmod +x shell` in the terminal to add executable permissions to `- shell`.
 
-   > @ `Android` \
-   > On systems with the FUSE scheme, `+ /storage/emulated/<id>` is actually a mapping of `+ /data/media/<id>`, but FUSE restrictions prevent users from modifying and executing files via `+ /storage/emulated/<id>`, which must be done via the real path ` + /data/media/<id>`.
+	> @ `Android` \
+	> On systems with the FUSE scheme, `+ /storage/emulated/<id>` is actually a mapping of `+ /data/media/<id>`, but FUSE restrictions prevent users from modifying and executing files via `+ /storage/emulated/<id>`, which must be done via the real path ` + /data/media/<id>`.
 
 For `Android` systems, you also need to perform the following actions:
 
 1. Install **C++ shared library** to the system library directory.
 
-   For security and size reduction reasons, the C++ runtime used is c++\_shared. Therefore, you also need to copy the `libc++_shared.so` file of the corresponding processor architecture to the system library directory.
+	For security and size reduction reasons, the C++ runtime used is c++\_shared. Therefore, you also need to copy the `libc++_shared.so` file of the corresponding processor architecture to the system library directory.
 
-   > The system library directory is `+ /system/lib` on 32-bit systems and `+ /system/lib64` on 64-bit systems.
-   > This file can be found in the Android NDK toolchain, and the corresponding `core` version of `libc++_shared.so` is pre-set in the bundle package.
+	> The system library directory is `+ /system/lib` on 32-bit systems and `+ /system/lib64` on 64-bit systems.
+	> This file can be found in the Android NDK toolchain, and the corresponding `core` version of `libc++_shared.so` is pre-set in the bundle package.
 
 For `iPhone` systems, you also need to do the following:
 
 1. sign `core` and `shell`.
 
-   Running executables on the iPhone requires signature verification, and the distributed program files (**core | shell**) are not signed and need to be signed by the user in order to run properly on the iPhone.
+	Running executables on the iPhone requires signature verification, and the distributed program files (**core | shell**) are not signed and need to be signed by the user in order to run properly on the iPhone.
 
-   > You can use the **codesign** tool on the **Macintosh** to do this.
+	> You can use the **codesign** tool on the **Macintosh** to do this.
 
 ## Install `Shell GUI`
 
@@ -165,23 +165,23 @@ This is an optional installation item, distributed as an application package.
 
 1. Compile or download the distribution for your device.
 
-   > Currently, only `Windows X86-64` and `Android ARM-64` distributions are available. Users of other platforms need to clone this project and build and sign the application package by themselves.
+	> Currently, only `Windows X86-64` and `Android ARM-64` distributions are available. Users of other platforms need to clone this project and build and sign the application package by themselves.
 
 2. Install the application package.
 
-   > @ `Windows` \
-   > You need to trust the signing certificate in MSIX before installation. \
-   > Right-click the properties of `.msix`, switch to the ⌈Digital Signatures ⌋ page, select the first item in the list, and then click ⌈Details ⌋ , and in the pop-up window, select ⌈View Certificate⌋ - ⌈Install Certificate⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈Trusted persons⌋, to complete the installation of the certificates.
+	> @ `Windows` \
+	> You need to trust the signing certificate in MSIX before installation. \
+	> Right-click the properties of `.msix`, switch to the ⌈Digital Signatures ⌋ page, select the first item in the list, and then click ⌈Details ⌋ , and in the pop-up window, select ⌈View Certificate⌋ - ⌈Install Certificate⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈Trusted persons⌋, to complete the installation of the certificates.
 
 For `Android` systems, you also need to perform the following actions:
 
 1. Grant full external storage read/write permission to the application in the system settings.
 
-   If the app does not obtain this permission, a ⌈Permission denied ⌋ error will appear when launching the console.
+	If the app does not obtain this permission, a ⌈Permission denied ⌋ error will appear when launching the console.
 
-   > In different versions and vendor-customized systems, this permission is typically expressed as ⌈Read and write storage ⌋, ⌈Manage all files ⌋, etc. \
-   > In native systems, the authorization page can be found in the application settings; \
-   > For some vendor-customized systems, authorization may be required elsewhere, for example, MIUI requires granting the app ⌈All file access rights⌋ in ⌈Protect privacy⌋.
+	> In different versions and vendor-customized systems, this permission is typically expressed as ⌈Read and write storage ⌋, ⌈Manage all files ⌋, etc. \
+	> In native systems, the authorization page can be found in the application settings; \
+	> For some vendor-customized systems, authorization may be required elsewhere, for example, MIUI requires granting the app ⌈All file access rights⌋ in ⌈Protect privacy⌋.
 
 ## Install `Script`
 
@@ -205,66 +205,66 @@ This is an optional installation and is distributed as an application package.
 
 2. Install the application package.
 
-There are two sub-versions of the extension, which need to be selected according to your needs:
+	There are two sub-versions of the extension, which need to be selected according to your needs:
 
-- `0_...` provides only the normal file forwarding portal; it appears as a single menu item in both the new and old-style right-click menus.
+	- `0_...` provides only the normal file forwarding portal; it appears as a single menu item in both the new and old-style right-click menus.
 
-- `1_...` additionally provides a quick forwarding entry for each function, but has a greater impact on the speed of the right-click menu call-out; it is displayed as a single secondary menu in the new-style right-click menu, and as multiple primary menus in the old-style right-click menu.
+	- `1_...` additionally provides a quick forwarding entry for each function, but has a greater impact on the speed of the right-click menu call-out; it is displayed as a single secondary menu in the new-style right-click menu, and as multiple primary menus in the old-style right-click menu.
 
 2. Install the application package.
 
-   > You need to trust the signing certificate in MSIX before installation. \
-   > Right-click to view the properties of `.msix`, switch to the ⌈Digital Signatures⌋ page, select the first item in the list, then click ⌈Details⌋, and in the pop-up window, select ⌈View Certificate⌋ - ⌈Install Certificate⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈Trusted persons⌋ to complete the installation of the certificate.
+	> You need to trust the signing certificate in MSIX before installation. \
+	> Right-click to view the properties of `.msix`, switch to the ⌈Digital Signatures⌋ page, select the first item in the list, then click ⌈Details⌋, and in the pop-up window, select ⌈View Certificate⌋ - ⌈Install Certificate⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈Trusted persons⌋ to complete the installation of the certificate.
 
 3. Open the `create_setting.reg` file as text, edit the configuration items in it, and right-click and select Registry Editor to open the file to merge the registry when you are done.
 
-   The extension will read the extension configuration data from the system registry, all configurations are located in `HKEY_CURRENT_USER\Software\TwinStar\ToolKit\WindowsExplorerExtension` and the following configuration items are listed:
+	The extension will read the extension configuration data from the system registry, all configurations are located in `HKEY_CURRENT_USER\Software\TwinStar\ToolKit\WindowsExplorerExtension` and the following configuration items are listed:
 
-   - `launch_script`
+	- `launch_script`
 
-     String, path to the launch script, default is empty string.
+		String, path to the launch script, default is empty string.
 
-     The extension will execute the specified launch script and pass the path to the selected file to it. Therefore, a launch script must be created in which to launch the shell and pass the parameters.
+		The extension will execute the specified launch script and pass the path to the selected file to it. Therefore, a launch script must be created in which to launch the shell and pass the parameters.
 
-     > The launch script should properly launch the `Shell` or `Shell GUI` of the tool, you need to write the launch script `*.cmd` by yourself, or use the pre-set launch script `launch.cmd` in the bundle package.
+		> The launch script should properly launch the `Shell` or `Shell GUI` of the tool, you need to write the launch script `*.cmd` by yourself, or use the pre-set launch script `launch.cmd` in the bundle package.
 
-   - `launch_limit`
+	- `launch_limit`
 
-     Double word, limit on the number of file objects required, defaults to `0`.
+		Double word, limit on the number of file objects required, defaults to `0`.
 
-     If `0`, there is no limit, then all file objects are forwarded to the tool together and need to be processed sequentially; otherwise, the limit is no more than the set number, then each file object is forwarded to the tool separately, and the user can process them separately in different windows.
+		If `0`, there is no limit, then all file objects are forwarded to the tool together and need to be processed sequentially; otherwise, the limit is no more than the set number, then each file object is forwarded to the tool separately, and the user can process them separately in different windows.
 
-   - `language`
+	- `language`
 
-     A string that extends the language used, default is `Chinese`.
+		A string that extends the language used, default is `Chinese`.
 
-     Can be `Chinese` or `English`.
+		Can be `Chinese` or `English`.
 
-   - `hidden_group_when_unavailable`
+	- `hidden_group_when_unavailable`
 
-     A double-word for whether to hide a group when none of its function items are available for the selected file object, default is `0`.
+		A double-word for whether to hide a group when none of its function items are available for the selected file object, default is `0`.
 
-     If the value is `0`, the group is shown, otherwise it is hidden.
+		If the value is `0`, the group is shown, otherwise it is hidden.
 
-   - `hidden_item_when_unavailable`
+	- `hidden_item_when_unavailable`
 
-     Double-word whether to hide a feature item when it is not available for the selected file object, defaults to `0`.
+		Double-word whether to hide a feature item when it is not available for the selected file object, defaults to `0`.
 
-     The value is `0`, otherwise it is hidden.
+		The value is `0`, otherwise it is hidden.
 
-   - `visible_<group>`
+	- `visible_<group>`
 
-     Double-word to control whether to show each function group, default is `0`.
+		Double-word to control whether to show each function group, default is `0`.
 
-     If the value is `0`, it is hidden, otherwise it is shown.
+		If the value is `0`, it is hidden, otherwise it is shown.
 
-     You can hide the less frequently used function groups to reduce the space occupied by the right-click menu and reduce the impact on the speed of the right-click menu. 4.
+		You can hide the less frequently used function groups to reduce the space occupied by the right-click menu and reduce the impact on the speed of the right-click menu. 4.
 
 4. You can now see the `⌈TwinStar ToolKit - Extension⌋` option inside the context menu of any file or directory, and use these options to quickly forward file objects to the tool.
 
-   If you do not see this option, try restarting Explorer `explorer.exe`, or restarting your computer.
+	If you do not see this option, try restarting Explorer `explorer.exe`, or restarting your computer.
 
-   > Please note that due to Windows limitations, you can only select a maximum of 16 file objects at a time, beyond that number you will not be able to successfully forward file objects.
+	> Please note that due to Windows limitations, you can only select a maximum of 16 file objects at a time, beyond that number you will not be able to successfully forward file objects.
 
 5. After uninstalling the extension, you can use the `remove_setting.reg` file to clear the extension configuration data left in the system registry.
 
@@ -280,8 +280,8 @@ This is an optional installation item, distributed as an application package.
 
 2. Install the application package.
 
-   > You need to trust the signing certificate in MSIX before installation. \
-   > Right-click the properties of `.msix`, switch to the ⌈Digital Signatures⌋ page, select the first item in the list, and then click ⌈Details⌋ , and in the pop-up window, select ⌈View Certificate ⌋ - ⌈Install Certificate ⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈ Trusted persons ⌋, to complete the installation of the certificates.
+	> You need to trust the signing certificate in MSIX before installation. \
+	> Right-click the properties of `.msix`, switch to the ⌈Digital Signatures⌋ page, select the first item in the list, and then click ⌈Details⌋ , and in the pop-up window, select ⌈View Certificate ⌋ - ⌈Install Certificate ⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈ Trusted persons ⌋, to complete the installation of the certificates.
 
 ## External-Program
 
@@ -289,25 +289,25 @@ Some functions of the tool need to call external programs, so the users need to 
 
 - [ffmpeg](https://ffmpeg.org/download.html)
 
-  Used for **WEM audio decoding**.
+	Used for **WEM audio decoding**.
 
-  After downloading, rename the file `ffmpeg[.exe]` to `ffmpeg` and place it in the `+ <home>/external/ffmpeg` directory.
+	After downloading, rename the file `ffmpeg[.exe]` to `ffmpeg` and place it in the `+ <home>/external/ffmpeg` directory.
 
 - [ww2ogg](https://github.com/hcs64/ww2ogg/releases/tag/0.24)
 
-  For **WEM audio decoding** .
+	For **WEM audio decoding** .
 
-  After downloading, rename the file `ww2ogg[.exe]` to `ww2ogg` and place it in the `+ <home>/external/ww2ogg` directory.
+	After downloading, rename the file `ww2ogg[.exe]` to `ww2ogg` and place it in the `+ <home>/external/ww2ogg` directory.
 
-  Then place the file `packed_codebooks_aoTuV_603.bin` in that directory.
+	Then place the file `packed_codebooks_aoTuV_603.bin` in that directory.
 
-  > The author of this project only distributes the executable for Windows, users of other systems must download the source code and build it themselves.
+	> The author of this project only distributes the executable for Windows, users of other systems must download the source code and build it themselves.
 
 - [adb](https://developer.android.com/studio/command-line/adb)
 
-  For **Remote-Android-Helper** .
+	For **Remote-Android-Helper** .
 
-  Download [`Android SDK Platform Tools`](https://developer.android.com/studio/releases/platform-tools), unzip it and configure it in the `PATH` environment variable.
+	Download [`Android SDK Platform Tools`](https://developer.android.com/studio/releases/platform-tools), unzip it and configure it in the `PATH` environment variable.
 
 ## Languages
 

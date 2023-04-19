@@ -12,9 +12,7 @@
 
 - [Forward File Object](#Forward-File-Object)
 
-- [Script Overview](#Script-Overview)
-
-- [Third-party integration](#Third-party-integration)
+- [Advanced Usage](#Advanced-Usage)
 
 - [Use `Helper`](#Use-Helper)
 
@@ -28,15 +26,15 @@ The user needs to start `Shell` in the terminal with command line arguments in t
 
 - `<core>`
 
-  The first argument is the path to the core file.
+	The first argument is the path to the core file.
 
 - `<script>`
 
-  The second argument is the script to be passed to the core processing logic. This parameter is a string representing the JS script, or a script file path identified by the `@` as the first character of the script file path.
+	The second argument is the script to be passed to the core processing logic. This parameter is a string representing the JS script, or a script file path identified by the `@` as the first character of the script file path.
 
 - `<argument>...`
 
-  The remaining arguments are passed as parameters to the core processing logic.
+	The remaining arguments are passed as parameters to the core processing logic.
 
 The main function returns 0 if no errors occur during execution, otherwise 1.
 
@@ -67,11 +65,11 @@ Launching the `Shell GUI` in the terminal is also supported, with command line a
 
 - `<ignore>`
 
-  The first argument is used as an identifier for the command start mode, and its value is ignored.
+	The first argument is used as an identifier for the command start mode, and its value is ignored.
 
 - `<additional-argument>...`
 
-  The remaining arguments are used as additional arguments to be passed to the core processing logic.
+	The remaining arguments are used as additional arguments to be passed to the core processing logic.
 
 If no command-line arguments are passed, the application is started directly.
 
@@ -113,51 +111,51 @@ When input is requested, a leading character is also displayed as a prompt for t
 
 - `U` Pause
 
-  Pause the program to wait for a user response.
+	Pause the program to wait for a user response.
 
 - `C` Confirmation value
 
-  A single character ⌈ y ⌋ or ⌈ n ⌋ , indicating ⌈ yes ⌋ and ⌈ no ⌋ .
+	A single character ⌈ y ⌋ or ⌈ n ⌋ , indicating ⌈ yes ⌋ and ⌈ no ⌋ .
 
 - `N` number
 
-  A decimal number.
+	A decimal number.
 
 - `I` Integer
 
-  A decimal integer that may not contain a decimal point.
+	A decimal integer that may not contain a decimal point.
 
 - ` Z` Size
 
-  An unsigned decimal number followed by a binary unit (b = 2^0 , k = 2^10 , m = 2^20 , g = 2^30), typically used to indicate storage capacity.
+	An unsigned decimal number followed by a binary unit (b = 2^0 , k = 2^10 , m = 2^20 , g = 2^30), typically used to indicate storage capacity.
 
-  > For example, ⌈4k⌋ represents 4096 bytes of storage capacity.
+	> For example, ⌈4k⌋ represents 4096 bytes of storage capacity.
 
 - `O` option
 
-  Select an optional option by integer ordinal number.
+	Select an optional option by integer ordinal number.
 
 - `S` String
 
-  A line of text.
+	A line of text.
 
 - `P` Input path
 
-  Points to the path of an existing file or directory on disk.
+	Points to the path of an existing file or directory on disk.
 
-  > You can also enter `:p` to open the system file pick dialog (`Windwos`, `Linux`, `Macintosh` only).
-  >
-  > If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `+ <home>/workspace`.
+	> You can also enter `:p` to open the system file pick dialog (`Windwos`, `Linux`, `Macintosh` only).
+	>
+	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `+ <home>/workspace`.
 
 - `P` Output path
 
-  Points to a path on disk that does not exist. Toolkit typically automatically generate a default output path, but request a new output path when the default output path is already existed.
+	Points to a path on disk that does not exist. Toolkit typically automatically generate a default output path, but request a new output path when the default output path is already existed.
 
-  > You can also enter `:o` to overwrite existing files;
-  > or enter `:d` to delete existing files;
-  > or type `:t` to move existing files to the tool's recycle directory `+ <home>/trash`.
-  >
-  > If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `+ <home>/workspace`.
+	> You can also enter `:o` to overwrite existing files;
+	> or enter `:d` to delete existing files;
+	> or type `:t` to move existing files to the tool's recycle directory `+ <home>/trash`.
+	>
+	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `+ <home>/workspace`.
 
 ## Configuration file
 
@@ -173,32 +171,32 @@ The user can pass in additional parameters when starting the tool, or if no addi
 
 ```
 [
-    <input>
-    [ -disable_filter ]
-    [ -method <method-id> ]
-    [ -argument <argument-json> ]
+	<input>
+	[ -disable_filter ]
+	[ -method <method-id> ]
+	[ -argument <argument-json> ]
 ]...
 ```
 
 - `<input>`
 
-  Specifies the input data of the command, usually the path to a file or directory, as the input parameter of the function.
+	Specifies the input data of the command, usually the path to a file or directory, as the input parameter of the function.
 
 - `[ -disable_filter ]`
 
-  Used to disable function filtering.
+	Used to disable function filtering.
 
-  By default, if `-method` is not specified, the tool will filter the available functions for user selection based on the type of input object (mainly by extension);
+	By default, if `-method` is not specified, the tool will filter the available functions for user selection based on the type of input object (mainly by extension);
 
-  If candidate function filtering is disabled, all functions will be listed for user selection. This should not be enabled because toolkit provides too many functions and it is always recommended to have filter on.
+	If candidate function filtering is disabled, all functions will be listed for user selection. This should not be enabled because toolkit provides too many functions and it is always recommended to have filter on.
 
 - `[ -method <method-id>]`
 
-  Specify the function to be executed, followed by the ID of the function. If no function is specified, it will wait for the user to select the function at runtime.
+	Specify the function to be executed, followed by the ID of the function. If no function is specified, it will wait for the user to select the function at runtime.
 
 - `[ -argument <argument-json> ]`
 
-  Specifies the argument to be passed to the function, followed by a JSON string, and must be parsable as an Object.
+	Specifies the argument to be passed to the function, followed by a JSON string, and must be parsable as an Object.
 
 The IDs of the functions and their arguments are defined in [function](. /method.md) section.
 
@@ -216,64 +214,9 @@ The file object to be processed is forwarded to the tool, and when the tool is l
 
 The tool is preconfigured with many functions such as RTON decoding and RSB unpacking, which are described in [function](./method.md) section.
 
-## Script Overview
+## Advanced Usage
 
-> **For most users, the pre-built features are sufficient, but if you want to improve your productivity with custom scripts, go ahead and learn more. **\
-> **The following is geared towards users with basic programming skills. **
-
-This tool uses `JavaScript` as the scripting language. the JS engine is a third-party open source project called `quickjs`.
-
-In short, the shell `Shell` does only two things:
-
-1. Load the ⌈Core library⌋ , which defines the JS-oriented `Core interface`.
-
-   The various functions of the tool are provided to the user by scripts that directly or indirectly call the `Core interface`, which provides basic functions such as file reading and writing, data manipulation, and advanced functions such as BNK and PAM codecs.
-
-   > The interface of `Core interface` has strict type restrictions, therefore, at the development level, `TypeScript` should be used as the development language and compiled into JS for use by tools. Its `.d.ts` declaration is included in the scripting module project.
-
-2. Execute main script whose path is set to `- <home>/script/main.js` by the startup script.
-
-   The tool requires the value computed by the main script to be a function, i.e., a script-level ⌈main function ⌋ which has the following type:
-
-  ```ts
-  type JS_MainFunction = (
-    data: {
-      argument: Array<string>;
-      result: string | undefined;
-      error: any | undefined;
-    },
-  ) => void;
-  ```
-
-   The tool passes the start argument to call the function until it finishes executing and the tool finishes running.
-
-Users can rewrite the logic of the main script themselves, but it is recommended to build on the existing [Script](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Script), which already provides users with a various set of features with a good interaction and implementatation mechanism.
-
-## Third-party integration
-
-> **The following content is intended for users with basic programming skills. ** The following is for users with basic programming skills.
-
-The tool adopts a front- and back-end separation architecture, divided into three layers:
-
-- Core: back-end, responsible for data processing and will not perform any user interaction; the core is distributed as native dynamic library files for each platform.
-
-- Shell: front-end, responsible for user interaction and will not perform any data processing; shell will load the core dynamic library and call the interface functions of the core dynamic library with the script provided by the user as parameters.
-
-- Script: the bridge between the front and back end, which is responsible for data processing and user interaction by calling the interface functions provided by the core and the shell.
-
-The front and back ends of the tool are completely decoupled, and users can integrate the backend (core) of the tool into their own projects through the `Foreign Function Interface` mechanism provided by various programming languages such as `C`, `C++`, `C#`, `Java`, `Kotlin`, `Python`, and the main steps are as follows:
-
-1. Load the tool's backend (i.e., the dynamic library file distributed by the core module) in a custom project to obtain the core's interface functions.
-
-2. Call the interface function of the core, the `callback` parameter in the interface function is the shell callback implementation that the custom project needs to provide.
-
-Refer to several shell implementations in this tool:
-
-- `Shell` with [`C++`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/core)
-
-- `Shell GUI` with [`Dart`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellGUI/lib/core)
-
-- `Helper` with [`C#`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Helper/Core)
+If you have some programming skills, you can also integrate the tools into your own projects or use them with custom scripts, see the [Advanced](./advanced.md) section.
 
 ## Using `Helper`
 
@@ -285,7 +228,7 @@ Currently, only PopCap Animate Viewer is available.
 
 2. Click the right button in the `Animation File` text box at the top right of the new page and select the `*.pam.json` animation file in the popup window.
 
-   > `*.pam.json` is obtained by decoding the `*.pam` file with the tool.
+	> `*.pam.json` is obtained by decoding the `*.pam` file with the tool.
 
 3. If the animation's required decomposition is located in the same level of the animation file, the animation can be rendered normally, otherwise, you need to click the right button of the `Image Directory` text box to select the directory where the decomposition is located.
 

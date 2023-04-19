@@ -212,8 +212,8 @@ let view = data.view();
 let size = view.size().value;
 // 获取 data 对应的 JS 值，这会得到一个 ArrayBuffer 对象，该对象是对 data 对应内存的深复制，而不指向 data 对应的内存空间。
 let data_buffer = data.value;
-// 获取 data 对应的 JS 值，这会得到一个 ArrayBuffer 对象，该对象不复制 view 指向的内存空间，它与 view 及 data 指向了同一内存空间。
-let view_buffer = data.value;
+// 获取 view 对应的 JS 值，这会得到一个 ArrayBuffer 对象，该对象不复制 view 指向的内存空间，它与 view 及 data 指向了同一内存空间。
+let view_buffer = view.value;
 // 获取 view 中 [4, 12] 区间的内存空间视图。
 let view_sub = view.sub(Core.Size.value(4n), Core.Size.value(8n));
 // 以 view_sub 为视图源构造流视图
@@ -317,7 +317,7 @@ export function decode_fs(
 decode_fs(
 	'C:/sample.bnk',
 	'C:/sample.bnk.bundle/manifest.json',
-	'C:/sample.bnk.bundle/embedded_media_directory',
+	'C:/sample.bnk.bundle/embedded_media',
 	{ number: 140n },
 );
 ```

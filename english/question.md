@@ -30,70 +30,70 @@ The JSON read and write rules for the tool are self-implementing and does not fo
 
 1. Comments
 
-   The JSON standard does not allow comments, but the tools do allow comments, including line comments `// ... ` and block comments `/* ... */`. 2.
+	The JSON standard does not allow comments, but the tools do allow comments, including line comments `// ... ` and block comments `/* ... */`. 2.
 
 2. Trailing commas
 
-   The comma after the last element of arrays and objects is called a trailing comma. The JSON standard does not allow trailing commas, but they are a permitted and even recommended syntax in JS and many programming languages. Considering the convenience that trailing commas provide for JSON reading and writing, tools support trailing commas and add them by default when outputting JSON.
+	The comma after the last element of arrays and objects is called a trailing comma. The JSON standard does not allow trailing commas, but they are a permitted and even recommended syntax in JS and many programming languages. Considering the convenience that trailing commas provide for JSON reading and writing, tools support trailing commas and add them by default when outputting JSON.
 
-   In some editors, trailing commas are treated as a formatting error by default, and users can disable trailing comma output by modifying the `json_format.disable_trailing_comma` item to `true` in the `- <home>/script/Entry/Entry.json` configuration.
+	In some editors, trailing commas are treated as a formatting error by default, and users can disable trailing comma output by modifying the `json_format.disable_trailing_comma` item to `true` in the `- <home>/script/Entry/Entry.json` configuration.
 
-   If you want to launch the JSON file to the game, it is recommended that you should `disable_trailing_comma` because the JSON Parsing system of the game follow the JSON Standard.
+	If you want to launch the JSON file to the game, it is recommended that you should `disable_trailing_comma` because the JSON Parsing system of the game follow the JSON Standard.
 
-   > In `VS Code`, the following configuration can be added to `settings.json` to make the editor allow JSON trailing commas:
-   >
-   > ```json
-   > "json.schemas": [
-   > 	{
-   > 		"fileMatch": [
-   > 			"*.json",
-   > 		],
-   > 		"schema": {
-   > 			"allowTrailingCommas": true,
-   > 		},
-   > 	},
-   > ],
-   > ```
-   >
-   > `allowTrailingCommas` is an extension of `VS Code` and does not conform to the `JSON-Schema` standard.
+	> In `VS Code`, the following configuration can be added to `settings.json` to make the editor allow JSON trailing commas:
+	> 
+	> ```json
+	> "json.schemas": [
+	> 	{
+	> 		"fileMatch": [
+	> 			"*.json",
+	> 		],
+	> 		"schema": {
+	> 			"allowTrailingCommas": true,
+	> 		},
+	> 	},
+	> ],
+	> ```
+	> 
+	> `allowTrailingCommas` is an extension of `VS Code` and does not conform to the `JSON-Schema` standard.
 
 3. Escape characters
 
-   The tool's escape character support does not follow the JSON standard, and the escape rules are as follows:
+	The tool's escape character support does not follow the JSON standard, and the escape rules are as follows:
 
-   - `\\\ \' \"` escapes to the original character.
+	- `\\\ \' \"` escapes to the original character.
 
-   - `\a \b \f \n \r \t \v` is escaped to the corresponding control character.
+	- `\a \b \f \n \r \t \v` is escaped to the corresponding control character.
 
-   - `\0` Escape to the null character.
+	- `\0` Escape to the null character.
 
-   - `\oNNN` Unicode character represented by a 3-bit octal number, allowing values above 0xFF.
+	- `\oNNN` Unicode character represented by a 3-bit octal number, allowing values above 0xFF.
 
-   - `\xNNN` 2-bit Unicode character in hexadecimal numbers.
+	- `\xNNN` 2-bit Unicode character in hexadecimal numbers.
 
-   - \\uNNNN` 4-bit hexadecimal Unicode character.
+	- \\uNNNN` 4-bit hexadecimal Unicode character.
 
-   - `\UNNNNNNNN` 8-bit hexadecimal Unicode character.
+	- `\UNNNNNNNN` 8-bit hexadecimal Unicode character.
 
 4. Number formatting
 
-   The number formatting support of the tool does not follow the JSON standard, and the formatting rules are as follows:
+	The number formatting support of the tool does not follow the JSON standard, and the formatting rules are as follows:
 
-   - Integers: match the regular expression `^[+-]? [\d]+$` .
+	- Integers: match the regular expression `^[+-]? [\d]+$` .
 
-   - Floating-point numbers: match the regular expression `^[+-]? [\d]+[.] [\d]+$` .
+	- Floating-point numbers: match the regular expression `^[+-]? [\d]+[.] [\d]+$` .
 
-   - Floating-point numbers in scientific notation: match the regular expression `^[+-]? [\d]+[.] [\d]+[e][+-][\d]+$` .
+	- Floating-point numbers in scientific notation: match the regular expression `^[+-]? [\d]+[.] [\d]+[e][+-][\d]+$` .
 
-   In other words, the differences from the JSON standard are as follows:
+	In other words, the differences from the JSON standard are as follows:
 
-   - Positive numbers are allowed to have a positive sign, and unsigned numbers are considered positive.
+	- Positive numbers are allowed to have a positive sign, and unsigned numbers are considered positive.
 
-   - Floating-point numbers must start with a number, must have a decimal point, and must be followed by a number after the decimal point.
+	- Floating-point numbers must start with a number, must have a decimal point, and must be followed by a number after the decimal point.
 
-   - Floating-point numbers expressed in scientific notation must start with a number, must have a decimal point, and must be followed by a number; only lowercase `e` is allowed, not uppercase `E`, and must be followed by a plus or minus sign.
+	- Floating-point numbers expressed in scientific notation must start with a number, must have a decimal point, and must be followed by a number; only lowercase `e` is allowed, not uppercase `E`, and must be followed by a plus or minus sign.
 
-   In addition, the tool makes a strict distinction between integers and floating point numbers, with integers being decoded as `bigint` in JS and floating point numbers being decoded as `number` in JS, and users using the wrong value type will result in potential bugs or even runtime failures.
+	In addition, the tool makes a strict distinction between integers and floating point numbers, with integers being decoded as `bigint` in JS and floating point numbers being decoded as `number` in JS, and users using the wrong value type will result in potential bugs or even runtime failures.
 
 ## Shell requirements for the terminal
 
@@ -103,9 +103,9 @@ The JSON read and write rules for the tool are self-implementing and does not fo
 
 2. Virtual Terminal Control Sequence: Optional, if not supported, it will prevent the program from modifying different types of text with different colors.
 
-   > By default, the tool will use control sequences to optimize the output effect, but if running in a terminal that does not support control sequences, the control sequences will be output directly as strings, which will affect the user's reading.
+	> By default, the tool will use control sequences to optimize the output effect, but if running in a terminal that does not support control sequences, the control sequences will be output directly as strings, which will affect the user's reading.
 
-   > Users can disable the use of control sequences by modifying the `cli_disable_virtual_terminal_sequence` entry to `true` in the `- <home>/script/Entry/Entry.json` configuration.
+	> Users can disable the use of control sequences by modifying the `cli_disable_virtual_terminal_sequence` entry to `true` in the `- <home>/script/Entry/Entry.json` configuration.
 
 3. Full fonts: optional, if not supported, some characters (e.g. Chinese characters, emoji) will not be displayed properly. However, you can fix this by changing the language to `English`. It was indicated in `installation.md`.
 
@@ -113,29 +113,29 @@ Some operating systems do not provide (or turn off by default) these support in 
 
 - Windows 7 ~ 8
 
-  Windows 7 to 8 does not provide support for cmd, I recommend using [cmder](https://cmder.app/).
+	Windows 7 to 8 does not provide support for cmd, I recommend using [cmder](https://cmder.app/).
 
 - Windows 10
 
-  Windows 10 comes with cmd support turned off by default, I recommend using [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701).
+	Windows 10 comes with cmd support turned off by default, I recommend using [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701).
 
 - Windows 11
 
-  Windows 11 comes with cmd default shutdown support, and comes with Windows Terminal to provide support, please set it as the default terminal of your system.
+	Windows 11 comes with cmd default shutdown support, and comes with Windows Terminal to provide support, please set it as the default terminal of your system.
 
 - Macintosh 12.0.1+
 
-  Macintosh 12.0.1+ comes with Terminal support.
+	Macintosh 12.0.1+ comes with Terminal support.
 
 - Linux - Ubuntu 20.04+
 
-  Terminal support is included.
+	Terminal support is included.
 
 - Android
 
-  I recommend using [Termux](https://termux.dev/en/).
+	I recommend using [Termux](https://termux.dev/en/).
 
-  > Of course, you can also use the terminal of your desktop system via ADB.
+	> Of course, you can also use the terminal of your desktop system via ADB.
 
 > @ `Windows` \
 > When you double-click to run the launch script, it will run the program in the system default terminal. To change it to run in a specified third-party terminal, change `launch.cmd`, but switching terminals will cause the cmd window to blink once, unless you use Windows 11 and set Windows Terminal as the system default terminal.
