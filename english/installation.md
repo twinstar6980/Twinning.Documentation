@@ -177,11 +177,12 @@ For `Android` systems, you also need to perform the following actions:
 
 1. Grant full external storage read/write permission to the application in the system settings.
 
-	If the app does not obtain this permission, a ⌈Permission denied ⌋ error will appear when launching the console.
+	If the app does not obtain this permission, a ⌈ Permission denied ⌋ error will appear when launching the console.
 
-	> In different versions and vendor-customized systems, this permission is typically expressed as ⌈Read and write storage ⌋, ⌈Manage all files ⌋, etc. \
-	> In native systems, the authorization page can be found in the application settings; \
-	> For some vendor-customized systems, authorization may be required elsewhere, for example, MIUI requires granting the app ⌈All file access rights⌋ in ⌈Protect privacy⌋.
+	> In different versions and vendor-customized systems, this permission is typically expressed as ⌈ Read and write storage ⌋, ⌈ Manage all files ⌋, etc. \
+	> In the AOSP system before Android 11, you can grant in ⌈ System Settings ⌋ - ⌈ All apps ⌋ - ⌈ TwinStar ToolKit - Shell GUI ⌋ - ⌈ Permissions ⌋;\
+	> In the AOSP system after Android 11, you can grant in ⌈ System Settings ⌋ - ⌈ Special app access ⌋ - ⌈ All file access ⌋ - ⌈ TwinStar ToolKit - Shell GUI ⌋;\
+	> Some vendor-customized systems may move the grant page to other places, for example, MIUI needs to grant the application ⌈ all file access permissions ⌋ in ⌈ Protect Privacy ⌋.
 
 ## Install `Script`
 
