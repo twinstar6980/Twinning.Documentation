@@ -18,7 +18,9 @@
 
 - [安装 `Script`](#安装-Script)
 
-- [安装 `Windows Explorer Extension`](#安装-Windows-Explorer-Extension)
+- [安装 `Forwarder For Windows`](#安装-Forwarder-For-Windows)
+
+- [安装 `Forwarder For Android`](#安装-Forwarder-For-Android)
 
 - [安装 `Helper`](#安装-Helper)
 
@@ -28,7 +30,7 @@
 
 ## 平台支持
 
-* 操作系统：`Windows 7+` 、`Linux ?` 、`Macintosh 13.1~` 、`Android 9~` 、`iPhone 16.2~` 。
+* 操作系统：`Windows 7+` 、`Linux ~` 、`Macintosh 12~` 、`Android 9+` 、`iPhone 16~` 。
 
 * 处理器架构：`x86 32|64` 、`arm 32|64` 。
 
@@ -52,9 +54,13 @@
 	
 	脚本，控制工具的运行流程。
 
-* `Windows Explorer Extension`
+* `Forwarder For Windows`
 	
-	Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
+	转发器，使用户可以通过 Windows Explorer 右键菜单将文件转发至工具。
+
+* `Forwarder For Android`
+	
+	转发器，使用户可以通过 Android 文件分享功能将文件转发至工具。
 
 * `Helper`
 	
@@ -103,7 +109,7 @@
 	> @ `Windows` \
 	> 可以直接双击 `launch.cmd` 以运行，或将文件对象拖拽至其上并释放。
 
-捆绑包中还包含了 `Shell GUI` 、`Windows Explorer Extension` 模块的安装包，如有需要请参照下文手动安装。
+捆绑包中还包含了 `Shell GUI` 、`Forwarder` 模块的安装包，如有需要请参照下文手动安装。
 
 ## 安装 `Core`
 
@@ -191,9 +197,9 @@
 
 2. 将下载所得文件移动到主目录内，创建 `script` 目录，并将压缩包的所有内容解压至其中。
 
-## 安装 `Windows Explorer Extension`
+## 安装 `Forwarder For Windows`
 
-Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
+转发器，使用户可以通过 Windows Explorer 右键菜单将文件转发至工具。
 
 > 该模块专用于 Windows 系统，其他系统无法使用。
 
@@ -214,9 +220,9 @@ Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
 
 3. 以文本方式打开 `create_setting.reg` 文件，在其中编辑配置项，完成后右键选择注册表编辑器打开该文件以合并注册表。
 	
-	扩展将从系统注册表中读取扩展配置数据，所有配置均位于 `HKEY_CURRENT_USER\Software\TwinStar\ToolKit\WindowsExplorerExtension` ，以下是配置项：
+	扩展将从系统注册表中读取扩展配置数据，所有配置均位于 `HKEY_CURRENT_USER\Software\TwinStar\ToolKit\ForwarderForWindows` ，以下是配置项：
 	
-	* `launch_script`
+	* `script`
 		
 		字符串，启动脚本的路径，默认为空串。
 		
@@ -224,7 +230,7 @@ Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
 		
 		> 启动脚本应当正确地启动工具的 `Shell` 或 `Shell GUI` ，你需要自行编写启动脚本 `*.cmd` ，或使用捆绑包中预置的启动脚本 `launch.cmd` 。
 	
-	* `launch_limit`
+	* `limit`
 		
 		双字，所需文件对象的数量限制，默认为 `0` 。
 		
@@ -256,13 +262,29 @@ Windows Explorer 扩展，将工具集成至 Windows Explorer 右键菜单中。
 		
 		可以将不常用的功能组隐藏，以减少对右键菜单空间的占用、降低对右键菜单调出速度的影响。
 
-4. 现在，你可以在任意文件或目录的右键菜单内看到 `⌈ TwinStar ToolKit - Extension ⌋` 选项，并通过这些选项将文件对象快速转发至工具。
+4. 现在，你可以在任意文件或目录的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
 	
 	如果没有看到该选项，请尝试重启资源管理器 `explorer.exe` ，或重启计算机。
 	
 	> 请注意，由于 Windows 的限制，每次最多只能选择 16 项文件对象，超出该数目则无法成功转发文件对象。
 
 5. 卸载扩展程序后，可以使用 `remove_setting.reg` 文件以清除系统注册表中残留的扩展配置数据。
+
+## 安装 `Forwarder For Android`
+
+转发器，使用户可以通过 Android 文件分享功能将文件转发至工具。
+
+> 该模块专用于 Android 系统，其他系统无法使用。
+
+这是可选安装项，分发为应用包。
+
+1. 编译或下载适用于你设备的分发。
+
+2. 安装应用包。
+
+3. 现在，你可以在其他第三方文件管理器的文件分享目标内看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
+
+> 第三方应用传递的 URI 必须以 file 或 media 协议明文指向外存空间中的文件对象，否则应用无法解析得到真正的文件对象。
 
 ## 安装 `Helper`
 
