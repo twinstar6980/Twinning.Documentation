@@ -50,7 +50,7 @@ When you open the application for the first time, you need to specify the core, 
 
 1. Set the value of the `Core` item to `<home>/core`
 
-2. Set the value of the `Script` item to `@<home>/script/main.js`
+2. Set the value of the `Script` item to `<home>/script/main.js`
 
 3. Set the value of the `Argument` item to `<home>`
 

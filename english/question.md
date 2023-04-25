@@ -148,7 +148,7 @@ A typical example is RTON files that do not have `RTON` as the starting quad byt
 
 To handle non-standard files, the user needs to either fix the exception structure segments or modify and recompile the tool's `Core` module. Strictness judgments on the data are typically asserted via the `assert_test` snippet of the `Core` module, and most strictness judgments can be lifted by removing these assertion statements.
 
-In addition, the tool also implements additional `PopCap Reflection-Object-Notation Lenient Decode` and `PopCap Resource-Stream-Bundle Repair` features at the script level, which can be used to handle non-standard RTON files and RSB files.
+In addition, the tool also implements additional `PopCap Reflection-Object-Notation Decode by lenient` and `PopCap Resource-Stream-Bundle Unpack by lenient` features at the script level, which can be used to handle non-standard RTON files and RSB files.
 
 ## Version compatibility and old version downloads
 

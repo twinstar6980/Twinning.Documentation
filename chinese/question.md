@@ -146,7 +146,7 @@
 
 若要处理非标准的文件，用户需要修复其中的异常结构段，或者对工具的 `Core` 模块进行修改与重编译，对数据的严格性判断一般是通过 `Core` 模块的 `assert_test` 代码段进行值断言，可以通过删除这些断言语句以解除大多数的严格性判断。
 
-此外，工具也在脚本层实现了额外的 `PopCap Reflection-Object-Notation 宽松解码` 与 `PopCap Resource-Stream-Bundle 修复` 功能，它们可以用于处理非标准的 RTON 文件与 RSB 文件。
+此外，工具也在脚本层实现了额外的 `PopCap Reflection-Object-Notation 宽松解码` 与 `PopCap Resource-Stream-Bundle 宽松解包` 功能，它们可以用于处理非标准的 RTON 文件与 RSB 文件。
 
 ## 版本兼容性与旧版本下载
 

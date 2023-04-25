@@ -1050,11 +1050,11 @@ Then the corresponding batch version is as follows:
 
 	- `option` : `{ ... }` = `configuration.resource_convert_option`
 
-- `repair`
-
-	- `raw_file` : `*.rsb`
-
-	- `ripe_file` : `string` ~ `*.repair.rsb` = `?default`
+* `unpack_lenient`
+	
+	- `data_file` : `*.rsb`
+	
+	- `bundle_directory` : `string` ~ `*.rsb.bundle` = `?default`
 
 - `<configuration>`
 

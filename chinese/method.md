@@ -1051,11 +1051,11 @@
 	
 	* `option` : `{ ... }` = `configuration.resource_convert_option`
 
-* `repair`
+* `unpack_lenient`
 	
-	* `raw_file` : `*.rsb`
+	* `data_file` : `*.rsb`
 	
-	* `ripe_file` : `string` ~ `*.repair.rsb` = `?default`
+	* `bundle_directory` : `string` ~ `*.rsb.bundle` = `?default`
 
 * `<configuration>`
 	
