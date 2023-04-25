@@ -20,6 +20,8 @@
 
 - [安装 `Forwarder For Windows`](#安装-Forwarder-For-Windows)
 
+- [安装 `Forwarder For Macintosh`](#安装-Forwarder-For-Macintosh)
+
 - [安装 `Forwarder For Android`](#安装-Forwarder-For-Android)
 
 - [安装 `Helper`](#安装-Helper)
@@ -57,6 +59,10 @@
 * `Forwarder For Windows`
 	
 	转发器，使用户可以通过 Windows Explorer 右键菜单将文件转发至工具。
+
+* `Forwarder For Macintosh`
+	
+	转发器，使用户可以通过 Macintosh Finder 右键菜单将文件转发至工具。
 
 * `Forwarder For Android`
 	
@@ -269,6 +275,37 @@
 	> 请注意，由于 Windows 的限制，每次最多只能选择 16 项文件对象，超出该数目则无法成功转发文件对象。
 
 5. 卸载扩展程序后，可以使用 `remove_setting.reg` 文件以清除系统注册表中残留的扩展配置数据。
+
+## 安装 `Forwarder For Macintosh`
+
+转发器，使用户可以通过 Macintosh Finder 右键菜单将文件转发至工具。
+
+> 该模块专用于 Macintosh 系统，其他系统无法使用。
+
+这是可选安装项，分发为应用包。
+
+1. 编译或下载适用于你设备的分发。
+
+2. 安装应用包。
+
+3. 进入 ⌈ 系统设置 ⌋ - ⌈ 隐私与安全性 ⌋ - ⌈ 扩展 ⌋ - ⌈ 添加的扩展 ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ ，勾选其中的 ⌈ “访达”扩展 ⌋ 。
+
+4. 进入应用的沙盒目录 `/Users/<...>/Library/Containers/com.twinstar.toolkit.forwarder-for-macintosh.implement` ，创建文件 `launch.sh` 。
+	
+	该模块将在每次用户操作时执行 `launch.sh` ，并将所选文件路径作为其参数，应在该脚本中启动工具的外壳程序并传递参数；但需要注意，脚本的执行处于应用的沙盒环境中。
+	
+	以下是一个示例，它将启动 `Shell GUI` ：
+	
+	```sh
+	#!/bin/bash
+	"/Applications/TwinStar ToolKit - Shell GUI.app/Contents/MacOS/TwinStar ToolKit - Shell GUI" \
+		"-additional" \
+		"$@"
+	```
+
+5. 现在，你可以在任意文件或目录的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
+	
+	如果没有看到该选项，请尝试启动应用。
 
 ## 安装 `Forwarder For Android`
 
