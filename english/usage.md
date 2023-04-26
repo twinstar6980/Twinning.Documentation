@@ -30,11 +30,11 @@ The user needs to start `Shell` in the terminal with command line arguments in t
 
 - `<script>`
 
-	The second argument is the script to be passed to the core processing logic. This parameter is a string representing the JS script, or a script file path identified by the `@` as the first character of the script file path.
+	The second argument is the script file path passed to the core processing logic. It can also be marked with `$` as the first character, indicating that the rest of the string is used as a JS script.
 
 - `<argument>...`
 
-	The remaining arguments are passed as parameters to the core processing logic.
+	The remaining arguments are passed as arguments to the core processing logic.
 
 The main function returns 0 if no errors occur during execution, otherwise 1.
 
@@ -61,25 +61,32 @@ When you open the application for the first time, you need to specify the core, 
 
 Launching the `Shell GUI` in the terminal is also supported, with command line arguments in the following format:
 
-`[<ignore> <additional-argument>...] `
+`<core> <script> <argument>...`
 
-- `<ignore>`
+- `<core>`
 
-	The first argument is used as an identifier for the command start mode, and its value is ignored.
+	The first argument is the path to the core file.
 
-- `<additional-argument>...`
+- `<script>`
 
-	The remaining arguments are used as additional arguments to be passed to the core processing logic.
+	The second argument is the script file path passed to the core processing logic. It can also be marked with `$` as the first character, indicating that the rest of the string is used as a JS script.
 
-If no command-line arguments are passed, the application is started directly.
+- `<argument>...`
 
-If the command line argument is passed, the application will exit automatically after the command has been executed and succeeded (this behavior can be disabled within the application settings).
+	The remaining arguments are passed as arguments to the core processing logic.
+`-additional <argument>...`
 
-> Specifying core paths and scripts from the command line is not supported and their values must be set correctly in the app settings first.
+If the first command line parameter is `-additional`, the application will be started with the default command set in the application settings, and `<argument>...` will be additional arguments.
 
-For Android, the app also supports launching the app with ⌈File sharing feature ⌋, which is equivalent to launching the app with the file path as an additional parameter. You can select the file object in the third-party app and then forward the file object to the app via the ⌈File sharing feature ⌋.
+If the command line parameters are passed in, the application will automatically exit after the command is executed successfully (this behavior can be disabled in the application settings).
 
-> The URI passed by the third-party application must explicitly point to the file object in the external storage space with the file or media protocol, otherwise the application cannot resolve to get the real file object.
+If no command line parameters are passed in, the application will be started directly, and the user can manually execute the default command (the default command can be set in the application settings).
+
+> @ `Android` `iPhone` \
+> cannot pass in command line parameters directly.
+> 
+> @ `Android` \
+> can pass in command line parameters through `Intent`: `action = "com.twinstar.toolkit.shell_gui.action.LAUNCH", extra = { "command": Array<String> }`.
 
 ## Tool interaction
 
@@ -208,7 +215,7 @@ The IDs of the functions and their arguments are defined in [function](. /method
 
 ## Forwarding File Objects
 
-The tool is designed to primarily handle file objects in external storage space. The term ⌈ **forwarding** ⌋ refers to launching the tool with the path to the file object as an additional parameter. Forwarding can be done through startup scripts, Android file sharing function, Windows Explorer extensions, etc.
+The tool is designed to primarily handle file objects in external storage space. The term ⌈ **forwarding** ⌋ refers to launching the tool with the path to the file object as an additional parameter. Forwarding can be done through startup scripts, system extension provided by the forwarder module, etc.
 
 The file object to be processed is forwarded to the tool, and when the tool is launched, the available functions are listed according to the type of that file object, and the user can enter the serial number of the function to be executed.
 

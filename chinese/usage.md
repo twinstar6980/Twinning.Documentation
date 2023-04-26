@@ -83,7 +83,11 @@
 
 若不传入命令行参数，则直接启动应用，用户可以手动执行默认命令（可以在应用设置内设定默认命令）。
 
-> `Android` 与 `iPhone` 无法直接传入命令行参数；`Android` 可以通过 `Intent` 传入命令行参数 `action = "com.twinstar.toolkit.shell_gui.action.LAUNCH", extra = { "command": Array<String> }` 。
+> @ `Android` `iPhone` \
+> 无法直接传入命令行参数。
+> 
+> @ `Android` \
+> 可以通过 `Intent` 传入命令行参数：`action = "com.twinstar.toolkit.shell_gui.action.LAUNCH", extra = { "command": Array<String> }` 。
 
 ## 工具交互
 

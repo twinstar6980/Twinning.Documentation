@@ -8,7 +8,7 @@
 
 - [Compile or download precompiled distribution](#Compile-or-download-precompiled-distribution)
 
-- [Use Bundle Package](#Use-Bundle-Package)
+- [Use releases](#Use-releases)
 
 - [Install `Core`](#Install-Core)
 
@@ -18,7 +18,11 @@
 
 - [Install `Script`](#Install-Script)
 
-- [Install `Windows Explorer Extension`](#Install-Windows-Explorer-Extension)
+- [Install `Forwarder For Windows`](#Install-Forwarder-For-Windows)
+
+- [Install `Forwarder For Macintosh`](#Install-Forwarder-For-Macintosh)
+
+- [Install `Forwarder For Android`](#Install-Forwarder-For-Android)
 
 - [Install `Helper`](#Install-Helper)
 
@@ -28,7 +32,7 @@
 
 ## Platform
 
-- Operating systems: `Windows 7+`, `Linux ? `, `Macintosh 13.1~`, `Android 9~`, `iPhone 16.2~`.
+- Operating systems: `Windows 7+`, `Linux ~ `, `Macintosh 12~`, `Android 9+`, `iPhone 16~`.
 
 - Processor architectures: `x86 32|64`, `arm 32|64`.
 
@@ -42,19 +46,27 @@ The tool consists of several modules, different modules provide different functi
 
 - `Shell`
 
-	Shell, which provides the command line interface.
+	Shell, provides the command line interface.
 
 - `Shell GUI`
 
-	Shell, providing the graphical interface.
+	Shell, provides the graphical interface.
 
 - `Script`
 
-	Script that controls the flow of the tool.
+	Script, controls the workflow of the tool.
 
-- `Windows Explorer Extension`
+- `Forwarder For Windows`
 
-	Windows Explorer extension that integrates the tool into the Windows Explorer right-click menu.
+	Forwarder, which enables users to forward files to tools via the Windows Explorer right-click menu.
+
+- `Forwarder For Macintosh`
+
+	Forwarder, which enables users to forward files to tools via the Macintosh Finder right-click menu.
+
+- `Forwarder For Android`
+
+	Forwarder, which enables users to forward files to tools via the Android file sharing.
 
 - `Helper`
 
@@ -70,7 +82,7 @@ Before installing each component, you need to do some preparations:
 
 	`Core` 、`Shell` 、`Script` are portable, so place them in the home directory so that no data remains in other locations.
 
-	`Shell GUI` 、`Windows Explorer Extension` 、`Helper` are applications that need to be installed and need to be uninstalled by the user and cleared of application data.
+	`Shell GUI` 、`Forwarder For Windows` 、`Helper` are applications that need to be installed and need to be uninstalled by the user and cleared of application data.
 
 	> The location of the home directory can be optional, but make sure the user has **read and write allows permission** to the directory and its contents.
 
@@ -103,11 +115,11 @@ The bundle package is already organized the `Core`, `Shell`, `Script` and script
 	> @ `Windows` \
 	> Either double-click `launch.cmd` directly to run it, or drag and drop the file object onto it and release it.
 
-The bundle package also contains install package for `Shell GUI`, `Windows Explorer Extension` modules, please refer below to install them manually if you need them.
+The bundle package also contains installion package for `Shell GUI`, `Forwarder` modules, please refer below to install them manually if you need them.
 
 ## Install `Core`
 
-Core, which is responsible for the implementation of internal functions.
+Core, responsible for the implementation of internal functions.
 
 This is a required installation and is distributed as a dynamic library.
 
@@ -119,7 +131,7 @@ This is a required installation and is distributed as a dynamic library.
 
 ## Install `Shell`
 
-Shell, which provides a command line interface.
+Shell, provides the command line interface.
 
 This is an optional installation, distributed as an executable.
 
@@ -130,12 +142,12 @@ This is an optional installation, distributed as an executable.
 
 2. Move the downloaded file to your home directory and rename it to `shell`.
 
-	> @ `Windows` \
-	> Windows does not support calling executables without the `.exe` extension non-programmatically, so you need to run `> mklink shell.exe shell` in the terminal to create a soft link `- shell.exe` to `- shell`; or just rename `- shell` to `- shell.exe`.
+> @ `Windows` \
+> Windows does not support calling executables without the `.exe` extension non-programmatically, so you need to run `> mklink shell.exe shell` in the terminal to create a soft link `- shell.exe` to `- shell`; or just rename `- shell` to `- shell.exe`.
 
 3. Give `shell` executable privileges.
 
-	**Windows** users don't need anymore operation, users on other systems may have to do `> chmod +x shell` in the terminal to add executable permissions to `- shell`.
+	\*\*Users on other systems may have to do `> chmod +x shell` in the terminal to add executable permissions to `- shell`.
 
 	> @ `Android` \
 	> On systems with the FUSE scheme, `+ /storage/emulated/<id>` is actually a mapping of `+ /data/media/<id>`, but FUSE restrictions prevent users from modifying and executing files via `+ /storage/emulated/<id>`, which must be done via the real path ` + /data/media/<id>`.
@@ -147,7 +159,7 @@ For `Android` systems, you also need to perform the following actions:
 	For security and size reduction reasons, the C++ runtime used is c++\_shared. Therefore, you also need to copy the `libc++_shared.so` file of the corresponding processor architecture to the system library directory.
 
 	> The system library directory is `+ /system/lib` on 32-bit systems and `+ /system/lib64` on 64-bit systems.
-	> This file can be found in the Android NDK toolchain, and the corresponding `core` version of `libc++_shared.so` is pre-set in the bundle package.
+	> This file can be extracted from the Android NDK toolchain.
 
 For `iPhone` systems, you also need to do the following:
 
@@ -159,7 +171,7 @@ For `iPhone` systems, you also need to do the following:
 
 ## Install `Shell GUI`
 
-Shell, which provides a graphical interface.
+Shell, provides the graphical interface.
 
 This is an optional installation item, distributed as an application package.
 
@@ -186,7 +198,7 @@ For `Android` systems, you also need to perform the following actions:
 
 ## Install `Script`
 
-Scripts that control the flow of the tool's operation.
+Script, controls the workflow of the tool.
 
 This is a required installation item, issued as a script package.
 
@@ -194,9 +206,9 @@ This is a required installation item, issued as a script package.
 
 2. Move the downloaded files to your home directory, create a `script` directory, and uncompress all the contents of the zip package to it.
 
-## Install Windows Explorer Extension
+## Install `Forwarder For Windows`
 
-Windows Explorer Extension, which integrates tools into the Windows Explorer right-click menu.
+Forwarder, which enables users to forward files to tools via the Windows Explorer right-click menu.
 
 > This module is dedicated to Windows systems and does not available for other systems.
 
@@ -221,15 +233,15 @@ This is an optional installation and is distributed as an application package.
 
 	The extension will read the extension configuration data from the system registry, all configurations are located in `HKEY_CURRENT_USER\Software\TwinStar\ToolKit\WindowsExplorerExtension` and the following configuration items are listed:
 
-	- `launch_script`
+	- `script`
 
 		String, path to the launch script, default is empty string.
 
 		The extension will execute the specified launch script and pass the path to the selected file to it. Therefore, a launch script must be created in which to launch the shell and pass the parameters.
 
-		> The launch script should properly launch the `Shell` or `Shell GUI` of the tool, you need to write the launch script `*.cmd` by yourself, or use the pre-set launch script `launch.cmd` in the bundle package.
+		> The launch script should properly launch the tool's `Shell` or `Shell GUI`, you will need to write your own launch script `*.cmd` or use the pre-set launch script `launch.cmd` in the bundle package.
 
-	- `launch_limit`
+	- `limit`
 
 		Double word, limit on the number of file objects required, defaults to `0`.
 
@@ -268,6 +280,53 @@ This is an optional installation and is distributed as an application package.
 	> Please note that due to Windows limitations, you can only select a maximum of 16 file objects at a time, beyond that number you will not be able to successfully forward file objects.
 
 5. After uninstalling the extension, you can use the `remove_setting.reg` file to clear the extension configuration data left in the system registry.
+
+## Install `Forwarder For Macintosh`
+
+Forwarder, which enables users to forward files to tools via the Macintosh Finder right-click menu.
+
+> This module is dedicated to Macintosh systems and is not available for other systems.
+
+This is an optional installation item, distributed as an application package.
+
+1. Compile or download the distribution for your device.
+
+2. Install the application package.
+
+3. Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ and check one of the ⌈ "Finder" extension ⌋.
+
+4. Go to the application's sandbox directory `/Users/<... >/Library/Containers/com.twinstar.toolkit.forwarder-for-macintosh.implementation` and create the file `launch.sh`.
+
+	The module will execute `launch.sh` on every user action and will take the selected file path as its argument. Toolkit's shell program will be able to launched and passed arguments in this script. However, it should be noted that the script execute is in the sandbox environment of the application.
+
+	The following is an example that will launch the `Shell GUI`:
+
+	```sh
+	#! /bin/bash
+	"/Applications/TwinStar ToolKit - Shell GUI.app/Contents/MacOS/TwinStar ToolKit - Shell GUI" \
+		"-additional" \
+		"$@"
+	```
+
+5. Now you can see ⌈ TwinStar ToolKit - Forwarder ⌋ in the right-click menu item of any file or directory and use it to quickly forward file objects to the tool.
+
+	If you do not see this option, try launching the application.
+
+## Install `Forwarder For Android`
+
+Forwarder, which enables users to forward files to tools via the Android file sharing.
+
+> This module is dedicated to Android and is not available for other systems.
+
+This is an optional installation and is distributed as an application package.
+
+1. Compile or download the distribution for your device.
+
+2. Install the application package.
+
+3. Now you can see ⌈ TwinStar ToolKit - Forwarder ⌋ within the file sharing target of other third-party file managers and use it to quickly forward file objects to the tool.
+
+> The URI passed by the third-party application must explicitly point to the file object in the external storage space with the file or media protocol, otherwise the application cannot resolve it to get the real file object.
 
 ## Install `Helper`
 
