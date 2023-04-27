@@ -121,11 +121,11 @@
 	
 	自带 cmd 默认关闭支持，自带 Windows Terminal 提供支持，请将其设置为系统的默认终端。
 
-* Macintosh 12.0.1+
+* Macintosh 12+
 	
 	自带终端提供支持。
 
-* Linux - Ubuntu 20.04+
+* Linux - Ubuntu 20+
 	
 	自带终端提供支持。
 

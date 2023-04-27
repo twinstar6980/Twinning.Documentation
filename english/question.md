@@ -123,11 +123,11 @@ Some operating systems do not provide (or turn off by default) these support in 
 
 	Windows 11 comes with cmd default shutdown support, and comes with Windows Terminal to provide support, please set it as the default terminal of your system.
 
-- Macintosh 12.0.1+
+- Macintosh 12+
 
-	Macintosh 12.0.1+ comes with Terminal support.
+	Macintosh 12+ comes with Terminal support.
 
-- Linux - Ubuntu 20.04+
+- Linux - Ubuntu 20+
 
 	Terminal support is included.
 

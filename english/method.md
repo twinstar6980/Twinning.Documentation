@@ -894,6 +894,8 @@ Then the corresponding batch version is as follows:
 
 	- `version_number` : `bigint` = `configuration.version_number`
 
+	- `version_variant` : `bigint` = `configuration.version_variant`
+
 	- `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 - `decode` `*`
@@ -904,9 +906,13 @@ Then the corresponding batch version is as follows:
 
 	- `version_number` : `bigint` = `configuration.version_number`
 
+	- `version_variant` : `bigint` = `configuration.version_variant`
+
 - `<configuration>`
 
 	- `version_number` : `bigint` = `1`
+
+	- `version_variant` : `bigint` = `?input`
 
 	- `encode_buffer_size` : `string` = `8.0m`
 
