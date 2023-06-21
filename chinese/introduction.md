@@ -64,7 +64,11 @@
 
 	* 编码、解码
 
-* `PopCap Effect` (.popfx)
+- `PopCap Particle-Effect` (.ppf)
+
+	* 编码、解码
+
+* `PopCap Render-Effect` (.popfx)
 
 	* 编码、解码
 

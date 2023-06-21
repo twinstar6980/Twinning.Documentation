@@ -295,7 +295,7 @@ j1.value.int === j2.value.int; // false ，因为 j1 中的 int 属性值类型�
 // 对 Core.Tool.Wwise.SoundBank.Decode 接口的封装
 export function decode_fs(
 	data_file: string, // BNK文件路径
-	manifest_file: string, // 输出的清单文件路径，即BNK中的数据信息
+	definition_file: string, // 输出的定义文件路径，即BNK中的数据信息
 	embedded_media_directory: string, // 输出的BNK内嵌WEM路径
 	version: typeof Core.Tool.Wwise.SoundBank.Version.Value, // BNK文件版本
 ): void {
@@ -305,18 +305,18 @@ export function decode_fs(
 	let data = FileSystem.read_file(data_file);
 	// 构造流视图对象，作为解码函数的输入
 	let stream = Core.ByteStreamView.watch(data.view());
-	// 构造清单对象，作为解码函数的输出
-	let manifest = Core.Tool.Wwise.SoundBank.Manifest.SoundBank.default();
+	// 构造定义对象，作为解码函数的输出
+	let definition = Core.Tool.Wwise.SoundBank.Definition.SoundBank.default();
 	// 调用解码函数，完成之后，stream.position() 将存储已读取的数据总数，这可以用于判别BNK文件的实际尺寸
-	Core.Tool.Wwise.SoundBank.Decode.process_sound_bank(stream, manifest, Core.PathOptional.value(embedded_media_directory), version_c);
-	// 将解码得到的清单数据存储保存为文件
-	CoreX.JSON.write_fs(manifest_file, manifest.get_json(version_c));
+	Core.Tool.Wwise.SoundBank.Decode.process_sound_bank(stream, definition, Core.PathOptional.value(embedded_media_directory), version_c);
+	// 将解码得到的定义数据存储保存为文件
+	CoreX.JSON.write_fs(definition_file, definition.get_json(version_c));
 	return;
 }
 // 解码BNK文件
 decode_fs(
 	'C:/sample.bnk',
-	'C:/sample.bnk.bundle/manifest.json',
+	'C:/sample.bnk.bundle/definition.json',
 	'C:/sample.bnk.bundle/embedded_media',
 	{ number: 140n },
 );

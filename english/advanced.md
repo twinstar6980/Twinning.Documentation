@@ -293,7 +293,7 @@ The core interface is generally memory-based, so if you need to decode a file, y
 // Wwise.SoundBank.Decode interface
 export function decode_fs(
 	data_file: string, // BNK file path
-	manifest_file: string, // path to the exported manifest file, i.e. the data information in BNK
+	definition_file: string, // path to the exported definition file, i.e. the data information in BNK
 	embedded_media_directory: string, // The path to the BNK embedded WEM for export
 	Version: typeof Core.Tool.Wwise.SoundBank
 ): void {
@@ -303,23 +303,23 @@ export function decode_fs(
 	let data = FileSystem.read_file(data_file);
 	// Construct the stream view object as input to the decode function
 	let stream = Core.ByteStreamView.watch(data.view());
-	// Construct the manifest object as the output of the decode function
-	let manifest = Core.Tool.Wwise.SoundBank.Manifest.SoundBank.default();
+	// Construct the definition object as the output of the decode function
+	let definition = Core.Tool.Wwise.SoundBank.Definition.SoundBank.default();
 	// Call the decode function and when it's done, stream.position() will store the total amount of data read, which can be used to discern the actual size of the BNK file
 	Core.Tool.Wwise.SoundBank.Decode.process_sound_bank(
 		stream,
-		manifest,
+		definition,
 		Core.PathOptional.value(embedded_media_directory),
 		version_c
 	)
-	// Store and save the decoded manifest data as a file
-	CoreX.JSON.write_fs(manifest_file, manifest.get_json(version_c));
+	// Store and save the decoded definition data as a file
+	CoreX.JSON.write_fs(definition_file, definition.get_json(version_c));
 	return;
 }
 // Decode the BNK file
 decode_fs(
 	"C:/sample.bnk",
-	"C:/sample.bnk.bundle/manifest.json",
+	"C:/sample.bnk.bundle/definition.json",
 	"C:/sample.bnk.bundle/embedded_media",
 	{ number: 140n },
 );

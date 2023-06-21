@@ -18,9 +18,9 @@
 
 - [data.differentiation](#datadifferentiation)
 
-- [image.transformation](#imagetransformation)
+- [texture.transformation](#texturetransformation)
 
-- [image.atlas](#imageatlas)
+- [texture.atlas](#textureatlas)
 
 - [wwise.media](#wwisemedia)
 
@@ -48,7 +48,7 @@
 
 - [popcap.trail](#popcaptrail)
 
-- [popcap.effect](#popcapeffect)
+- [popcap.render_effect](#popcaprender_effect)
 
 - [popcap.character_font_widget_2](#popcapcharacter_font_widget_2)
 
@@ -180,7 +180,7 @@
 	
 	* `method_common_argument` : `{ ... }`
 		
-		文件对象相关参数。
+		公用功能参数。
 		
 		* `path_tactic_if_out_exist` : `string` = `none`
 			
@@ -193,7 +193,6 @@
 			+ `delete`: 删除已有文件对象。
 			
 			+ `override`: 覆盖已有文件对象。
-		
 
 ## `js`
 
@@ -215,9 +214,9 @@
 
 * `<configuration>`
 	
-	* `disable_trailing_comma` : `boolean` = `?input`
+	* `disable_trailing_comma` : `boolean` = `?default`
 	
-	* `disable_array_wrap_line` : `boolean` = `?input`
+	* `disable_array_wrap_line` : `boolean` = `?default`
 
 ## `data.hash`
 
@@ -387,7 +386,7 @@
 	
 	* `decode_buffer_size` : `string` = `1024.0m`
 
-## `image.transformation`
+## `texture.transformation`
 
 * `flip`
 	
@@ -419,11 +418,11 @@
 
 * `<configuration>`
 
-## `image.atlas`
+## `texture.atlas`
 
 * `pack`
 	
-	* `manifest_file` : `*.atlas.json`
+	* `definition_file` : `*.atlas.json`
 	
 	* `sprite_directory` : `string` ~ `*.sprite` = `?default`
 	
@@ -431,7 +430,7 @@
 
 * `unpack`
 	
-	* `manifest_file` : `*.atlas.json`
+	* `definition_file` : `*.atlas.json`
 	
 	* `atlas_file` : `string` ~ `*.atlas.png` = `?default`
 	
@@ -441,7 +440,7 @@
 	
 	* `sprite_directory` : `*.sprite`
 	
-	* `manifest_file` : `string` ~ `*.atlas.json` = `?default`
+	* `definition_file` : `string` ~ `*.atlas.json` = `?default`
 	
 	* `atlas_file` : `string` ~ `*.atlas.png` = `?default`
 
@@ -745,7 +744,7 @@
 
 * `encode` `*`
 	
-	* `manifest_file` : `*.pam.json`
+	* `definition_file` : `*.pam.json`
 	
 	* `data_file` : `string` ~ `*.pam` = `?default`
 	
@@ -757,7 +756,7 @@
 	
 	* `data_file` : `*.pam`
 	
-	* `manifest_file` : `string` ~ `*.pam.json` = `?default`
+	* `definition_file` : `string` ~ `*.pam.json` = `?default`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 
@@ -793,7 +792,7 @@
 
 * `encode` `*`
 	
-	* `manifest_file` : `*.reanim.json`
+	* `definition_file` : `*.reanim.json`
 	
 	* `data_file` : `string` ~ `*.reanim.compiled` = `?default`
 	
@@ -807,7 +806,7 @@
 	
 	* `data_file` : `*.reanim.compiled`
 	
-	* `manifest_file` : `string` ~ `*.reanim.json` = `?default`
+	* `definition_file` : `string` ~ `*.reanim.json` = `?default`
 	
 	* `version_platform` : `string` = `configuration.version_platform`
 	
@@ -825,7 +824,7 @@
 
 * `encode` `*`
 	
-	* `manifest_file` : `*.particle.json`
+	* `definition_file` : `*.particle.json`
 	
 	* `data_file` : `string` ~ `*.xml.compiled` = `?default`
 	
@@ -839,7 +838,7 @@
 	
 	* `data_file` : `*.xml.compiled`
 	
-	* `manifest_file` : `string` ~ `*.particle.json` = `?default`
+	* `definition_file` : `string` ~ `*.particle.json` = `?default`
 	
 	* `version_platform` : `string` = `configuration.version_platform`
 	
@@ -857,7 +856,7 @@
 
 * `encode` `*`
 	
-	* `manifest_file` : `*.trail.json`
+	* `definition_file` : `*.trail.json`
 	
 	* `data_file` : `string` ~ `*.trail.compiled` = `?default`
 	
@@ -871,7 +870,7 @@
 	
 	* `data_file` : `*.trail.compiled`
 	
-	* `manifest_file` : `string` ~ `*.trail.json` = `?default`
+	* `definition_file` : `string` ~ `*.trail.json` = `?default`
 	
 	* `version_platform` : `string` = `configuration.version_platform`
 	
@@ -885,11 +884,37 @@
 	
 	* `encode_buffer_size` : `string` = `8.0m`
 
-## `popcap.effect`
+## `popcap.particle_effect`
+
+- `encode` `*`
+
+	- `definition_file` : `*.ppf.json`
+
+	- `data_file` : `string` ~ `*.ppf` = `?default`
+
+	- `version_number` : `bigint` = `configuration.version_number`
+
+	- `buffer_size` : `string` = `configuration.encode_buffer_size`
+
+- `decode` `*`
+
+	- `data_file` : `*.ppf`
+
+	- `definition_file` : `string` ~ `*.ppf.json` = `?default`
+
+	- `version_number` : `bigint` = `configuration.version_number`
+
+- `<configuration>`
+
+	- `version_number` : `bigint` = `1`
+
+	- `encode_buffer_size` : `string` = `8.0m`
+
+## `popcap.render_effect`
 
 * `encode` `*`
 	
-	* `manifest_file` : `*.popfx.json`
+	* `definition_file` : `*.popfx.json`
 	
 	* `data_file` : `string` ~ `*.popfx` = `?default`
 	
@@ -903,7 +928,7 @@
 	
 	* `data_file` : `*.popfx`
 	
-	* `manifest_file` : `string` ~ `*.popfx.json` = `?default`
+	* `definition_file` : `string` ~ `*.popfx.json` = `?default`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -921,7 +946,7 @@
 
 * `encode` `*`
 	
-	* `manifest_file` : `*.cfw2.json`
+	* `definition_file` : `*.cfw2.json`
 	
 	* `data_file` : `string` ~ `*.cfw2` = `?default`
 	
@@ -931,7 +956,7 @@
 	
 	* `data_file` : `*.cfw2`
 	
-	* `manifest_file` : `string` ~ `*.cfw2.json` = `?default`
+	* `definition_file` : `string` ~ `*.cfw2.json` = `?default`
 
 * `<configuration>`
 	

@@ -64,7 +64,11 @@ The following functions are currently available:
 
 	- Decode, Encode
 
-- `PopCap Effect` (.popfx)
+- `PopCap Particle-Effect` (.ppf)
+
+	- Decode, Encode
+
+- `PopCap Render-Effect` (.popfx)
 
 	- Decode, Encode
 
