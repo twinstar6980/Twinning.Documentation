@@ -48,6 +48,8 @@
 
 - [popcap.trail](#popcaptrail)
 
+- [popcap.particle_effect](#popcapparticle_effect)
+
 - [popcap.render_effect](#popcaprender_effect)
 
 - [popcap.character_font_widget_2](#popcapcharacter_font_widget_2)
@@ -142,9 +144,13 @@ Then the corresponding batch version is as follows:
 
 		Interaction language. Can be `Chinese` or `English`.
 
-	- `cli_disable_virtual_terminal_sequence` : `boolean` = `false`
+	- `disable_cli_virtual_terminal_sequence` : `boolean` = `false`
 
 		Disable command-line virtual terminal sequences. Valid only when using a command-line shell.
+
+	* `disable_notification` : `boolean` = `false`
+
+		Disable notification feature.
 
 	- `pause_when_finish` : `boolean` = `true`
 

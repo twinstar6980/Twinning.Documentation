@@ -48,6 +48,8 @@
 
 - [popcap.trail](#popcaptrail)
 
+- [popcap.particle_effect](#popcapparticle_effect)
+
 - [popcap.render_effect](#popcaprender_effect)
 
 - [popcap.character_font_widget_2](#popcapcharacter_font_widget_2)
@@ -142,9 +144,13 @@
 		
 		交互语言。可以为 `Chinese` 或 `English` 。
 	
-	* `cli_disable_virtual_terminal_sequence` : `boolean` = `false`
+	* `disable_cli_virtual_terminal_sequence` : `boolean` = `false`
 		
 		禁用命令行虚拟终端序列。仅当使用命令行外壳时有效。
+	
+	* `disable_notification` : `boolean` = `false`
+		
+		禁用通知功能。
 	
 	* `pause_when_finish` : `boolean` = `true`
 		
