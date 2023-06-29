@@ -45,23 +45,23 @@ If the shell module used is `Shell GUI`, access rights vary depending on the run
 	Depends on the permissions of the user who started the program.
 
 * `Android`
-	
+
 	* Application's specific internal storage : `/data/user/<user>/<package>` .
-	
-	* Application's specific external storage : `/storage/emulated/<user>/Android/data/<package>` 、`/storage/emulated/<user>/Android/obb/<package>` .
-	
-	* System's shared external storage : `/storage/emulated/<user>` , but not including `Android/data` 、`Android/obb` .
-		
+
+	* Application's specific external storage : `/storage/emulated/<user>/Android/data/<package>` , `/storage/emulated/<user>/Android/obb/<package>` .
+
+	* System's shared external storage : `/storage/emulated/<user>` , but not including `Android/data` , `Android/obb` .
+
 		> This directory can only be accessed if the application has obtained full access permission of the external storage.
 		> 
-		> This directory is actually a mapping of `/data/media/<user>`. When accessing files through the `/storage/emulated/<user>` path, the access performance will be reduced due to the influence of FUSE, and the access permission is hard-coded to RW, and the file cannot be executed as a program; it can be accessed through `/data/media/<user>` path access files are not restricted, but ROOT permissions are required.
+		> This directory is actually a mapping of `/data/media/<user>`. When accessing files through the `/storage/emulated/<user>` path, the access performance will be reduced due to the influence of FUSE, and the access permission is hard-coded to RW, and the file cannot be executed as a program; files can be accessed via the `/data/media/<user>` path, which is not affected by FUSE, but ROOT permissions are required.
 
 * `iPhone`
-	
+
 	* Application's specific sandbox storage : `/var/mobile/Containers/Data/Application/<application>` .
-	
+
 	* Other application's shared storage : `/var/mobile/Containers/Data/Application/<application>/Documents` .
-	
+
 	> Files in the above storage cannot be executed as programs.
 
 ## Windows file path length limit

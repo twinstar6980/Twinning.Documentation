@@ -80,9 +80,9 @@ Before installing each component, you need to do some preparations:
 
 	Create an empty directory in the storage space which will hold all the files needed to run the tool, called the home directory.
 
-	`Core` 、`Shell` 、`Script` are portable, so place them in the home directory so that no data remains in other locations.
+	`Core` , `Shell` , `Script` are portable, so place them in the home directory so that no data remains in other locations.
 
-	`Shell GUI` 、`Forwarder For Windows` 、`Helper` are applications that need to be installed and need to be uninstalled by the user and cleared of application data.
+	`Shell GUI` , `Forwarder For Windows` , `Helper` are applications that need to be installed and need to be uninstalled by the user and cleared of application data.
 
 	> The location of the home directory can be optional, but make sure the user has **read and write allows permission** to the directory and its contents.
 
