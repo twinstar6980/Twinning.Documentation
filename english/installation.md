@@ -125,7 +125,7 @@ This is a required installation and is distributed as a dynamic library.
 
 1. Compile or download the distribution for your device.
 
-2. Move the downloaded file to the home directory and rename it to `core` 。
+2. Move the resulting file to the home directory, then rename it to `core`.
 
 > You have to choose the right `core` for your device and rename to `core`, otherwise the tool won't be able to launch correctly.
 
@@ -140,7 +140,7 @@ This is an optional installation, distributed as an executable.
 
 1. Compile or download the distribution for your device.
 
-2. Move the downloaded file to your home directory and rename it to `shell`.
+2. Move the resulting file to the home directory, then rename it to `shell`.
 
 > @ `Windows` \
 > Windows does not support calling executables without the `.exe` extension non-programmatically, so you need to run `> mklink shell.exe shell` in the terminal to create a soft link `- shell.exe` to `- shell`; or just rename `- shell` to `- shell.exe`.
@@ -148,9 +148,6 @@ This is an optional installation, distributed as an executable.
 3. Give `shell` executable privileges.
 
 	\*\*Users on other systems may have to do `> chmod +x shell` in the terminal to add executable permissions to `- shell`.
-
-	> @ `Android` \
-	> On systems with the FUSE scheme, `+ /storage/emulated/<id>` is actually a mapping of `+ /data/media/<id>`, but FUSE restrictions prevent users from modifying and executing files via `+ /storage/emulated/<id>`, which must be done via the real path ` + /data/media/<id>`.
 
 For `Android` systems, you also need to perform the following actions:
 
@@ -165,7 +162,7 @@ For `iPhone` systems, you also need to do the following:
 
 1. sign `core` and `shell`.
 
-	Running executables on the iPhone requires signature verification, and the distributed program files (**core | shell**) are not signed and need to be signed by the user in order to run properly on the iPhone.
+	Running executables on the iPhone requires signature verification, and the distributed program files (**core | shell**) are not signed and need to be signed by the user in order to run on the iPhone.
 
 	> You can use the **codesign** tool on the **Macintosh** to do this.
 
@@ -187,14 +184,9 @@ This is an optional installation item, distributed as an application package.
 
 For `Android` systems, you also need to perform the following actions:
 
-1. Grant full external storage read/write permission to the application in the system settings.
+1. Open the application, click ⌈ Setting ⌋ at the bottom right to enter the setting page, and click ⌈ Storage Permission ⌋ to request the storage permission.
 
-	If the app does not obtain this permission, a ⌈ Permission denied ⌋ error will appear when launching the console.
-
-	> In different versions and vendor-customized systems, this permission is typically expressed as ⌈ Read and write storage ⌋, ⌈ Manage all files ⌋, etc. \
-	> In the AOSP system before Android 11, you can grant in ⌈ System Settings ⌋ - ⌈ All apps ⌋ - ⌈ TwinStar ToolKit - Shell GUI ⌋ - ⌈ Permissions ⌋;\
-	> In the AOSP system after Android 11, you can grant in ⌈ System Settings ⌋ - ⌈ Special app access ⌋ - ⌈ All file access ⌋ - ⌈ TwinStar ToolKit - Shell GUI ⌋;\
-	> Some vendor-customized systems may move the grant page to other places, for example, MIUI needs to grant the application ⌈ all file access permissions ⌋ in ⌈ Protect Privacy ⌋.
+	If the application does not obtain this permission, it will only be able to access the application's specific storage, but not the files in the device's shared external storage.
 
 ## Install `Script`
 
@@ -204,7 +196,7 @@ This is a required installation item, issued as a script package.
 
 1. Compile or download the distribution for your device.
 
-2. Move the downloaded files to your home directory, create a `script` directory, and uncompress all the contents of the zip package to it.
+2. Move the resulting file to the home directory, then create a `script` directory, and uncompress all the contents of the zip package to it.
 
 ## Install `Forwarder For Windows`
 
@@ -326,7 +318,7 @@ This is an optional installation and is distributed as an application package.
 
 3. Now you can see ⌈ TwinStar ToolKit - Forwarder ⌋ within the file sharing target of other third-party file managers and use it to quickly forward file objects to the tool.
 
-> The URI passed by the third-party application must explicitly point to the file object in the external storage space with the file or media protocol, otherwise the application cannot resolve it to get the real file object.
+> Due to the limitations of the Android system, the forwarder cannot directly obtain the absolute path of the forwarded file, but passes the Content URI of the forwarded file to the Shell GUI as a command parameter for its startup, and the Shell GUI will try to parse the Content URI. See [Android Content URI processing strategy](./question.md#Android-Content-URI-processing-strategy) for details.
 
 ## Install `Helper`
 

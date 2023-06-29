@@ -48,16 +48,17 @@ The user can use `Shell GUI` as if it were a normal application.
 
 When you open the application for the first time, you need to specify the core, scripts, and parameters to be used at runtime in the application settings, and a typical configuration is as follows:
 
-1. Set the value of the `Core` item to `<home>/core`
+1. `Core` = `<home>/core` .
 
-2. Set the value of the `Script` item to `<home>/script/main.js`
+2. `Script` = `<home>/script/main.js` .
 
-3. Set the value of the `Argument` item to `<home>`
+3. `Argument` = `<home>` .
+
+4. `Fallback Directory For Invisible File` = `<home>/workspace` .
+
+	> This item is only available for Android and iPhone.
 
 > The `<home>` in the above settings needs to be replaced with the path to the home directory.
->
-> @ `Android` \
-> In `Android`, the `FUSE` mechanism degrades the performance of the app for reading and writing files in external storage, especially for small files; therefore, it is recommended to place the home directory in the app's internal storage directory `/data/user/<id>/<package>` or in the external storage directory `/storage/ emulated/<id>/Android/data/<package>`, which will effectively improve the performance of reading and writing files in the home directory, especially the loading speed of scripts.
 
 Launching the `Shell GUI` in the terminal is also supported, with command line arguments in the following format:
 

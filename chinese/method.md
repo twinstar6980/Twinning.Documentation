@@ -152,18 +152,6 @@
 		
 		禁用通知功能。
 	
-	* `pause_when_finish` : `boolean` = `true`
-		
-		在完成所有工作后暂停程序，等待用户关闭。
-	
-	* `notification_time_limit` : `null | bigint` = `15000`
-		
-		通知时限。在某项命令执行完成后，如果执行时间超过该值（毫秒），将推送系统通知以提醒用户。设为 null 将禁用通知。
-	
-	* `thread_limit` : `bigint` = `0`
-		
-		线程池上限数。目前无实际作用。
-	
 	* `byte_stream_use_big_endian` : `boolean` = `false`
 		
 		内部字节流操作时使用大端序。这个选项对一些大端序文件的处理是必要的。默认禁用，因为大多数时候用户处理的都是小端序文件。
@@ -199,6 +187,18 @@
 			+ `delete`: 删除已有文件对象。
 			
 			+ `override`: 覆盖已有文件对象。
+	
+	* `thread_limit` : `bigint` = `0`
+		
+		线程池上限数。目前无实际作用。
+	
+	* `notification_time_limit` : `null | bigint` = `15000`
+		
+		通知时限。在某项命令执行完成后，如果执行时间超过该值（毫秒），将推送系统通知以提醒用户。设为 null 将禁用通知。
+	
+	* `pause_when_finish` : `boolean` = `true`
+		
+		在完成所有工作后暂停程序，等待用户关闭。
 
 ## `js`
 

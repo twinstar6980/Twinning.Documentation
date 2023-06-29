@@ -2,7 +2,7 @@
 
 - [Introduction](#Introduction)
 
-- [General configuration](#General-configuration)
+- [Common configuration](#Common-configuration)
 
 - [js](#js)
 
@@ -134,7 +134,7 @@ Then the corresponding batch version is as follows:
 > 	
 > 	- `buffer_size` : `string` = `configuration.encode_buffer_size`
 
-## General configuration
+## Common configuration
 
 `- <home>/script/Entry/Entry.json` Defines the common behavior during the tool run.
 
@@ -151,18 +151,6 @@ Then the corresponding batch version is as follows:
 	* `disable_notification` : `boolean` = `false`
 
 		Disable notification feature.
-
-	- `pause_when_finish` : `boolean` = `true`
-
-		Pause the program after all functions evaluate is done and wait for the user to close it or press enter to exit.
-
-	- `notification_time_limit` : `null | bigint` = `15000`
-
-		Notification time limit. If the execution time exceeds this value (in milliseconds) after a command has completed, a system notification will be pushed to alert the user to set up the configuration. Setting to null will disable notifications.
-
-	- `thread_limit` : `bigint` = `0`
-
-		The maximum number of thread pools. Currently has no practical effect.
 
 	- `byte_stream_use_big_endian` : `boolean` = `false`
 
@@ -199,6 +187,18 @@ Then the corresponding batch version is as follows:
 			- `delete`: Delete an existing file object.
 
 			- `override`: Overwrite existing file objects.
+
+	- `thread_limit` : `bigint` = `0`
+
+		The maximum number of thread pools. Currently has no practical effect.
+
+	- `notification_time_limit` : `null | bigint` = `15000`
+
+		Notification time limit. If the execution time exceeds this value (in milliseconds) after a command has completed, a system notification will be pushed to alert the user to set up the configuration. Setting to null will disable notifications.
+
+	- `pause_when_finish` : `boolean` = `true`
+
+		Pause the program after all functions evaluate is done and wait for the user to close it or press enter to exit.
 
 ## `js`
 

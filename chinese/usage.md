@@ -46,18 +46,19 @@
 
 用户可以像使用普通应用一样使用 `Shell GUI` 。
 
-首次打开应用时，需要在应用设置中指定运行时使用的核心、脚本、参数，典型的配置如下：
+首次打开应用时，需要在应用设置中指定必需参数，典型的配置如下：
 
-1. 将 `核心` 项的值设为 `<home>/core` 。
+1. `Core` = `<home>/core` 。
 
-2. 将 `脚本` 项的值设为 `<home>/script/main.js` 。
+2. `Script` = `<home>/script/main.js` 。
 
-3. 将 `参数` 项的值设为 `<home>` 。
+3. `Argument` = `<home>` 。
+
+4. `Fallback Directory For Invisible File` = `<home>/workspace` 。
+	
+	> 该项仅适用于 Android 与 iPhone 。
 
 > 上述设置中的 `<home>` 需要替换为主目录的路径。
-> 
-> @ `Android` \
-> 在 `Android` 中，`FUSE` 机制会降低应用对外部存储空间内文件的读写性能，这一影响在对小文件的读写时尤为明显；因此，推荐将主目录放置于应用的内部存储目录 `/data/user/<id>/<package>` 或外部存储目录 `/storage/emulated/<id>/Android/data/<package>` 中，这将有效提高主目录下的文件读写性能，特别是脚本的加载速度。
 
 同样支持在终端中启动 `Shell GUI` ，命令行参数的格式如下：
 
