@@ -10,7 +10,7 @@
 
 - [Use releases](#Use-releases)
 
-- [Install `Core`](#Install-Core)
+- [Install `Kernel`](#Install-Kernel)
 
 - [Install `Shell`](#Install-Shell)
 
@@ -40,9 +40,9 @@
 
 The tool consists of several modules, different modules provide different functions:
 
-- `Core`
+- `Kernel`
 
-	Core, responsible for the implementation of internal functions.
+	Kernel, responsible for the implementation of internal functions.
 
 - `Shell`
 
@@ -80,7 +80,7 @@ Before installing each component, you need to do some preparations:
 
 	Create an empty directory in the storage space which will hold all the files needed to run the tool, called the home directory.
 
-	`Core` , `Shell` , `Script` are portable, so place them in the home directory so that no data remains in other locations.
+	`Kernel` , `Shell` , `Script` are portable, so place them in the home directory so that no data remains in other locations.
 
 	`Shell GUI` , `Forwarder For Windows` , `Helper` are applications that need to be installed and need to be uninstalled by the user and cleared of application data.
 
@@ -96,7 +96,7 @@ You can clone this project and compile it yourself. Pre-compiled binary distribu
 
 ## Use Bundle Package
 
-The bundle package is already organized the `Core`, `Shell`, `Script` and script for launch `Shell`, so it is not necessary to follow the detailed steps below to install the releases.
+The bundle package is already organized the `Kernel`, `Shell`, `Script` and script for launch `Shell`, so it is not necessary to follow the detailed steps below to install the releases.
 
 1. Check [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) and download the distribution for your device.
 
@@ -107,7 +107,7 @@ The bundle package is already organized the `Core`, `Shell`, `Script` and script
 	> See below for the detailed steps.
 	>
 	> @ `iPhone` \
-	> You will also need to do the following additional configuration: sign `core` and `shell`. \
+	> You will also need to do the following additional configuration: sign `kernel` and `shell`. \
 	> See below for details.
 
 3. Execute the `launch.[sh|cmd]` scripts to launch the program, the tool should start and run properly.
@@ -117,17 +117,17 @@ The bundle package is already organized the `Core`, `Shell`, `Script` and script
 
 The bundle package also contains installion package for `Shell GUI`, `Forwarder` modules, please refer below to install them manually if you need them.
 
-## Install `Core`
+## Install `Kernel`
 
-Core, responsible for the implementation of internal functions.
+Kernel, responsible for the implementation of internal functions.
 
 This is a required installation and is distributed as a dynamic library.
 
 1. Compile or download the distribution for your device.
 
-2. Move the resulting file to the home directory, then rename it to `core`.
+2. Move the resulting file to the home directory, then rename it to `kernel`.
 
-> You have to choose the right `core` for your device and rename to `core`, otherwise the tool won't be able to launch correctly.
+> You have to choose the right `kernel` for your device and rename to `kernel`, otherwise the tool won't be able to launch correctly.
 
 ## Install `Shell`
 
@@ -160,9 +160,9 @@ For `Android` systems, you also need to perform the following actions:
 
 For `iPhone` systems, you also need to do the following:
 
-1. sign `core` and `shell`.
+1. sign `kernel` and `shell`.
 
-	Running executables on the iPhone requires signature verification, and the distributed program files (**core | shell**) are not signed and need to be signed by the user in order to run on the iPhone.
+	Running executables on the iPhone requires signature verification, and the distributed program files (**kernel | shell**) are not signed and need to be signed by the user in order to run on the iPhone.
 
 	> You can use the **codesign** tool on the **Macintosh** to do this.
 

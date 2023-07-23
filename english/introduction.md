@@ -64,7 +64,7 @@ The following functions are currently available:
 
 	- Decode, Encode
 
-- `PopCap Particle-Effect` (.ppf)
+- `PopCap Particle-Effect` (.ppf) ***WIP***
 
 	- Decode, Encode
 

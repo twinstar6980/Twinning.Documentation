@@ -1,4 +1,4 @@
-# FAQ
+# Question
 
 - [Version compatibility and old version downloads](#Version-compatibility-and-old-version-downloads)
 
@@ -120,7 +120,7 @@ The following table lists the supported content URI formats, and the application
 
 	> By default, the tool will use control sequences to optimize the output effect, but if running in a terminal that does not support control sequences, the control sequences will be output directly as strings, which will affect the user's reading.
 
-	> Users can disable the use of control sequences by modifying the `cli_disable_virtual_terminal_sequence` entry to `true` in the `- <home>/script/Entry/Entry.json` configuration.
+	> Users can disable the use of control sequences by modifying the `disable_cli_virtual_terminal_sequence ` entry to `true` in the `- <home>/script/Entry/Entry.json` configuration.
 
 3. Full fonts: optional, if not supported, some characters (e.g. Chinese characters, emoji) will not be displayed properly. However, you can fix this by changing the language to `English`. It was indicated in `installation.md`.
 
@@ -161,7 +161,7 @@ The JSON read and write rules for the tool are self-implementing and does not fo
 
 1. Comments
 
-	The JSON standard does not allow comments, but the tools do allow comments, including line comments `// ... ` and block comments `/* ... */`. 2.
+	The JSON standard does not allow comments, but the tools do allow comments, including line comments `// ... ` and block comments `/* ... */`.
 
 2. Trailing commas
 
@@ -232,7 +232,7 @@ The loose handling of data (fault tolerance) can lead to potential bugs and unpr
 
 A typical example is RTON files that do not have `RTON` as the starting quad byte of the file, and although such files can be read normally by PvZ-2 games, the tool cannot decode them because this is considered by the tool to be a file data structure exception.
 
-To handle non-standard files, the user needs to either fix the exception structure segments or modify and recompile the tool's `Core` module. Strictness judgments on the data are typically asserted via the `assert_test` snippet of the `Core` module, and most strictness judgments can be lifted by removing these assertion statements.
+To handle non-standard files, the user needs to either fix the exception structure segments or modify and recompile the tool's `Kernel` module. Strictness judgments on the data are typically asserted via the `assert_test` snippet of the `Kernel` module, and most strictness judgments can be lifted by removing these assertion statements.
 
 In addition, the tool also implements additional `PopCap Reflection-Object-Notation Decode by lenient` and `PopCap Resource-Stream-Bundle Unpack by lenient` features at the script level, which can be used to handle non-standard RTON files and RSB files.
 

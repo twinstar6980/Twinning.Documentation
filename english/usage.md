@@ -22,19 +22,19 @@ The `Shell` provides a command line interface for the user.
 
 The user needs to start `Shell` in the terminal with command line arguments in the following format:
 
-`<core> <script> <argument>...`
+`<kernel> <script> <argument>...`
 
-- `<core>`
+- `<kernel>`
 
-	The first argument is the path to the core file.
+	The first argument is the path to the kernel file.
 
 - `<script>`
 
-	The second argument is the script file path passed to the core processing logic. It can also be marked with `$` as the first character, indicating that the rest of the string is used as a JS script.
+	The second argument is the script file path passed to the kernel processing logic. It can also be marked with `$` as the first character, indicating that the rest of the string is used as a JS script.
 
 - `<argument>...`
 
-	The remaining arguments are passed as arguments to the core processing logic.
+	The remaining arguments are passed as arguments to the kernel processing logic.
 
 The main function returns 0 if no errors occur during execution, otherwise 1.
 
@@ -46,9 +46,9 @@ The `Shell GUI` provides a GUI for the user.
 
 The user can use `Shell GUI` as if it were a normal application.
 
-When you open the application for the first time, you need to specify the core, scripts, and parameters to be used at runtime in the application settings, and a typical configuration is as follows:
+When you open the application for the first time, you need to specify the kernel, scripts, and parameters to be used at runtime in the application settings, and a typical configuration is as follows:
 
-1. `Core` = `<home>/core` .
+1. `Kernel` = `<home>/kernel` .
 
 2. `Script` = `<home>/script/main.js` .
 
@@ -62,19 +62,19 @@ When you open the application for the first time, you need to specify the core, 
 
 Launching the `Shell GUI` in the terminal is also supported, with command line arguments in the following format:
 
-`<core> <script> <argument>...`
+`<kernel> <script> <argument>...`
 
-- `<core>`
+- `<kernel>`
 
-	The first argument is the path to the core file.
+	The first argument is the path to the kernel file.
 
 - `<script>`
 
-	The second argument is the script file path passed to the core processing logic. It can also be marked with `$` as the first character, indicating that the rest of the string is used as a JS script.
+	The second argument is the script file path passed to the kernel processing logic. It can also be marked with `$` as the first character, indicating that the rest of the string is used as a JS script.
 
 - `<argument>...`
 
-	The remaining arguments are passed as arguments to the core processing logic.
+	The remaining arguments are passed as arguments to the kernel processing logic.
 `-additional <argument>...`
 
 If the first command line parameter is `-additional`, the application will be started with the default command set in the application settings, and `<argument>...` will be additional arguments.

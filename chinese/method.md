@@ -214,9 +214,9 @@
 	
 	* `destination_file` : `string` ~ `*.format.json` = `?default`
 	
-	* `disable_trailing_comma` : `boolean` ~ `CoreX.JSON.g_format.disable_trailing_comma` = `configuration.disable_trailing_comma`
+	* `disable_trailing_comma` : `boolean` ~ `KernelX.JSON.g_format.disable_trailing_comma` = `configuration.disable_trailing_comma`
 	
-	* `disable_array_wrap_line` : `boolean` ~ `CoreX.JSON.g_format.disable_array_wrap_line` = `configuration.disable_array_wrap_line`
+	* `disable_array_wrap_line` : `boolean` ~ `KernelX.JSON.g_format.disable_array_wrap_line` = `configuration.disable_array_wrap_line`
 
 * `<configuration>`
 	
