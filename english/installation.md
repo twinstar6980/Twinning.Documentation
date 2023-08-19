@@ -210,68 +210,23 @@ This is an optional installation and is distributed as an application package.
 
 2. Install the application package.
 
-	There are two sub-versions of the extension, which need to be selected according to your needs:
-
-	- `0_...` provides only the normal file forwarding portal; it appears as a single menu item in both the new and old-style right-click menus.
-
-	- `1_...` additionally provides a quick forwarding entry for each function, but has a greater impact on the speed of the right-click menu call-out; it is displayed as a single secondary menu in the new-style right-click menu, and as multiple primary menus in the old-style right-click menu.
-
-2. Install the application package.
-
 	> You need to trust the signing certificate in MSIX before installation. \
 	> Right-click to view the properties of `.msix`, switch to the ⌈Digital Signatures⌋ page, select the first item in the list, then click ⌈Details⌋, and in the pop-up window, select ⌈View Certificate⌋ - ⌈Install Certificate⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈Trusted persons⌋ to complete the installation of the certificate.
 
-3. Open the `create_setting.reg` file as text, edit the configuration items in it, and right-click and select Registry Editor to open the file to merge the registry when you are done.
+3. Start the application, and a Explorer window will pop up after running successfully, it pointing to the application's private data directory, which contains a script file named `forward.cmd`, open and edit this file in text form.
 
-	The extension will read the extension configuration data from the system registry, all configurations are located in `HKEY_CURRENT_USER\Software\TwinStar\ToolKit\WindowsExplorerExtension` and the following configuration items are listed:
+	Every time the user selects the extension menu item of the module, the module will run this script with the path of the selected file as the arguments, and the script is responsible for forwarding the received arguments to the toolkit.
 
-	- `script`
+	Here's an example that forward arguments to the `launch.cmd` ：
 
-		String, path to the launch script, default is empty string.
-
-		The extension will execute the specified launch script and pass the path to the selected file to it. Therefore, a launch script must be created in which to launch the shell and pass the parameters.
-
-		> The launch script should properly launch the tool's `Shell` or `Shell GUI`, you will need to write your own launch script `*.cmd` or use the pre-set launch script `launch.cmd` in the bundle package.
-
-	- `limit`
-
-		Double word, limit on the number of file objects required, defaults to `0`.
-
-		If `0`, there is no limit, then all file objects are forwarded to the tool together and need to be processed sequentially; otherwise, the limit is no more than the set number, then each file object is forwarded to the tool separately, and the user can process them separately in different windows.
-
-	- `language`
-
-		A string that extends the language used, default is `Chinese`.
-
-		Can be `Chinese` or `English`.
-
-	- `hidden_group_when_unavailable`
-
-		A double-word for whether to hide a group when none of its function items are available for the selected file object, default is `0`.
-
-		If the value is `0`, the group is shown, otherwise it is hidden.
-
-	- `hidden_item_when_unavailable`
-
-		Double-word whether to hide a feature item when it is not available for the selected file object, defaults to `0`.
-
-		The value is `0`, otherwise it is hidden.
-
-	- `visible_<group>`
-
-		Double-word to control whether to show each function group, default is `0`.
-
-		If the value is `0`, it is hidden, otherwise it is shown.
-
-		You can hide the less frequently used function groups to reduce the space occupied by the right-click menu and reduce the impact on the speed of the right-click menu. 4.
+	```cmd
+	@echo off
+	"C:\TwinStar.ToolKit\launch.cmd" %*
+	```
 
 4. You can now see the `⌈TwinStar ToolKit - Extension⌋` option inside the context menu of any file or directory, and use these options to quickly forward file objects to the tool.
 
 	If you do not see this option, try restarting Explorer `explorer.exe`, or restarting your computer.
-
-	> Please note that due to Windows limitations, you can only select a maximum of 16 file objects at a time, beyond that number you will not be able to successfully forward file objects.
-
-5. After uninstalling the extension, you can use the `remove_setting.reg` file to clear the extension configuration data left in the system registry.
 
 ## Install `Forwarder For Macintosh`
 
@@ -285,13 +240,11 @@ This is an optional installation item, distributed as an application package.
 
 2. Install the application package.
 
-3. Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ and check one of the ⌈ "Finder" extension ⌋.
+3. Start the application, and a Finder window will pop up after running successfully, it pointing to the application's private data directory, which contains a script file named `forward.sh`, open and edit this file in text form.
 
-4. Go to the application's sandbox directory `/Users/<... >/Library/Containers/com.twinstar.toolkit.forwarder-for-macintosh.implementation` and create the file `launch.sh`.
+	Every time the user selects the extension menu item of the module, the module will run this script with the path of the selected file as the arguments, and the script is responsible for forwarding the received arguments to the toolkit; but pay attention, it should be noted that the execution of the script is in the sandbox environment of the application.
 
-	The module will execute `launch.sh` on every user action and will take the selected file path as its argument. Toolkit's shell program will be able to launched and passed arguments in this script. However, it should be noted that the script execute is in the sandbox environment of the application.
-
-	The following is an example that will launch the `Shell GUI`:
+	Here's an example that forward arguments to the `Shell GUI` :
 
 	```sh
 	#! /bin/bash
@@ -300,9 +253,11 @@ This is an optional installation item, distributed as an application package.
 		"$@"
 	```
 
-5. Now you can see ⌈ TwinStar ToolKit - Forwarder ⌋ in the right-click menu item of any file or directory and use it to quickly forward file objects to the tool.
+4. Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ and check one of the ⌈ "Finder" extension ⌋.
 
-	If you do not see this option, try launching the application.
+5. Now you can see ⌈ TwinStar ToolKit - Forwarder ⌋ in the right-click menu item of any file or directory and use it to quickly forward file objects to the tool.
+	
+	If you do not see this option, try re-checking the extensions settings, or restarting your computer.
 
 ## Install `Forwarder For Android`
 

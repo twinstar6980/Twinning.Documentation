@@ -339,4 +339,4 @@ Kernel interfaces are cumbersome to call. `Script` has encapsulated the kernel i
 
 - `Console`: Wraps console interaction, providing consistent user interaction between Shell and ShellGUI.
 
-- `... `
+- `...`
