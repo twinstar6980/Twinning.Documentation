@@ -28,7 +28,7 @@ The tool uses a front-end and back-end separation architecture, divided into thr
 
 	> `Kernel` module implements this layer.
 
-- The `Shell`: the front-end, responsible for user interaction without any data processing; `Shell` is distributed as a native application for each platform, which will load the kernel dynamic library and call the interface functions of the kernel dynamic library with user-supplied scripts as parameters.
+- The `Shell`: the front-end, responsible for user interaction without any data processing; `Shell` is distributed as a native application for each platform, which will load the kernel dynamic library and call the interface functions of the kernel dynamic library with user-supplied scripts as arguments.
 
 	> `Shell` and `Shell GUI` modules implement this layer respectively.
 
@@ -40,9 +40,9 @@ By separating the front and back ends, the tool enables easy cross-platform adap
 
 The runtime flow of the tool is as follows:
 
-1. The user starts `Shell` and passes the parameters needed to run the tool.
+1. The user starts `Shell` and passes the arguments needed to run the tool.
 
-2. `Shell` starts and gets the file path of `Kernel`, the `Script` that the tool needs to execute, and the parameters passed to `Script` from the parameters provided by the user. The user can perform drag and drop or input path to the tool to provide the tool arguments.
+2. `Shell` starts and gets the file path of `Kernel`, the `Script` that the tool needs to execute, and the arguments passed to `Script` from the arguments provided by the user. The user can perform drag and drop or input path to the tool to provide the tool arguments.
 
 3. `Shell` loads `Kernel`, calls its interface function, and passes `Script` and arguments to it.
 
@@ -60,7 +60,7 @@ Users can integrate the tool backend (`Kernel`) into their projects through the 
 
 1. Loads the native dynamic library of `Kernel` in your project (a implement of `Shell`) to get the interface functions of `Kernel`.
 
-2. Call the interface function of `Kernel`, the `callback` parameter in the interface function is the shell callback implementation that the custom project needs to provide.
+2. Call the interface function of `Kernel`, the `callback` argument in the interface function is the shell callback implementation that the custom project needs to provide.
 
 Refer to several shell implementations in this tool:
 
@@ -86,7 +86,7 @@ The following is an example of how to integrate `Kernel` with the [`Shell`](http
 
 4. [`converter.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/converter.hpp) : Creates a helper class for the required `C-style` structure construction and destructuring.
 
-	> `Kernel` interface requires the user to pass C-style structures as parameter values and return values.
+	> `Kernel` interface requires the user to pass C-style structures as argument values and return values.
 
 5. [`invoker.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/invoker.hpp): Create a helper class to encapsulate the `Kernel` interface so that it can simply be called without having to consider the details of the call including type conversion.
 
@@ -104,7 +104,7 @@ The `Script` layer of the tool uses `JavaScript` as the scripting language. JS e
 
 Users can customize scripts to make the tool execute the results they want.
 
-You can rewrite the logic of the main script yourself, but it is recommended to build on the existing [Script module](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Script), which already provides a rich set of features with a good interaction mechanism.
+You can rewrite the logic of the main script yourself, but it is recommended to build on the existing [Script module](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Script), which already provides a rich set of functions with a good interaction mechanism.
 
 The following section describes how to customize the script.
 
@@ -112,11 +112,11 @@ The following section describes how to customize the script.
 
 `Kernel` only executes a script string or script file (specified by path), which is called the main script. It is possible to load and execute other scripts within the main script.
 
-`Kernel` requires that the value computed by the main script be a function, i.e., a ⌈master function⌋ at the script level, which has the following type:
+`Kernel` requires that the value computed by the main script be a function, i.e., a ⌈ main function ⌋ at the script level, which has the following type:
 
 ```ts
 type JS_MainFunction = (data: {
-	argument: Array<string>; // input. The script argument passed to the tool by the user.
+	argument: Array<string>; // Input. The script argument passed to the tool by the user.
 	result: string | undefined; // Output. The result of the script execution, which must be set to `non-undefined` before the end of the program.
 	error: any | undefined; // Output. If the error occurs while the script is running and is not `undefined`, the tool will treat the script execution as an error and throw an exception.
 }) => void;

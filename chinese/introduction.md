@@ -64,7 +64,7 @@
 
 	* 编码、解码
 
-- `PopCap Particle-Effect` (.ppf) ***WIP***
+- `PopCap Particle-Effect` (.ppf)
 
 	* 编码、解码
 
@@ -96,9 +96,9 @@
 
 	* 编码、解码
 
-* `PvZ-2 字符串表` (.txt|json)
+* `PvZ-2 Text-Table` (.txt|json)
 
-	* 版本转换
+	* 转换
 
 * ......
 
@@ -121,8 +121,6 @@
 * BILIBILI : [-TwinStar-](https://space.bilibili.com/12258540)
 
 * Outlook : twinkles.twinstar@outlook.com
-
-* QQMail : smallpc@qq.com
 
 ## 捐赠
 

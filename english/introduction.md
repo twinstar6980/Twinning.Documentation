@@ -14,11 +14,11 @@ The following functions are currently available:
 
 - `Wwise Sound-Bank` (.bnk)
 
-	- Decode, Encode
+	- Encode, Decode
 
 - `Marmalade DZip` (.dz)
 
-	- Unpack, pack
+	- Pack, Unpack
 
 - `PopCap ZLib` (.\*)
 
@@ -26,81 +26,79 @@ The following functions are currently available:
 
 - `PopCap Crypt-Data` (.cdat)
 
-	- Decrypt, encrypt
+	- Encrypt, Decrypt
 
 - `PopCap Reflection-Object-Notation` (.rton)
 
-	- Decode, Encode
+	- Encode, Decode
 
-	- Decrypt, encrypt
+	- Encrypt, Decrypt
 
 - `PopCap Texture` (.ptx)
 
-	- Decode, Encode
+	- Encode, Decode
 
 - `PopCap U-Texture` (.tex|txz)
 
-	- Decode, Encode
+	- Encode, Decode
 
 - `PopCap Sexy-Texture` (.tex)
 
-	- Decode, Encode
+	- Encode, Decode
 
 - `PopCap Animation` (.pam)
 
-	- Decode, Encode
+	- Encode, Decode
 
-	- Resize Flash Animation
+	- Convert with flash
 
 - `PopCap Re-Animation` (.reanim.compiled)
 
-	- Decode, Encode
+	- Encode, Decode
 
 - `PopCap Particle` (.xml.compiled)
 
-	- Decode, Encode
+	- Encode, Decode
 
 - `PopCap Trail` (.trail.compiled)
 
-	- Decode, Encode
+	- Encode, Decode
 
-- `PopCap Particle-Effect` (.ppf) ***WIP***
+- `PopCap Particle-Effect` (.ppf)
 
-	- Decode, Encode
+	- Encode, Decode
 
 - `PopCap Render-Effect` (.popfx)
 
-	- Decode, Encode
+	- Encode, Decode
 
 - `PopCap Character-Font-Widget-2` (.cfw2)
 
-	- Decode, Encode
+	- Encode, Decode
 
 - `PopCap Package` (.pak)
 
-	- Unpack, pack
+	- Pack, Unpack
 
-	- Encryption
+	- Encrypt
 
 - `PopCap Resource-Stream-Group` (.rsg)
 
-	- Unpack, pack
+	- Pack, Unpack
 
 - `PopCap Resource-Stream-Bundle` (.rsb)
 
-	- Unpack, pack
+	- Pack, Unpack
 
-	- Resource Conversion
-
-	- Repair Disturb packet
+	- Resource Convert
 
 - `PopCap Resource-Stream-Bundle-Patch` (.rsbpatch)
 
-	- Decode, Encode
+	- Encode, Decode
 
-- `PvZ-2 字符串表` (.txt|json)
+- `PvZ-2 Text-Table` (.txt|json)
 
-	- Versions conversion
+	- Convert
 
 - ......
 
@@ -112,7 +110,7 @@ The following functions are currently available:
 
 - [Method](./method.md)
 
-- [Questions](./question.md)
+- [Question](./question.md)
 
 - [Advanced](./advanced.md)
 
@@ -123,8 +121,6 @@ The following functions are currently available:
 - BILIBILI : [-TwinStar-](https://space.bilibili.com/12258540)
 
 - Outlook : twinkles.twinstar@outlook.com
-
-- QQMail : smallpc@qq.com
 
 ## Donate
 

@@ -6,7 +6,7 @@
 
 - [安装准备](#安装准备)
 
-- [编译或下载预编译分发](#编译或下载预编译分发)
+- [编译或下载二进制分发](#编译或下载二进制分发)
 
 - [使用捆绑包](#使用捆绑包)
 
@@ -86,7 +86,7 @@
 	
 	> 主目录的位置可以随意，但要确保用户有对该目录及其内容的 **读写执行权限** 。
 
-## 编译或下载预编译分发
+## 编译或下载二进制分发
 
 你可以克隆本项目并自行编译，本项目的 [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) 中也提供了预编译的二进制分发。
 
@@ -151,7 +151,7 @@
 
 1. 安装 **C++ 共享库** 至系统库目录。
 	
-	出于安全性与减小体积的考虑，程序使用的 C++ 运行时 为 c++_shared 。因此，用户还需要将对应处理器架构的 `libc++_shared.so` 文件复制到系统库目录中。
+	出于安全性与减小体积的考虑，程序使用的 C++ 运行时为 c++_shared 。因此，用户还需要将对应处理器架构的 `libc++_shared.so` 文件复制到系统库目录中。
 	
 	> 系统库目录在 32 位系统中为 `+ /system/lib` ，在 64 位系统中为 `+ /system/lib64` 。
 	> 
@@ -183,7 +183,7 @@
 
 1. 打开应用，点击右下方 ⌈ Setting ⌋ 进入设置页，点击 ⌈ Storage Permission ⌋ 一栏以申请存储空间访问权限。
 	
-	如果应用未取得这一权限，将只能访问应用的专属存储空间，而无法访问设备的共享外部存储空间内的文件。
+	如果应用未取得这一权限，将只能访问应用的专属存储空间，而无法访问设备的共享外部存储空间。
 
 ## 安装 `Script`
 
@@ -214,12 +214,25 @@
 	
 	用户每次选择该模块的扩展菜单项时，模块会将所选文件的路径作为参数启动该脚本，该脚本负责将接收到的参数转发至工具。
 	
-	以下是一个示例，它能够将参数转发至 `launch.cmd` ：
+	以下示例能够将参数转发至 `launch.cmd` 与 `Helper` 模块提供的快速转发窗口中：
 	
 	```cmd
 	@echo off
 	"C:\TwinStar.ToolKit\launch.cmd" %*
+	"C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_14.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+		-WindowSize        480 960 ^
+		-WindowAlwaysOnTop true ^
+		-ModuleType        CommandForwarderQuick ^
+		-ModuleOption ^
+			-AutomaticClose  true ^
+			-ParallelExecute false ^
+			-EnableBatch     false ^
+			-EnableFilter    true ^
+			-RemainInput     false ^
+			-Input           %*
 	```
+	
+	> `Helper.exe` 的路径需要自行在你的设备上检索。
 
 4. 现在，你可以在任意文件或目录的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
 	
@@ -241,7 +254,7 @@
 	
 	用户每次选择该模块的扩展菜单项时，模块会将所选文件的路径作为参数启动该脚本，该脚本负责将接收到的参数转发至工具；但需要注意，脚本的执行处于应用的沙盒环境中。
 	
-	以下是一个示例，它能够将参数转发至 `Shell GUI` ：
+	以下示例能够将参数转发至 `Shell GUI` ：
 	
 	```sh
 	#!/bin/bash

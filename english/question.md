@@ -54,7 +54,7 @@ If the shell module used is `Shell GUI`, access rights vary depending on the run
 
 		> This directory can only be accessed if the application has obtained full access permission of the external storage.
 		> 
-		> This directory is actually a mapping of `/data/media/<user>`. When accessing files through the `/storage/emulated/<user>` path, the access performance will be reduced due to the influence of FUSE, and the access permission is hard-coded to RW, and the file cannot be executed as a program; files can be accessed via the `/data/media/<user>` path, which is not affected by FUSE, but ROOT permissions are required.
+		> This directory is actually a mapping of `/data/media/<user>`. When accessing files through the `/storage/emulated/<user>` path, the access performance will be reduced due to the influence of FUSE, and the access permission is hard-coded to RW, and the file cannot be executed as a program; files can be accessed via the `/data/media/<user>` path to bypass FUSE, but ROOT permissions are required.
 
 * `iPhone`
 
@@ -234,7 +234,7 @@ A typical example is RTON files that do not have `RTON` as the starting quad byt
 
 To handle non-standard files, the user needs to either fix the exception structure segments or modify and recompile the tool's `Kernel` module. Strictness judgments on the data are typically asserted via the `assert_test` snippet of the `Kernel` module, and most strictness judgments can be lifted by removing these assertion statements.
 
-In addition, the tool also implements additional `PopCap Reflection-Object-Notation Decode by lenient` and `PopCap Resource-Stream-Bundle Unpack by lenient` features at the script level, which can be used to handle non-standard RTON files and RSB files.
+In addition, the tool also implements additional `PopCap Reflection-Object-Notation Decode by lenient` and `PopCap Resource-Stream-Bundle Unpack by lenient` methods at the script level, which can be used to handle non-standard RTON files and RSB files.
 
 ## Processing big-endian files
 
@@ -250,7 +250,7 @@ After that, the big-endian files are forwarded to the tool, and if there are no 
 
 PvZ-2 for the Android platform stores RSB packet files as `OBB` extension packet files, which is a generic extension for Android application extension packets and is not discernible; OBB files can store data in any format, not just RSB packet format.
 
-For this reason, the tool does not consider the `.obb` file to be an RSB file, and if the `.obb` file is forwarded directly to the tool, the user will not see the functions related to RSB from the options. If the user is sure that the `.obb` file is stored in RSB packet format, the file extension needs to be changed from `.obb` to `.rsb` in order for the tool to recognize RSB functions.
+For this reason, the tool does not consider the `.obb` file to be an RSB file, and if the `.obb` file is forwarded directly to the tool, the user will not see the methods related to RSB from the options. If the user is sure that the `.obb` file is stored in RSB packet format, the file extension needs to be changed from `.obb` to `.rsb` in order for the tool to recognize RSB methods.
 
 In addition, it is possible to create soft links to `.obb` files with `.rsb` as the link extension, which avoids the need to rename `.rsb` to `.obb` after repackaging.
 

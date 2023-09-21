@@ -54,7 +54,7 @@
 		
 		> 仅当应用取得了外部存储空间的完全访问权限时才可访问该目录。
 		> 
-		> 该目录实际上是 `/data/media/<user>` 的映射。通过 `/storage/emulated/<user>` 路径访问文件时，会受 FUSE 影响而导致访问性能的降低，并且访问权限被硬编码为 RW ，文件无法被作为程序执行；可以通过 `/data/media/<user>` 路径访问文件，不受 FUSE 影响限制，但需要 ROOT 权限。
+		> 该目录实际上是 `/data/media/<user>` 的映射。通过 `/storage/emulated/<user>` 路径访问文件时，会受 FUSE 影响而导致访问性能的降低，并且访问权限被硬编码为 RW ，文件无法被作为程序执行；可以通过 `/data/media/<user>` 路径访问文件以绕过 FUSE ，但需要 ROOT 权限。
 
 * `iPhone`
 	

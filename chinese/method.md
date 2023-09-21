@@ -6,8 +6,6 @@
 
 - [js](#js)
 
-- [json](#json)
-
 - [data.hash](#datahash)
 
 - [data.encoding](#dataencoding)
@@ -17,6 +15,10 @@
 - [data.compression](#datacompression)
 
 - [data.differentiation](#datadifferentiation)
+
+- [text.json](#textjson)
+
+- [text.xml](#textxml)
 
 - [texture.transformation](#texturetransformation)
 
@@ -64,6 +66,8 @@
 
 - [pvz2.text_table](#pvz2text_table)
 
+- [pvz2.resource_manifest](#pvz2resource_manifest)
+
 - [pvz2.remote_android_helper](#pvz2remote_android_helper)
 
 ## 介绍
@@ -80,7 +84,7 @@
 	
 	批处理功能也对一些需要频繁内存申请与释放的常规功能进行了效率优化。
 
-各功能根据性质分为多个功能组，并存放于 `+ <home>/script/Entry/method` ，其中的每个 `JS` 文件提供一组功能，与之同名的 `JSON` 文件则保存了该组功能的配置，用户可根据需要修改配置。
+各功能根据性质分为多个功能组，并存放于 `+ <home>/script/Executor/Implement` ，其中的每个 `JS` 文件提供一组功能，与之同名的 `JSON` 文件则保存了该组功能的配置，用户可根据需要修改配置。
 
 用户可以通过命令行参数使工具直接执行某项功能，而无需运行时输入，具体参见 [附加参数](./usage.md#附加参数) 段落。
 
@@ -92,7 +96,7 @@
 > 
 > * `<method-item-id` [ `*` ]
 > 	
-> 	功能的项 ID ，与功能的组 ID 组合成功能的 ID 。例如组 ID 为 `popcap.rton` 、项 ID 为 `decode` ，则该功能 ID 为 `popcap.rton.decode` 。如果带有 `*` 标识，则表示该功能提供批处理版本。
+> 	功能的项 ID ，与功能的组 ID 组合成功能的 ID 。例如组 ID 为 `popcap.animation` 、项 ID 为 `decode` ，则该功能 ID 为 `popcap.animation.decode` 。如果带有 `*` 标识，则表示该功能提供批处理版本。
 > 	
 > 	* `variable-name` : `<filter-rule>`
 > 		
@@ -104,35 +108,11 @@
 > 		
 > 		参数值为字符串 `?input` 时，将在执行时要求用户输入参数。
 > 		
->		有些参数存在默认行为，用户可以指定参数值为字符串 `?default` 以启用默认行为，文档中将以 `~` 做出标识，并在其后跟随默认行为的取值。 一般地，输出参数具有默认行为，即以输入参数的值生成输出参数的值，例如 `popcap.rton.decode` 功能以 `*.rton` 文件作为输入参数，由此生成同名的 `*.json` 文件作为输出参数。
+>		有些参数可以由程序自动生成，用户可以指定参数值为字符串 `?automatic` 以启用自动生成行为，文档中将以 `~` 做出标识，并在其后跟随自动生成的值。 一般地，输出参数能够以输入参数的值自动生成，例如 `popcap.animation.decode` 功能以 `*.pam` 文件作为输入参数，并自动生成同名的 `*.pam.json` 文件作为输出参数。
 > 		
-> 		`<value>` 则是当用户未指定参数值时的默认参数值，一般是显式的 `?input` 或 `?default` ，或者从对应的配置文件中获取默认参数值。
+> 		`<value>` 则是当用户未指定参数值时的默认参数值，一般是显式的 `?input` 或 `?automatic` ，或者从对应的配置文件中获取默认参数值。
 
-下面列出的所有功能都是常规功能，部分常规功能存在对应的批处理版本，批处理版本的功能与常规功能保持一致，但功能 ID 附加了 `.batch` 后缀，并且输入参数、输出参数附加了 `_directory` 后缀。
-
-例如，以下是 `popcap.reflection_object_notation.encode` 功能的定义：
-
-> * `encode` `*`
-> 	
-> 	* `value_file` : `*.json`
-> 	
-> 	* `data_file` : `string` ~ `*.rton` = `?default`
-> 	
-> 	* `version_number` : `bigint` = `configuration.version_number`
-> 	
-> 	* `buffer_size` : `string` = `configuration.encode_buffer_size`
-
-则对应的批处理版本如下：
-
-> * `encode.batch`
-> 	
-> 	* `value_file_directory` : `*`
-> 	
-> 	* `data_file_directory` : `string` ~ `*.rton_encode` = `?default`
-> 	
-> 	* `version_number` : `bigint` = `configuration.version_number`
-> 	
-> 	* `buffer_size` : `string` = `configuration.encode_buffer_size`
+以下列出的所有功能都是常规功能，部分常规功能存在对应的批处理版本，则会以 `*` 符号标出。功能的批处理版本与常规版本的参数保持一致，但批处理功能的 ID 附加了 `.batch` 后缀，并且输入参数、输出参数分别指向一个用于输入、输出每次处理对象的目录。
 
 ## 通用配置
 
@@ -172,29 +152,13 @@
 			
 			禁用数组元素间的换行。
 	
-	* `method_common_argument` : `{ ... }`
-		
-		公用功能参数。
-		
-		* `path_tactic_if_out_exist` : `string` = `none`
-			
-			当输出路径指向的文件对象存在时的策略。取值如下：
-			
-			+ `none`: 无，由用户在运行时选择。
-			
-			+ `trash`: 将已有文件对象移动至回收目录中 `+ <home>/trash` 。
-			
-			+ `delete`: 删除已有文件对象。
-			
-			+ `override`: 覆盖已有文件对象。
-	
 	* `thread_limit` : `bigint` = `0`
 		
 		线程池上限数。目前无实际作用。
 	
 	* `notification_time_limit` : `null | bigint` = `15000`
 		
-		通知时限。在某项命令执行完成后，如果执行时间超过该值（毫秒），将推送系统通知以提醒用户。设为 null 将禁用通知。
+		通知时限。在某项命令执行完成后，如果有效执行时间超过该值（毫秒），将推送系统通知以提醒用户。设为 null 将禁用通知。
 	
 	* `pause_when_finish` : `boolean` = `true`
 		
@@ -202,31 +166,15 @@
 
 ## `js`
 
-* `execute`
+* `execute` `*`
 	
 	* `script_file` : `*.js`
-
-## `json`
-
-* `format` `*`
 	
-	* `source_file` : `*.json`
-	
-	* `destination_file` : `string` ~ `*.format.json` = `?default`
-	
-	* `disable_trailing_comma` : `boolean` ~ `KernelX.JSON.g_format.disable_trailing_comma` = `configuration.disable_trailing_comma`
-	
-	* `disable_array_wrap_line` : `boolean` ~ `KernelX.JSON.g_format.disable_array_wrap_line` = `configuration.disable_array_wrap_line`
-
-* `<configuration>`
-	
-	* `disable_trailing_comma` : `boolean` = `?default`
-	
-	* `disable_array_wrap_line` : `boolean` = `?default`
+	* `is_module` : `boolean` = `?input`
 
 ## `data.hash`
 
-* `md5`
+* `md5` `*`
 	
 	* `target_file` : `*`
 
@@ -234,35 +182,35 @@
 
 ## `data.encoding`
 
-* `base64.encode`
+* `base64.encode` `*`
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?default`
+	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
 
-* `base64.decode`
+* `base64.decode` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?default`
+	* `raw_file` : `string` ~ `*.bin` = `?automatic`
 
 * `<configuration>`
 
 ## `data.encryption`
 
-* `xor.encrypt`
+* `xor.encrypt` `*`
 	
 	* `plain_file` : `*`
 	
-	* `cipher_file` : `string` ~ `*.bin` = `?default`
+	* `cipher_file` : `string` ~ `*.bin` = `?automatic`
 	
 	* `key` : `bigint` = `?input`
 
-* `rijndael.encrypt`
+* `rijndael.encrypt` `*`
 	
 	* `plain_file` : `*`
 	
-	* `cipher_file` : `string` ~ `*.bin` = `?default`
+	* `cipher_file` : `string` ~ `*.bin` = `?automatic`
 	
 	* `mode` : `string` = `?input`
 	
@@ -272,11 +220,11 @@
 	
 	* `iv` : `string` = `?input`
 
-* `rijndael.decrypt`
+* `rijndael.decrypt` `*`
 	
 	* `cipher_file` : `*`
 	
-	* `plain_file` : `string` ~ `*.bin` = `?default`
+	* `plain_file` : `string` ~ `*.bin` = `?automatic`
 	
 	* `mode` : `string` = `?input`
 	
@@ -290,73 +238,73 @@
 
 ## `data.compression`
 
-* `deflate.compress`
+* `deflate.compress` `*`
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?default`
+	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
 
-* `deflate.uncompress`
+* `deflate.uncompress` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?default`
+	* `raw_file` : `string` ~ `*.bin` = `?automatic`
 	
 	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
 
-* `zlib.compress`
+* `zlib.compress` `*`
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?default`
+	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
 
-* `zlib.uncompress`
+* `zlib.uncompress` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?default`
+	* `raw_file` : `string` ~ `*.bin` = `?automatic`
 	
 	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
 
-* `gzip.compress`
+* `gzip.compress` `*`
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?default`
+	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
 
-* `gzip.uncompress`
+* `gzip.uncompress` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?default`
+	* `raw_file` : `string` ~ `*.bin` = `?automatic`
 	
 	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
 
-* `bzip2.compress`
+* `bzip2.compress` `*`
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?default`
+	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
 
-* `bzip2.uncompress`
+* `bzip2.uncompress` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?default`
+	* `raw_file` : `string` ~ `*.bin` = `?automatic`
 	
 	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
 
-* `lzma.compress`
+* `lzma.compress` `*`
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?default`
+	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
 
-* `lzma.uncompress`
+* `lzma.uncompress` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?default`
+	* `raw_file` : `string` ~ `*.bin` = `?automatic`
 	
 	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
 
@@ -368,21 +316,21 @@
 
 * `vcdiff.encode`
 	
-	* `before_file` : `*`
+	* `after_file` : `*`
 	
-	* `after_file` : `string` = `?input`
+	* `patch_file` : `string` ~ `*.patch.bin` = `?automatic`
 	
-	* `patch_file` : `string` ~ `<after_file>.patch.bin` = `?default`
+	* `before_file` : `string` = `?input`
 	
 	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `vcdiff.decode`
 	
-	* `before_file` : `*`
+	* `patch_file` : `*`
 	
-	* `patch_file` : `string` = `?input`
+	* `after_file` : `string` ~ `*.after.bin` = `?automatic`
 	
-	* `after_file` : `string` ~ `<patch_file>.after.bin` = `?default`
+	* `before_file` : `string` = `?input`
 	
 	* `buffer_size` : `string` = `configuration.decode_buffer_size`
 
@@ -392,33 +340,61 @@
 	
 	* `decode_buffer_size` : `string` = `1024.0m`
 
+## `text.json`
+
+* `format` `*`
+	
+	* `source_file` : `*.json`
+	
+	* `destination_file` : `string` ~ `*.format.json` = `?automatic`
+	
+	* `disable_trailing_comma` : `boolean` ~ `KernelX.JSON.g_format.disable_trailing_comma` = `configuration.disable_trailing_comma`
+	
+	* `disable_array_wrap_line` : `boolean` ~ `KernelX.JSON.g_format.disable_array_wrap_line` = `configuration.disable_array_wrap_line`
+
+* `<configuration>`
+	
+	* `disable_trailing_comma` : `boolean` = `?automatic`
+	
+	* `disable_array_wrap_line` : `boolean` = `?automatic`
+
+## `text.xml`
+
+* `format` `*`
+	
+	* `source_file` : `*.xml`
+	
+	* `destination_file` : `string` ~ `*.format.xml` = `?automatic`
+
+* `<configuration>`
+
 ## `texture.transformation`
 
-* `flip`
+* `flip` `*`
 	
 	* `source_file` : `*.png`
 	
-	* `destination_file` : `string` ~ `*.flip.png` = `?default`
+	* `destination_file` : `string` ~ `*.flip.png` = `?automatic`
 	
 	* `horizontal` : `boolean` = `?input`
 	
 	* `vertical` : `boolean` = `?input`
 
-* `scale`
+* `scale` `*`
 	
 	* `source_file` : `*.png`
 	
-	* `destination_file` : `string` ~ `*.scale.png` = `?default`
+	* `destination_file` : `string` ~ `*.scale.png` = `?automatic`
 	
-	* `width` : `bigint` = `?input`
+	* `size_width` : `bigint` = `?input`
 	
-	* `height` : `bigint` = `?input`
+	* `size_height` : `bigint` = `?input`
 
-* `scale_rate`
+* `scale_rate` `*`
 	
 	* `source_file` : `*.png`
 	
-	* `destination_file` : `string` ~ `*.scale.png` = `?default`
+	* `destination_file` : `string` ~ `*.scale.png` = `?automatic`
 	
 	* `size_rate` : `number` = `?input`
 
@@ -430,25 +406,25 @@
 	
 	* `definition_file` : `*.atlas.json`
 	
-	* `sprite_directory` : `string` ~ `*.sprite` = `?default`
+	* `sprite_directory` : `string` ~ `*.sprite` = `?automatic`
 	
-	* `atlas_file` : `string` ~ `*.atlas.png` = `?default`
+	* `atlas_file` : `string` ~ `*.atlas.png` = `?automatic`
 
 * `unpack`
 	
 	* `definition_file` : `*.atlas.json`
 	
-	* `atlas_file` : `string` ~ `*.atlas.png` = `?default`
+	* `atlas_file` : `string` ~ `*.atlas.png` = `?automatic`
 	
-	* `sprite_directory` : `string` ~ `*.sprite` = `?default`
+	* `sprite_directory` : `string` ~ `*.sprite` = `?automatic`
 
 * `pack_automatic`
 	
 	* `sprite_directory` : `*.sprite`
 	
-	* `definition_file` : `string` ~ `*.atlas.json` = `?default`
+	* `atlas_file` : `string` ~ `*.atlas.png` = `?automatic`
 	
-	* `atlas_file` : `string` ~ `*.atlas.png` = `?default`
+	* `definition_file` : `string` ~ `*.atlas.json` = `?automatic`
 
 * `<configuration>`
 
@@ -458,7 +434,7 @@
 	
 	* `ripe_file` : `*.wem`
 	
-	* `raw_file` : `string` ~ `*.wav` = `?default`
+	* `raw_file` : `string` ~ `*.wav` = `?automatic`
 	
 	* `tool_ffmpeg_program_file` : `string` = `configuration.tool_ffmpeg_program_file`
 	
@@ -480,7 +456,7 @@
 	
 	* `bundle_directory` : `*.bnk.bundle`
 	
-	* `data_file` : `string` ~ `*.bnk` = `?default`
+	* `data_file` : `string` ~ `*.bnk` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -490,7 +466,7 @@
 	
 	* `data_file` : `*.bnk`
 	
-	* `bundle_directory` : `string` ~ `*.bnk.bundle` = `?default`
+	* `bundle_directory` : `string` ~ `*.bnk.bundle` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 
@@ -502,21 +478,21 @@
 
 ## `marmalade.dzip`
 
-* `pack`
+* `pack` `*`
 	
 	* `bundle_directory` : `*.dz.bundle`
 	
-	* `data_file` : `string` ~ `*.dz` = `?default`
+	* `data_file` : `string` ~ `*.dz` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
 	* `buffer_size` : `string` = `configuration.pack_buffer_size`
 
-* `unpack`
+* `unpack` `*`
 	
 	* `data_file` : `*.dz`
 	
-	* `bundle_directory` : `string` ~ `*.dz.bundle` = `?default`
+	* `bundle_directory` : `string` ~ `*.dz.bundle` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 
@@ -524,7 +500,7 @@
 	
 	* `resource_directory` : `*`
 	
-	* `data_file` : `string` ~ `*.dz` = `?default`
+	* `data_file` : `string` ~ `*.dz` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 
@@ -540,7 +516,7 @@
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?default`
+	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
 	
 	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
 
@@ -548,7 +524,7 @@
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?default`
+	* `raw_file` : `string` ~ `*.bin` = `?automatic`
 	
 	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
 
@@ -562,7 +538,7 @@
 	
 	* `plain_file` : `*`
 	
-	* `cipher_file` : `string` ~ `*.cdat` = `?default`
+	* `cipher_file` : `string` ~ `*.cdat` = `?automatic`
 	
 	* `limit` : `bigint` = `configuration.limit`
 	
@@ -572,7 +548,7 @@
 	
 	* `cipher_file` : `*.cdat`
 	
-	* `plain_file` : `string` ~ `*` = `?default`
+	* `plain_file` : `string` ~ `*` = `?automatic`
 	
 	* `limit` : `bigint` = `configuration.limit`
 	
@@ -590,7 +566,7 @@
 	
 	* `value_file` : `*.json`
 	
-	* `data_file` : `string` ~ `*.rton` = `?default`
+	* `data_file` : `string` ~ `*.rton` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -602,7 +578,7 @@
 	
 	* `data_file` : `*.rton`
 	
-	* `value_file` : `string` ~ `*.json` = `?default`
+	* `value_file` : `string` ~ `*.json` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -612,7 +588,7 @@
 	
 	* `plain_file` : `*.rton`
 	
-	* `cipher_file` : `string` ~ `*.cipher.rton` = `?default`
+	* `cipher_file` : `string` ~ `*.cipher.rton` = `?automatic`
 	
 	* `key` : `string` = `configuration.key`
 
@@ -620,7 +596,7 @@
 	
 	* `cipher_file` : `*.rton`
 	
-	* `plain_file` : `string` ~ `*.plain.rton` = `?default`
+	* `plain_file` : `string` ~ `*.plain.rton` = `?automatic`
 	
 	* `key` : `string` = `configuration.key`
 
@@ -628,7 +604,7 @@
 	
 	* `value_file` : `*.json`
 	
-	* `data_file` : `string` ~ `*.rton` = `?default`
+	* `data_file` : `string` ~ `*.rton` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -642,7 +618,7 @@
 	
 	* `data_file` : `*.rton`
 	
-	* `value_file` : `string` ~ `*.json` = `?default`
+	* `value_file` : `string` ~ `*.json` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -650,11 +626,11 @@
 	
 	* `key` : `string` = `configuration.key`
 
-* `decode_lenient`
+* `decode_lenient` `*`
 	
 	* `data_file` : `*.rton`
 	
-	* `value_file` : `string` ~ `*.json` = `?default`
+	* `value_file` : `string` ~ `*.json` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -676,7 +652,7 @@
 	
 	* `image_file` : `*.png`
 	
-	* `data_file` : `string` ~ `*.ptx` = `?default`
+	* `data_file` : `string` ~ `*.ptx` = `?automatic`
 	
 	* `format` : `string` = `?input`
 
@@ -684,7 +660,7 @@
 	
 	* `data_file` : `*.ptx`
 	
-	* `image_file` : `string` ~ `*.png` = `?default`
+	* `image_file` : `string` ~ `*.png` = `?automatic`
 	
 	* `format` : `string` = `?input`
 	
@@ -700,17 +676,17 @@
 	
 	* `image_file` : `*.png`
 	
-	* `data_file` : `string` ~ `*.tex` = `?default`
-	
-	* `format` : `string` = `?input`
+	* `data_file` : `string` ~ `*.tex` = `?automatic`
 	
 	* `version_compress_texture_data` : `boolean` = `configuration.version_compress_texture_data`
+	
+	* `format` : `string` = `?input`
 
 * `decode` `*`
 	
 	* `data_file` : `*.tex`
 	
-	* `image_file` : `string` ~ `*.png` = `?default`
+	* `image_file` : `string` ~ `*.png` = `?automatic`
 	
 	* `version_compress_texture_data` : `boolean` = `configuration.version_compress_texture_data`
 
@@ -724,19 +700,19 @@
 	
 	* `image_file` : `*.png`
 	
-	* `data_file` : `string` ~ `*.tex` = `?default`
+	* `data_file` : `string` ~ `*.tex` = `?automatic`
+	
+	* `version_number` : `bigint` = `configuration.version_number`
 	
 	* `format` : `string` = `?input`
 	
 	* `compress_texture_data` : `boolean` = `configuration.encode_compress_texture_data`
-	
-	* `version_number` : `bigint` = `configuration.version_number`
 
 * `decode` `*`
 	
 	* `data_file` : `*.tex`
 	
-	* `image_file` : `string` ~ `*.png` = `?default`
+	* `image_file` : `string` ~ `*.png` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 
@@ -752,7 +728,7 @@
 	
 	* `definition_file` : `*.pam.json`
 	
-	* `data_file` : `string` ~ `*.pam` = `?default`
+	* `data_file` : `string` ~ `*.pam` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -762,7 +738,7 @@
 	
 	* `data_file` : `*.pam`
 	
-	* `definition_file` : `string` ~ `*.pam.json` = `?default`
+	* `definition_file` : `string` ~ `*.pam.json` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 
@@ -770,13 +746,13 @@
 	
 	* `raw_file` : `*.pam.json`
 	
-	* `ripe_directory` : `string` ~ `*.pam.xfl` = `?default`
+	* `ripe_directory` : `string` ~ `*.pam.xfl` = `?automatic`
 
 * `convert.flash.to` `*`
 	
 	* `ripe_directory` : `*.pam.xfl`
 	
-	* `raw_file` : `string` ~ `*.pam.json` = `?default`
+	* `raw_file` : `string` ~ `*.pam.json` = `?automatic`
 
 * `convert.flash.resize` `*`
 	
@@ -800,7 +776,7 @@
 	
 	* `definition_file` : `*.reanim.json`
 	
-	* `data_file` : `string` ~ `*.reanim.compiled` = `?default`
+	* `data_file` : `string` ~ `*.reanim.compiled` = `?automatic`
 	
 	* `version_platform` : `string` = `configuration.version_platform`
 	
@@ -812,7 +788,7 @@
 	
 	* `data_file` : `*.reanim.compiled`
 	
-	* `definition_file` : `string` ~ `*.reanim.json` = `?default`
+	* `definition_file` : `string` ~ `*.reanim.json` = `?automatic`
 	
 	* `version_platform` : `string` = `configuration.version_platform`
 	
@@ -832,7 +808,7 @@
 	
 	* `definition_file` : `*.particle.json`
 	
-	* `data_file` : `string` ~ `*.xml.compiled` = `?default`
+	* `data_file` : `string` ~ `*.xml.compiled` = `?automatic`
 	
 	* `version_platform` : `string` = `configuration.version_platform`
 	
@@ -844,7 +820,7 @@
 	
 	* `data_file` : `*.xml.compiled`
 	
-	* `definition_file` : `string` ~ `*.particle.json` = `?default`
+	* `definition_file` : `string` ~ `*.particle.json` = `?automatic`
 	
 	* `version_platform` : `string` = `configuration.version_platform`
 	
@@ -864,7 +840,7 @@
 	
 	* `definition_file` : `*.trail.json`
 	
-	* `data_file` : `string` ~ `*.trail.compiled` = `?default`
+	* `data_file` : `string` ~ `*.trail.compiled` = `?automatic`
 	
 	* `version_platform` : `string` = `configuration.version_platform`
 	
@@ -876,7 +852,7 @@
 	
 	* `data_file` : `*.trail.compiled`
 	
-	* `definition_file` : `string` ~ `*.trail.json` = `?default`
+	* `definition_file` : `string` ~ `*.trail.json` = `?automatic`
 	
 	* `version_platform` : `string` = `configuration.version_platform`
 	
@@ -896,7 +872,7 @@
 
 	- `definition_file` : `*.ppf.json`
 
-	- `data_file` : `string` ~ `*.ppf` = `?default`
+	- `data_file` : `string` ~ `*.ppf` = `?automatic`
 
 	- `version_number` : `bigint` = `configuration.version_number`
 
@@ -906,7 +882,7 @@
 
 	- `data_file` : `*.ppf`
 
-	- `definition_file` : `string` ~ `*.ppf.json` = `?default`
+	- `definition_file` : `string` ~ `*.ppf.json` = `?automatic`
 
 	- `version_number` : `bigint` = `configuration.version_number`
 
@@ -922,7 +898,7 @@
 	
 	* `definition_file` : `*.popfx.json`
 	
-	* `data_file` : `string` ~ `*.popfx` = `?default`
+	* `data_file` : `string` ~ `*.popfx` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -934,7 +910,7 @@
 	
 	* `data_file` : `*.popfx`
 	
-	* `definition_file` : `string` ~ `*.popfx.json` = `?default`
+	* `definition_file` : `string` ~ `*.popfx.json` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -954,7 +930,7 @@
 	
 	* `definition_file` : `*.cfw2.json`
 	
-	* `data_file` : `string` ~ `*.cfw2` = `?default`
+	* `data_file` : `string` ~ `*.cfw2` = `?automatic`
 	
 	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
@@ -962,7 +938,7 @@
 	
 	* `data_file` : `*.cfw2`
 	
-	* `definition_file` : `string` ~ `*.cfw2.json` = `?default`
+	* `definition_file` : `string` ~ `*.cfw2.json` = `?automatic`
 
 * `<configuration>`
 	
@@ -970,11 +946,11 @@
 
 ## `popcap.package`
 
-* `pack`
+* `pack` `*`
 	
 	* `bundle_directory` : `*.pak.bundle`
 	
-	* `data_file` : `string` ~ `*.pak` = `?default`
+	* `data_file` : `string` ~ `*.pak` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -982,11 +958,11 @@
 	
 	* `buffer_size` : `string` = `configuration.pack_buffer_size`
 
-* `unpack`
+* `unpack` `*`
 	
 	* `data_file` : `*.pak`
 	
-	* `bundle_directory` : `string` ~ `*.pak.bundle` = `?default`
+	* `bundle_directory` : `string` ~ `*.pak.bundle` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
@@ -996,17 +972,17 @@
 	
 	* `resource_directory` : `*`
 	
-	* `data_file` : `string` ~ `*.pak` = `?default`
+	* `data_file` : `string` ~ `*.pak` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
 	* `version_compress_resource_data` : `boolean` = `configuration.version_compress_resource_data`
 
-* `encrypt`
+* `encrypt` `*`
 	
 	* `plain_file` : `*.pak`
 	
-	* `cipher_file` : `string` ~ `*.cipher.pak` = `?default`
+	* `cipher_file` : `string` ~ `*.cipher.pak` = `?automatic`
 
 * `<configuration>`
 	
@@ -1018,21 +994,21 @@
 
 ## `popcap.resource_stream_group`
 
-* `pack`
+* `pack` `*`
 	
 	* `bundle_directory` : `*.rsg.bundle`
 	
-	* `data_file` : `string` ~ `*.rsg` = `?default`
+	* `data_file` : `string` ~ `*.rsg` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
 	* `buffer_size` : `string` = `configuration.pack_buffer_size`
 
-* `unpack`
+* `unpack` `*`
 	
 	* `data_file` : `*.rsg`
 	
-	* `bundle_directory` : `string` ~ `*.rsg.bundle` = `?default`
+	* `bundle_directory` : `string` ~ `*.rsg.bundle` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 
@@ -1044,65 +1020,101 @@
 
 ## `popcap.resource_stream_bundle`
 
-* `pack`
+* `pack` `*`
 	
 	* `bundle_directory` : `*.rsb.bundle`
 	
-	* `data_file` : `string` ~ `*.rsb` = `?default`
-	
-	* `mode` : `string` = `configuration.mode`
+	* `data_file` : `string` ~ `*.rsb` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
 	* `version_extended_texture_information_for_pvz2_cn` : `bigint` = `configuration.version_extended_texture_information_for_pvz2_cn`
 	
-	* `buffer_size` : `string` = `configuration.pack_buffer_size`
+	* `layout_mode` : `string` = `configuration.layout_mode`
 	
 	* `input_packet` : `boolean` = `?input`
 	
 	* `output_new_packet` : `boolean` = `?input`
+	
+	* `buffer_size` : `string` = `configuration.pack_buffer_size`
 
-* `unpack`
+* `unpack` `*`
 	
 	* `data_file` : `*.rsb`
 	
-	* `bundle_directory` : `string` ~ `*.rsb.bundle` = `?default`
-	
-	* `mode` : `string` = `configuration.mode`
+	* `bundle_directory` : `string` ~ `*.rsb.bundle` = `?automatic`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
 	
 	* `version_extended_texture_information_for_pvz2_cn` : `bigint` = `configuration.version_extended_texture_information_for_pvz2_cn`
+	
+	* `layout_mode` : `string` = `configuration.layout_mode`
 	
 	* `output_resource` : `boolean` = `?input`
 	
 	* `output_packet` : `boolean` = `?input`
 
-* `resource_convert`
+* `resource_convert` `*`
 	
 	* `bundle_directory` : `*.rsb.bundle`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `option_recase_path` : `boolean` = `configuration.resource_convert_option.recase_path`
 	
-	* `version_extended_texture_information_for_pvz2_cn` : `bigint` = `configuration.version_extended_texture_information_for_pvz2_cn`
+	* `option_rton` : `boolean` = `configuration.resource_convert_option.rton`
 	
-	* `option` : `{ ... }` = `configuration.resource_convert_option`
+	* `option_rton_version_number` : `integer` = `configuration.resource_convert_option.rton_version_number`
+	
+	* `option_rton_version_native_string_encoding_use_utf8` : `boolean` = `configuration.resource_convert_option.rton_version_native_string_encoding_use_utf8`
+	
+	* `option_rton_crypt` : `boolean` = `configuration.resource_convert_option.rton_crypt`
+	
+	* `option_rton_crypt_key` : `string` = `configuration.resource_convert_option.rton_crypt_key`
+	
+	* `option_ptx` : `boolean` = `configuration.resource_convert_option.ptx`
+	
+	* `option_ptx_texture_format_map_name` : `string` = `configuration.resource_convert_option.ptx_texture_format_map_name`
+	
+	* `option_ptx_atlas` : `boolean` = `configuration.resource_convert_option.ptx_atlas`
+	
+	* `option_ptx_atlas_resize` : `boolean` = `configuration.resource_convert_option.ptx_atlas_resize`
+	
+	* `option_ptx_sprite` : `boolean` = `configuration.resource_convert_option.ptx_sprite`
+	
+	* `option_pam` : `boolean` = `configuration.resource_convert_option.pam`
+	
+	* `option_pam_version_number` : `integer` = `configuration.resource_convert_option.pam_version_number`
+	
+	* `option_pam_json` : `boolean` = `configuration.resource_convert_option.pam_json`
+	
+	* `option_pam_flash` : `boolean` = `configuration.resource_convert_option.pam_flash`
+	
+	* `option_bnk` : `boolean` = `configuration.resource_convert_option.bnk`
+	
+	* `option_bnk_version_number` : `integer` = `configuration.resource_convert_option.bnk_version_number`
+	
+	* `option_wem` : `boolean` = `configuration.resource_convert_option.wem`
+	
+	* `option_wem_tool_ffmpeg_program_file` : `string` = `configuration.resource_convert_option.wem_tool_ffmpeg_program_file`
+	
+	* `option_wem_tool_ww2ogg_program_file` : `string` = `configuration.resource_convert_option.wem_tool_ww2ogg_program_file`
+	
+	* `option_wem_tool_ww2ogg_code_book_file` : `string` = `configuration.resource_convert_option.wem_tool_ww2ogg_code_book_file`
 
-* `unpack_lenient`
+* `unpack_lenient` `*`
 	
 	* `data_file` : `*.rsb`
 	
-	* `bundle_directory` : `string` ~ `*.rsb.bundle` = `?default`
+	* `bundle_directory` : `string` ~ `*.rsb.bundle` = `?automatic`
 
 * `<configuration>`
-	
-	* `mode` : `string` = `?input`
 	
 	* `version_number` : `bigint` = `?input`
 	
 	* `version_extended_texture_information_for_pvz2_cn` : `bigint` = `?input`
 	
-	* `pack_buffer_size` : `string` = `1.2g`
+	* `layout_mode` : `string` = `?input`
+	
+	* `pack_buffer_size` : `string` = `1.25g`
 	
 	* `resource_convert_option` : `{ ... }` = `...`
 
@@ -1110,37 +1122,37 @@
 
 * `encode`
 	
-	* `before_file` : `*.rsb`
+	* `after_file` : `*.rsb`
 	
-	* `after_file` : `string` = `?input`
+	* `patch_file` : `string` ~ `*.rsbpatch` = `?automatic`
 	
-	* `patch_file` : `string` ~ `<after_file>.rsbpatch` = `?default`
-	
-	* `use_raw_packet` : `boolean` = `configuration.use_raw_packet`
+	* `before_file` : `string` = `?input`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
+	
+	* `use_raw_packet` : `boolean` = `configuration.use_raw_packet`
 	
 	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
 * `decode`
 	
-	* `before_file` : `*.rsb`
+	* `patch_file` : `*.rsbpatch`
 	
-	* `patch_file` : `string` = `?input`
+	* `after_file` : `string` ~ `*.rsb` = `?automatic`
 	
-	* `after_file` : `string` ~ `<patch_file>.rsb` = `?default`
-	
-	* `use_raw_packet` : `boolean` = `configuration.use_raw_packet`
+	* `before_file` : `string` = `?input`
 	
 	* `version_number` : `bigint` = `configuration.version_number`
+	
+	* `use_raw_packet` : `boolean` = `configuration.use_raw_packet`
 	
 	* `buffer_size` : `string` = `configuration.decode_buffer_size`
 
 * `<configuration>`
 	
-	* `use_raw_packet` : `boolean` = `?input`
-	
 	* `version_number` : `bigint` = `1`
+	
+	* `use_raw_packet` : `boolean` = `?input`
 	
 	* `encode_buffer_size` : `string` = `1024.0m`
 	
@@ -1154,9 +1166,45 @@
 	
 	* `destination_version` : `string` = `?input`
 	
-	* `destination_file` : `string` ~ `*.convert.txt|json` = `?default`
+	* `destination_file` : `string` ~ `*.convert.txt|json` = `?automatic`
 
 * `<configuration>`
+
+## `pvz2.resource_manifest`
+
+* `new_type_object_notation.encode`
+	
+	* `definition_file` : `*.json`
+	
+	* `data_file` : `string` ~ `*.newton` = `?automatic`
+	
+	* `buffer_size` : `string` = `configuration.new_type_object_notation_encode_buffer_size`
+
+* `new_type_object_notation.decode`
+	
+	* `data_file` : `*.newton`
+	
+	* `definition_file` : `string` ~ `*.json` = `?automatic`
+
+* `regular.from`
+	
+	* `raw_file` : `*.json`
+	
+	* `ripe_file` : `string` ~ `*.regular.json` = `?automatic`
+
+* `regular.to`
+	
+	* `ripe_file` : `*.json`
+	
+	* `raw_file` : `string` ~ `*.official.json` = `?automatic`
+	
+	* `use_array_style_path` : `boolean` = `configuration.official_use_array_style_path`
+
+* `<configuration>`
+	
+	* `new_type_object_notation_encode_buffer_size` : `string` = `64.0m`
+	
+	* `official_use_array_style_path` : `boolean` = `?input`
 
 ## `pvz2.remote_android_helper`
 

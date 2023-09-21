@@ -6,7 +6,7 @@
 
 - [Preparation](#Preparation)
 
-- [Compile or download precompiled distribution](#Compile-or-download-precompiled-distribution)
+- [Compile or download binary distribution](#Compile-or-download-binary-distribution)
 
 - [Use releases](#Use-releases)
 
@@ -70,7 +70,7 @@ The tool consists of several modules, different modules provide different functi
 
 - `Helper`
 
-	Helper, which provides additional advanced functionality.
+	Helper, which provides additional advanced functions.
 
 ## Preparation
 
@@ -86,7 +86,7 @@ Before installing each component, you need to do some preparations:
 
 	> The location of the home directory can be optional, but make sure the user has **read and write allows permission** to the directory and its contents.
 
-## Compile or download pre-compiled distributions
+## Compile or download binary distributions
 
 You can clone this project and compile it yourself. Pre-compiled binary distribution is also available in [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest).
 
@@ -153,7 +153,7 @@ For `Android` systems, you also need to perform the following actions:
 
 1. Install **C++ shared library** to the system library directory.
 
-	For security and size reduction reasons, the C++ runtime used is c++\_shared. Therefore, you also need to copy the `libc++_shared.so` file of the corresponding processor architecture to the system library directory.
+	For security and size reduction reasons, the C++ runtime used is c++_shared. Therefore, you also need to copy the `libc++_shared.so` file of the corresponding processor architecture to the system library directory.
 
 	> The system library directory is `+ /system/lib` on 32-bit systems and `+ /system/lib64` on 64-bit systems.
 	> This file can be extracted from the Android NDK toolchain.
@@ -186,7 +186,7 @@ For `Android` systems, you also need to perform the following actions:
 
 1. Open the application, click ⌈ Setting ⌋ at the bottom right to enter the setting page, and click ⌈ Storage Permission ⌋ to request the storage permission.
 
-	If the application does not obtain this permission, it will only be able to access the application's specific storage, but not the files in the device's shared external storage.
+	If the application does not obtain this permission, it will only be able to access the application's special storage, the device's shared external storage is not accessible.
 
 ## Install `Script`
 
@@ -217,14 +217,25 @@ This is an optional installation and is distributed as an application package.
 
 	Every time the user selects the extension menu item of the module, the module will run this script with the path of the selected file as the arguments, and the script is responsible for forwarding the received arguments to the toolkit.
 
-	Here's an example that forward arguments to the `launch.cmd` ：
+	Here's an example that forward arguments to the `launch.cmd` and `Helper`'s quick forwarder window :
 
 	```cmd
 	@echo off
 	"C:\TwinStar.ToolKit\launch.cmd" %*
+	"C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_14.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+		-WindowSize        480 960 ^
+		-WindowAlwaysOnTop true ^
+		-ModuleType        CommandForwarderQuick ^
+		-ModuleOption ^
+			-AutomaticClose  true ^
+			-ParallelExecute false ^
+			-EnableBatch     false ^
+			-EnableFilter    true ^
+			-RemainInput     false ^
+			-Input           %*
 	```
 
-4. You can now see the `⌈TwinStar ToolKit - Extension⌋` option inside the context menu of any file or directory, and use these options to quickly forward file objects to the tool.
+4. You can now see the `⌈ TwinStar ToolKit - Extension ⌋` option inside the context menu of any file or directory, and use these options to quickly forward file objects to the tool.
 
 	If you do not see this option, try restarting Explorer `explorer.exe`, or restarting your computer.
 
@@ -252,6 +263,8 @@ This is an optional installation item, distributed as an application package.
 		"-additional" \
 		"$@"
 	```
+	
+	> `Helper.exe`'s path should search from your device.
 
 4. Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ and check one of the ⌈ "Finder" extension ⌋.
 
@@ -273,11 +286,11 @@ This is an optional installation and is distributed as an application package.
 
 3. Now you can see ⌈ TwinStar ToolKit - Forwarder ⌋ within the file sharing target of other third-party file managers and use it to quickly forward file objects to the tool.
 
-> Due to the limitations of the Android system, the forwarder cannot directly obtain the absolute path of the forwarded file, but passes the Content URI of the forwarded file to the Shell GUI as a command parameter for its startup, and the Shell GUI will try to parse the Content URI. See [Android Content URI processing strategy](./question.md#Android-Content-URI-processing-strategy) for details.
+> Due to the limitations of the Android system, the forwarder cannot directly obtain the absolute path of the forwarded file, but passes the Content URI of the forwarded file to the Shell GUI as a command argument for its startup, and the Shell GUI will try to parse the Content URI. See [Android Content URI processing strategy](./question.md#Android-Content-URI-processing-strategy) for details.
 
 ## Install `Helper`
 
-Helper, which provides additional advanced features.
+Helper, which provides additional advanced functions.
 
 > This module is dedicated to Windows systems and is not available for other systems.
 
