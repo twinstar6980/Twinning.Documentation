@@ -219,16 +219,12 @@
 	```cmd
 	@echo off
 	"C:\TwinStar.ToolKit\launch.cmd" %*
-	"C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_14.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
-		-WindowSize        480 960 ^
+	"C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_15.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+		-WindowSize        496 968 ^
 		-WindowAlwaysOnTop true ^
-		-ModuleType        CommandForwarderQuick ^
+		-ModuleType        ResourceForwarder ^
 		-ModuleOption ^
 			-AutomaticClose  true ^
-			-ParallelExecute false ^
-			-EnableBatch     false ^
-			-EnableFilter    true ^
-			-RemainInput     false ^
 			-Input           %*
 	```
 	

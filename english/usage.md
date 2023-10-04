@@ -117,53 +117,46 @@ Of the six notification types, `🟣` indicates that the tool is requesting inpu
 
 When input is requested, a leading character is also displayed as a prompt for the type of argument. The input value type and format are as follows:
 
-- `U` Pause
+- `Pause`
 
 	Pause the program to wait for a user response.
 
-- `C` Confirmation value
+- `Boolean`
 
 	A single character `y` or `n` , indicating ⌈ yes ⌋ and ⌈ no ⌋ .
 
-- `N` number
-
-	A decimal number.
-
-- `I` Integer
+- `Integer`
 
 	A decimal integer that may not contain a decimal point.
 
-- ` Z` Size
+- `Floater`
+
+	A decimal number that may contain a decimal point.
+
+- `Size`
 
 	An unsigned decimal number followed by a binary unit (b = 2^0 , k = 2^10 , m = 2^20 , g = 2^30), typically used to indicate storage capacity.
 
 	> For example, `4k` represents 4096 bytes of storage capacity.
 
-- `O` option
-
-	Select an optional option by integer ordinal number.
-
-- `S` String
+- `String`
 
 	A line of text.
 
-- `P` Input path
+- `Path`
 
-	Points to the path of an existing file or directory on disk.
+	The paths that can be used in the local file system, divided into input paths and output paths, the former points to the path of an existing file or directory on the disk, and the latter points to a path that does not exist on the disk.
 
-	> You can also enter `:p` to open the system file pick dialog (`Windwos`, `Linux`, `Macintosh` only).
-	>
-	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `+ <home>/workspace`.
-
-- `P` Output path
-
-	Points to a path on disk that does not exist. Toolkit typically automatically generate a default output path, but request a new output path when the default output path is already existed.
-
-	> You can also enter `:o` to overwrite existing files;
+	> You can also enter `:p` to open the system file pick dialog (`GUI` or `Windwos CLI` 、`Linux CLI` 、`Macintosh CLI` only).
+	> or enter `:o` to overwrite existing files;
 	> or enter `:d` to delete existing files;
 	> or type `:t` to move existing files to the tool's recycle directory `+ <home>/trash`.
 	>
 	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `+ <home>/workspace`.
+
+- `Enumeration`
+
+	One of several optional options.
 
 ## Configuration file
 
@@ -232,9 +225,17 @@ If you have some programming skills, you can also integrate the tools into your 
 
 Currently, the following modules are provided:
 
-* `Command Forwarder`
+* `Modding Worker`
 
-	This module is used to forward method argument to the toolkit. It can visually select the methods that need to be applied and edit method argument. It can be regarded as the GUI of the tool.
+	This module is the Shell implementation of the toolkit, can be used as a better alternative to the ShellGUI module, with a modernized UI that is consistent with the operation system.
+
+* `Resource Forwarder`
+
+	This module is used to quickly forward local files or directories to the toolkit.
+
+* `Command Sender`
+
+	This module is used to visually edit command arguments and forward them to the toolkit.
 
 * `Animation Viewer`
 
