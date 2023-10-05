@@ -151,7 +151,7 @@ When input is requested, a leading character is also displayed as a prompt for t
 	> or enter `:g` = `Generate` to generate avaliable path (append suffix);\
 	> or enter `:m` = `Move` to move original file;\
 	> or enter `:d` = `Delete` to delete original file;\
-	> or enter `:o` = `Overwrite` to overwrite original file.\
+	> or enter `:o` = `Overwrite` to overwrite original file.
 	>
 	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `+ <home>/workspace` .
 

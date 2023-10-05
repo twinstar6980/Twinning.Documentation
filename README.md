@@ -42,6 +42,10 @@ TwinStar ToolKit Documentation.
   Provides the CLI and GUI.
 	
 	![1](./image/preview/s-1.png)
+	
+	![1](./image/preview/s-2.png)
+	
+	![1](./image/preview/s-3.png)
 
 * 适用于 Windows / Macintosh / Android 的系统集成。\
   System integration for Windows / Macintosh / Android .
