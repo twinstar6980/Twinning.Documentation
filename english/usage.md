@@ -147,12 +147,13 @@ When input is requested, a leading character is also displayed as a prompt for t
 
 	The paths that can be used in the local file system, divided into input paths and output paths, the former points to the path of an existing file or directory on the disk, and the latter points to a path that does not exist on the disk.
 
-	> You can also enter `:p` to open the system file pick dialog (`GUI` or `Windwos CLI` 、`Linux CLI` 、`Macintosh CLI` only).
-	> or enter `:o` to overwrite existing files;
-	> or enter `:d` to delete existing files;
-	> or type `:t` to move existing files to the tool's recycle directory `+ <home>/trash`.
+	> You can also enter `:p` = `Pick` to open the system file pick dialog (`GUI` or `Windwos CLI` 、`Linux CLI` 、`Macintosh CLI` only);\
+	> or enter `:g` = `Generate` to generate avaliable path (append suffix);\
+	> or enter `:m` = `Move` to move original file;\
+	> or enter `:d` = `Delete` to delete original file;\
+	> or enter `:o` = `Overwrite` to overwrite original file.\
 	>
-	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `+ <home>/workspace`.
+	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `+ <home>/workspace` .
 
 - `Enumeration`
 
