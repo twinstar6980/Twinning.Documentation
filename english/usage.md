@@ -62,26 +62,13 @@ When you open the application for the first time, you need to specify the kernel
 
 Launching the `Shell GUI` in the terminal is also supported, with command line arguments in the following format:
 
-`<kernel> <script> <argument>...`
+`-additional_argument <additional_argument>...`
 
-- `<kernel>`
+* `<additional_argument>...`
 
-	The first argument is the path to the kernel file.
+	Additional arguments to the kernel processing logic.
 
-- `<script>`
-
-	The second argument is the script file path passed to the kernel processing logic. It can also be marked with `$` as the first character, indicating that the rest of the string is used as a JS script.
-
-- `<argument>...`
-
-	The remaining arguments are passed as arguments to the kernel processing logic.
-`-additional <argument>...`
-
-If the first command line argument is `-additional`, the application will be started with the default command set in the application settings, and `<argument>...` will be additional arguments.
-
-If the command line arguments are passed in, the application will automatically exit after the command is executed successfully (this behavior can be disabled in the application settings).
-
-If no command line arguments are passed in, the application will be started directly, and the user can manually execute the default command (the default command can be set in the application settings).
+If the command line arguments are passed in, the application will automatically launch console after stared (this behavior can be disabled in the application settings).
 
 > @ `Android` `iPhone` \
 > cannot pass in command line arguments directly.

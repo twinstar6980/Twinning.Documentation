@@ -54,7 +54,7 @@
 
 3. `Argument` = `<home>` 。
 
-4. `Fallback Directory For Invisible File` = `<home>/workspace` 。
+4. `Fallback Directory` = `<home>/workspace` 。
 	
 	> 该项仅适用于 Android 与 iPhone 。
 
@@ -62,27 +62,13 @@
 
 同样支持在终端中启动 `Shell GUI` ，命令行参数的格式如下：
 
-`<kernel> <script> <argument>...`
+`-additional_argument <additional_argument>...`
 
-* `<kernel>`
+* `<additional_argument>...`
 	
-	第一参数为内核文件路径。
+	传给内核处理逻辑的附加参数。
 
-* `<script>`
-	
-	第二参数是传给内核处理逻辑的脚本文件路径。也可以 `$` 为首字符标识，指示字符串的余下内容作为 JS 脚本。
-
-* `<argument>...`
-	
-	剩余参数作为传给内核处理逻辑的参数。
-
-`-additional <argument>...`
-
-若首个命令行参数为 `-additional` ，则以应用设置中设定的默认命令启动应用，`<argument>...` 为附加参数。
-
-若传入命令行参数，则应用将在命令执行完毕且成功后自动退出（可以在应用设置内禁用此行为）。
-
-若不传入命令行参数，则直接启动应用，用户可以手动执行默认命令（可以在应用设置内设定默认命令）。
+若传入命令行参数，则应用将在启动后自动启动控制台。
 
 > @ `Android` `iPhone` \
 > 无法直接传入命令行参数。
