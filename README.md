@@ -22,36 +22,16 @@ TwinStar ToolKit Documentation.
 
 ## 预览 | preview
 
-* 使用简单且快速。\
-  Fast and easy to use.
-	
-	![1](./image/preview/m-1.png)
-	
-	![2](./image/preview/m-2.png)
-	
-	![3](./image/preview/m-3.png)
-	
-	![4](./image/preview/m-4.png)
+![x](./image/preview/m-1.png)
 
-* 提供中文与英文支持。\
-  Support Chinese and English.
-	
-	![1](./image/preview/l-1.png)
+![x](./image/preview/m-2.png)
 
-* 提供 CLI 与 GUI 。\
-  Provides the CLI and GUI.
-	
-	![1](./image/preview/s-1.png)
-	
-	![1](./image/preview/s-2.png)
-	
-	![1](./image/preview/s-3.png)
+![x](./image/preview/l-1.png)
 
-* 适用于 Windows / Macintosh / Android 的系统集成。\
-  System integration for Windows / Macintosh / Android .
-	
-	![1](./image/preview/si-1.png)
-	
-	![2](./image/preview/si-2.png)
-	
-	![2](./image/preview/si-3.png)
+![x](./image/preview/s-1.png)
+
+![x](./image/preview/s-2.png)
+
+![x](./image/preview/si-1.png)
+
+![x](./image/preview/si-2.png)
