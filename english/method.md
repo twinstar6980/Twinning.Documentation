@@ -2,8 +2,6 @@
 
 - [Introduction](#Introduction)
 
-- [Common configuration](#Common-configuration)
-
 - [js](#js)
 
 - [data.hash](#datahash)
@@ -74,14 +72,14 @@
 
 The preset method provided by the tool generally accepts a file or directory as input and outputs the data to another file or directory after processing is complete, which by default will be output to the same level directory. Methods are generally divided into two types:
 
-- Regular Method
-
+* Regular Method
+	
 	Processes a single transaction, such as decoding a single PopCap RTON file into a JSON file.
 
-- Batch Method
-
+* Batch Method
+	
 	A wrapper around a specific regular method that accepts a directory as input and processes all matching files within it, e.g. decoding all PopCap RTON files within a directory into JSON files.
-
+	
 	Batch method are also optimized for efficiency for some regular method that require frequent memory requests and releases.
 
 Methods are grouped into method groups based on their nature and stored in `+ <home>/script/Executor/Implement`, where each `JS` file provides a set of methods, and a `JSON` file with the same name holds the configuration of that set of methods, which can be modified by the user as needed.
@@ -94,15 +92,15 @@ The following will list the methods with their corresponding configuration rules
 >
 > The ID of method group, as a prefix to all method's item ID.
 >
-> - `<method-item-id` [ `*` ]
+> * `<method-item-id` [ `*` ]
 >
 > The method's item ID, combined with the method's group ID, is the method's ID. For example, if the group ID is `popcap.animation` and the item ID is `decode`, then the method ID is `popcap.animation.decode`. If it is marked with `*`, then the method provides a batch version.
 >
-> - `variable-name` : `<filter-rule>`
+> * `variable-name` : `<filter-rule>`
 >
 > The first argument is an input argument, specified by `input` of the current command, always of type `string`; `<filter-rule>` specifies the input value filtering rules for the method, e.g. `*.rsb` means that the method is displayed only if the input file has extension `rsb`.
 >
-> - `variable-name` : `variable-type` [ ~ `<default-value>` ] = `<value>`
+> * `variable-name` : `variable-type` [ ~ `<default-value>` ] = `<value>`
 >
 > The remaining arguments are specified by the `argument` of the current command, the second of which is usually the output argument, followed by the configuration argument.
 >
@@ -113,56 +111,6 @@ The following will list the methods with their corresponding configuration rules
 > `<value>` is the default argument value when the user does not specify a argument value, typically an explicit `?input` or `?automatic`, or the default argument value is retrieved from the corresponding configuration file.
 
 All of the methods listed below are regular method. Some of the regular method have a batch version, which is the same as the regular method, but with the `.batch` suffix appended to the method ID .
-
-## Common configuration
-
-`- <home>/script/Entry/Entry.json` Defines the common behavior during the tool run.
-
-- `<configuration>`
-
-	- `language` : `string` = `Chinese`
-
-		Interaction language. Can be `Chinese` or `English`.
-
-	- `disable_cli_virtual_terminal_sequence` : `boolean` = `false`
-
-		Disable command-line virtual terminal sequences. Valid only when using a command-line shell.
-
-	* `disable_notification` : `boolean` = `false`
-
-		Disable notification.
-
-	- `byte_stream_use_big_endian` : `boolean` = `false`
-
-		Use big end-order for internal byte stream operations. This option is necessary for some big-endian file processing. It is disabled by default, because most of the time the user is dealing with little-endian files.
-
-	- `common_buffer_size` : `string` = `64.0m`
-
-		The size of the common buffer. Used for encoding JSON strings, encoding PNG images, etc. If the amount of memory required for encoding exceeds this size, the tool will fail to process it.
-
-	- `json_format` : `{ ... }`
-
-		JSON output format.
-
-		- `disable_trailing_comma` : `boolean` = `false`
-
-			Disable trailing comma.
-
-		- `disable_array_wrap_line` : `boolean` = `false`
-
-			Disable line wrapping between array elements.
-
-	- `thread_limit` : `bigint` = `0`
-
-		The maximum number of thread pools. Currently has no practical effect.
-
-	- `notification_time_limit` : `null | bigint` = `15000`
-
-		Notification time limit. If the vaild execution duration exceeds this value (in milliseconds) after a command has completed, a system notification will be pushed to alert the user to set up the configuration. Setting to null will disable notifications.
-
-	- `pause_when_finish` : `boolean` = `true`
-
-		Pause the program after all methods evaluate is done and wait for the user to close it or press enter to exit.
 
 ## `js`
 
@@ -430,25 +378,21 @@ All of the methods listed below are regular method. Some of the regular method h
 
 ## `wwise.media`
 
+* `encode` `*`
+	
+	* `raw_file` : `*.wav`
+	
+	* `ripe_file` : `string` ~ `*.wem` = `?automatic`
+	
+	* `format` : `string` = `?input`
+
 * `decode` `*`
 	
 	* `ripe_file` : `*.wem`
 	
 	* `raw_file` : `string` ~ `*.wav` = `?automatic`
-	
-	* `tool_ffmpeg_program_file` : `string` = `configuration.tool_ffmpeg_program_file`
-	
-	* `tool_ww2ogg_program_file` : `string` = `configuration.tool_ww2ogg_program_file`
-	
-	* `tool_ww2ogg_code_book_file` : `string` = `configuration.tool_ww2ogg_code_book_file`
 
 * `<configuration>`
-	
-	* `tool_ffmpeg_program_file` : `string` = `~/external/ffmpeg/ffmpeg`
-	
-	* `tool_ww2ogg_program_file` : `string` = `~/external/ww2ogg/ww2ogg`
-	
-	* `tool_ww2ogg_code_book_file` : `string` = `~/external/ww2ogg/packed_codebooks_aoTuV_603.bin`
 
 ## `wwise.sound_bank`
 
@@ -868,29 +812,29 @@ All of the methods listed below are regular method. Some of the regular method h
 
 ## `popcap.particle_effect`
 
-- `encode` `*`
+* `encode` `*`
+	
+	* `definition_file` : `*.ppf.json`
+	
+	* `data_file` : `string` ~ `*.ppf` = `?automatic`
+	
+	* `version_number` : `bigint` = `configuration.version_number`
+	
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
-	- `definition_file` : `*.ppf.json`
+* `decode` `*`
+	
+	* `data_file` : `*.ppf`
+	
+	* `definition_file` : `string` ~ `*.ppf.json` = `?automatic`
+	
+	* `version_number` : `bigint` = `configuration.version_number`
 
-	- `data_file` : `string` ~ `*.ppf` = `?automatic`
-
-	- `version_number` : `bigint` = `configuration.version_number`
-
-	- `buffer_size` : `string` = `configuration.encode_buffer_size`
-
-- `decode` `*`
-
-	- `data_file` : `*.ppf`
-
-	- `definition_file` : `string` ~ `*.ppf.json` = `?automatic`
-
-	- `version_number` : `bigint` = `configuration.version_number`
-
-- `<configuration>`
-
-	- `version_number` : `bigint` = `1`
-
-	- `encode_buffer_size` : `string` = `8.0m`
+* `<configuration>`
+	
+	* `version_number` : `bigint` = `1`
+	
+	* `encode_buffer_size` : `string` = `8.0m`
 
 ## `popcap.render_effect`
 
@@ -1093,12 +1037,6 @@ All of the methods listed below are regular method. Some of the regular method h
 	* `option_bnk_version_number` : `integer` = `configuration.resource_convert_option.bnk_version_number`
 	
 	* `option_wem` : `boolean` = `configuration.resource_convert_option.wem`
-	
-	* `option_wem_tool_ffmpeg_program_file` : `string` = `configuration.resource_convert_option.wem_tool_ffmpeg_program_file`
-	
-	* `option_wem_tool_ww2ogg_program_file` : `string` = `configuration.resource_convert_option.wem_tool_ww2ogg_program_file`
-	
-	* `option_wem_tool_ww2ogg_code_book_file` : `string` = `configuration.resource_convert_option.wem_tool_ww2ogg_code_book_file`
 
 * `unpack_lenient` `*`
 	
@@ -1215,4 +1153,3 @@ All of the methods listed below are regular method. Some of the regular method h
 	* `action` : `string` = `?input`
 
 * `<configuration>`
-

@@ -41,27 +41,27 @@ If the shell module used is `Shell`, access permissions depend on the permission
 If the shell module used is `Shell GUI`, access rights vary depending on the running system:
 
 * `Windows` `Linux` `Macintosh`
-
+	
 	Depends on the permissions of the user who started the program.
 
 * `Android`
-
+	
 	* Application's specific internal storage : `/data/user/<user>/<package>` .
-
+	
 	* Application's specific external storage : `/storage/emulated/<user>/Android/data/<package>` , `/storage/emulated/<user>/Android/obb/<package>` .
-
+	
 	* System's shared external storage : `/storage/emulated/<user>` , but not including `Android/data` , `Android/obb` .
-
+		
 		> This directory can only be accessed if the application has obtained full access permission of the external storage.
 		> 
 		> This directory is actually a mapping of `/data/media/<user>`. When accessing files through the `/storage/emulated/<user>` path, the access performance will be reduced due to the influence of FUSE, and the access permission is hard-coded to RW, and the file cannot be executed as a program; files can be accessed via the `/data/media/<user>` path to bypass FUSE, but ROOT permissions are required.
 
 * `iPhone`
-
+	
 	* Application's specific sandbox storage : `/var/mobile/Containers/Data/Application/<application>` .
-
+	
 	* Other application's shared storage : `/var/mobile/Containers/Data/Application/<application>/Documents` .
-
+	
 	> Files in the above storage cannot be executed as programs.
 
 ## Windows file path length limit
@@ -117,39 +117,39 @@ The following table lists the supported content URI formats, and the application
 1. UTF-8 input/output: required, if not supported, the program will not be able to do input/output properly (Or poorly displayed).
 
 2. Virtual Terminal Control Sequence: Optional, if not supported, it will prevent the program from modifying different types of text with different colors.
-
+	
 	> By default, the tool will use control sequences to optimize the output effect, but if running in a terminal that does not support control sequences, the control sequences will be output directly as strings, which will affect the user's reading.
-
+	
 	> Users can disable the use of control sequences by modifying the `disable_cli_virtual_terminal_sequence ` entry to `true` in the `- <home>/script/Entry/Entry.json` configuration.
 
 3. Full fonts: optional, if not supported, some characters (e.g. Chinese characters, emoji) will not be displayed properly. However, you can fix this by changing the language to `English`. It was indicated in `installation.md`.
 
 Some operating systems do not provide (or turn off by default) these support in the default terminal, users can install a third-party terminal and run this program in it, you can refer to the following list:
 
-- Windows 7 ~ 8
-
+* Windows 7 ~ 8
+	
 	Windows 7 to 8 does not provide support for cmd, I recommend using [cmder](https://cmder.app/).
 
-- Windows 10
-
+* Windows 10
+	
 	Windows 10 comes with cmd support turned off by default, I recommend using [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701).
 
-- Windows 11
-
+* Windows 11
+	
 	Windows 11 comes with cmd default shutdown support, and comes with Windows Terminal to provide support, please set it as the default terminal of your system.
 
-- Macintosh 12+
-
+* Macintosh 12+
+	
 	Macintosh 12+ comes with Terminal support.
 
-- Linux - Ubuntu 20+
-
+* Linux - Ubuntu 20+
+	
 	Terminal support is included.
 
-- Android
-
+* Android
+	
 	I recommend using [Termux](https://termux.dev/en/).
-
+	
 	> Of course, you can also use the terminal of your desktop system via ADB.
 
 > @ `Windows` \
@@ -160,17 +160,17 @@ Some operating systems do not provide (or turn off by default) these support in 
 The JSON read and write rules for the tool are self-implementing and does not follow the JSON standard, with the following differences:
 
 1. Comments
-
+	
 	The JSON standard does not allow comments, but the tools do allow comments, including line comments `// ... ` and block comments `/* ... */`.
 
 2. Trailing commas
-
+	
 	The comma after the last element of arrays and objects is called a trailing comma. The JSON standard does not allow trailing commas, but they are a permitted and even recommended syntax in JS and many programming languages. Considering the convenience that trailing commas provide for JSON reading and writing, tools support trailing commas and add them by default when outputting JSON.
-
+	
 	In some editors, trailing commas are treated as a formatting error by default, and users can disable trailing comma output by modifying the `json_format.disable_trailing_comma` item to `true` in the `- <home>/script/Entry/Entry.json` configuration.
-
+	
 	If you want to launch the JSON file to the game, it is recommended that you should `disable_trailing_comma` because the JSON Parsing system of the game follow the JSON Standard.
-
+	
 	> In `VS Code`, the following configuration can be added to `settings.json` to make the editor allow JSON trailing commas:
 	> 
 	> ```json
@@ -189,41 +189,41 @@ The JSON read and write rules for the tool are self-implementing and does not fo
 	> `allowTrailingCommas` is an extension of `VS Code` and does not conform to the `JSON-Schema` standard.
 
 3. Escape characters
-
+	
 	The tool's escape character support does not follow the JSON standard, and the escape rules are as follows:
-
-	- `\\\ \' \"` escapes to the original character.
-
-	- `\a \b \f \n \r \t \v` is escaped to the corresponding control character.
-
-	- `\0` Escape to the null character.
-
-	- `\oNNN` Unicode character represented by a 3-bit octal number, allowing values above 0xFF.
-
-	- `\xNNN` 2-bit Unicode character in hexadecimal numbers.
-
-	- \\uNNNN` 4-bit hexadecimal Unicode character.
-
-	- `\UNNNNNNNN` 8-bit hexadecimal Unicode character.
+	
+	* `\\\ \' \"` escapes to the original character.
+	
+	* `\a \b \f \n \r \t \v` is escaped to the corresponding control character.
+	
+	* `\0` Escape to the null character.
+	
+	* `\oNNN` Unicode character represented by a 3-bit octal number, allowing values above 0xFF.
+	
+	* `\xNNN` 2-bit Unicode character in hexadecimal numbers.
+	
+	* `\uNNNN` 4-bit hexadecimal Unicode character.
+	
+	* `\UNNNNNNNN` 8-bit hexadecimal Unicode character.
 
 4. Number formatting
-
+	
 	The number formatting support of the tool does not follow the JSON standard, and the formatting rules are as follows:
-
-	- Integers: match the regular expression `^[+-]? [\d]+$` .
-
-	- Floating-point numbers: match the regular expression `^[+-]? [\d]+[.] [\d]+$` .
-
-	- Floating-point numbers in scientific notation: match the regular expression `^[+-]? [\d]+[.] [\d]+[e][+-][\d]+$` .
-
+	
+	* Integers: match the regular expression `^[+-]?[\d]+$` .
+	
+	* Floating-point numbers: match the regular expression `^[+-]?[\d]+[.][\d]+$` .
+	
+	* Floating-point numbers in scientific notation: match the regular expression `^[+-]?[\d]+[.][\d]+[e][+-][\d]+$` .
+	
 	In other words, the differences from the JSON standard are as follows:
-
-	- Positive numbers are allowed to have a positive sign, and unsigned numbers are considered positive.
-
-	- Floating-point numbers must start with a number, must have a decimal point, and must be followed by a number after the decimal point.
-
-	- Floating-point numbers expressed in scientific notation must start with a number, must have a decimal point, and must be followed by a number; only lowercase `e` is allowed, not uppercase `E`, and must be followed by a plus or minus sign.
-
+	
+	* Positive numbers are allowed to have a positive sign, and unsigned numbers are considered positive.
+	
+	* Floating-point numbers must start with a number, must have a decimal point, and must be followed by a number after the decimal point.
+	
+	* Floating-point numbers expressed in scientific notation must start with a number, must have a decimal point, and must be followed by a number; only lowercase `e` is allowed, not uppercase `E`, and must be followed by a plus or minus sign.
+	
 	In addition, the tool makes a strict distinction between integers and floating point numbers, with integers being decoded as `bigint` in JS and floating point numbers being decoded as `number` in JS, and users using the wrong value type will result in potential bugs or even runtime failures.
 
 ## Strict file handling mechanism

@@ -175,7 +175,7 @@ s1.value === 'this is a string value.'
 ```
 
 ```ts
-// 测试C盘根目录下是否存在 sample.txt 文件
+// 测试C盘根文件夹下是否存在 sample.txt 文件
 // 设定路径对象
 let target_path = Kernel.Path.value(`C:/sample.txt`);
 // 调用内核函数，传递路径对象，得到 Kernel.Boolean 对象
@@ -256,12 +256,12 @@ let string_value = string.value;
 ```
 
 ```ts
-// 遍历某一目录下的子文件
-// 设定需要遍历的目录路径
+// 遍历某一文件夹下的子文件
+// 设定需要遍历的文件夹路径
 let target = Kernel.Path.value('C:/dir1');
 // 设定遍历深度，如果为null，则遍历所有层级
 let depth = Kernel.SizeOptional.value(2n);
-// 获取目录中的所有子文件路径
+// 获取文件夹中的所有子文件路径
 let path_list = Kernel.FileSystem.list_file(target, depth);
 for (let e of path_list.value) {
 	// 遍历子文件路径

@@ -4,33 +4,13 @@
 
 - [模块组成](#模块组成)
 
-- [安装准备](#安装准备)
-
-- [编译或下载二进制分发](#编译或下载二进制分发)
-
-- [使用捆绑包](#使用捆绑包)
-
-- [安装 `Kernel`](#安装-Kernel)
-
-- [安装 `Shell`](#安装-Shell)
-
-- [安装 `Shell GUI`](#安装-Shell-GUI)
-
-- [安装 `Script`](#安装-Script)
-
-- [安装 `Forwarder For Windows`](#安装-Forwarder-For-Windows)
-
-- [安装 `Forwarder For Macintosh`](#安装-Forwarder-For-Macintosh)
-
-- [安装 `Forwarder For Android`](#安装-Forwarder-For-Android)
-
-- [安装 `Helper`](#安装-Helper)
+- [安装步骤](#安装步骤)
 
 - [外部程序](#外部程序)
 
-- [多语言支持](#多语言支持)
-
 ## 平台支持
+
+工具支持以下平台：
 
 * 操作系统：`Windows 7+` 、`Linux ~` 、`Macintosh 12~` 、`Android 9+` 、`iPhone 16~` 。
 
@@ -43,293 +23,279 @@
 * `Kernel`
 	
 	内核，负责内部功能的实现。
+	
+	必需模块，分发为动态库。
 
 * `Shell`
 	
 	外壳，提供命令行界面。
+	
+	可选模块，分发为可执行程序。
+	
+	> 在 `Android` 与 `iPhone` 系统中使用 `Shell` 需要 ROOT 权限，若你的设备未获取 ROOT ，请使用 `Shell GUI` 。
 
 * `Shell GUI`
 	
 	外壳，提供图形界面。
+	
+	可选模块，分发为应用安装包。
 
 * `Script`
 	
 	脚本，控制工具的运行流程。
+	
+	必需模块，发为脚本包。
 
 * `Forwarder For Windows`
 	
 	转发器，使用户可以通过 Windows Explorer 右键菜单将文件转发至工具。
+	
+	可选模块，分发为应用安装包。
+	
+	> 该模块仅适用于 `Windows` 系统。
 
 * `Forwarder For Macintosh`
 	
 	转发器，使用户可以通过 Macintosh Finder 右键菜单将文件转发至工具。
+	
+	可选模块，分发为应用安装包。
+	
+	> 该模块仅适用于 `Macintosh` 系统。
 
 * `Forwarder For Android`
 	
 	转发器，使用户可以通过 Android 文件分享功能将文件转发至工具。
+	
+	可选模块，分发为应用安装包。
+	
+	> 该模块仅适用于 `Android` 系统。
 
 * `Helper`
 	
 	助手，提供额外的高级功能。
-
-## 安装准备
-
-在安装各个组件前，你需要做一些准备工作：
-
-1. 创建 **主目录**
 	
-	在存储空间中创建一个空目录，它用于存放工具运行所需的所有文件，称为主目录。
+	可选模块，分发为应用安装包。
 	
-	`Kernel` 、`Shell` 、`Script` 是便携式的，请将它们放置在主目录中，这样不会在其他位置残留数据。
+	> 该模块仅适用于 `Windows` 系统。
+
+## 安装步骤
+
+你可以克隆本项目并自行编译，或是直接下载本项目的捆绑包分发。
+
+1. 下载并解压捆绑包。
 	
-	`Shell GUI` 、`Windows Explorer Extension` 、`Helper` 是需要安装的应用，需要用户自行卸载，并清除应用数据。
+	查看 [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) ，捆绑包分发的命名为 `<version>.<system>.<architecture>.bundle.zip` ，其中 `system` 代表适配的操作系统，`architecture` 代表适配的 CPU 架构。
 	
-	> 主目录的位置可以随意，但要确保用户有对该目录及其内容的 **读写执行权限** 。
-
-## 编译或下载二进制分发
-
-你可以克隆本项目并自行编译，本项目的 [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) 中也提供了预编译的二进制分发。
-
-> Release 中只提供 `windows x86_64` 与 `android arm_64` 的二进制分发，如有面向其他平台的需要，请自行克隆并编译本项目。
-
-> Release 中只分发了捆绑包，如果你只需要其中的个别模块，可以在我的 [个人网盘](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9) 中找到，其中也提供了历史版本的下载。
-
-## 使用捆绑包
-
-捆绑包已经组织好了 `Kernel` 、`Shell` 、`Script` 与 `Shell` 的启动脚本，使用捆绑包就不必依照下面的详细步骤进行安装。
-
-1. 查看 [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) ，下载适用于你设备的分发。
-
-2. 将下载的压缩包文件解压至主目录内。
+	> Release 页中只保存了最新的捆绑包，如果需要历史版本，可以查看我的 [个人 OneDrive](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9) 。
 	
-	> @ `Android` \
-	> 你还需要进行以下额外配置：安装 **C++ 共享库** 至系统库目录。\
-	> 具体操作步骤参见下文。
+	目前，提供了预编译分发的平台如下：
+	
+	* `Windows` - `x86_64`
+	
+	* `Android` - `arm_64`
+	
+	* `Macintosh` - `x86_64` `arm_64`
+	
+	* `iPhone` - `arm_64`
+	
+	其中，仅 `Windows` 与 `Android` 平台的预编译分发会始终跟随最新版本，其他平台的预编译分发一般很少更新，如果需要最新版本，或者你的平台不在上述列表中，请尝试自行编译。
+
+2. 选择主文件夹。
+	
+	将解压得到的文件夹移动到适合的位置，它作为工具的主文件夹，绝对路径记录为 `<home>` 。
+
+3. 为主文件夹下的 `kernel` 与 `shell` 文件签名。
+	
+	> 该步骤只需 `iPhone` 用户操作，且需要在 `Macintosh` 设备上操作。
+	
+	在系统终端中运行命令：`> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell` 。
+
+4. 为主文件夹下的 `shell` 文件赋予可执行权限。
+	
+	> 如果不需要 `Shell` 模块，可以跳过该步骤。\
+	> 该步骤只需 `Linux` 、`Macintosh` 、`Android` 、`iPhone` 用户操作。
+	
+	在系统终端中运行命令：`> chmod +x shell` 。
+
+5. 为系统安装 C++ 共享库。
+	
+	> 如果不需要 `Shell` 模块，可以跳过该步骤。\
+	> 该步骤只需 `Android` 用户操作。
+	
+	将主文件夹内的 `libc++_shared.so` 文件复制至系统库文件夹 `/system/lib64` 中。
+
+6. 安装主文件夹内 `Shell GUI` 、`Forward` 、`Helper` 模块的应用安装包。
+	
+	应用安装包文件以 `msix` 、`app` 、`apk` 、`ipa` 等作为扩展名。
+	
+	> @ `Windows` \
+	> 安装前需要先信任 MSIX 中的签名证书。\
+	> 右键查看 `.msix` 的属性，切换到 ⌈ 数字签名 ⌋ 页，选择列表中第一项，再点击 ⌈ 详细信息 ⌋ ，在弹出的窗口中依次选择 ⌈ 查看证书 ⌋ - ⌈ 安装证书 ⌋ - ⌈ 本地计算机 ⌋ - ⌈ 将所有证书都放入下列存储 ⌋ - ⌈ 受信任人 ⌋ ，完成证书的安装。
+	> 
+	> @ `Macintosh` \
+	> 将 `*.app` 文件夹移动至系统应用文件夹中，再为 `*.app/MacOS` 文件夹中的程序文件赋予可执行权限。
 	> 
 	> @ `iPhone` \
-	> 你还需要进行以下额外配置：对 `kernel` 与 `shell` 进行签名。\
-	> 具体操作步骤参见下文。
+	> 需要通过 AltStore 或其他工具对 ipa 进行自签名与安装。
 
-3. 执行其中的 `launch.[sh|cmd]` 脚本以启动应用，工具应当能够正常启动与运行。
+7. 配置 `Shell GUI` 设置项。
 	
-	> @ `Windows` \
-	> 可以直接双击 `launch.cmd` 以运行，或将文件对象拖拽至其上并释放。
-
-捆绑包中还包含了 `Shell GUI` 、`Forwarder` 模块的安装包，如有需要请参照下文手动安装。
-
-## 安装 `Kernel`
-
-内核，负责内部功能的实现。
-
-这是必需安装项，分发为动态库。
-
-1. 编译或下载适用于你设备的分发。
-
-2. 将所得文件移动到主目录内，并重命名为 `kernel` 。
-
-## 安装 `Shell`
-
-外壳，提供命令行界面。
-
-这是可选安装项，分发为可执行程序。
-
-> @ `Android` `iPhone` \
-> 在 Android 与 iPhone 上使用 `Shell` 需要 ROOT 权限，若你的设备未获取 ROOT ，请使用 `Shell GUI` 。
-
-1. 编译或下载适用于你设备的分发。
-
-2. 将所得文件移动到主目录内，并重命名为 `shell` 。
+	> 如果不需要 `Shell GUI` 模块，可以跳过该步骤。
 	
-	> @ `Windows` \
-	> Windows 不支持以非编程方式调用无 `exe` 扩展名的可执行文件，因此，需要在终端中执行 `> mklink shell.exe shell` 以创建指向 `- shell` 的软链接 `- shell.exe` ；或者直接重命名 `- shell` 为 `- shell.exe` 。
-
-3. 赋予 `shell` 可执行权限。
+	打开新安装的 `Shell GUI` 应用，点击右下角的 `Setting` 按钮进入设置页面，编辑以下设置项：
 	
-	**Windows** 上一般不需操作，其他系统的用户可能要在终端中执行 `> chmod +x shell` 为 `- shell` 添加可执行权限。
-
-对于 `Android` 系统，还需要执行以下操作：
-
-1. 安装 **C++ 共享库** 至系统库目录。
+	* `Kernel` = `<home>/kernel` 。
 	
-	出于安全性与减小体积的考虑，程序使用的 C++ 运行时为 c++_shared 。因此，用户还需要将对应处理器架构的 `libc++_shared.so` 文件复制到系统库目录中。
+	* `Script` = `<home>/script/main.js` 。
 	
-	> 系统库目录在 32 位系统中为 `+ /system/lib` ，在 64 位系统中为 `+ /system/lib64` 。
-	> 
-	> 该文件可从 Android NDK 工具链中找到，捆绑包中也预置了与其中的 `kernel` 版本相对应的 `libc++_shared.so` 。
-
-对于 `iPhone` 系统，还需要执行以下操作：
-
-1. 对 `kernel` 与 `shell` 进行签名。
+	* `Argument` = `<home>` 。
 	
-	在 iPhone 上运行可执行文件需要通过签名验证，而分发的程序文件（ **kernel | shell** ）未经过签名，用户需要自行对其进行签名，才能在 iPhone 中运行。
+	* `Fallback Directory` = `<home>/workspace` 。
+		
+		> 该项仅适用于 `Android` 与 `iPhone` 。
 	
-	> 可以在 **Macintosh** 上使用 **codesign** 工具进行签名。
-
-## 安装 `Shell GUI`
-
-外壳，提供图形界面。
-
-这是可选安装项，分发为应用包。
-
-1. 编译或下载适用于你设备的分发。
-
-2. 安装应用包。
+	* `Storage Permission` 点击并为应用授予存储空间读写权限 。
+		
+		> 该项仅适用于 `Android` 。
 	
-	> @ `Windows` \
-	> 安装前需要先信任 MSIX 中的签名证书。\
-	> 右键查看 `.msix` 的属性，切换到 ⌈ 数字签名 ⌋ 页，选择列表中第一项，再点击 ⌈ 详细信息 ⌋ ，在弹出的窗口中依次选择 ⌈ 查看证书 ⌋ - ⌈ 安装证书 ⌋ - ⌈ 本地计算机 ⌋ - ⌈ 将所有证书都放入下列存储 ⌋ - ⌈ 受信任人 ⌋ ，完成证书的安装。
+	> 上述设置中的 `<home>` 需要替换为主文件夹的绝对路径。
 
-对于 `Android` 系统，还需要执行以下操作：
-
-1. 打开应用，点击右下方 ⌈ Setting ⌋ 进入设置页，点击 ⌈ Storage Permission ⌋ 一栏以申请存储空间访问权限。
+8. 配置 `Forwarder For Windows` 设置项。
 	
-	如果应用未取得这一权限，将只能访问应用的专属存储空间，而无法访问设备的共享外部存储空间。
-
-## 安装 `Script`
-
-脚本，控制工具的运行流程。
-
-这是必需安装项，发为脚本包。
-
-1. 编译或下载适用于你设备的分发。
-
-2. 将所得文件移动到主目录内，创建 `script` 目录，将压缩包的所有内容解压至其中。
-
-## 安装 `Forwarder For Windows`
-
-转发器，使用户可以通过 Windows Explorer 右键菜单将文件转发至工具。
-
-> 该模块专用于 Windows 系统，其他系统无法使用。
-
-这是可选安装项，分发为应用包。
-
-1. 编译或下载适用于你设备的分发。
-
-2. 安装应用包。
+	> 如果不需要 `Forwarder For Windows` 模块，可以跳过该步骤。
 	
-	> 安装前需要先信任 MSIX 中的签名证书。\
-	> 右键查看 `.msix` 的属性，切换到 ⌈ 数字签名 ⌋ 页，选择列表中第一项，再点击 ⌈ 详细信息 ⌋ ，在弹出的窗口中依次选择 ⌈ 查看证书 ⌋ - ⌈ 安装证书 ⌋ - ⌈ 本地计算机 ⌋ - ⌈ 将所有证书都放入下列存储 ⌋ - ⌈ 受信任人 ⌋ ，完成证书的安装。
-
-3. 启动应用，运行成功后将弹出一个 Explorer 窗口，它指向了应用的私有数据目录，其中有名为 `forward.cmd` 的脚本文件，以文本形式打开并编辑该文件。
+	打开新安装的 `Forwarder For Windows` 应用，会弹出一个文件夹窗口，其中有名为 `forward.cmd` 的文件，该脚本负责接收文件路径参数并启动工具，以文本形式打开并编辑该文件。
 	
-	用户每次选择该模块的扩展菜单项时，模块会将所选文件的路径作为参数启动该脚本，该脚本负责将接收到的参数转发至工具。
-	
-	以下示例能够将参数转发至 `launch.cmd` 与 `Helper` 模块提供的快速转发窗口中：
+	以下示例将参数转发至 `Shell` ：
 	
 	```cmd
 	@echo off
-	"C:\TwinStar.ToolKit\launch.cmd" %*
-	"C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_15.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+	set home=C:\TwinStar.ToolKit
+	start "" "%home%\shell.exe" ^
+		"%home%\kernel" ^
+		"%home%\script\main.js" ^
+		"%home%" ^
+		%*
+	```
+	
+	以下示例将参数转发至 `Shell GUI` ：
+	
+	```cmd
+	@echo off
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.ShellGUI_27.0.0.0_x64__7qfdsg797hj0p\shell_gui.exe" ^
+		-additional_argument %*
+	```
+	
+	以下示例将参数转发至 `Helper` - `Modding Worker`：
+	
+	```cmd
+	@echo off
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_19.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+		-WindowSize        496 968 ^
+		-WindowAlwaysOnTop true ^
+		-ModuleType        ModdingWorker ^
+		-ModuleOption ^
+			-ImmediateLaunch    true ^
+			-AdditionalArgument %*
+	```
+	
+	以下示例将参数转发至 `Helper` - `Resource Forwarder`：
+	
+	```cmd
+	@echo off
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_19.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
 		-WindowSize        496 968 ^
 		-WindowAlwaysOnTop true ^
 		-ModuleType        ResourceForwarder ^
 		-ModuleOption ^
-			-AutomaticClose  true ^
-			-Input           %*
+			-AutomaticClose true ^
+			-Input          %*
 	```
+
+9. 配置 `Forwarder For Macintosh` 设置项。
 	
-	> `Helper.exe` 的路径需要自行在你的设备上检索。
-
-4. 现在，你可以在任意文件或目录的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
+	> 如果不需要 `Forwarder For Macintosh` 模块，可以跳过该步骤。
 	
-	如果没有看到该选项，请尝试重启资源管理器 `explorer.exe` ，或重启计算机。
-
-## 安装 `Forwarder For Macintosh`
-
-转发器，使用户可以通过 Macintosh Finder 右键菜单将文件转发至工具。
-
-> 该模块专用于 Macintosh 系统，其他系统无法使用。
-
-这是可选安装项，分发为应用包。
-
-1. 编译或下载适用于你设备的分发。
-
-2. 安装应用包。
-
-3. 启动应用，运行成功后将弹出一个 Finder 窗口，它指向了应用的私有数据目录，其中有名为 `forward.sh` 的脚本文件，以文本形式打开并编辑该文件。
+	进入 ⌈ 系统设置 ⌋ - ⌈ 隐私与安全性 ⌋ - ⌈ 扩展 ⌋ - ⌈ 添加的扩展 ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ ，勾选其中的 ⌈ “访达”扩展 ⌋ ，确保应用能够生效。
 	
-	用户每次选择该模块的扩展菜单项时，模块会将所选文件的路径作为参数启动该脚本，该脚本负责将接收到的参数转发至工具；但需要注意，脚本的执行处于应用的沙盒环境中。
+	打开新安装的 `Forwarder For Macintosh` 应用，会弹出一个文件夹窗口，其中有名为 `forward.sh` 的文件，该脚本负责接收文件路径参数并启动工具，以文本形式打开并编辑该文件。
 	
-	以下示例能够将参数转发至 `Shell GUI` ：
+	> 注意：脚本的执行处于应用的沙盒环境中。
+	
+	以下示例将参数转发至 `Shell GUI` ：
 	
 	```sh
 	#!/bin/bash
 	"/Applications/TwinStar ToolKit - Shell GUI.app/Contents/MacOS/TwinStar ToolKit - Shell GUI" \
-		"-additional" \
-		"$@"
+		"-additional_argument" "$@"
 	```
 
-4. 进入 ⌈ 系统设置 ⌋ - ⌈ 隐私与安全性 ⌋ - ⌈ 扩展 ⌋ - ⌈ 添加的扩展 ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ ，勾选其中的 ⌈ “访达”扩展 ⌋ 。
-
-5. 现在，你可以在任意文件或目录的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
+10. 配置 `Helper` 设置项。
 	
-	如果没有看到该选项，请尝试重新勾选扩展设置，或重启计算机。
-
-## 安装 `Forwarder For Android`
-
-转发器，使用户可以通过 Android 文件分享功能将文件转发至工具。
-
-> 该模块专用于 Android 系统，其他系统无法使用。
-
-这是可选安装项，分发为应用包。
-
-1. 编译或下载适用于你设备的分发。
-
-2. 安装应用包。
-
-3. 现在，你可以在其他第三方文件管理器的文件分享目标内看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
-
-> 由于 Android 系统的限制，转发器无法直接获取所转发文件的绝对路径，而是将所转发文件的 Content URI 传递至 Shell GUI 作为其启动的命令参数，Shell GUI 会尝试解析 Content URI 。具体参见 [Android Content URI 处理方式](./question.md#Android-Content-URI-处理方式) 。
-
-## 安装 `Helper`
-
-助手，提供额外的高级功能。
-
-> 该模块专用于 Windows 系统，其他系统无法使用。
-
-这是可选安装项，分发为应用包。
-
-1. 编译或下载适用于你设备的分发。
-
-2. 安装应用包。
+	> 如果不需要 `Helper` 模块，可以跳过该步骤。
 	
-	> 安装前需要先信任 MSIX 中的签名证书。\
-	> 右键查看 `.msix` 的属性，切换到 ⌈ 数字签名 ⌋ 页，选择列表中第一项，再点击 ⌈ 详细信息 ⌋ ，在弹出的窗口中依次选择 ⌈ 查看证书 ⌋ - ⌈ 安装证书 ⌋ - ⌈ 本地计算机 ⌋ - ⌈ 将所有证书都放入下列存储 ⌋ - ⌈ 受信任人 ⌋ ，完成证书的安装。
+	打开新安装的 `Helper` 应用，点击主页中各个模块按钮右上方的齿轮图标可以打开模块设置对话框，编辑以下设置项：
+	
+	* `Modding Worker` - `Kernel` = `<home>/kernel` 。
+	
+	* `Modding Worker` - `Script` = `<home>/script/main.js` 。
+	
+	* `Modding Worker` - `Argument` = `<home>` 。
+	
+	* `Resource Forwarder` - `Option Configuration` = `<home>/helper/OptionConfiguration.json` 。
+	
+	* `Command Sender` - `Method Configuration` = `<home>/helper/MethodConfiguration.json` 。
+	
+	> 上述设置中的 `<home>` 需要替换为主文件夹的绝对路径。
+
+11. 设置交互语言。
+	
+	以文本形式打开并编辑主文件夹内的 `script/Entry/Entry.json` 文件，找到 `"language": "Chinese"` 部分，修改它以切换工具的交互语言。
+	
+	* `Chinese` - 中文（默认）
+	
+	* `English` - 英文
+
+12. 至此，已经完成了所有安装步骤，可以通过终端命令行或直接打开应用的方式启动工具。
+	
+	> @ `Windows` \
+	> 可以直接双击主文件夹中的启动脚本 `launch*.cmd` 启动工具，或将文件对象拖拽至其上并释放。\
+	> 如果安装了 `Forwarder` 模块，可以在任意文件或文件夹的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。\
+	> 如果安装了 `Helper` 模块，可以通过其中的 `Resource Forwarder` 进行更快捷的转发，也可以通过 `Command Sender` 可视化地选择需要的功能并编辑参数。
+	
+	> @ `Macintosh` \
+	> 如果安装了 `Forwarder` 模块，可以在任意文件或文件夹的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
+	
+	> @ `Android` \
+	> 如果安装了 `Forwarder` 模块，可以在系统或第三方的文件管理器的文件分享列表中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。\
+	> 注意：由于 Android 系统的限制，转发器无法直接获取所转发文件的绝对路径，而是将所转发文件的 Content URI 传递至 Shell GUI 作为其启动的命令参数，Shell GUI 会尝试解析 Content URI 。具体参见 [Android Content URI 处理方式](./question.md#Android-Content-URI-处理方式) 。
 
 ## 外部程序
 
-工具的某些功能需要调用外部程序，用户需自行下载并安装这些程序，并放置于主目录下的 `external` 目录内。
+工具的某些功能需要调用外部程序，需要用户自行下载与安装。
 
-* [ffmpeg](https://ffmpeg.org/download.html)
+* [WwiseConsole](https://www.audiokinetic.com/en/download)
+	
+	用于 **WEM 音频编码** 。
+	
+	安装并配置 `PATH` 环境变量，以确保工具能通过 `PATH` 环境变量检索到 `WwiseConsole.exe` 或 `WwiseConsole.sh` 可执行程序。
+	
+	> `WwiseConsole` 可执行程序的路径参见 [官方文档](https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=bankscommandline.html) 。
+	
+	> 该程序仅支持 `Windows` 、`Macintosh` 系统。
+
+* [vgmstream-cli](https://vgmstream.org/)
 	
 	用于 **WEM 音频解码** 。
 	
-	下载完成后，将文件 `ffmpeg[.exe]` 重命名为 `ffmpeg` 并放置于 `+ <home>/external/ffmpeg` 目录下。
+	安装并配置 `PATH` 环境变量，以确保工具能通过 `PATH` 环境变量检索到 `vgmstream-cli` 可执行程序。
+	
+	> 该程序仅支持 `Windows` 、`Linux` 、`Macintosh` 系统。
 
-* [ww2ogg](https://github.com/hcs64/ww2ogg/releases/tag/0.24)
-	
-	用于 **WEM 音频解码** 。
-	
-	下载完成后，将文件 `ww2ogg[.exe]` 重命名为 `ww2ogg` 并放置于 `+ <home>/external/ww2ogg` 目录下。
-	
-	再将文件 `packed_codebooks_aoTuV_603.bin` 放置于该目录下。
-	
-	> 该项目的作者只分发了适用于 Windows 的可执行程序，其他系统的用户须自行下载源码构建。
-
-* [adb](https://developer.android.com/studio/command-line/adb)
+* [adb](https://developer.android.com/studio/releases/platform-tools)
 	
 	用于 **远程安卓辅助** 。
 	
-	下载 [`Android SDK Platform Tools`](https://developer.android.com/studio/releases/platform-tools) ，解压并配置 `PATH` 环境变量中。
-
-## 多语言支持
-
-工具提供多语言支持，目前支持中文与英文。
-
-默认情况下，工具将使用中文进行交互，如果需要切换为其他语言，应修改配置文件，步骤如下：
-
-1. 进入工具的主目录，找到 `- <home>/script/Entry/Entry.json` 文件，使用文本编辑器打开。
-
-2. 文本中的第二行为 `"language": "Chinese"` ，表示目前所使用的交互语言为中文，若需切换为英文，请将 `Chinese` 改为 `English` 。
-
-> 多语言文本通过 `- <home>/script/Language/<Language-ID>.json` 定义，如果需要修正文本错误，或增加对其他语言的支持，请修改该文件；方便的话，也请提交 PR 为本项目做贡献。
+	安装并配置 `PATH` 环境变量，以确保工具能通过 `PATH` 环境变量检索到 `adb` 可执行程序。
+	
+	> 该程序仅支持 `Windows` 、`Linux` 、`Macintosh` 系统。

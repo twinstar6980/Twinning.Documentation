@@ -2,8 +2,6 @@
 
 - [介绍](#介绍)
 
-- [通用配置](#通用配置)
-
 - [js](#js)
 
 - [data.hash](#datahash)
@@ -72,7 +70,7 @@
 
 ## 介绍
 
-工具提供的预置功能一般接受一个文件或目录作为输入，并在处理完成后将数据输出至另一个文件或目录，默认情况下将输出至同级目录中。功能一般分为两种：
+工具提供的预置功能一般接受一个文件或文件夹作为输入，并在处理完成后将数据输出至另一个文件或文件夹，默认情况下将输出至同级文件夹中。功能一般分为两种：
 
 * 常规功能
 	
@@ -80,7 +78,7 @@
 
 * 批处理功能
 	
-	对某种特定常规功能的包装，接受一个目录作为输入并处理其中的所有匹配文件，例如将一个目录内的所有 PopCap RTON 文件解码为 JSON 文件。
+	对某种特定常规功能的包装，接受一个文件夹作为输入并处理其中的所有匹配文件，例如将一个文件夹内的所有 PopCap RTON 文件解码为 JSON 文件。
 	
 	批处理功能也对一些需要频繁内存申请与释放的常规功能进行了效率优化。
 
@@ -112,57 +110,7 @@
 > 		
 > 		`<value>` 则是当用户未指定参数值时的默认参数值，一般是显式的 `?input` 或 `?automatic` ，或者从对应的配置文件中获取默认参数值。
 
-以下列出的所有功能都是常规功能，部分常规功能存在对应的批处理版本，则会以 `*` 符号标出。功能的批处理版本与常规版本的参数保持一致，但批处理功能的 ID 附加了 `.batch` 后缀，并且输入参数、输出参数分别指向一个用于输入、输出每次处理对象的目录。
-
-## 通用配置
-
-`- <home>/script/Entry/Entry.json` 定义了工具运行期间的通用配置。
-
-* `<configuration>`
-
-	* `language` : `string` = `Chinese`
-		
-		交互语言。可以为 `Chinese` 或 `English` 。
-	
-	* `disable_cli_virtual_terminal_sequence` : `boolean` = `false`
-		
-		禁用命令行虚拟终端序列。仅当使用命令行外壳时有效。
-	
-	* `disable_notification` : `boolean` = `false`
-		
-		禁用通知功能。
-	
-	* `byte_stream_use_big_endian` : `boolean` = `false`
-		
-		内部字节流操作时使用大端序。这个选项对一些大端序文件的处理是必要的。默认禁用，因为大多数时候用户处理的都是小端序文件。
-	
-	* `common_buffer_size` : `string` = `64.0m`
-		
-		公用缓存区大小。用于编码 JSON 字符串、编码 PNG 图像等，如果编码时所需的内存用量超过这一大小，工具将处理失败。
-	
-	* `json_format` : `{ ... }`
-		
-		JSON 输出格式。
-		
-		* `disable_trailing_comma` : `boolean` = `false`
-			
-			禁用尾随逗号。
-		
-		* `disable_array_wrap_line` : `boolean` = `false`
-			
-			禁用数组元素间的换行。
-	
-	* `thread_limit` : `bigint` = `0`
-		
-		线程池上限数。目前无实际作用。
-	
-	* `notification_time_limit` : `null | bigint` = `15000`
-		
-		通知时限。在某项命令执行完成后，如果有效执行时间超过该值（毫秒），将推送系统通知以提醒用户。设为 null 将禁用通知。
-	
-	* `pause_when_finish` : `boolean` = `true`
-		
-		在完成所有工作后暂停程序，等待用户关闭。
+以下列出的所有功能都是常规功能，部分常规功能存在对应的批处理版本，则会以 `*` 符号标出。功能的批处理版本与常规版本的参数保持一致，但批处理功能的 ID 附加了 `.batch` 后缀，并且输入参数、输出参数分别指向一个用于输入、输出每次处理对象的文件夹。
 
 ## `js`
 
@@ -430,25 +378,21 @@
 
 ## `wwise.media`
 
+* `encode` `*`
+	
+	* `raw_file` : `*.wav`
+	
+	* `ripe_file` : `string` ~ `*.wem` = `?automatic`
+	
+	* `format` : `string` = `?input`
+
 * `decode` `*`
 	
 	* `ripe_file` : `*.wem`
 	
 	* `raw_file` : `string` ~ `*.wav` = `?automatic`
-	
-	* `tool_ffmpeg_program_file` : `string` = `configuration.tool_ffmpeg_program_file`
-	
-	* `tool_ww2ogg_program_file` : `string` = `configuration.tool_ww2ogg_program_file`
-	
-	* `tool_ww2ogg_code_book_file` : `string` = `configuration.tool_ww2ogg_code_book_file`
 
 * `<configuration>`
-	
-	* `tool_ffmpeg_program_file` : `string` = `~/external/ffmpeg/ffmpeg`
-	
-	* `tool_ww2ogg_program_file` : `string` = `~/external/ww2ogg/ww2ogg`
-	
-	* `tool_ww2ogg_code_book_file` : `string` = `~/external/ww2ogg/packed_codebooks_aoTuV_603.bin`
 
 ## `wwise.sound_bank`
 
@@ -868,29 +812,29 @@
 
 ## `popcap.particle_effect`
 
-- `encode` `*`
+* `encode` `*`
+	
+	* `definition_file` : `*.ppf.json`
+	
+	* `data_file` : `string` ~ `*.ppf` = `?automatic`
+	
+	* `version_number` : `bigint` = `configuration.version_number`
+	
+	* `buffer_size` : `string` = `configuration.encode_buffer_size`
 
-	- `definition_file` : `*.ppf.json`
+* `decode` `*`
+	
+	* `data_file` : `*.ppf`
+	
+	* `definition_file` : `string` ~ `*.ppf.json` = `?automatic`
+	
+	* `version_number` : `bigint` = `configuration.version_number`
 
-	- `data_file` : `string` ~ `*.ppf` = `?automatic`
-
-	- `version_number` : `bigint` = `configuration.version_number`
-
-	- `buffer_size` : `string` = `configuration.encode_buffer_size`
-
-- `decode` `*`
-
-	- `data_file` : `*.ppf`
-
-	- `definition_file` : `string` ~ `*.ppf.json` = `?automatic`
-
-	- `version_number` : `bigint` = `configuration.version_number`
-
-- `<configuration>`
-
-	- `version_number` : `bigint` = `1`
-
-	- `encode_buffer_size` : `string` = `8.0m`
+* `<configuration>`
+	
+	* `version_number` : `bigint` = `1`
+	
+	* `encode_buffer_size` : `string` = `8.0m`
 
 ## `popcap.render_effect`
 
@@ -1093,12 +1037,6 @@
 	* `option_bnk_version_number` : `integer` = `configuration.resource_convert_option.bnk_version_number`
 	
 	* `option_wem` : `boolean` = `configuration.resource_convert_option.wem`
-	
-	* `option_wem_tool_ffmpeg_program_file` : `string` = `configuration.resource_convert_option.wem_tool_ffmpeg_program_file`
-	
-	* `option_wem_tool_ww2ogg_program_file` : `string` = `configuration.resource_convert_option.wem_tool_ww2ogg_program_file`
-	
-	* `option_wem_tool_ww2ogg_code_book_file` : `string` = `configuration.resource_convert_option.wem_tool_ww2ogg_code_book_file`
 
 * `unpack_lenient` `*`
 	
@@ -1215,4 +1153,3 @@
 	* `action` : `string` = `?input`
 
 * `<configuration>`
-

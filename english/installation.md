@@ -1,338 +1,299 @@
 # Installation
 
-- [Platform](#Platform)
+- [Platform supportability](#Platform-supportability)
 
-- [Module](#Module)
+- [Module types](#Module-Types)
 
-- [Preparation](#Preparation)
+- [Installation steps](#Installation-Steps)
 
-- [Compile or download binary distribution](#Compile-or-download-binary-distribution)
+- [External programs](#External-Programs)
 
-- [Use releases](#Use-releases)
+## Platform supportability
 
-- [Install `Kernel`](#Install-Kernel)
+* Operating systems: `Windows 7+`, `Linux ~ `, `Macintosh 12~`, `Android 9+`, `iPhone 16~`.
 
-- [Install `Shell`](#Install-Shell)
+* Processor architectures: `x86 32|64`, `arm 32|64`.
 
-- [Install `Shell GUI`](#Install-Shell-GUI)
-
-- [Install `Script`](#Install-Script)
-
-- [Install `Forwarder For Windows`](#Install-Forwarder-For-Windows)
-
-- [Install `Forwarder For Macintosh`](#Install-Forwarder-For-Macintosh)
-
-- [Install `Forwarder For Android`](#Install-Forwarder-For-Android)
-
-- [Install `Helper`](#Install-Helper)
-
-- [External Programs](#External-Program)
-
-- [Languages](#Languages)
-
-## Platform
-
-- Operating systems: `Windows 7+`, `Linux ~ `, `Macintosh 12~`, `Android 9+`, `iPhone 16~`.
-
-- Processor architectures: `x86 32|64`, `arm 32|64`.
-
-## Module
+## Module types
 
 The tool consists of several modules, different modules provide different functions:
 
-- `Kernel`
-
+* `Kernel`
+	
 	Kernel, responsible for the implementation of internal functions.
+	
+	Required modules, distributed as an dynamic library.
 
-- `Shell`
-
+* `Shell`
+	
 	Shell, provides the command line interface.
+	
+	Optional modules, distributed as executable programs.
+	
+	> Using `Shell` on `Android` and `iPhone` requires ROOT privileges, if your device is not ROOTed, use `Shell GUI`.
 
-- `Shell GUI`
-
+* `Shell GUI`
+	
 	Shell, provides the graphical interface.
+	
+	Optional module, distributed as an application installation package.
 
-- `Script`
-
+* `Script`
+	
 	Script, controls the workflow of the tool.
+	
+	Required module, distributed as a script package.
 
-- `Forwarder For Windows`
-
+* `Forwarder For Windows`
+	
 	Forwarder, which enables users to forward files to tools via the Windows Explorer right-click menu.
+	
+	Optional module, distributed as an application installation package.
+	
+	> This module is only avaliable for `Windows` systems.
 
-- `Forwarder For Macintosh`
-
+* `Forwarder For Macintosh`
+	
 	Forwarder, which enables users to forward files to tools via the Macintosh Finder right-click menu.
+	
+	Optional module, distributed as an application installation package.
+	
+	> This module is only avaliable for `Macintosh` system.
 
-- `Forwarder For Android`
-
+* `Forwarder For Android`
+	
 	Forwarder, which enables users to forward files to tools via the Android file sharing.
+	
+	Optional module, distributed as an application installation package.
+	
+	> This module is only avaliable for `Android` system.
 
-- `Helper`
-
+* `Helper`
+	
 	Helper, which provides additional advanced functions.
+	
+	Optional module, distributed as an application installation package.
+	
+	> This module is only avaliable for `Windows` system.
 
-## Preparation
+## Installation steps
 
-Before installing each component, you need to do some preparations:
+You can clone this project and compile it, or just download the bundle package of this project for distribution.
 
-1. Locate **home directory**
+> Only bundle are distributed in Release page. If you only need individual modules, you can download them in my [Personal OneDrive](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9), which also provides downloads of historical versions.
 
-	Create an empty directory in the storage space which will hold all the files needed to run the tool, called the home directory.
+1. Download and unzip the bundle package.
+	
+	View the [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) page, the bundle distribution is named `<version>.<system>.<architecture>.bundle.zip`, where `system` represents the adapted operating system and `architecture` represents the adapted CPU architecture.
+	
+	> Only the latest bundle is saved in the Release page. If you need historical versions, you can found them on my [Personal OneDrive](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9).
+	
+	Currently, the platforms that provide precompiled distribution are as follows:
+	
+	* `Windows` - `x86_64`
+	
+	* `Android` - `arm_64`
+	
+	* `Macintosh` - `x86_64` `arm_64`
+	
+	* `iPhone` - `arm_64`
+	
+	Among them, only the precompiled distributions for `Windows` and `Android` platforms will always follow the latest version. Precompiled distributions for other platforms are generally rarely updated. If you need the latest version, or your platform is not in the above list, please try to compile it by yourself.
 
-	`Kernel` , `Shell` , `Script` are portable, so place them in the home directory so that no data remains in other locations.
+2. Select the home directory.
+	
+	Move the unzipped directory to a suitable location. It will serve as the home directory of the toolkit. recorded the absolute path as `<home>`.
 
-	`Shell GUI` , `Forwarder For Windows` , `Helper` are applications that need to be installed and need to be uninstalled by the user and cleared of application data.
+3. Sign the `kernel` and `shell` files in the home directory.
+	
+	> This step only required for `iPhone` users, and need to operate on `Macintosh` device.
+	
+	Run these command in the system terminal: `> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell` .
 
-	> The location of the home directory can be optional, but make sure the user has **read and write allows permission** to the directory and its contents.
+4. Grant executable permissions to the `shell` file in the home directory.
+	
+	> If you don't need the `Shell` module, you can skip this step. \
+	> This step only required for `Linux`, `Macintosh`, `Android`, `iPhone` users.
+	
+	Run these command in the system terminal: `> chmod +x shell` .
 
-## Compile or download binary distributions
+5. Install the C++ shared library for your system.
+	
+	> If you don't need the `Shell` module, you can skip this step. \
+	> This step only required for `Android` user.
+	
+	Copy the `libc++_shared.so` file in the home directory to the system library directory `/system/lib64` .
 
-You can clone this project and compile it yourself. Pre-compiled binary distribution is also available in [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest).
-
-> Only the binary distributions for `windows x86_64` and `android arm_64` are provided in the Release, so please clone and compile the project yourself if you need it for other platforms.
-
-> If you need only individual modules, you can find them on my [Personal Onedrive](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9), which contains all the history of this tool.
-
-## Use Bundle Package
-
-The bundle package is already organized the `Kernel`, `Shell`, `Script` and script for launch `Shell`, so it is not necessary to follow the detailed steps below to install the releases.
-
-1. Check [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) and download the distribution for your device.
-
-2. Uncompress the downloaded zip file to the home directory.
-
-	> @ `Android` \
-	> You also need to do the following additional configuration: Install **C++ shared libraries** to the system library directory. \
-	> See below for the detailed steps.
-	>
-	> @ `iPhone` \
-	> You will also need to do the following additional configuration: sign `kernel` and `shell`. \
-	> See below for details.
-
-3. Execute the `launch.[sh|cmd]` scripts to launch the program, the tool should start and run properly.
-
-	> @ `Windows` \
-	> Either double-click `launch.cmd` directly to run it, or drag and drop the file object onto it and release it.
-
-The bundle package also contains installion package for `Shell GUI`, `Forwarder` modules, please refer below to install them manually if you need them.
-
-## Install `Kernel`
-
-Kernel, responsible for the implementation of internal functions.
-
-This is a required installation and is distributed as a dynamic library.
-
-1. Compile or download the distribution for your device.
-
-2. Move the resulting file to the home directory, then rename it to `kernel`.
-
-> You have to choose the right `kernel` for your device and rename to `kernel`, otherwise the tool won't be able to launch correctly.
-
-## Install `Shell`
-
-Shell, provides the command line interface.
-
-This is an optional installation, distributed as an executable.
-
-> @ `Android` `iPhone` \
-> Using `Shell` on Android and iPhone requires ROOT or JAILBREAK permission, if your device does not get ROOT, please use `Shell GUI`.
-
-1. Compile or download the distribution for your device.
-
-2. Move the resulting file to the home directory, then rename it to `shell`.
-
-> @ `Windows` \
-> Windows does not support calling executables without the `.exe` extension non-programmatically, so you need to run `> mklink shell.exe shell` in the terminal to create a soft link `- shell.exe` to `- shell`; or just rename `- shell` to `- shell.exe`.
-
-3. Give `shell` executable privileges.
-
-	\*\*Users on other systems may have to do `> chmod +x shell` in the terminal to add executable permissions to `- shell`.
-
-For `Android` systems, you also need to perform the following actions:
-
-1. Install **C++ shared library** to the system library directory.
-
-	For security and size reduction reasons, the C++ runtime used is c++_shared. Therefore, you also need to copy the `libc++_shared.so` file of the corresponding processor architecture to the system library directory.
-
-	> The system library directory is `+ /system/lib` on 32-bit systems and `+ /system/lib64` on 64-bit systems.
-	> This file can be extracted from the Android NDK toolchain.
-
-For `iPhone` systems, you also need to do the following:
-
-1. sign `kernel` and `shell`.
-
-	Running executables on the iPhone requires signature verification, and the distributed program files (**kernel | shell**) are not signed and need to be signed by the user in order to run on the iPhone.
-
-	> You can use the **codesign** tool on the **Macintosh** to do this.
-
-## Install `Shell GUI`
-
-Shell, provides the graphical interface.
-
-This is an optional installation item, distributed as an application package.
-
-1. Compile or download the distribution for your device.
-
-	> Currently, only `Windows X86-64` and `Android ARM-64` distributions are available. Users of other platforms need to clone this project and build and sign the application package by themselves.
-
-2. Install the application package.
-
+6. Install the application installation packages of the `Shell GUI`, `Forward`, and `Helper` modules in the home directory.
+	
+	Application installation package files have extensions such as `msix`, `app`, `apk`, `ipa`, etc.
+	
 	> @ `Windows` \
 	> You need to trust the signing certificate in MSIX before installation. \
 	> Right-click the properties of `.msix`, switch to the ⌈Digital Signatures ⌋ page, select the first item in the list, and then click ⌈Details ⌋ , and in the pop-up window, select ⌈View Certificate⌋ - ⌈Install Certificate⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈Trusted persons⌋, to complete the installation of the certificates.
+	> 
+	> @ `Macintosh` \
+	> Move the `*.app` directory to the system application directory, and then grant executable permissions to the program files in the `*.app/MacOS` directory.
+	> 
+	> @ `iPhone` \
+	> Need to self-sign and install ipa through AltStore or other tools.
 
-For `Android` systems, you also need to perform the following actions:
-
-1. Open the application, click ⌈ Setting ⌋ at the bottom right to enter the setting page, and click ⌈ Storage Permission ⌋ to request the storage permission.
-
-	If the application does not obtain this permission, it will only be able to access the application's special storage, the device's shared external storage is not accessible.
-
-## Install `Script`
-
-Script, controls the workflow of the tool.
-
-This is a required installation item, issued as a script package.
-
-1. Compile or download the distribution for your device.
-
-2. Move the resulting file to the home directory, then create a `script` directory, and uncompress all the contents of the zip package to it.
-
-## Install `Forwarder For Windows`
-
-Forwarder, which enables users to forward files to tools via the Windows Explorer right-click menu.
-
-> This module is dedicated to Windows systems and does not available for other systems.
-
-This is an optional installation and is distributed as an application package.
-
-1. Compile or download the distribution for your device.
-
-2. Install the application package.
-
-	> You need to trust the signing certificate in MSIX before installation. \
-	> Right-click to view the properties of `.msix`, switch to the ⌈Digital Signatures⌋ page, select the first item in the list, then click ⌈Details⌋, and in the pop-up window, select ⌈View Certificate⌋ - ⌈Install Certificate⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈Trusted persons⌋ to complete the installation of the certificate.
-
-3. Start the application, and a Explorer window will pop up after running successfully, it pointing to the application's private data directory, which contains a script file named `forward.cmd`, open and edit this file in text form.
-
-	Every time the user selects the extension menu item of the module, the module will run this script with the path of the selected file as the arguments, and the script is responsible for forwarding the received arguments to the toolkit.
-
-	Here's an example that forward arguments to the `launch.cmd` and `Helper`'s quick forwarder window :
-
+7. Configure the `Shell GUI` settings.
+	
+	> If you do not need the `Shell GUI` module, you can skip this step.
+	
+	Open the newly installed `Shell GUI` application, click the `Setting` button in the lower right corner to enter the settings page, and edit the following setting items:
+	
+	* `Kernel` = `<home>/kernel`.
+	
+	* `Script` = `<home>/script/main.js`.
+	
+	* `Argument` = `<home>` .
+	
+	* `Fallback Directory` = `<home>/workspace`.
+		
+		> This item is only available on `Android` and `iPhone`.
+	
+	* `Storage Permission` Click and grant storage space read and write permissions to the application.
+		
+		> This is only available on `Android`.
+	
+	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
+8. Configure the `Forwarder For Windows` setting.
+	
+	> If you do not need the `Forwarder For Windows` module, you can skip this step.
+	
+	Open the newly installed `Forwarder For Windows` application, and a directory window will pop up with a file named `forward.cmd`. This script is responsible for receiving the file path parameter and launching the tool. Open and edit the file as text.
+	
+	The following example forward arguments to `Shell` :
+	
 	```cmd
 	@echo off
-	"C:\TwinStar.ToolKit\launch.cmd" %*
-	"C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_15.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+	set home=C:\TwinStar.ToolKit
+	start "" "%home%\shell.exe" ^
+		"%home%\kernel" ^
+		"%home%\script\main.js" ^
+		"%home%" ^
+		%*
+	```
+	
+	The following example forward arguments to `Shell GUI` :
+	
+	```cmd
+	@echo off
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.ShellGUI_27.0.0.0_x64__7qfdsg797hj0p\shell_gui.exe" ^
+		-additional_argument %*
+	```
+	
+	The following example forward arguments to `Helper` - `Modding Worker` :
+	
+	```cmd
+	@echo off
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_19.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+		-WindowSize        496 968 ^
+		-WindowAlwaysOnTop true ^
+		-ModuleType        ModdingWorker ^
+		-ModuleOption ^
+			-ImmediateLaunch    true ^
+			-AdditionalArgument %*
+	```
+	
+	The following example forward arguments to `Helper` - `Resource Forwarder` :
+	
+	```cmd
+	@echo off
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_19.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
 		-WindowSize        496 968 ^
 		-WindowAlwaysOnTop true ^
 		-ModuleType        ResourceForwarder ^
 		-ModuleOption ^
-			-AutomaticClose  true ^
-			-Input           %*
+			-AutomaticClose true ^
+			-Input          %*
 	```
 
-4. You can now see the `⌈ TwinStar ToolKit - Extension ⌋` option inside the context menu of any file or directory, and use these options to quickly forward file objects to the tool.
-
-	If you do not see this option, try restarting Explorer `explorer.exe`, or restarting your computer.
-
-## Install `Forwarder For Macintosh`
-
-Forwarder, which enables users to forward files to tools via the Macintosh Finder right-click menu.
-
-> This module is dedicated to Macintosh systems and is not available for other systems.
-
-This is an optional installation item, distributed as an application package.
-
-1. Compile or download the distribution for your device.
-
-2. Install the application package.
-
-3. Start the application, and a Finder window will pop up after running successfully, it pointing to the application's private data directory, which contains a script file named `forward.sh`, open and edit this file in text form.
-
-	Every time the user selects the extension menu item of the module, the module will run this script with the path of the selected file as the arguments, and the script is responsible for forwarding the received arguments to the toolkit; but pay attention, it should be noted that the execution of the script is in the sandbox environment of the application.
-
-	Here's an example that forward arguments to the `Shell GUI` :
-
+9. Configure the `Forwarder For Macintosh` setting.
+	
+	> If you do not need the `Forwarder For Macintosh` module, you can skip this step.
+	
+	Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ and check the ⌈ "Finder" extension ⌋ to ensure that the application can take effect.
+	
+	Open the newly installed `Forwarder For Macintosh` application, and a directory window will pop up with a file named `forward.sh`. This script is responsible for receiving the file path parameter and launching the tool. Open and edit the file as text.
+	
+	> Note: The script is executed in the application's sandbox environment.
+	
+	The following example forward arguments to `Shell GUI` :
+	
 	```sh
-	#! /bin/bash
+	#!/bin/bash
 	"/Applications/TwinStar ToolKit - Shell GUI.app/Contents/MacOS/TwinStar ToolKit - Shell GUI" \
-		"-additional" \
-		"$@"
+		"-additional_argument" "$@"
 	```
+10. Configure the `Helper` settings.
 	
-	> `Helper.exe`'s path should search from your device.
-
-4. Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ and check one of the ⌈ "Finder" extension ⌋.
-
-5. Now you can see ⌈ TwinStar ToolKit - Forwarder ⌋ in the right-click menu item of any file or directory and use it to quickly forward file objects to the tool.
+	> If you don't need the `Helper` module, you can skip this step.
 	
-	If you do not see this option, try re-checking the extensions settings, or restarting your computer.
+	Open the newly installed `Helper` application, click the gear icon on the upper right side of each module button on the page to open the module settings dialog and edit the following settings:
+	
+	* `Modding Worker` - `Kernel` = `<home>/kernel`.
+	
+	* `Modding Worker` - `Script` = `<home>/script/main.js`.
+	
+	* `Modding Worker` - `Argument` = `<home>`.
+	
+	* `Resource Forwarder` - `Option Configuration` = `<home>/helper/OptionConfiguration.json`.
+	
+	* `Command Sender` - `Method Configuration` = `<home>/helper/MethodConfiguration.json`.
+	
+	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
-## Install `Forwarder For Android`
+11. Set the interactive language.
+	
+	Open and edit `script/Entry/Entry.json` file in the home directory as text, find the `"language": "Chinese"` section, and modify it to switch the interactive language of the tool.
+	
+	* `Chinese` - Chinese (default)
+	
+	* `English` - English
 
-Forwarder, which enables users to forward files to tools via the Android file sharing.
+12. At this point, all installation steps have been completed and the tool can be launched from the terminal command line or by opening the application directly.
+	
+	> @ `Windows` \
+	> You can launch the tool directly by double-clicking on the launch script `launch*.cmd` in the home directory, or by dragging and dropping a file object onto it and releasing it.\
+	> If the `Forwarder` module is installed, you can see `⌈ TwinStar ToolKit - Forwarder ⌋` in the right-click menu item of any file or directory, and use it to quickly forward file objects to the tool.\
+	> If the `Helper` module is installed, you can use the `Resource Forwarder` in it for faster forwarding, or you can use the `Command Sender` to visually select the desired method and edit the arguments.
+	
+	> @ `Macintosh` \
+	> If the `Forwarder` module is installed, you can see `⌈ TwinStar ToolKit - Forwarder ⌋` in the right-click menu item of any file or directory, and use it to quickly forward file objects to the tool.
+	
+	> @ `Android` \
+	> If the `Forwarder` module is installed, you can see `⌈ TwinStar ToolKit - Forwarder ⌋` can in the file sharing list of the system or third-party file manager, and through which file objects can be quickly forwarded to the tool.\
+	> Due to the limitations of the Android system, the forwarder cannot directly obtain the absolute path of the forwarded file, but passes the Content URI of the forwarded file to the Shell GUI as a command argument for its startup, and the Shell GUI will try to parse the Content URI. See [Android Content URI processing strategy](./question.md#Android-Content-URI-processing-strategy) for details.
 
-> This module is dedicated to Android and is not available for other systems.
+## External programs
 
-This is an optional installation and is distributed as an application package.
+Some methods of the tool require calling external programs, which need to be downloaded and installed by users.
 
-1. Compile or download the distribution for your device.
+* [WwiseConsole](https://www.audiokinetic.com/en/download)
+	
+	Used for **WEM audio encode**.
+	
+	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `WwiseConsole.exe` or `WwiseConsole.sh` executable through the `PATH` environment variable.
+	
+	> For the path of the `WwiseConsole` executable program, see [Official Documentation](https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=bankscommandline.html).
+	
+	> This program only supports `Windows` and `Macintosh` systems.
 
-2. Install the application package.
+* [vgmstream-cli](https://vgmstream.org/)
+	
+	Used for **WEM audio decode**.
+	
+	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `vgmstream-cli` executable through the `PATH` environment variable.
+	
+	> This program only supports `Windows` and `Linux` and `Macintosh` systems.
 
-3. Now you can see ⌈ TwinStar ToolKit - Forwarder ⌋ within the file sharing target of other third-party file managers and use it to quickly forward file objects to the tool.
-
-> Due to the limitations of the Android system, the forwarder cannot directly obtain the absolute path of the forwarded file, but passes the Content URI of the forwarded file to the Shell GUI as a command argument for its startup, and the Shell GUI will try to parse the Content URI. See [Android Content URI processing strategy](./question.md#Android-Content-URI-processing-strategy) for details.
-
-## Install `Helper`
-
-Helper, which provides additional advanced functions.
-
-> This module is dedicated to Windows systems and is not available for other systems.
-
-This is an optional installation item, distributed as an application package.
-
-1. Compile or download the distribution for your device.
-
-2. Install the application package.
-
-	> You need to trust the signing certificate in MSIX before installation. \
-	> Right-click the properties of `.msix`, switch to the ⌈Digital Signatures⌋ page, select the first item in the list, and then click ⌈Details⌋ , and in the pop-up window, select ⌈View Certificate ⌋ - ⌈Install Certificate ⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈ Trusted persons ⌋, to complete the installation of the certificates.
-
-## External-Program
-
-Some functions of the tool need to call external programs, so the users need to download and install these programs by themselves, and place them in the `external` directory under the home directory.
-
-- [ffmpeg](https://ffmpeg.org/download.html)
-
-	Used for **WEM audio decoding**.
-
-	After downloading, rename the file `ffmpeg[.exe]` to `ffmpeg` and place it in the `+ <home>/external/ffmpeg` directory.
-
-- [ww2ogg](https://github.com/hcs64/ww2ogg/releases/tag/0.24)
-
-	For **WEM audio decoding** .
-
-	After downloading, rename the file `ww2ogg[.exe]` to `ww2ogg` and place it in the `+ <home>/external/ww2ogg` directory.
-
-	Then place the file `packed_codebooks_aoTuV_603.bin` in that directory.
-
-	> The author of this project only distributes the executable for Windows, users of other systems must download the source code and build it themselves.
-
-- [adb](https://developer.android.com/studio/command-line/adb)
-
-	For **Remote-Android-Helper** .
-
-	Download [`Android SDK Platform Tools`](https://developer.android.com/studio/releases/platform-tools), unzip it and configure it in the `PATH` environment variable.
-
-## Languages
-
-The tool provides multi-language support, currently supports Chinese and English.
-
-By default, the tool uses Chinese, if you need to switch to another language, you should modify the configuration file as follows:
-
-1. Go to the tool's home directory, find the `- <home>/script/Entry/Entry.json` file and open it with a text editor.
-
-2. The second line in the text is `"language": "Chinese"`, which means the current interaction language is Chinese, if you want to switch to English, please change `Chinese` to `English`.
-
-> The multilingual text is defined in `- <home>/script/Language/<Language-ID>.json`, if you need to fix text errors or add support for other languages, please modify this file; please also submit a pull request to contribute to this project if you can.
+* [adb](https://developer.android.com/studio/releases/platform-tools)
+	
+	For **Remote Android Helper**.
+	
+	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `adb` executable through the `PATH` environment variable.
+	
+	> This program only supports `Windows` and `Linux` and `Macintosh` systems.

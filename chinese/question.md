@@ -52,9 +52,9 @@
 	
 	* 系统的共享外部存储空间：`/storage/emulated/<user>` ，但不包括 `Android/data` 、`Android/obb` 。
 		
-		> 仅当应用取得了外部存储空间的完全访问权限时才可访问该目录。
+		> 仅当应用取得了外部存储空间的完全访问权限时才可访问该文件夹。
 		> 
-		> 该目录实际上是 `/data/media/<user>` 的映射。通过 `/storage/emulated/<user>` 路径访问文件时，会受 FUSE 影响而导致访问性能的降低，并且访问权限被硬编码为 RW ，文件无法被作为程序执行；可以通过 `/data/media/<user>` 路径访问文件以绕过 FUSE ，但需要 ROOT 权限。
+		> 该文件夹实际上是 `/data/media/<user>` 的映射。通过 `/storage/emulated/<user>` 路径访问文件时，会受 FUSE 影响而导致访问性能的降低，并且访问权限被硬编码为 RW ，文件无法被作为程序执行；可以通过 `/data/media/<user>` 路径访问文件以绕过 FUSE ，但需要 ROOT 权限。
 
 * `iPhone`
 	
@@ -76,7 +76,7 @@
 
 [Android FUSE](https://source.android.com/docs/core/storage/scoped) 会严重影响应用对系统的外部存储空间的访问性能，这在处理大量文件时尤为突出。
 
-为了提高工具的执行效率，可以考虑将工具的主目录移动至非外部存储空间中。
+为了提高工具的执行效率，可以考虑将工具的主文件夹移动至非外部存储空间中。
 
 > 外部存储空间 `/storage/emulated/<user>` 内的 `Android/data` 与 `Android/obb` 不受 FUSE 的影响。
 
@@ -90,7 +90,7 @@
 
 1. 尝试解析 URI ，得到其对应的绝对路径；URI 转换为原文件的绝对路径。
 
-2. 若无法获取绝对路径，则将 URI 对应的文件复制到用户定义的回退目录中；URI 转换为副本文件的绝对路径。
+2. 若无法获取绝对路径，则将 URI 对应的文件复制到用户定义的回退文件夹中；URI 转换为副本文件的绝对路径。
 
 3. 若因某些原因无法完成复制，则不再尝试处理；URI 不做转换。
 

@@ -4,71 +4,55 @@
 
 - [Use `Shell GUI`](#Use-Shell-GUI)
 
-- [Interaction](#Interaction)
+- [Use `Helper`](#Use-Helper)
+
+- [Forwarding file](#Forwarding-file)
+
+- [Additional argument](#Additional-argument)
+
+- [User input](#User-input)
 
 - [Configuration file](#Configuration-file)
 
-- [Additional arguments](#Additional-arguments)
-
-- [Forwarding file object](#Forwarding-file-object)
-
-- [Advanced usage](#Advanced-usage)
-
-- [Using `Helper`](#Using-Helper)
+- [Using `Helper`'s advanced features](#Using-Helper's-advanced-features)
 
 ## Using `Shell`
 
-The `Shell` provides a command line interface for the user.
+`Shell` allows you to use tools as a command line in the system terminal.
 
-The user needs to start `Shell` in the terminal with command line arguments in the following format:
+The user needs to launch `Shell` in the terminal via command line arguments in the following format:
 
 `<kernel> <script> <argument>...`
 
-- `<kernel>`
-
+* `<kernel>`
+	
 	The first argument is the path to the kernel file.
 
-- `<script>`
-
+* `<script>`
+	
 	The second argument is the script file path passed to the kernel processing logic. It can also be marked with `$` as the first character, indicating that the rest of the string is used as a JS script.
 
-- `<argument>...`
-
+* `<argument>...`
+	
 	The remaining arguments are passed as arguments to the kernel processing logic.
 
 The main function returns 0 if no errors occur during execution, otherwise 1.
 
-For ease of use, a launch script can be created to start the `Shell` and pass some required arguments. The launch script is also pre-set in the bundle package.
+## Using `Shell GUI`
 
-## Using the `Shell GUI`
+The `Shell GUI` provides a terminal-like UI, and not depend on the behavior of the system terminal.
 
-The `Shell GUI` provides a GUI for the user.
-
-The user can use `Shell GUI` as if it were a normal application.
-
-When you open the application for the first time, you need to specify the kernel, scripts, and arguments to be used at runtime in the application settings, and a typical configuration is as follows:
-
-1. `Kernel` = `<home>/kernel` .
-
-2. `Script` = `<home>/script/main.js` .
-
-3. `Argument` = `<home>` .
-
-4. `Fallback Directory For Invisible File` = `<home>/workspace` .
-
-	> This item is only available for Android and iPhone.
-
-> The `<home>` in the above settings needs to be replaced with the path to the home directory.
+Click the `Launch` button at the bottom of the application console interface to launch the session. Press and hold the button to edit additional parameters for each launch.
 
 Launching the `Shell GUI` in the terminal is also supported, with command line arguments in the following format:
 
 `-additional_argument <additional_argument>...`
 
 * `<additional_argument>...`
-
+	
 	Additional arguments to the kernel processing logic.
 
-If the command line arguments are passed in, the application will automatically launch console after stared (this behavior can be disabled in the application settings).
+If the command line arguments are passed in, the application will automatically launch console after stared.
 
 > @ `Android` `iPhone` \
 > cannot pass in command line arguments directly.
@@ -76,85 +60,17 @@ If the command line arguments are passed in, the application will automatically 
 > @ `Android` \
 > can pass in command line arguments through `Intent`: `action = "com.twinstar.toolkit.shell_gui.action.LAUNCH", extra = { "command": Array<String> }`.
 
-## Interaction
+## Forwarding file
 
-A tool will output a message to the user or ask for some arguments when it runs; `Shell` and `Shell GUI` provide essentially the same interaction logic.
+The tool is designed to primarily handle file objects in external storage space. The term ⌈ **forwarding** ⌋ refers to launching the tool with the path to the file object as an additional argument. Forwarding can be done through startup scripts, system extension provided by the forwarder module, etc.
 
-### Output
+The file object to be processed is forwarded to the tool, and when the tool is launched, the available methods are listed according to the type of that file object, and the user can enter the serial number of the method to be executed.
 
-Different types of notifications have different colors, with a solid circle icon of the corresponding color as the flag icon:
+> Note: If a directory is forwarded to the tool, the user will see many methods prefixed with `[*]` in the optional method list. They are batch processing methods that will process each sub-file and sub-directory in the directory in turn. Most single-input single-output methods have batch versions.
+> 
+> A common mistakes is that users mistakenly select the batch processing methods when they need to perform regular methods on a directory. For example, if you need to pack a `.rsb.bundle` directory into an `rsb` file, you need to select the regular version of `PopCap Resource-Stream-Bundle Pack` rather than the batch version with the `[*]` prefix.
 
-- `⚪` Regular (dark theme)
-
-- `⚫` regular (light theme)
-
-- `🔵` Information
-
-- `🟡` Warning
-
-- `🔴` Error
-
-- `🟢` Success
-
-- `🟣` input
-
-### Input
-
-Of the six notification types, `🟣` indicates that the tool is requesting input arguments from the user, and the tool will stop doing anything else and wait for the user to enter until the user has finished typing and then type `Enter to continue...`
-
-When input is requested, a leading character is also displayed as a prompt for the type of argument. The input value type and format are as follows:
-
-- `Pause`
-
-	Pause the program to wait for a user response.
-
-- `Boolean`
-
-	A single character `y` or `n` , indicating ⌈ yes ⌋ and ⌈ no ⌋ .
-
-- `Integer`
-
-	A decimal integer that may not contain a decimal point.
-
-- `Floater`
-
-	A decimal number that may contain a decimal point.
-
-- `Size`
-
-	An unsigned decimal number followed by a binary unit (b = 2^0 , k = 2^10 , m = 2^20 , g = 2^30), typically used to indicate storage capacity.
-
-	> For example, `4k` represents 4096 bytes of storage capacity.
-
-- `String`
-
-	A line of text.
-
-- `Path`
-
-	The paths that can be used in the local file system, divided into input paths and output paths, the former points to the path of an existing file or directory on the disk, and the latter points to a path that does not exist on the disk.
-
-	> You can also enter `:p` = `Pick` to open the system file pick dialog (`GUI` or `Windwos CLI` 、`Linux CLI` 、`Macintosh CLI` only);\
-	> or enter `:g` = `Generate` to generate avaliable path (append suffix);\
-	> or enter `:m` = `Move` to move original file;\
-	> or enter `:d` = `Delete` to delete original file;\
-	> or enter `:o` = `Overwrite` to overwrite original file.
-	>
-	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `+ <home>/workspace` .
-
-- `Enumeration`
-
-	One of several optional options.
-
-## Configuration file
-
-In the script directory `+ <home>/script`, some script files have accompanying configuration files with the same name as the corresponding script file, but with the extension `.json`. Configuration attributes affect some of the tool's behavior, such as the output format of JSON.
-
-> For example, a script `- Entry/Entry.js` in the scripts directory has a configuration file with the configuration file `- Entry/Entry.json`.
-
-Users can modify the configuration file themselves, and the specification of each configuration file can be found in [method](./method.md) section.
-
-## Additional arguments
+## Additional argument
 
 The user can pass in additional arguments when starting the tool, or if no additional arguments are provided, the user will be asked to enter them at runtime。 The additional arguments are in the following format：
 
@@ -167,24 +83,26 @@ The user can pass in additional arguments when starting the tool, or if no addit
 ]...
 ```
 
-- `<input>`
-
+* `<input>`
+	
 	Specifies the input data of the command, usually the path to a file or directory, as the input argument of the method.
+	
+	If the input value is `?` , the user will be asked to input the argument at runtime.
 
-- `[ -disable_filter ]`
-
+* `[ -disable_filter ]`
+	
 	Used to disable method filtering.
-
+	
 	By default, if `-method` is not specified, the tool will filter the available methods for user selection based on the type of input object (mainly by extension);
-
+	
 	If candidate method filtering is disabled, all methods will be listed for user selection. This should not be enabled because toolkit provides too many methods and it is always recommended to have filter on.
 
-- `[ -method <method-id>]`
-
+* `[ -method <method-id>]`
+	
 	Specify the method to be executed, followed by the ID of the method. If no method is specified, it will wait for the user to select the method at runtime.
 
-- `[ -argument <argument-json> ]`
-
+* `[ -argument <argument-json> ]`
+	
 	Specifies the argument to be passed to the method, followed by a JSON string, and must be parsable as an Object.
 
 The IDs of the methods and their arguments are defined in [method](. /method.md) section.
@@ -195,45 +113,138 @@ The IDs of the methods and their arguments are defined in [method](. /method.md)
 >
 > This command takes the path to the `test.pam` file as input argument and specifies the method to be executed as `PopCap Animation Decode`. After evaluate finish, you can see a new file named `test.pam.json` on the desktop, which is the decoded PAM data.
 
-## Forwarding file object
+## User input
 
-The tool is designed to primarily handle file objects in external storage space. The term ⌈ **forwarding** ⌋ refers to launching the tool with the path to the file object as an additional argument. Forwarding can be done through startup scripts, system extension provided by the forwarder module, etc.
+When the tool is running, it will output some message to the user or request the user to input some arguments. The input value type and format are as follows:
 
-The file object to be processed is forwarded to the tool, and when the tool is launched, the available methods are listed according to the type of that file object, and the user can enter the serial number of the method to be executed.
+* `Pause`
+	
+	Pause the program to wait for a user response.
 
-The tool is preconfigured with many methods such as RTON decoding and RSB unpacking, which are described in [method](./method.md) section.
+* `Boolean`
+	
+	A single character `y` or `n` , indicating ⌈ yes ⌋ and ⌈ no ⌋ .
 
-## Advanced usage
+* `Integer`
+	
+	A decimal integer that may not contain a decimal point.
+	
+* `Floater`
+	
+	A decimal number that may contain a decimal point.
 
-If you have some programming skills, you can also integrate the tools into your own projects or use them with custom scripts, see the [Advanced](./advanced.md) section.
+* `Size`
+	
+	An unsigned decimal number followed by a binary unit (b = 2^0 , k = 2^10 , m = 2^20 , g = 2^30), typically used to indicate storage capacity.
+	
+	> For example, `4k` represents 4096 bytes of storage capacity.
 
-## Using `Helper`
+* `String`
+	
+	A line of text.
+	
+	> If the entered text is empty, it is deemed to have entered a null value;\
+	> If the input text starts with `::` , the tool will intercept the text after it as the real input. In this way, an empty string can be entered instead of an empty value.
 
-`Helper` provides additional advanced functions for users.
+* `Path`
+	
+	The paths that can be used in the local file system, divided into input paths and output paths, the former points to the path of an existing file or directory on the disk, and the latter points to a path that does not exist on the disk.
+	
+	> If the entered text is empty, it is deemed to have entered a null value;\
+	> If the input text starts with `::` , the tool will intercept the text after it as the real input. In this way, an empty string can be entered instead of an empty value.
+	> 
+	> Enter `:p` will open the system file pick dialog (`GUI` or `Windwos CLI` 、`Linux CLI` 、`Macintosh CLI` only);\
+	> Enter `:g` will generate avaliable path (append suffix);\
+	> Enter `:m` will move original file;\
+	> Enter `:d` will delete original file;\
+	> Enter `:o` will overwrite original file.
+	>
+	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `<home>/workspace` .
 
-Currently, the following modules are provided:
+* `Enumeration`
+	
+	One of several optional options.
 
-* `Modding Worker`
+## Configuration file
 
-	This module is the Shell implementation of the toolkit, can be used as a better alternative to the ShellGUI module, with a modernized UI that is consistent with the operation system.
+In the tool's script directory `<home>/script`, the file with the extension `.json` is the configuration file of the tool. The configuration items in it will affect certain behaviors of the tool, such as the output format of JSON. Users can modify the configuration file.
+
+`<home>/script/Entry/Entry.json` is the main configuration file of the tool, and its configuration items are as follows.
+
+* `<configuration>`
+	
+	* `language` : `string` = `Chinese`
+		
+		Interaction language. Can be `Chinese` or `English`.
+	
+	* `disable_cli_virtual_terminal_sequence` : `boolean` = `false`
+		
+		Disable command-line virtual terminal sequences. Valid only when using a command-line shell.
+	
+	* `disable_notification` : `boolean` = `false`
+		
+		Disable notification.
+	
+	* `byte_stream_use_big_endian` : `boolean` = `false`
+		
+		Use big end-order for internal byte stream operations. This option is necessary for some big-endian file processing. It is disabled by default, because most of the time the user is dealing with little-endian files.
+	
+	* `common_buffer_size` : `string` = `64.0m`
+		
+		The size of the common buffer. Used for encoding JSON strings, encoding PNG images, etc. If the amount of memory required for encoding exceeds this size, the tool will fail to process it.
+	
+	* `json_format` : `{ ... }`
+		
+		JSON output format.
+		
+		* `disable_trailing_comma` : `boolean` = `false`
+			
+			Disable trailing comma.
+		
+		* `disable_array_wrap_line` : `boolean` = `false`
+			
+			Disable line wrapping between array elements.
+	
+	* `thread_limit` : `bigint` = `0`
+		
+		The maximum number of thread pools. Currently has no practical effect.
+	
+	* `notification_time_limit` : `null | bigint` = `15000`
+		
+		Notification time limit. If the vaild execution duration exceeds this value (in milliseconds) after a command has completed, a system notification will be pushed to alert the user to set up the configuration. Setting to null will disable notifications.
+	
+	* `pause_when_finish` : `boolean` = `true`
+		
+		Pause the program after all methods evaluate is done and wait for the user to close it or press enter to exit.
+
+> Each group of functions provided by the script has a corresponding configuration file, see the [Method](./method.md) section.
+
+## Using `Helper`'s advanced features
 
 * `Resource Forwarder`
-
-	This module is used to quickly forward local files or directories to the toolkit.
+	
+	This module provides a better file forwarding UI, which can filter the available options by inputting the file type and extension, and passes them to the `Modding Worker` for processing, making it more efficient and easier to use.
+	
+	> Options are defined by the `Option Configuration` file in the module setting.
+	
+	> The `launch_helper_forwarder.cmd` script in the home directory can quickly open the `Resource Forwarder`. Multiple files can be dragged onto the script and released to add additional arguments.
 
 * `Command Sender`
-
-	This module is used to visually edit command arguments and forward them to the toolkit.
+	
+	This module allows you to visually select the methods you want to use and fill in the arguments.
+	
+	> Methods are defined by the `Method Configuration` file in the module settings.
+	
+	> The `launch_helper_forwarder.cmd` script in the home directory can quickly open the `Resource Forwarder`. Multiple files can be dragged onto the script and released to add additional arguments.
 
 * `Animation Viewer`
-
-	This module is used to view PopCap Animation (PAM).
-
+	
+	This module is used to view PopCap Animation (PAM) file.
+	
 	1. Click the ⌈ Animation File ⌋ button on the right side of the text box in the upper right corner of the ⌈ Stage ⌋ column on this module page, and select the `*.pam.json` file in the pop-up window; or drag `*.pam.json` file from ⌈ Explorer ⌋ to the application window then drop.
-
+		
 		> `*.pam.json` is obtained by decoding `*.pam` files by toolkit.
-
+	
 	2. If the exploded view required for the animation is located in the same directory as the animation file, the animation can be rendered normally. Otherwise, you need to click the button on the right side of the ⌈ Image Directory ⌋ text box to select the directory where the exploded view is located.
-
+	
 	3. Through other UI controls, you can select the sub-animation you want to play, adjust the playback interval and frame rate, set component filter items, etc.
-

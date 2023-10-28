@@ -8,119 +8,125 @@ If you occur any bugs, please give report in [ISSUE](https://github.com/twinkles
 
 The following functions are currently available:
 
-- `Wwise Media` (.wem)
+* `Wwise Media` (.wem)
+	
+	* Decode
 
-	- Decode
+* `Wwise Sound-Bank` (.bnk)
+	
+	* Encode, Decode
 
-- `Wwise Sound-Bank` (.bnk)
+* `Marmalade DZip` (.dz)
+	
+	* Pack, Unpack
 
-	- Encode, Decode
+* `PopCap ZLib` (.*)
+	
+	* Compress, Uncompress
 
-- `Marmalade DZip` (.dz)
+* `PopCap Crypt-Data` (.cdat)
+	
+	* Encrypt, Decrypt
 
-	- Pack, Unpack
+* `PopCap Reflection-Object-Notation` (.rton)
+	
+	* Encode, Decode
+	
+	* Encrypt, Decrypt
 
-- `PopCap ZLib` (.\*)
+* `PopCap Texture` (.ptx)
+	
+	* Encode, Decode
 
-	- Compress, Uncompress
+* `PopCap U-Texture` (.tex|txz)
+	
+	* Encode, Decode
 
-- `PopCap Crypt-Data` (.cdat)
+* `PopCap Sexy-Texture` (.tex)
+	
+	* Encode, Decode
 
-	- Encrypt, Decrypt
+* `PopCap Animation` (.pam)
+	
+	* Encode, Decode
+	
+	* Convert with flash
 
-- `PopCap Reflection-Object-Notation` (.rton)
+* `PopCap Re-Animation` (.reanim.compiled)
+	
+	* Encode, Decode
 
-	- Encode, Decode
+* `PopCap Particle` (.xml.compiled)
+	
+	* Encode, Decode
 
-	- Encrypt, Decrypt
+* `PopCap Trail` (.trail.compiled)
+	
+	* Encode, Decode
 
-- `PopCap Texture` (.ptx)
+* `PopCap Particle-Effect` (.ppf)
+	
+	* Encode, Decode
 
-	- Encode, Decode
+* `PopCap Render-Effect` (.popfx)
+	
+	* Encode, Decode
 
-- `PopCap U-Texture` (.tex|txz)
+* `PopCap Character-Font-Widget-2` (.cfw2)
+	
+	* Encode, Decode
 
-	- Encode, Decode
+* `PopCap Package` (.pak)
+	
+	* Pack, Unpack
+	
+	* Encrypt
 
-- `PopCap Sexy-Texture` (.tex)
+* `PopCap Resource-Stream-Group` (.rsg)
+	
+	* Pack, Unpack
 
-	- Encode, Decode
+* `PopCap Resource-Stream-Bundle` (.rsb)
+	
+	* Pack, Unpack
+	
+	* Resource Convert
 
-- `PopCap Animation` (.pam)
+* `PopCap Resource-Stream-Bundle-Patch` (.rsbpatch)
+	
+	* Encode, Decode
 
-	- Encode, Decode
+* `PvZ-2 Resource-Manifest` (resources.rton|newton)
+	
+	* Encode, Decode
+	
+	* Convert
 
-	- Convert with flash
+* `PvZ-2 Text-Table` (.txt|json)
+	
+	* Convert
 
-- `PopCap Re-Animation` (.reanim.compiled)
-
-	- Encode, Decode
-
-- `PopCap Particle` (.xml.compiled)
-
-	- Encode, Decode
-
-- `PopCap Trail` (.trail.compiled)
-
-	- Encode, Decode
-
-- `PopCap Particle-Effect` (.ppf)
-
-	- Encode, Decode
-
-- `PopCap Render-Effect` (.popfx)
-
-	- Encode, Decode
-
-- `PopCap Character-Font-Widget-2` (.cfw2)
-
-	- Encode, Decode
-
-- `PopCap Package` (.pak)
-
-	- Pack, Unpack
-
-	- Encrypt
-
-- `PopCap Resource-Stream-Group` (.rsg)
-
-	- Pack, Unpack
-
-- `PopCap Resource-Stream-Bundle` (.rsb)
-
-	- Pack, Unpack
-
-	- Resource Convert
-
-- `PopCap Resource-Stream-Bundle-Patch` (.rsbpatch)
-
-	- Encode, Decode
-
-- `PvZ-2 Text-Table` (.txt|json)
-
-	- Convert
-
-- ......
+* ......
 
 ## Index
 
-- [Installation](./installation.md)
+* [Installation](./installation.md)
 
-- [Usage](./usage.md)
+* [Usage](./usage.md)
 
-- [Method](./method.md)
+* [Method](./method.md)
 
-- [Question](./question.md)
+* [Question](./question.md)
 
-- [Advanced](./advanced.md)
+* [Advanced](./advanced.md)
 
 ## How to reach me
 
-- GitHub : [TwinStar](https://github.com/twinkles-twinstar/)
+* GitHub : [TwinStar](https://github.com/twinkles-twinstar/)
 
-- BILIBILI : [-TwinStar-](https://space.bilibili.com/12258540)
+* BILIBILI : [-TwinStar-](https://space.bilibili.com/12258540)
 
-- Outlook : twinkles.twinstar@outlook.com
+* Outlook : twinkles.twinstar@outlook.com
 
 ## Donate
 

@@ -24,16 +24,16 @@
 
 The tool uses a front-end and back-end separation architecture, divided into three part:
 
-- `Kernel`: the back-end, which is responsible for data processing and does not perform any user interaction; `Kernel` is distributed as a native dynamic library for each platform.
-
+* `Kernel`: the back-end, which is responsible for data processing and does not perform any user interaction; `Kernel` is distributed as a native dynamic library for each platform.
+	
 	> `Kernel` module implements this layer.
 
-- The `Shell`: the front-end, responsible for user interaction without any data processing; `Shell` is distributed as a native application for each platform, which will load the kernel dynamic library and call the interface functions of the kernel dynamic library with user-supplied scripts as arguments.
-
+* The `Shell`: the front-end, responsible for user interaction without any data processing; `Shell` is distributed as a native application for each platform, which will load the kernel dynamic library and call the interface functions of the kernel dynamic library with user-supplied scripts as arguments.
+	
 	> `Shell` and `Shell GUI` modules implement this layer respectively.
 
-- `Script`: the bridge between the front and back end, which performs data processing and user interaction by calling interface functions provided by the kernel and shell; `Script` is distributed as platform-independent JavaScript scripts.
-
+* `Script`: the bridge between the front and back end, which performs data processing and user interaction by calling interface functions provided by the kernel and shell; `Script` is distributed as platform-independent JavaScript scripts.
+	
 	> `Script` module implements this layer.
 
 By separating the front and back ends, the tool enables easy cross-platform adaptation and multi-client integration.
@@ -49,7 +49,7 @@ The runtime flow of the tool is as follows:
 4. `Kernel` executes `Script` and returns the result to `Shell`.
 
 5. `Shell` gets the return value, outputs it to the user, and terminates the program.
-
+	
 	> `Script` can call the callback functions provided by `Shell` to `Kernel`, thus interacting with the user during execution.
 
 ## Third Party Integration
@@ -64,34 +64,34 @@ Users can integrate the tool backend (`Kernel`) into their projects through the 
 
 Refer to several shell implementations in this tool:
 
-- `Shell` with [`C++`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge)
+* `Shell` with [`C++`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge)
 
-- `Shell GUI` with [`Dart`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellGUI/lib/bridge)
+* `Shell GUI` with [`Dart`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellGUI/lib/bridge)
 
-- `Helper` with [`C#`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Helper/Bridge)
+* `Helper` with [`C#`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Helper/Bridge)
 
 The following is an example of how to integrate `Kernel` with the [`Shell`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge) modules:
 
 1. [`interface.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/interface.hpp): Declare the interface of `Kernel`.
-
+	
 	> The declaration of the interface for `C++` is already provided in the `Kernel` module [`interface.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Kernel/kernel/interface/interface.hpp)
 
 2. [`symbol.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/symbol.hpp): defines the export symbols for the `Kernel` interface, used to get the addresses of the interfaces in the `Kernel` library.
 
 3. [`library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/library.hpp): defines the abstract class of the `Kernel` library, which encapsulates the library loading and symbolic calls to `Kernel`.
-
-	- [`static_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/static_library.hpp): This implements the wrapper for static library.
-
-	- [`dynamic_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/dynamic_library.hpp): This implements the wrapper for dynamic library.
+	
+	* [`static_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/static_library.hpp): This implements the wrapper for static library.
+	
+	* [`dynamic_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/dynamic_library.hpp): This implements the wrapper for dynamic library.
 
 4. [`converter.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/converter.hpp) : Creates a helper class for the required `C-style` structure construction and destructuring.
-
+	
 	> `Kernel` interface requires the user to pass C-style structures as argument values and return values.
 
 5. [`invoker.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/invoker.hpp): Create a helper class to encapsulate the `Kernel` interface so that it can simply be called without having to consider the details of the call including type conversion.
 
 6. [`host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/bridge/host.hpp): Define a `Shell` abstract class that encapsulates which increase the lifecycle of the `Shell` and the callback functions that need to be provided to `Kernel`.
-
+	
 	> [`cli_host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/bridge/cli_host.hpp): implements the CLI-style `Shell`.
 
 7. [`launcher.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/launcher.hpp) : Creates a helper class for simply launcher tool.
@@ -136,15 +136,15 @@ Kernel interfaces are divided into kernel types and kernel functions. Kernel typ
 
 In general, the following functions and methods are provided in the class definition of the kernel type:
 
-- `static default(): T;` : default constructor that constructs a kernel object with default values.
+* `static default(): T;` : default constructor that constructs a kernel object with default values.
 
-- `static copy(it: T): T;` : copy constructor that constructs a new kernel object by making a deep copy of another kernel object.
+* `static copy(it: T): T;` : copy constructor that constructs a new kernel object by making a deep copy of another kernel object.
 
-- `static value(it: typeof T.Value): T;` : value constructor that constructs a new kernel object from a JS value.
+* `static value(it: typeof T.Value): T;` : value constructor that constructs a new kernel object from a JS value.
 
-- `get value(): typeof T.Value;` : value accessor that accesses the JS value corresponding to the kernel object.
+* `get value(): typeof T.Value;` : value accessor that accesses the JS value corresponding to the kernel object.
 
-- `set value(it: typeof T.Value);` : value setter, sets the JS value corresponding to the kernel object.
+* `set value(it: typeof T.Value);` : value setter, sets the JS value corresponding to the kernel object.
 
 The following are some examples:
 
@@ -189,15 +189,15 @@ if (state_value) {
 
 The kernel interface provides directly memory operations functions.
 
-- `Kernel.ByteArray` : A byte sequence container that holds a segment of memory space that is freed when the object is destructured. This type is responsible for requesting and holding memory.
+* `Kernel.ByteArray` : A byte sequence container that holds a segment of memory space that is freed when the object is destructured. This type is responsible for requesting and holding memory.
 
-- `ByteListView` : A byte sequence view that holds only the address and size information of the memory and does not hold ownership. This type is used to access the memory space without deep copy.
+* `ByteListView` : A byte sequence view that holds only the address and size information of the memory and does not hold ownership. This type is used to access the memory space without deep copy.
 
-- `ByteStreamView`: Byte stream view, equivalent to the byte sequence view with an additional location information, which is used to indicate the current location of the program reading or writing to memory and does not hold ownership. This type is widely used by kernel functions.
+* `ByteStreamView`: Byte stream view, equivalent to the byte sequence view with an additional location information, which is used to indicate the current location of the program reading or writing to memory and does not hold ownership. This type is widely used by kernel functions.
 
-- `Kernel.CharacterListView` : Character sequence view, memory level equivalent to `Kernel`.
+* `Kernel.CharacterListView` : Character sequence view, memory level equivalent to `Kernel`.
 
-- `Kernel.CharacterStreamView` : Character stream view, memory level is the same as `Kernel.ByteStreamView`.
+* `Kernel.CharacterStreamView` : Character stream view, memory level is the same as `Kernel.ByteStreamView`.
 
 The following are examples of memory reads and writes through the above interfaces:
 
@@ -329,14 +329,14 @@ decode_fs(
 
 Kernel interfaces are cumbersome to call. `Script` has encapsulated the kernel interfaces so that users can use them easily, including the following:
 
-- `KernelX`: encapsulates most of the kernel interfaces, including file system functions, string or file-based serialization of JSON and XML, file-based encoding and decoding of special files, etc.
+* `KernelX`: encapsulates most of the kernel interfaces, including file system functions, string or file-based serialization of JSON and XML, file-based encoding and decoding of special files, etc.
 
-- `ThreadManager`: encapsulates the threads function.
+* `ThreadManager`: encapsulates the threads function.
 
-- `ProcessHelper`: Wraps the process functions, which can be used to execute other executable programs.
+* `ProcessHelper`: Wraps the process functions, which can be used to execute other executable programs.
 
-- `Shell`: Wraps shell callbacks and shell-specific functions.
+* `Shell`: Wraps shell callbacks and shell-specific functions.
 
-- `Console`: Wraps console interaction, providing consistent user interaction between Shell and ShellGUI.
+* `Console`: Wraps console interaction, providing consistent user interaction between Shell and ShellGUI.
 
-- `...`
+* `...`
