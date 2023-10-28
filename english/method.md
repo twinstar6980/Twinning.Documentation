@@ -82,7 +82,7 @@ The preset method provided by the tool generally accepts a file or directory as 
 	
 	Batch method are also optimized for efficiency for some regular method that require frequent memory requests and releases.
 
-Methods are grouped into method groups based on their nature and stored in `+ <home>/script/Executor/Implement`, where each `JS` file provides a set of methods, and a `JSON` file with the same name holds the configuration of that set of methods, which can be modified by the user as needed.
+Methods are grouped into method groups based on their nature and stored in `<home>/script/Executor/Implement`, where each `JS` file provides a set of methods, and a `JSON` file with the same name holds the configuration of that set of methods, which can be modified by the user as needed.
 
 You can make the tool execute a method directly without runtime input via command-line arguments, as described in [Additional-arguments](./usage.md#additional-arguments).
 
@@ -93,22 +93,22 @@ The following will list the methods with their corresponding configuration rules
 > The ID of method group, as a prefix to all method's item ID.
 >
 > * `<method-item-id` [ `*` ]
->
-> The method's item ID, combined with the method's group ID, is the method's ID. For example, if the group ID is `popcap.animation` and the item ID is `decode`, then the method ID is `popcap.animation.decode`. If it is marked with `*`, then the method provides a batch version.
->
-> * `variable-name` : `<filter-rule>`
->
-> The first argument is an input argument, specified by `input` of the current command, always of type `string`; `<filter-rule>` specifies the input value filtering rules for the method, e.g. `*.rsb` means that the method is displayed only if the input file has extension `rsb`.
->
-> * `variable-name` : `variable-type` [ ~ `<default-value>` ] = `<value>`
->
-> The remaining arguments are specified by the `argument` of the current command, the second of which is usually the output argument, followed by the configuration argument.
->
-> If the argument value is the string `?input`, the user will be asked to enter the argument during execution.
->
-> Some arguments can generate automatic by program, and the user can specify the argument value as the string `?automatic` to enable the automatic behavior, which will be identified by `~` in the documentation, followed by the value of the automatic behavior. Generally, output arguments have default behavior, i.e., the value of the input argument is used to generate the value of the output argument, e.g., the `popcap.animation.decode` method takes a `*.pam` file as the input argument and generates a `*.pam.json` file of the same name as the output argument.
->
-> `<value>` is the default argument value when the user does not specify a argument value, typically an explicit `?input` or `?automatic`, or the default argument value is retrieved from the corresponding configuration file.
+>	
+> 	The method's item ID, combined with the method's group ID, is the method's ID. For example, if the group ID is `popcap.animation` and the item ID is `decode`, then the method ID is `popcap.animation.decode`. If it is marked with `*`, then the method provides a batch version.
+> 	
+> 	* `variable-name` : `<filter-rule>`
+> 		
+> 		The first argument is an input argument, specified by `input` of the current command, always of type `string`; `<filter-rule>` specifies the input value filtering rules for the method, e.g. `*.rsb` means that the method is displayed only if the input file has extension `rsb`.
+> 		
+> 	* `variable-name` : `variable-type` [ ~ `<default-value>` ] = `<value>`
+> 		
+> 		The remaining arguments are specified by the `argument` of the current command, the second of which is usually the output argument, followed by the configuration argument.
+> 		
+> 		If the argument value is the string `?input`, the user will be asked to enter the argument during execution.
+> 		
+> 		Some arguments can generate automatic by program, and the user can specify the argument value as the string `?automatic` to enable the automatic behavior, which will be identified by `~` in the documentation, followed by the value of the automatic behavior. Generally, output arguments have default behavior, i.e., the value of the input argument is used to generate the value of the output argument, e.g., the `popcap.animation.decode` method takes a `*.pam` file as the input argument and generates a `*.pam.json` file of the same name as the output argument.
+> 		
+> 		`<value>` is the default argument value when the user does not specify a argument value, typically an explicit `?input` or `?automatic`, or the default argument value is retrieved from the corresponding configuration file.
 
 All of the methods listed below are regular method. Some of the regular method have a batch version, which is the same as the regular method, but with the `.batch` suffix appended to the method ID .
 
