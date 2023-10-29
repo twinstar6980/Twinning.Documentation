@@ -22,16 +22,12 @@ TwinStar ToolKit Documentation.
 
 ## 预览 | preview
 
-![x](./image/preview/m-1.png)
-
-![x](./image/preview/m-2.png)
-
-![x](./image/preview/l-1.png)
-
 ![x](./image/preview/s-1.png)
 
 ![x](./image/preview/s-2.png)
 
-![x](./image/preview/si-1.png)
+![x](./image/preview/s-3.png)
 
-![x](./image/preview/si-2.png)
+![x](./image/preview/f-1.png)
+
+![x](./image/preview/f-2.png)

@@ -68,6 +68,8 @@
 
 - [pvz2.remote_android_helper](#pvz2remote_android_helper)
 
+- [kairosoft.user_data](#kairosoftuser_data)
+
 ## 介绍
 
 工具提供的预置功能一般接受一个文件或文件夹作为输入，并在处理完成后将数据输出至另一个文件或文件夹，默认情况下将输出至同级文件夹中。功能一般分为两种：
@@ -1151,5 +1153,19 @@
 	* `project_directory` : `*.pvz2_remote_android_helper_project`
 	
 	* `action` : `string` = `?input`
+
+* `<configuration>`
+
+## `kairosoft.user_data`
+
+* `recrypt`
+	
+	* `old_directory` : `*`
+	
+	* `new_directory` : `string` ~ `*.recrypt` = `?automatic`
+	
+	* `old_key` : `string` = `?input`
+	
+	* `new_key` : `string` = `?input`
 
 * `<configuration>`

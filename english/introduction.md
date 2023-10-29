@@ -106,6 +106,10 @@ The following functions are currently available:
 	
 	* Convert
 
+* `Kairosoft User-Data` (.*)
+	
+	* Recrypt
+
 * ......
 
 ## Index

@@ -68,6 +68,8 @@
 
 - [pvz2.remote_android_helper](#pvz2remote_android_helper)
 
+- [kairosoft.user_data](#kairosoftuser_data)
+
 ## Introduction
 
 The preset method provided by the tool generally accepts a file or directory as input and outputs the data to another file or directory after processing is complete, which by default will be output to the same level directory. Methods are generally divided into two types:
@@ -1151,5 +1153,19 @@ All of the methods listed below are regular method. Some of the regular method h
 	* `project_directory` : `*.pvz2_remote_android_helper_project`
 	
 	* `action` : `string` = `?input`
+
+* `<configuration>`
+
+## `kairosoft.user_data`
+
+* `recrypt`
+	
+	* `old_directory` : `*`
+	
+	* `new_directory` : `string` ~ `*.recrypt` = `?automatic`
+	
+	* `old_key` : `string` = `?input`
+	
+	* `new_key` : `string` = `?input`
 
 * `<configuration>`
