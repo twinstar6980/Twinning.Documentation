@@ -1,10 +1,10 @@
 # Usage
 
-- [Use `Shell`](#Use-Shell)
+- [Using `Shell CLI`](#Using-Shell-CLI)
 
-- [Use `Shell GUI`](#Use-Shell-GUI)
+- [Using `Shell GUI`](#Using-Shell-GUI)
 
-- [Use `Helper`](#Use-Helper)
+- [Using `Helper`](#Using-Helper)
 
 - [Forwarding file](#Forwarding-file)
 
@@ -16,11 +16,11 @@
 
 - [Using `Helper`'s advanced features](#Using-Helper's-advanced-features)
 
-## Using `Shell`
+## Using `Shell CLI`
 
-`Shell` allows you to use tools as a command line in the system terminal.
+`Shell CLI` allows you to use tools as a command line in the system terminal.
 
-The user needs to launch `Shell` in the terminal via command line arguments in the following format:
+The user needs to launch `Shell CLI` in the terminal via command line arguments in the following format:
 
 `<kernel> <script> <argument>...`
 
@@ -59,6 +59,14 @@ If the command line arguments are passed in, the application will automatically 
 > 
 > @ `Android` \
 > can pass in command line arguments through `Intent`: `action = "com.twinstar.toolkit.shell_gui.action.LAUNCH", extra = { "command": Array<String> }`.
+
+## Using `Helper`
+
+The `Modding Worker` module of `Helper` provides a UI similar to the `Shell GUI`, but the style is more modernize for the `Windows 11` system theme.
+
+After opening the `Modding Worker` page, click the `Launch` button at the bottom of the interface to launch the session. Click the pin button at the top right of the interface to edit additional arguments for each launch.
+
+> The `launch_helper.cmd` script in the home directory can quickly start the `Modding Worker`. Multiple files can be dragged onto the script and released to append additional arguments.
 
 ## Forwarding file
 
@@ -173,17 +181,13 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 
 * `<configuration>`
 	
-	* `language` : `string` = `Chinese`
+	* `language` : `string` = `English`
 		
-		Interaction language. Can be `Chinese` or `English`.
+		Interaction language. Can be `Chinese` or `English` or `Vietnamese`.
 	
 	* `disable_cli_virtual_terminal_sequence` : `boolean` = `false`
 		
 		Disable command-line virtual terminal sequences. Valid only when using a command-line shell.
-	
-	* `disable_notification` : `boolean` = `false`
-		
-		Disable notification.
 	
 	* `byte_stream_use_big_endian` : `boolean` = `false`
 		
@@ -209,13 +213,9 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		
 		The maximum number of thread pools. Currently has no practical effect.
 	
-	* `notification_time_limit` : `null | bigint` = `15000`
+	* `command_notification_time_limit` : `null | bigint` = `15000`
 		
-		Notification time limit. If the vaild execution duration exceeds this value (in milliseconds) after a command has completed, a system notification will be pushed to alert the user to set up the configuration. Setting to null will disable notifications.
-	
-	* `pause_when_finish` : `boolean` = `true`
-		
-		Pause the program after all methods evaluate is done and wait for the user to close it or press enter to exit.
+		Command notification time limit. If the vaild execution duration exceeds this value (in milliseconds) after a command has completed, a system notification will be pushed to alert the user to set up the configuration. Setting to null will disable notifications.
 
 > Each group of functions provided by the script has a corresponding configuration file, see the [Method](./method.md) section.
 

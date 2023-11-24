@@ -26,13 +26,13 @@
 	
 	必需模块，分发为动态库。
 
-* `Shell`
+* `Shell CLI`
 	
 	外壳，提供命令行界面。
 	
 	可选模块，分发为可执行程序。
 	
-	> 在 `Android` 与 `iPhone` 系统中使用 `Shell` 需要 ROOT 权限，若你的设备未获取 ROOT ，请使用 `Shell GUI` 。
+	> 在 `Android` 与 `iPhone` 系统中使用 `Shell CLI` 需要 ROOT 权限，若你的设备未获取 ROOT ，请使用 `Shell GUI` 。
 
 * `Shell GUI`
 	
@@ -98,42 +98,44 @@
 	
 	* `iPhone` - `arm_64`
 	
+	* `Linux` - `x86_64`
+	
 	其中，仅 `Windows` 与 `Android` 平台的预编译分发会始终跟随最新版本，其他平台的预编译分发一般很少更新，如果需要最新版本，或者你的平台不在上述列表中，请尝试自行编译。
 
 2. 选择主文件夹。
 	
 	将解压得到的文件夹移动到适合的位置，它作为工具的主文件夹，绝对路径记录为 `<home>` 。
 
-3. 为主文件夹下的 `kernel` 与 `shell` 文件签名。
+3. 为主文件夹下的 `kernel` 与 `shell_cli` 文件签名。
 	
 	> 该步骤只需 `iPhone` 用户操作，且需要在 `Macintosh` 设备上操作。
 	
-	在系统终端中运行命令：`> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell` 。
+	在系统终端中运行命令：`> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell_cli` 。
 
-4. 为主文件夹下的 `shell` 文件赋予可执行权限。
+4. 为主文件夹下的 `shell_cli` 文件赋予可执行权限。
 	
-	> 如果不需要 `Shell` 模块，可以跳过该步骤。\
+	> 如果不需要 `Shell CLI` 模块，可以跳过该步骤。\
 	> 该步骤只需 `Linux` 、`Macintosh` 、`Android` 、`iPhone` 用户操作。
 	
-	在系统终端中运行命令：`> chmod +x shell` 。
+	在系统终端中运行命令：`> chmod +x shell_cli` 。
 
 5. 为系统安装 C++ 共享库。
 	
-	> 如果不需要 `Shell` 模块，可以跳过该步骤。\
+	> 如果不需要 `Shell CLI` 模块，可以跳过该步骤。\
 	> 该步骤只需 `Android` 用户操作。
 	
 	将主文件夹内的 `libc++_shared.so` 文件复制至系统库文件夹 `/system/lib64` 中。
 
 6. 安装主文件夹内 `Shell GUI` 、`Forward` 、`Helper` 模块的应用安装包。
 	
-	应用安装包文件以 `msix` 、`app` 、`apk` 、`ipa` 等作为扩展名。
+	应用安装包文件以 `msix` 、`dmg` 、`apk` 、`ipa` 等作为扩展名。
 	
 	> @ `Windows` \
 	> 安装前需要先信任 MSIX 中的签名证书。\
 	> 右键查看 `.msix` 的属性，切换到 ⌈ 数字签名 ⌋ 页，选择列表中第一项，再点击 ⌈ 详细信息 ⌋ ，在弹出的窗口中依次选择 ⌈ 查看证书 ⌋ - ⌈ 安装证书 ⌋ - ⌈ 本地计算机 ⌋ - ⌈ 将所有证书都放入下列存储 ⌋ - ⌈ 受信任人 ⌋ ，完成证书的安装。
 	> 
 	> @ `Macintosh` \
-	> 将 `*.app` 文件夹移动至系统应用文件夹中，再为 `*.app/MacOS` 文件夹中的程序文件赋予可执行权限。
+	> 挂载 `dmg` 后，将其中的 `*.app` 文件夹移动至系统应用文件夹中。
 	> 
 	> @ `iPhone` \
 	> 需要通过 AltStore 或其他工具对 ipa 进行自签名与安装。
@@ -166,12 +168,12 @@
 	
 	打开新安装的 `Forwarder For Windows` 应用，会弹出一个文件夹窗口，其中有名为 `forward.cmd` 的文件，该脚本负责接收文件路径参数并启动工具，以文本形式打开并编辑该文件。
 	
-	以下示例将参数转发至 `Shell` ：
+	以下示例将参数转发至 `Shell CLI` ：
 	
 	```cmd
 	@echo off
 	set home=C:\TwinStar.ToolKit
-	start "" "%home%\shell.exe" ^
+	start "" "%home%\shell_cli.exe" ^
 		"%home%\kernel" ^
 		"%home%\script\main.js" ^
 		"%home%" ^
@@ -182,7 +184,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.ShellGUI_27.0.0.0_x64__7qfdsg797hj0p\shell_gui.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.ShellGUI_28.0.0.0_x64__7qfdsg797hj0p\shell_gui.exe" ^
 		-additional_argument %*
 	```
 	
@@ -190,7 +192,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_19.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_20.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
 		-WindowSize        496 968 ^
 		-WindowAlwaysOnTop true ^
 		-ModuleType        ModdingWorker ^
@@ -203,7 +205,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_19.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_20.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
 		-WindowSize        496 968 ^
 		-WindowAlwaysOnTop true ^
 		-ModuleType        ResourceForwarder ^
@@ -227,7 +229,7 @@
 	```sh
 	#!/bin/bash
 	"/Applications/TwinStar ToolKit - Shell GUI.app/Contents/MacOS/TwinStar ToolKit - Shell GUI" \
-		"-additional_argument" "$@"
+		-additional_argument "$@"
 	```
 
 10. 配置 `Helper` 设置项。

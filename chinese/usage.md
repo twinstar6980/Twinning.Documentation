@@ -1,6 +1,6 @@
 # 使用方法
 
-- [使用 `Shell`](#使用-Shell)
+- [使用 `Shell CLI`](#使用-Shell-CLI)
 
 - [使用 `Shell GUI`](#使用-Shell-GUI)
 
@@ -16,11 +16,11 @@
 
 - [使用 `Helper` 的高级功能](#使用-Helper-的高级功能)
 
-## 使用 `Shell`
+## 使用 `Shell CLI`
 
-通过 `Shell` 可以在系统终端中以命令行的形式使用工具。
+通过 `Shell CLI` 可以在系统终端中以命令行的形式使用工具。
 
-用户需要在终端中启动 `Shell` ，命令行参数的格式如下：
+用户需要在终端中启动 `Shell CLI` ，命令行参数的格式如下：
 
 `<kernel> <script> <argument>...`
 
@@ -62,11 +62,11 @@
 
 ## 使用 `Helper`
 
-`Helper` 的 `Modding Worker` 模块提供了类似 `Shell GUI` 的 UI ，但样式更加契合 `Windows 11` 系统主题。
+`Helper` 的 `Modding Worker` 模块提供了类似 `Shell GUI` 的 UI ，但样式更加现代化，契合 `Windows 11` 系统主题。
 
-开启 `Modding Worker` 后，点击界面下方的 `Launch` 按钮即可启动会话，点击界面右上方的别针按钮可以编辑每次启动的附加参数。
+打开 `Modding Worker` 页面后，点击界面下方的 `Launch` 按钮即可启动会话，点击界面右上方的别针按钮可以编辑每次启动的附加参数。
 
-> 主文件夹内的 `launch_helper.cmd` 脚本可以快速开启 `Modding Worker` ，可以将多个文件拖拽至脚本上并释放，以追加附加参数。
+> 主文件夹内的 `launch_helper.cmd` 脚本可以快速启动 `Modding Worker` ，可以将多个文件拖拽至脚本上并释放，以追加附加参数。
 
 ## 转发文件
 
@@ -181,17 +181,13 @@
 
 * `<configuration>`
 
-	* `language` : `string` = `Chinese`
+	* `language` : `string` = `English`
 		
-		交互语言。可以为 `Chinese` 或 `English` 。
+		交互语言。可以为 `Chinese` 或 `English` 或 `Vietnamese` 。
 	
 	* `disable_cli_virtual_terminal_sequence` : `boolean` = `false`
 		
 		禁用命令行虚拟终端序列。仅当使用命令行外壳时有效。
-	
-	* `disable_notification` : `boolean` = `false`
-		
-		禁用通知功能。
 	
 	* `byte_stream_use_big_endian` : `boolean` = `false`
 		
@@ -217,13 +213,9 @@
 		
 		线程池上限数。目前无实际作用。
 	
-	* `notification_time_limit` : `null | bigint` = `15000`
+	* `command_notification_time_limit` : `null | bigint` = `15000`
 		
-		通知时限。在某项命令执行完成后，如果有效执行时间超过该值（毫秒），将推送系统通知以提醒用户。设为 null 将禁用通知。
-	
-	* `pause_when_finish` : `boolean` = `true`
-		
-		在完成所有工作后暂停程序，等待用户关闭。
+		命令通知时限。在某项命令执行完成后，如果有效执行时间超过该值（毫秒），将推送系统通知以提醒用户。设为 null 将禁用通知。
 
 > 脚本提供的每组功能都有与之对应的配置文件，参见 [功能列表](./method.md) 章节。
 

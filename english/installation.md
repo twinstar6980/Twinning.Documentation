@@ -24,13 +24,13 @@ The tool consists of several modules, different modules provide different functi
 	
 	Required modules, distributed as an dynamic library.
 
-* `Shell`
+* `Shell CLI`
 	
 	Shell, provides the command line interface.
 	
 	Optional modules, distributed as executable programs.
 	
-	> Using `Shell` on `Android` and `iPhone` requires ROOT privileges, if your device is not ROOTed, use `Shell GUI`.
+	> Using `Shell CLI` on `Android` and `iPhone` requires ROOT privileges, if your device is not ROOTed, use `Shell GUI`.
 
 * `Shell GUI`
 	
@@ -104,36 +104,36 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	Move the unzipped directory to a suitable location. It will serve as the home directory of the toolkit. recorded the absolute path as `<home>`.
 
-3. Sign the `kernel` and `shell` files in the home directory.
+3. Sign the `kernel` and `shell_cli` files in the home directory.
 	
 	> This step only required for `iPhone` users, and need to operate on `Macintosh` device.
 	
-	Run these command in the system terminal: `> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell` .
+	Run these command in the system terminal: `> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell_cli` .
 
-4. Grant executable permissions to the `shell` file in the home directory.
+4. Grant executable permissions to the `shell_cli` file in the home directory.
 	
-	> If you don't need the `Shell` module, you can skip this step. \
+	> If you don't need the `Shell CLI` module, you can skip this step. \
 	> This step only required for `Linux`, `Macintosh`, `Android`, `iPhone` users.
 	
-	Run these command in the system terminal: `> chmod +x shell` .
+	Run these command in the system terminal: `> chmod +x shell_cli` .
 
 5. Install the C++ shared library for your system.
 	
-	> If you don't need the `Shell` module, you can skip this step. \
+	> If you don't need the `Shell CLI` module, you can skip this step. \
 	> This step only required for `Android` user.
 	
 	Copy the `libc++_shared.so` file in the home directory to the system library directory `/system/lib64` .
 
 6. Install the application installation packages of the `Shell GUI`, `Forward`, and `Helper` modules in the home directory.
 	
-	Application installation package files have extensions such as `msix`, `app`, `apk`, `ipa`, etc.
+	Application installation package files have extensions such as `msix`, `dmg`, `apk`, `ipa`, etc.
 	
 	> @ `Windows` \
 	> You need to trust the signing certificate in MSIX before installation. \
 	> Right-click the properties of `.msix`, switch to the ⌈Digital Signatures ⌋ page, select the first item in the list, and then click ⌈Details ⌋ , and in the pop-up window, select ⌈View Certificate⌋ - ⌈Install Certificate⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈Trusted persons⌋, to complete the installation of the certificates.
 	> 
 	> @ `Macintosh` \
-	> Move the `*.app` directory to the system application directory, and then grant executable permissions to the program files in the `*.app/MacOS` directory.
+	> After mounting `dmg`, move the `*.app` directory to the system application directory.
 	> 
 	> @ `iPhone` \
 	> Need to self-sign and install ipa through AltStore or other tools.
@@ -165,12 +165,12 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	Open the newly installed `Forwarder For Windows` application, and a directory window will pop up with a file named `forward.cmd`. This script is responsible for receiving the file path parameter and launching the tool. Open and edit the file as text.
 	
-	The following example forward arguments to `Shell` :
+	The following example forward arguments to `Shell CLI` :
 	
 	```cmd
 	@echo off
 	set home=C:\TwinStar.ToolKit
-	start "" "%home%\shell.exe" ^
+	start "" "%home%\shell_cli.exe" ^
 		"%home%\kernel" ^
 		"%home%\script\main.js" ^
 		"%home%" ^
@@ -181,7 +181,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.ShellGUI_27.0.0.0_x64__7qfdsg797hj0p\shell_gui.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.ShellGUI_28.0.0.0_x64__7qfdsg797hj0p\shell_gui.exe" ^
 		-additional_argument %*
 	```
 	
@@ -189,7 +189,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_19.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_20.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
 		-WindowSize        496 968 ^
 		-WindowAlwaysOnTop true ^
 		-ModuleType        ModdingWorker ^
@@ -202,7 +202,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_19.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_20.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
 		-WindowSize        496 968 ^
 		-WindowAlwaysOnTop true ^
 		-ModuleType        ResourceForwarder ^
@@ -226,7 +226,7 @@ You can clone this project and compile it, or just download the bundle package o
 	```sh
 	#!/bin/bash
 	"/Applications/TwinStar ToolKit - Shell GUI.app/Contents/MacOS/TwinStar ToolKit - Shell GUI" \
-		"-additional_argument" "$@"
+		-additional_argument "$@"
 	```
 10. Configure the `Helper` settings.
 	

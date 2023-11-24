@@ -66,7 +66,7 @@
 
 - [pvz2.resource_manifest](#pvz2resource_manifest)
 
-- [pvz2.remote_android_helper](#pvz2remote_android_helper)
+- [pvz2.remote_project](#pvz2remote_project)
 
 - [kairosoft.user_data](#kairosoftuser_data)
 
@@ -1146,13 +1146,15 @@
 	
 	* `official_use_array_style_path` : `boolean` = `?input`
 
-## `pvz2.remote_android_helper`
+## `pvz2.remote_project`
 
-* `launch`
+* `execute`
 	
-	* `project_directory` : `*.pvz2_remote_android_helper_project`
+	* `project_directory` : `*.pvz2_remote_project`
 	
 	* `action` : `string` = `?input`
+	
+	* `target` : `string` = `?input`
 
 * `<configuration>`
 

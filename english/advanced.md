@@ -30,7 +30,7 @@ The tool uses a front-end and back-end separation architecture, divided into thr
 
 * The `Shell`: the front-end, responsible for user interaction without any data processing; `Shell` is distributed as a native application for each platform, which will load the kernel dynamic library and call the interface functions of the kernel dynamic library with user-supplied scripts as arguments.
 	
-	> `Shell` and `Shell GUI` modules implement this layer respectively.
+	> `Shell CLI` and `Shell GUI` modules implement this layer respectively.
 
 * `Script`: the bridge between the front and back end, which performs data processing and user interaction by calling interface functions provided by the kernel and shell; `Script` is distributed as platform-independent JavaScript scripts.
 	
@@ -64,37 +64,37 @@ Users can integrate the tool backend (`Kernel`) into their projects through the 
 
 Refer to several shell implementations in this tool:
 
-* `Shell` with [`C++`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge)
+* `Shell CLI` with [`C++`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge)
 
 * `Shell GUI` with [`Dart`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellGUI/lib/bridge)
 
 * `Helper` with [`C#`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Helper/Bridge)
 
-The following is an example of how to integrate `Kernel` with the [`Shell`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge) modules:
+The following is an example of how to integrate `Kernel` with the [`Shell CLI`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge) modules:
 
-1. [`interface.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/interface.hpp): Declare the interface of `Kernel`.
+1. [`interface.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/interface.hpp): Declare the interface of `Kernel`.
 	
 	> The declaration of the interface for `C++` is already provided in the `Kernel` module [`interface.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Kernel/kernel/interface/interface.hpp)
 
-2. [`symbol.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/symbol.hpp): defines the export symbols for the `Kernel` interface, used to get the addresses of the interfaces in the `Kernel` library.
+2. [`symbol.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/symbol.hpp): defines the export symbols for the `Kernel` interface, used to get the addresses of the interfaces in the `Kernel` library.
 
-3. [`library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/library.hpp): defines the abstract class of the `Kernel` library, which encapsulates the library loading and symbolic calls to `Kernel`.
+3. [`library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/library.hpp): defines the abstract class of the `Kernel` library, which encapsulates the library loading and symbolic calls to `Kernel`.
 	
-	* [`static_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/static_library.hpp): This implements the wrapper for static library.
+	* [`static_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/static_library.hpp): This implements the wrapper for static library.
 	
-	* [`dynamic_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/dynamic_library.hpp): This implements the wrapper for dynamic library.
+	* [`dynamic_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/dynamic_library.hpp): This implements the wrapper for dynamic library.
 
-4. [`converter.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/converter.hpp) : Creates a helper class for the required `C-style` structure construction and destructuring.
+4. [`converter.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/converter.hpp) : Creates a helper class for the required `C-style` structure construction and destructuring.
 	
 	> `Kernel` interface requires the user to pass C-style structures as argument values and return values.
 
-5. [`invoker.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/invoker.hpp): Create a helper class to encapsulate the `Kernel` interface so that it can simply be called without having to consider the details of the call including type conversion.
+5. [`invoker.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/invoker.hpp): Create a helper class to encapsulate the `Kernel` interface so that it can simply be called without having to consider the details of the call including type conversion.
 
-6. [`host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/bridge/host.hpp): Define a `Shell` abstract class that encapsulates which increase the lifecycle of the `Shell` and the callback functions that need to be provided to `Kernel`.
+6. [`host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/ShellCLI/shell_cli/bridge/host.hpp): Define a `Shell` abstract class that encapsulates which increase the lifecycle of the `Shell` and the callback functions that need to be provided to `Kernel`.
 	
-	> [`cli_host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/bridge/cli_host.hpp): implements the CLI-style `Shell`.
+	> [`cli_host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/ShellCLI/shell_cli/bridge/cli_host.hpp): implements the CLI-style `Shell`.
 
-7. [`launcher.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/launcher.hpp) : Creates a helper class for simply launcher tool.
+7. [`launcher.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/launcher.hpp) : Creates a helper class for simply launcher tool.
 
 ## Custom Scripts
 
@@ -337,6 +337,6 @@ Kernel interfaces are cumbersome to call. `Script` has encapsulated the kernel i
 
 * `Shell`: Wraps shell callbacks and shell-specific functions.
 
-* `Console`: Wraps console interaction, providing consistent user interaction between Shell and ShellGUI.
+* `Console`: Wraps console interaction, providing consistent user interaction between `Shell CLI` and `Shell GUI` .
 
 * `...`

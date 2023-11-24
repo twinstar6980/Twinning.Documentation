@@ -10,7 +10,7 @@
 
 - [Android Content URI processing strategy](#Android-Content-URI-processing-strategy)
 
-- [Shell requirements for the terminal](#Shell-requirements-for-the-terminal)
+- [Shell CLI requirements for the terminal](#Shell-CLI-requirements-for-the-terminal)
 
 - [JSON file format](#JSON-file-format)
 
@@ -36,7 +36,7 @@ Users should always use the latest version and only use older versions when proj
 
 Tools need to have access to the storage space involved.
 
-If the shell module used is `Shell`, access permissions depend on the permissions of the user who started the program.
+If the shell module used is `Shell CLI`, access permissions depend on the permissions of the user who started the program.
 
 If the shell module used is `Shell GUI`, access rights vary depending on the running system:
 
@@ -110,9 +110,9 @@ The following table lists the supported content URI formats, and the application
 
 > It is recommended to use a third-party file manager app mentioned in the table above to avoid unnecessary file copy overhead.
 
-## Shell requirements for the terminal
+## Shell CLI requirements for the terminal
 
-`Shell` provides a terminal-based command line interface, but it requires the host terminal to support the following features:
+`Shell CLI` provides a terminal-based command line interface, but it requires the host terminal to support the following features:
 
 1. UTF-8 input/output: required, if not supported, the program will not be able to do input/output properly (Or poorly displayed).
 

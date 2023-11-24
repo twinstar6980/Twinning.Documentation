@@ -30,7 +30,7 @@
 
 * `Shell` 层：前端，负责用户交互，不会进行任何数据处理；`Shell` 被分发为面向各平台的本机应用程序，会加载内核动态库，并以用户提供的脚本作为参数调用内核动态库的接口函数。
 	
-	> `Shell` 、`Shell GUI` 模块分别实现了这一层级。
+	> `Shell CLI` 、`Shell GUI` 模块分别实现了这一层级。
 
 * `Script` 层：前后端的桥梁，通过调用内核与外壳提供的接口函数进行数据处理与用户交互；`Script` 被分发为不依赖平台的 JavaScript 脚本。
 	
@@ -64,37 +64,37 @@
 
 具体参照本工具内的几个外壳实现：
 
-* `Shell` with [`C++`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge)
+* `Shell CLI` with [`C++`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge)
 
 * `Shell GUI` with [`Dart`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellGUI/lib/bridge)
 
 * `Helper` with [`C#`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Helper/Bridge)
 
-下面以 [`Shell`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge) 模块为例介绍应如何集成 `Kernel` ：
+下面以 [`Shell CLI`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge) 模块为例介绍应如何集成 `Kernel` ：
 
-1. [`interface.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/interface.hpp) ：声明 `Kernel` 的接口。
+1. [`interface.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/interface.hpp) ：声明 `Kernel` 的接口。
 	
 	> `Kernel` 模块中已经提供了适用于 `C++` 的接口声明 [`interface.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Kernel/kernel/interface/interface.hpp) 。
 
-2. [`symbol.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/symbol.hpp) ：定义 `Kernel` 接口的导出符号，用于获取 `Kernel` 库内的接口的地址。
+2. [`symbol.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/symbol.hpp) ：定义 `Kernel` 接口的导出符号，用于获取 `Kernel` 库内的接口的地址。
 
-3. [`library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/library.hpp) ：定义 `Kernel` 库的抽象类，它封装了对 `Kernel` 的库加载与符号调用。
+3. [`library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/library.hpp) ：定义 `Kernel` 库的抽象类，它封装了对 `Kernel` 的库加载与符号调用。
 	
-	* [`static_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/static_library.hpp) ：实现了对静态库的封装。
+	* [`static_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/static_library.hpp) ：实现了对静态库的封装。
 	
-	* [`dynamic_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/dynamic_library.hpp) ：实现了对动态库的封装。
+	* [`dynamic_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/dynamic_library.hpp) ：实现了对动态库的封装。
 
-4. [`converter.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/converter.hpp) ：创建一个辅助类进行所需的 C 式结构体的构造与析构。
+4. [`converter.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/converter.hpp) ：创建一个辅助类进行所需的 C 式结构体的构造与析构。
 	
 	>  `Kernel` 接口需要用户传递 C 式的结构体作为参数值与返回值。
 
-5. [`invoker.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/invoker.hpp) ：创建一个辅助类，对 `Kernel` 接口的调用进行封装，使之能够简单地被调用而不必考虑类型转换在内的调用细节。
+5. [`invoker.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/invoker.hpp) ：创建一个辅助类，对 `Kernel` 接口的调用进行封装，使之能够简单地被调用而不必考虑类型转换在内的调用细节。
 
-6. [`host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/bridge/host.hpp) ：定义 `Shell` 端的抽象类，它封装了 `Shell` 端的生命周期，以及需要提供给 `Kernel` 的回调函数。
+6. [`host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/ShellCLI/shell_cli/bridge/host.hpp) ：定义 `Shell` 端的抽象类，它封装了 `Shell` 端的生命周期，以及需要提供给 `Kernel` 的回调函数。
 	
-	> [`cli_host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/bridge/cli_host.hpp) ：实现了对 CLI 式 `Shell` 端的封装。
+	> [`cli_host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/ShellCLI/shell_cli/bridge/cli_host.hpp) ：实现了对 CLI 式 `Shell` 端的封装。
 
-7. [`launcher.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/launcher.hpp) ：创建一个辅助类，用于简单地启动工具。
+7. [`launcher.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/launcher.hpp) ：创建一个辅助类，用于简单地启动工具。
 
 ## 自定义脚本
 
@@ -334,6 +334,6 @@ decode_fs(
 
 * `utility.Shell` ：对外壳回调与外壳专有功能的封装。
 
-* `utility.Console` ：对控制台交互的封装，为 Shell 与 ShellGUI 提供一致的用户交互。
+* `utility.Console` ：对控制台交互的封装，为 `Shell CLI` 与 `Shell GUI` 提供一致的用户交互。
 
 * `...`
