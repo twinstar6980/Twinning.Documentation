@@ -201,13 +201,21 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		
 		JSON output format.
 		
-		* `disable_trailing_comma` : `boolean` = `false`
+		* `disable_array_trailing_comma` : `boolean` = `false`
 			
-			Disable trailing comma.
+			Disable array's trailing comma.
 		
-		* `disable_array_wrap_line` : `boolean` = `false`
+		* `disable_array_line_breaking` : `boolean` = `false`
 			
-			Disable line wrapping between array elements.
+			Disable array's line breaking.
+		
+		* `disable_object_trailing_comma` : `boolean` = `false`
+			
+			Disable object's trailing comma.
+		
+		* `disable_object_line_breaking` : `boolean` = `false`
+			
+			Disable object's line breaking.
 	
 	* `thread_limit` : `bigint` = `0`
 		
@@ -231,7 +239,7 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 
 * `Command Sender`
 	
-	This module allows you to visually select the methods you want to use and fill in the arguments.
+	This module can visually select the methods you want to use and fill in the arguments.
 	
 	> Methods are defined by the `Method Configuration` file in the module settings.
 	
@@ -248,3 +256,7 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 	2. If the exploded view required for the animation is located in the same directory as the animation file, the animation can be rendered normally. Otherwise, you need to click the button on the right side of the ⌈ Image Directory ⌋ text box to select the directory where the exploded view is located.
 	
 	3. Through other UI controls, you can select the sub-animation you want to play, adjust the playback interval and frame rate, set component filter items, etc.
+
+* `Package Builder`
+	
+	This module can visually manage the `PvZ-2 Package Project` project.

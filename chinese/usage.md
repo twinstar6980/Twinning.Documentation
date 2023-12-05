@@ -201,13 +201,21 @@
 		
 		JSON 输出格式。
 		
-		* `disable_trailing_comma` : `boolean` = `false`
+		* `disable_array_trailing_comma` : `boolean` = `false`
 			
-			禁用尾随逗号。
+			禁用数组尾随逗号。
 		
-		* `disable_array_wrap_line` : `boolean` = `false`
+		* `disable_array_line_breaking` : `boolean` = `false`
 			
-			禁用数组元素间的换行。
+			禁用数组换行。
+		
+		* `disable_object_trailing_comma` : `boolean` = `false`
+			
+			禁用对象尾随逗号。
+		
+		* `disable_object_line_breaking` : `boolean` = `false`
+			
+			禁用对象换行。
 	
 	* `thread_limit` : `bigint` = `0`
 		
@@ -231,7 +239,7 @@
 
 * `Command Sender`
 	
-	该模块可用可视化地选择需要使用的功能并填入参数。
+	该模块可以可视化地选择需要使用的功能并填入参数。
 	
 	> 功能由模块设置中的 `Method Configuration` 文件定义。
 	
@@ -248,3 +256,7 @@
 	2. 如果动画所需的分解图位于动画文件同级文件夹内，则可以正常渲染动画，否则需要点击 ⌈ Image Directory ⌋ 文本框的右侧按钮，选择分解图所在文件夹。
 	
 	3. 通过其他 UI 控件可以选择想要播放的子动画、调整播放区间与帧率、设置元件过滤项、等。
+
+* `Package Builder`
+	
+	该模块可以可视化地管理 `PvZ-2 Package Project` 项目。

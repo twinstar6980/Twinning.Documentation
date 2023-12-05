@@ -66,6 +66,8 @@
 
 - [pvz2.resource_manifest](#pvz2resource_manifest)
 
+- [pvz2.package_project](#pvz2package_project)
+
 - [pvz2.remote_project](#pvz2remote_project)
 
 - [kairosoft.user_data](#kairosoftuser_data)
@@ -298,15 +300,23 @@
 	
 	* `destination_file` : `string` ~ `*.format.json` = `?automatic`
 	
-	* `disable_trailing_comma` : `boolean` ~ `KernelX.JSON.g_format.disable_trailing_comma` = `configuration.disable_trailing_comma`
+	* `disable_array_trailing_comma` : `boolean` ~ `KernelX.JSON.g_format.disable_array_trailing_comma` = `configuration.disable_array_trailing_comma`
 	
-	* `disable_array_wrap_line` : `boolean` ~ `KernelX.JSON.g_format.disable_array_wrap_line` = `configuration.disable_array_wrap_line`
+	* `disable_array_line_breaking` : `boolean` ~ `KernelX.JSON.g_format.disable_array_line_breaking` = `configuration.disable_array_line_breaking`
+	
+	* `disable_object_trailing_comma` : `boolean` ~ `KernelX.JSON.g_format.disable_object_trailing_comma` = `configuration.disable_object_trailing_comma`
+	
+	* `disable_object_line_breaking` : `boolean` ~ `KernelX.JSON.g_format.disable_object_line_breaking` = `configuration.disable_object_line_breaking`
 
 * `<configuration>`
 	
-	* `disable_trailing_comma` : `boolean` = `?automatic`
+	* `disable_array_trailing_comma` : `boolean` = `?automatic`
 	
-	* `disable_array_wrap_line` : `boolean` = `?automatic`
+	* `disable_array_line_breaking` : `boolean` = `?automatic`
+	
+	* `disable_object_trailing_comma` : `boolean` = `?automatic`
+	
+	* `disable_object_line_breaking` : `boolean` = `?automatic`
 
 ## `text.xml`
 
@@ -1145,6 +1155,50 @@
 	* `new_type_object_notation_encode_buffer_size` : `string` = `64.0m`
 	
 	* `official_use_array_style_path` : `boolean` = `?input`
+
+## `pvz2.package_project`
+
+* `compile`
+	
+	* `project_directory` : `*.pvz2_package_project`
+	
+	* `target_scope` : `string` = `?input`
+	
+	* `target_package` : `string` = `?input`
+	
+	* `buffer_size` : `string` = `configuration.compile_buffer_size`
+
+* `link`
+	
+	* `project_directory` : `*.pvz2_package_project`
+	
+	* `target_package` : `string` = `?input`
+	
+	* `remake_manifest` : `boolean` = `?input`
+	
+	* `buffer_size` : `string` = `configuration.link_buffer_size`
+
+* `parse`
+	
+	* `project_directory` : `*.pvz2_package_project`
+	
+	* `package_directory` : `string` = `?input`
+	
+	* `package_name` : `string` = `?automatic`
+	
+	* `package_version_number` : `bigint` = `configuration.parse_package_version_number`
+	
+	* `package_version_extended_texture_information_for_pvz2_cn` : `bigint` = `configuration.parse_package_version_extended_texture_information_for_pvz2_cn`
+
+* `<configuration>`
+	
+	* `compile_buffer_size` : `string` = `8.0m`
+	
+	* `link_buffer_size` : `string` = `1024.0m`
+	
+	* `parse_package_version_number` : `bigint` = `?input`
+	
+	* `parse_package_version_extended_texture_information_for_pvz2_cn` : `bigint` = `?input`
 
 ## `pvz2.remote_project`
 
