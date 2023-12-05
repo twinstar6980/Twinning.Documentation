@@ -252,11 +252,13 @@
 
 11. 设置交互语言。
 	
-	以文本形式打开并编辑主文件夹内的 `script/Entry/Entry.json` 文件，找到 `"language": "Chinese"` 部分，修改它以切换工具的交互语言。
+	以文本形式打开并编辑主文件夹内的 `script/Entry/Entry.json` 文件，找到 `"language": "English"` 部分，修改它以切换工具的交互语言。
 	
-	* `Chinese` - 中文（默认）
+	* `English` 英文（默认）
 	
-	* `English` - 英文
+	* `Chinese` 中文
+	
+	* `Vietnamese` 越文
 
 12. 至此，已经完成了所有安装步骤，可以通过终端命令行或直接打开应用的方式启动工具。
 	

@@ -183,7 +183,7 @@
 
 	* `language` : `string` = `English`
 		
-		交互语言。可以为 `Chinese` 或 `English` 或 `Vietnamese` 。
+		交互语言。可以为 `English` 或 `Chinese` 或 `Vietnamese` 。
 	
 	* `disable_cli_virtual_terminal_sequence` : `boolean` = `false`
 		

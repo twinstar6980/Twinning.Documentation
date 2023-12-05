@@ -98,6 +98,8 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `iPhone` - `arm_64`
 	
+	* `Linux` - `x86_64`
+	
 	Among them, only the precompiled distributions for `Windows` and `Android` platforms will always follow the latest version. Precompiled distributions for other platforms are generally rarely updated. If you need the latest version, or your platform is not in the above list, please try to compile it by yourself.
 
 2. Select the home directory.
@@ -248,11 +250,13 @@ You can clone this project and compile it, or just download the bundle package o
 
 11. Set the interactive language.
 	
-	Open and edit `script/Entry/Entry.json` file in the home directory as text, find the `"language": "Chinese"` section, and modify it to switch the interactive language of the tool.
+	Open and edit `script/Entry/Entry.json` file in the home directory as text, find the `"language": "English"` section, and modify it to switch the interactive language of the tool.
 	
-	* `Chinese` - Chinese (default)
+	* `English` (default)
 	
-	* `English` - English
+	* `Chinese`
+	
+	* `Vietnamese`
 
 12. At this point, all installation steps have been completed and the tool can be launched from the terminal command line or by opening the application directly.
 	

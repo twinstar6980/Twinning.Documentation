@@ -183,7 +183,7 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 	
 	* `language` : `string` = `English`
 		
-		Interaction language. Can be `Chinese` or `English` or `Vietnamese`.
+		Interaction language. Can be `English` or `Chinese` or `Vietnamese`.
 	
 	* `disable_cli_virtual_terminal_sequence` : `boolean` = `false`
 		
