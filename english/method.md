@@ -20,6 +20,8 @@
 
 - [texture.transformation](#texturetransformation)
 
+- [texture.encoding](#textureencoding)
+
 - [texture.atlas](#textureatlas)
 
 - [wwise.media](#wwisemedia)
@@ -102,8 +104,8 @@ The following will list the methods with their corresponding configuration rules
 > 	
 > 	* `variable-name` : `<filter-rule>`
 > 		
-> 		The first argument is an input argument, specified by `input` of the current command, always of type `string`; `<filter-rule>` specifies the input value filtering rules for the method, e.g. `*.rsb` means that the method is displayed only if the input file has extension `rsb`.
-> 		
+> 		The first argument is an input argument, specified by `input` or `argument` of the current command, always of type `path`; `<filter-rule>` specifies the input value filtering rules for the method, e.g. `*.rsb` means that the method is displayed only if the input file has extension `rsb`. Filter rule can be modified in the configuration file.
+> 	
 > 	* `variable-name` : `variable-type` [ ~ `<default-value>` ] = `<value>`
 > 		
 > 		The remaining arguments are specified by the `argument` of the current command, the second of which is usually the output argument, followed by the configuration argument.
@@ -112,7 +114,7 @@ The following will list the methods with their corresponding configuration rules
 > 		
 > 		Some arguments can generate automatic by program, and the user can specify the argument value as the string `?automatic` to enable the automatic behavior, which will be identified by `~` in the documentation, followed by the value of the automatic behavior. Generally, output arguments have default behavior, i.e., the value of the input argument is used to generate the value of the output argument, e.g., the `popcap.animation.decode` method takes a `*.pam` file as the input argument and generates a `*.pam.json` file of the same name as the output argument.
 > 		
-> 		`<value>` is the default argument value when the user does not specify a argument value, typically an explicit `?input` or `?automatic`, or the default argument value is retrieved from the corresponding configuration file.
+> 		`<value>` is the default value when the user does not specify a argument value, typically an explicit `?input` or `?automatic`, the default value can be modified in the configuration file.
 
 All of the methods listed below are regular method. Some of the regular method have a batch version, which is the same as the regular method, but with the `.batch` suffix appended to the method ID .
 
@@ -130,23 +132,19 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `target_file` : `*`
 
-* `<configuration>`
-
 ## `data.encoding`
 
 * `base64.encode` `*`
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
+	* `ripe_file` : `path` ~ `*.bin` = `?automatic`
 
 * `base64.decode` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?automatic`
-
-* `<configuration>`
+	* `raw_file` : `path` ~ `*.bin` = `?automatic`
 
 ## `data.encryption`
 
@@ -154,19 +152,19 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `plain_file` : `*`
 	
-	* `cipher_file` : `string` ~ `*.bin` = `?automatic`
+	* `cipher_file` : `path` ~ `*.bin` = `?automatic`
 	
-	* `key` : `bigint` = `?input`
+	* `key` : `integer` = `?input`
 
 * `rijndael.encrypt` `*`
 	
 	* `plain_file` : `*`
 	
-	* `cipher_file` : `string` ~ `*.bin` = `?automatic`
+	* `cipher_file` : `path` ~ `*.bin` = `?automatic`
 	
 	* `mode` : `string` = `?input`
 	
-	* `block_size` : `bigint` = `?input`
+	* `block_size` : `integer` = `?input`
 	
 	* `key` : `string` = `?input`
 	
@@ -176,17 +174,15 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `cipher_file` : `*`
 	
-	* `plain_file` : `string` ~ `*.bin` = `?automatic`
+	* `plain_file` : `path` ~ `*.bin` = `?automatic`
 	
 	* `mode` : `string` = `?input`
 	
-	* `block_size` : `bigint` = `?input`
+	* `block_size` : `integer` = `?input`
 	
 	* `key` : `string` = `?input`
 	
 	* `iv` : `string` = `?input`
-
-* `<configuration>`
 
 ## `data.compression`
 
@@ -194,75 +190,71 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
+	* `ripe_file` : `path` ~ `*.bin` = `?automatic`
 
 * `deflate.uncompress` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?automatic`
+	* `raw_file` : `path` ~ `*.bin` = `?automatic`
 	
-	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
+	* `buffer_size` : `size` = `?input`
 
 * `zlib.compress` `*`
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
+	* `ripe_file` : `path` ~ `*.bin` = `?automatic`
 
 * `zlib.uncompress` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?automatic`
+	* `raw_file` : `path` ~ `*.bin` = `?automatic`
 	
-	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
+	* `buffer_size` : `size` = `?input`
 
 * `gzip.compress` `*`
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
+	* `ripe_file` : `path` ~ `*.bin` = `?automatic`
 
 * `gzip.uncompress` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?automatic`
+	* `raw_file` : `path` ~ `*.bin` = `?automatic`
 	
-	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
+	* `buffer_size` : `size` = `?input`
 
 * `bzip2.compress` `*`
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
+	* `ripe_file` : `path` ~ `*.bin` = `?automatic`
 
 * `bzip2.uncompress` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?automatic`
+	* `raw_file` : `path` ~ `*.bin` = `?automatic`
 	
-	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
+	* `buffer_size` : `size` = `?input`
 
 * `lzma.compress` `*`
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
+	* `ripe_file` : `path` ~ `*.bin` = `?automatic`
 
 * `lzma.uncompress` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?automatic`
+	* `raw_file` : `path` ~ `*.bin` = `?automatic`
 	
-	* `buffer_size` : `string` = `configuration.uncompress_buffer_size`
-
-* `<configuration>`
-	
-	* `uncompress_buffer_size` : `string` = `?input`
+	* `buffer_size` : `size` = `?input`
 
 ## `data.differentiation`
 
@@ -270,27 +262,21 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `after_file` : `*`
 	
-	* `patch_file` : `string` ~ `*.patch.bin` = `?automatic`
+	* `patch_file` : `path` ~ `*.patch.bin` = `?automatic`
 	
-	* `before_file` : `string` = `?input`
+	* `before_file` : `path` = `?input`
 	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
+	* `buffer_size` : `size` = `1024.0m`
 
 * `vcdiff.decode`
 	
 	* `patch_file` : `*`
 	
-	* `after_file` : `string` ~ `*.after.bin` = `?automatic`
+	* `after_file` : `path` ~ `*.after.bin` = `?automatic`
 	
-	* `before_file` : `string` = `?input`
+	* `before_file` : `path` = `?input`
 	
-	* `buffer_size` : `string` = `configuration.decode_buffer_size`
-
-* `<configuration>`
-	
-	* `encode_buffer_size` : `string` = `1024.0m`
-	
-	* `decode_buffer_size` : `string` = `1024.0m`
+	* `buffer_size` : `size` = `1024.0m`
 
 ## `text.json`
 
@@ -298,25 +284,15 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `source_file` : `*.json`
 	
-	* `destination_file` : `string` ~ `*.format.json` = `?automatic`
+	* `destination_file` : `path` ~ `*.format.json` = `?automatic`
 	
-	* `disable_array_trailing_comma` : `boolean` ~ `KernelX.JSON.g_format.disable_array_trailing_comma` = `configuration.disable_array_trailing_comma`
+	* `disable_array_trailing_comma` : `boolean` ~ `KernelX.JSON.g_format.disable_array_trailing_comma` = `?automatic`
 	
-	* `disable_array_line_breaking` : `boolean` ~ `KernelX.JSON.g_format.disable_array_line_breaking` = `configuration.disable_array_line_breaking`
+	* `disable_array_line_breaking` : `boolean` ~ `KernelX.JSON.g_format.disable_array_line_breaking` = `?automatic`
 	
-	* `disable_object_trailing_comma` : `boolean` ~ `KernelX.JSON.g_format.disable_object_trailing_comma` = `configuration.disable_object_trailing_comma`
+	* `disable_object_trailing_comma` : `boolean` ~ `KernelX.JSON.g_format.disable_object_trailing_comma` = `?automatic`
 	
-	* `disable_object_line_breaking` : `boolean` ~ `KernelX.JSON.g_format.disable_object_line_breaking` = `configuration.disable_object_line_breaking`
-
-* `<configuration>`
-	
-	* `disable_array_trailing_comma` : `boolean` = `?automatic`
-	
-	* `disable_array_line_breaking` : `boolean` = `?automatic`
-	
-	* `disable_object_trailing_comma` : `boolean` = `?automatic`
-	
-	* `disable_object_line_breaking` : `boolean` = `?automatic`
+	* `disable_object_line_breaking` : `boolean` ~ `KernelX.JSON.g_format.disable_object_line_breaking` = `?automatic`
 
 ## `text.xml`
 
@@ -324,9 +300,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `source_file` : `*.xml`
 	
-	* `destination_file` : `string` ~ `*.format.xml` = `?automatic`
-
-* `<configuration>`
+	* `destination_file` : `path` ~ `*.format.xml` = `?automatic`
 
 ## `texture.transformation`
 
@@ -334,7 +308,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `source_file` : `*.png`
 	
-	* `destination_file` : `string` ~ `*.flip.png` = `?automatic`
+	* `destination_file` : `path` ~ `*.flip.png` = `?automatic`
 	
 	* `horizontal` : `boolean` = `?input`
 	
@@ -344,21 +318,41 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `source_file` : `*.png`
 	
-	* `destination_file` : `string` ~ `*.scale.png` = `?automatic`
+	* `destination_file` : `path` ~ `*.scale.png` = `?automatic`
 	
-	* `size_width` : `bigint` = `?input`
+	* `size_width` : `integer` = `?input`
 	
-	* `size_height` : `bigint` = `?input`
+	* `size_height` : `integer` = `?input`
 
 * `scale_rate` `*`
 	
 	* `source_file` : `*.png`
 	
-	* `destination_file` : `string` ~ `*.scale.png` = `?automatic`
+	* `destination_file` : `path` ~ `*.scale.png` = `?automatic`
 	
-	* `size_rate` : `number` = `?input`
+	* `size_rate` : `floater` = `?input`
 
-* `<configuration>`
+## `texture.encoding`
+
+* `encode`
+	
+	* `image_file` : `*.png`
+	
+	* `data_file` : `path` ~ `*.bin` = `?automatic`
+	
+	* `format` : `string` = `?input`
+
+* `decode`
+	
+	* `data_file` : `*.bin`
+	
+	* `image_file` : `path` ~ `*.png` = `?automatic`
+	
+	* `format` : `string` = `?input`
+	
+	* `image_width` : `integer` = `?input`
+	
+	* `image_height` : `integer` = `?input`
 
 ## `texture.atlas`
 
@@ -366,27 +360,25 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `definition_file` : `*.atlas.json`
 	
-	* `sprite_directory` : `string` ~ `*.sprite` = `?automatic`
+	* `sprite_directory` : `path` ~ `*.sprite` = `?automatic`
 	
-	* `atlas_file` : `string` ~ `*.atlas.png` = `?automatic`
+	* `atlas_file` : `path` ~ `*.atlas.png` = `?automatic`
 
 * `unpack`
 	
 	* `definition_file` : `*.atlas.json`
 	
-	* `atlas_file` : `string` ~ `*.atlas.png` = `?automatic`
+	* `atlas_file` : `path` ~ `*.atlas.png` = `?automatic`
 	
-	* `sprite_directory` : `string` ~ `*.sprite` = `?automatic`
+	* `sprite_directory` : `path` ~ `*.sprite` = `?automatic`
 
 * `pack_automatic`
 	
 	* `sprite_directory` : `*.sprite`
 	
-	* `atlas_file` : `string` ~ `*.atlas.png` = `?automatic`
+	* `atlas_file` : `path` ~ `*.atlas.png` = `?automatic`
 	
-	* `definition_file` : `string` ~ `*.atlas.json` = `?automatic`
-
-* `<configuration>`
+	* `definition_file` : `path` ~ `*.atlas.json` = `?automatic`
 
 ## `wwise.media`
 
@@ -394,7 +386,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `raw_file` : `*.wav`
 	
-	* `ripe_file` : `string` ~ `*.wem` = `?automatic`
+	* `ripe_file` : `path` ~ `*.wem` = `?automatic`
 	
 	* `format` : `string` = `?input`
 
@@ -402,9 +394,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `ripe_file` : `*.wem`
 	
-	* `raw_file` : `string` ~ `*.wav` = `?automatic`
-
-* `<configuration>`
+	* `raw_file` : `path` ~ `*.wav` = `?automatic`
 
 ## `wwise.sound_bank`
 
@@ -412,25 +402,19 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `bundle_directory` : `*.bnk.bundle`
 	
-	* `data_file` : `string` ~ `*.bnk` = `?automatic`
+	* `data_file` : `path` ~ `*.bnk` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `?input`
 	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
+	* `buffer_size` : `size` = `64.0m`
 
 * `decode` `*`
 	
 	* `data_file` : `*.bnk`
 	
-	* `bundle_directory` : `string` ~ `*.bnk.bundle` = `?automatic`
+	* `bundle_directory` : `path` ~ `*.bnk.bundle` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
-
-* `<configuration>`
-	
-	* `version_number` : `bigint` = `?input`
-	
-	* `encode_buffer_size` : `string` = `64.0m`
+	* `version_number` : `integer` = `?input`
 
 ## `marmalade.dzip`
 
@@ -438,33 +422,27 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `bundle_directory` : `*.dz.bundle`
 	
-	* `data_file` : `string` ~ `*.dz` = `?automatic`
+	* `data_file` : `path` ~ `*.dz` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `0`
 	
-	* `buffer_size` : `string` = `configuration.pack_buffer_size`
+	* `buffer_size` : `size` = `256.0m`
 
 * `unpack` `*`
 	
 	* `data_file` : `*.dz`
 	
-	* `bundle_directory` : `string` ~ `*.dz.bundle` = `?automatic`
+	* `bundle_directory` : `path` ~ `*.dz.bundle` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `0`
 
 * `pack_automatic`
 	
 	* `resource_directory` : `*`
 	
-	* `data_file` : `string` ~ `*.dz` = `?automatic`
+	* `data_file` : `path` ~ `*.dz` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
-
-* `<configuration>`
-	
-	* `version_number` : `bigint` = `0`
-	
-	* `pack_buffer_size` : `string` = `256.0m`
+	* `version_number` : `integer` = `256.0m`
 
 ## `popcap.zlib`
 
@@ -472,19 +450,15 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `raw_file` : `*`
 	
-	* `ripe_file` : `string` ~ `*.bin` = `?automatic`
+	* `ripe_file` : `path` ~ `*.bin` = `?automatic`
 	
-	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
+	* `version_variant_64` : `boolean` = `?input`
 
 * `uncompress` `*`
 	
 	* `ripe_file` : `*`
 	
-	* `raw_file` : `string` ~ `*.bin` = `?automatic`
-	
-	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
-
-* `<configuration>`
+	* `raw_file` : `path` ~ `*.bin` = `?automatic`
 	
 	* `version_variant_64` : `boolean` = `?input`
 
@@ -494,25 +468,19 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `plain_file` : `*`
 	
-	* `cipher_file` : `string` ~ `*.cdat` = `?automatic`
+	* `cipher_file` : `path` ~ `*.cdat` = `?automatic`
 	
-	* `limit` : `bigint` = `configuration.limit`
+	* `limit` : `integer` = `256`
 	
-	* `key` : `string` = `configuration.key`
+	* `key` : `string` = `AS23DSREPLKL335KO4439032N8345NF`
 
 * `decrypt` `*`
 	
 	* `cipher_file` : `*.cdat`
 	
-	* `plain_file` : `string` ~ `*` = `?automatic`
+	* `plain_file` : `path` ~ `*` = `?automatic`
 	
-	* `limit` : `bigint` = `configuration.limit`
-	
-	* `key` : `string` = `configuration.key`
-
-* `<configuration>`
-	
-	* `limit` : `bigint` = `256`
+	* `limit` : `integer` = `256`
 	
 	* `key` : `string` = `AS23DSREPLKL335KO4439032N8345NF`
 
@@ -522,85 +490,75 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `value_file` : `*.json`
 	
-	* `data_file` : `string` ~ `*.rton` = `?automatic`
+	* `data_file` : `path` ~ `*.rton` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `1`
 	
-	* `version_native_string_encoding_use_utf8` : `boolean` = `configuration.version_native_string_encoding_use_utf8`
+	* `version_native_string_encoding_use_utf8` : `boolean` = `true`
 	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
+	* `buffer_size` : `size` = `64.0m`
 
 * `decode` `*`
 	
 	* `data_file` : `*.rton`
 	
-	* `value_file` : `string` ~ `*.json` = `?automatic`
+	* `value_file` : `path` ~ `*.json` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `1`
 	
-	* `version_native_string_encoding_use_utf8` : `boolean` = `configuration.version_native_string_encoding_use_utf8`
+	* `version_native_string_encoding_use_utf8` : `boolean` = `true`
 
 * `encrypt` `*`
 	
 	* `plain_file` : `*.rton`
 	
-	* `cipher_file` : `string` ~ `*.cipher.rton` = `?automatic`
+	* `cipher_file` : `path` ~ `*.cipher.rton` = `?automatic`
 	
-	* `key` : `string` = `configuration.key`
+	* `key` : `string` = `?input`
 
 * `decrypt` `*`
 	
 	* `cipher_file` : `*.rton`
 	
-	* `plain_file` : `string` ~ `*.plain.rton` = `?automatic`
+	* `plain_file` : `path` ~ `*.plain.rton` = `?automatic`
 	
-	* `key` : `string` = `configuration.key`
+	* `key` : `string` = `?input`
 
 * `encode_then_encrypt` `*`
 	
 	* `value_file` : `*.json`
 	
-	* `data_file` : `string` ~ `*.rton` = `?automatic`
+	* `data_file` : `path` ~ `*.rton` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
-	
-	* `version_native_string_encoding_use_utf8` : `boolean` = `configuration.version_native_string_encoding_use_utf8`
-	
-	* `key` : `string` = `configuration.key`
-	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
-
-* `decrypt_then_decode` `*`
-	
-	* `data_file` : `*.rton`
-	
-	* `value_file` : `string` ~ `*.json` = `?automatic`
-	
-	* `version_number` : `bigint` = `configuration.version_number`
-	
-	* `version_native_string_encoding_use_utf8` : `boolean` = `configuration.version_native_string_encoding_use_utf8`
-	
-	* `key` : `string` = `configuration.key`
-
-* `decode_lenient` `*`
-	
-	* `data_file` : `*.rton`
-	
-	* `value_file` : `string` ~ `*.json` = `?automatic`
-	
-	* `version_number` : `bigint` = `configuration.version_number`
-	
-	* `version_native_string_encoding_use_utf8` : `boolean` = `configuration.version_native_string_encoding_use_utf8`
-
-* `<configuration>`
-	
-	* `version_number` : `bigint` = `1`
+	* `version_number` : `integer` = `1`
 	
 	* `version_native_string_encoding_use_utf8` : `boolean` = `true`
 	
 	* `key` : `string` = `?input`
 	
-	* `encode_buffer_size` : `string` = `64.0m`
+	* `buffer_size` : `size` = `64.0m`
+
+* `decrypt_then_decode` `*`
+	
+	* `data_file` : `*.rton`
+	
+	* `value_file` : `path` ~ `*.json` = `?automatic`
+	
+	* `version_number` : `integer` = `1`
+	
+	* `version_native_string_encoding_use_utf8` : `boolean` = `true`
+	
+	* `key` : `string` = `?input`
+
+* `decode_lenient` `*`
+	
+	* `data_file` : `*.rton`
+	
+	* `value_file` : `path` ~ `*.json` = `?automatic`
+	
+	* `version_number` : `integer` = `1`
+	
+	* `version_native_string_encoding_use_utf8` : `boolean` = `true`
 
 ## `popcap.texture`
 
@@ -608,7 +566,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `image_file` : `*.png`
 	
-	* `data_file` : `string` ~ `*.ptx` = `?automatic`
+	* `data_file` : `path` ~ `*.ptx` = `?automatic`
 	
 	* `format` : `string` = `?input`
 
@@ -616,15 +574,13 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `data_file` : `*.ptx`
 	
-	* `image_file` : `string` ~ `*.png` = `?automatic`
+	* `image_file` : `path` ~ `*.png` = `?automatic`
 	
 	* `format` : `string` = `?input`
 	
-	* `image_width` : `bigint` = `?input`
+	* `image_width` : `integer` = `?input`
 	
-	* `image_height` : `bigint` = `?input`
-
-* `<configuration>`
+	* `image_height` : `integer` = `?input`
 
 ## `popcap.u_texture`
 
@@ -632,9 +588,9 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `image_file` : `*.png`
 	
-	* `data_file` : `string` ~ `*.tex` = `?automatic`
+	* `data_file` : `path` ~ `*.tex` = `?automatic`
 	
-	* `version_compress_texture_data` : `boolean` = `configuration.version_compress_texture_data`
+	* `version_compress_texture_data` : `boolean` = `?input`
 	
 	* `format` : `string` = `?input`
 
@@ -642,11 +598,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `data_file` : `*.tex`
 	
-	* `image_file` : `string` ~ `*.png` = `?automatic`
-	
-	* `version_compress_texture_data` : `boolean` = `configuration.version_compress_texture_data`
-
-* `<configuration>`
+	* `image_file` : `path` ~ `*.png` = `?automatic`
 	
 	* `version_compress_texture_data` : `boolean` = `?input`
 
@@ -656,27 +608,21 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `image_file` : `*.png`
 	
-	* `data_file` : `string` ~ `*.tex` = `?automatic`
+	* `data_file` : `path` ~ `*.tex` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `0`
 	
 	* `format` : `string` = `?input`
 	
-	* `compress_texture_data` : `boolean` = `configuration.encode_compress_texture_data`
+	* `compress_texture_data` : `boolean` = `?input`
 
 * `decode` `*`
 	
 	* `data_file` : `*.tex`
 	
-	* `image_file` : `string` ~ `*.png` = `?automatic`
+	* `image_file` : `path` ~ `*.png` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
-
-* `<configuration>`
-	
-	* `version_number` : `bigint` = `0`
-	
-	* `encode_compress_texture_data` : `boolean` = `?input`
+	* `version_number` : `integer` = `0`
 
 ## `popcap.animation`
 
@@ -684,47 +630,41 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `definition_file` : `*.pam.json`
 	
-	* `data_file` : `string` ~ `*.pam` = `?automatic`
+	* `data_file` : `path` ~ `*.pam` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `?input`
 	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
+	* `buffer_size` : `size` = `8.0m`
 
 * `decode` `*`
 	
 	* `data_file` : `*.pam`
 	
-	* `definition_file` : `string` ~ `*.pam.json` = `?automatic`
+	* `definition_file` : `path` ~ `*.pam.json` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `?input`
 
 * `convert.flash.from` `*`
 	
 	* `raw_file` : `*.pam.json`
 	
-	* `ripe_directory` : `string` ~ `*.pam.xfl` = `?automatic`
+	* `ripe_directory` : `path` ~ `*.pam.xfl` = `?automatic`
 
 * `convert.flash.to` `*`
 	
 	* `ripe_directory` : `*.pam.xfl`
 	
-	* `raw_file` : `string` ~ `*.pam.json` = `?automatic`
+	* `raw_file` : `path` ~ `*.pam.json` = `?automatic`
 
 * `convert.flash.resize` `*`
 	
 	* `target_directory` : `*.pam.xfl`
 	
-	* `resolution` : `bigint` = `?input`
+	* `resolution` : `integer` = `?input`
 
 * `convert.flash.link_media` `*`
 	
 	* `target_directory` : `*.pam.xfl`
-
-* `<configuration>`
-	
-	* `version_number` : `bigint` = `?input`
-	
-	* `encode_buffer_size` : `string` = `8.0m`
 
 ## `popcap.re_animation`
 
@@ -732,31 +672,23 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `definition_file` : `*.reanim.json`
 	
-	* `data_file` : `string` ~ `*.reanim.compiled` = `?automatic`
-	
-	* `version_platform` : `string` = `configuration.version_platform`
-	
-	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
-	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
-
-* `decode` `*`
-	
-	* `data_file` : `*.reanim.compiled`
-	
-	* `definition_file` : `string` ~ `*.reanim.json` = `?automatic`
-	
-	* `version_platform` : `string` = `configuration.version_platform`
-	
-	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
-
-* `<configuration>`
+	* `data_file` : `path` ~ `*.reanim.compiled` = `?automatic`
 	
 	* `version_platform` : `string` = `?input`
 	
 	* `version_variant_64` : `boolean` = `?input`
 	
-	* `encode_buffer_size` : `string` = `8.0m`
+	* `buffer_size` : `size` = `8.0m`
+
+* `decode` `*`
+	
+	* `data_file` : `*.reanim.compiled`
+	
+	* `definition_file` : `path` ~ `*.reanim.json` = `?automatic`
+	
+	* `version_platform` : `string` = `?input`
+	
+	* `version_variant_64` : `boolean` = `?input`
 
 ## `popcap.particle`
 
@@ -764,31 +696,23 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `definition_file` : `*.particle.json`
 	
-	* `data_file` : `string` ~ `*.xml.compiled` = `?automatic`
-	
-	* `version_platform` : `string` = `configuration.version_platform`
-	
-	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
-	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
-
-* `decode` `*`
-	
-	* `data_file` : `*.xml.compiled`
-	
-	* `definition_file` : `string` ~ `*.particle.json` = `?automatic`
-	
-	* `version_platform` : `string` = `configuration.version_platform`
-	
-	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
-
-* `<configuration>`
+	* `data_file` : `path` ~ `*.xml.compiled` = `?automatic`
 	
 	* `version_platform` : `string` = `?input`
 	
 	* `version_variant_64` : `boolean` = `?input`
 	
-	* `encode_buffer_size` : `string` = `8.0m`
+	* `buffer_size` : `size` = `8.0m`
+
+* `decode` `*`
+	
+	* `data_file` : `*.xml.compiled`
+	
+	* `definition_file` : `path` ~ `*.particle.json` = `?automatic`
+	
+	* `version_platform` : `string` = `?input`
+	
+	* `version_variant_64` : `boolean` = `?input`
 
 ## `popcap.trail`
 
@@ -796,31 +720,23 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `definition_file` : `*.trail.json`
 	
-	* `data_file` : `string` ~ `*.trail.compiled` = `?automatic`
-	
-	* `version_platform` : `string` = `configuration.version_platform`
-	
-	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
-	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
-
-* `decode` `*`
-	
-	* `data_file` : `*.trail.compiled`
-	
-	* `definition_file` : `string` ~ `*.trail.json` = `?automatic`
-	
-	* `version_platform` : `string` = `configuration.version_platform`
-	
-	* `version_variant_64` : `boolean` = `configuration.version_variant_64`
-
-* `<configuration>`
+	* `data_file` : `path` ~ `*.trail.compiled` = `?automatic`
 	
 	* `version_platform` : `string` = `?input`
 	
 	* `version_variant_64` : `boolean` = `?input`
 	
-	* `encode_buffer_size` : `string` = `8.0m`
+	* `buffer_size` : `size` = `8.0m`
+
+* `decode` `*`
+	
+	* `data_file` : `*.trail.compiled`
+	
+	* `definition_file` : `path` ~ `*.trail.json` = `?automatic`
+	
+	* `version_platform` : `string` = `?input`
+	
+	* `version_variant_64` : `boolean` = `?input`
 
 ## `popcap.particle_effect`
 
@@ -828,25 +744,19 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `definition_file` : `*.ppf.json`
 	
-	* `data_file` : `string` ~ `*.ppf` = `?automatic`
+	* `data_file` : `path` ~ `*.ppf` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `1`
 	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
+	* `buffer_size` : `size` = `8.0m`
 
 * `decode` `*`
 	
 	* `data_file` : `*.ppf`
 	
-	* `definition_file` : `string` ~ `*.ppf.json` = `?automatic`
+	* `definition_file` : `path` ~ `*.ppf.json` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
-
-* `<configuration>`
-	
-	* `version_number` : `bigint` = `1`
-	
-	* `encode_buffer_size` : `string` = `8.0m`
+	* `version_number` : `integer` = `1`
 
 ## `popcap.render_effect`
 
@@ -854,31 +764,23 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `definition_file` : `*.popfx.json`
 	
-	* `data_file` : `string` ~ `*.popfx` = `?automatic`
+	* `data_file` : `path` ~ `*.popfx` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `1`
 	
-	* `version_variant` : `bigint` = `configuration.version_variant`
+	* `version_variant` : `integer` = `?input`
 	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
+	* `buffer_size` : `size` = `8.0m`
 
 * `decode` `*`
 	
 	* `data_file` : `*.popfx`
 	
-	* `definition_file` : `string` ~ `*.popfx.json` = `?automatic`
+	* `definition_file` : `path` ~ `*.popfx.json` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `1`
 	
-	* `version_variant` : `bigint` = `configuration.version_variant`
-
-* `<configuration>`
-	
-	* `version_number` : `bigint` = `1`
-	
-	* `version_variant` : `bigint` = `?input`
-	
-	* `encode_buffer_size` : `string` = `8.0m`
+	* `version_variant` : `integer` = `?input`
 
 ## `popcap.character_font_widget_2`
 
@@ -886,19 +788,15 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `definition_file` : `*.cfw2.json`
 	
-	* `data_file` : `string` ~ `*.cfw2` = `?automatic`
+	* `data_file` : `path` ~ `*.cfw2` = `?automatic`
 	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
+	* `buffer_size` : `size` = `8.0m`
 
 * `decode` `*`
 	
 	* `data_file` : `*.cfw2`
 	
-	* `definition_file` : `string` ~ `*.cfw2.json` = `?automatic`
-
-* `<configuration>`
-	
-	* `encode_buffer_size` : `string` = `8.0m`
+	* `definition_file` : `path` ~ `*.cfw2.json` = `?automatic`
 
 ## `popcap.package`
 
@@ -906,47 +804,39 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `bundle_directory` : `*.pak.bundle`
 	
-	* `data_file` : `string` ~ `*.pak` = `?automatic`
+	* `data_file` : `path` ~ `*.pak` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `0`
 	
-	* `version_compress_resource_data` : `boolean` = `configuration.version_compress_resource_data`
+	* `version_compress_resource_data` : `boolean` = `?input`
 	
-	* `buffer_size` : `string` = `configuration.pack_buffer_size`
+	* `buffer_size` : `size` = `256.0m`
 
 * `unpack` `*`
 	
 	* `data_file` : `*.pak`
 	
-	* `bundle_directory` : `string` ~ `*.pak.bundle` = `?automatic`
+	* `bundle_directory` : `path` ~ `*.pak.bundle` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `0`
 	
-	* `version_compress_resource_data` : `boolean` = `configuration.version_compress_resource_data`
+	* `version_compress_resource_data` : `boolean` = `?input`
 
 * `pack_automatic`
 	
 	* `resource_directory` : `*`
 	
-	* `data_file` : `string` ~ `*.pak` = `?automatic`
+	* `data_file` : `path` ~ `*.pak` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `0`
 	
-	* `version_compress_resource_data` : `boolean` = `configuration.version_compress_resource_data`
+	* `version_compress_resource_data` : `boolean` = `?input`
 
 * `encrypt` `*`
 	
 	* `plain_file` : `*.pak`
 	
-	* `cipher_file` : `string` ~ `*.cipher.pak` = `?automatic`
-
-* `<configuration>`
-	
-	* `version_number` : `bigint` = `0`
-	
-	* `version_compress_resource_data` : `boolean` = `?input`
-	
-	* `pack_buffer_size` : `string` = `256.0m`
+	* `cipher_file` : `path` ~ `*.cipher.pak` = `?automatic`
 
 ## `popcap.resource_stream_group`
 
@@ -954,25 +844,19 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `bundle_directory` : `*.rsg.bundle`
 	
-	* `data_file` : `string` ~ `*.rsg` = `?automatic`
+	* `data_file` : `path` ~ `*.rsg` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `?input`
 	
-	* `buffer_size` : `string` = `configuration.pack_buffer_size`
+	* `buffer_size` : `size` = `256.0m`
 
 * `unpack` `*`
 	
 	* `data_file` : `*.rsg`
 	
-	* `bundle_directory` : `string` ~ `*.rsg.bundle` = `?automatic`
+	* `bundle_directory` : `path` ~ `*.rsg.bundle` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
-
-* `<configuration>`
-	
-	* `version_number` : `bigint` = `?input`
-	
-	* `pack_buffer_size` : `string` = `256.0m`
+	* `version_number` : `integer` = `?input`
 
 ## `popcap.resource_stream_bundle`
 
@@ -980,31 +864,31 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `bundle_directory` : `*.rsb.bundle`
 	
-	* `data_file` : `string` ~ `*.rsb` = `?automatic`
+	* `data_file` : `path` ~ `*.rsb` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `?input`
 	
-	* `version_extended_texture_information_for_pvz2_cn` : `bigint` = `configuration.version_extended_texture_information_for_pvz2_cn`
+	* `version_extended_texture_information_for_pvz2_cn` : `integer` = `?input`
 	
-	* `layout_mode` : `string` = `configuration.layout_mode`
+	* `layout_mode` : `string` = `?input`
 	
 	* `input_packet` : `boolean` = `?input`
 	
 	* `output_new_packet` : `boolean` = `?input`
 	
-	* `buffer_size` : `string` = `configuration.pack_buffer_size`
+	* `buffer_size` : `size` = `1.25g`
 
 * `unpack` `*`
 	
 	* `data_file` : `*.rsb`
 	
-	* `bundle_directory` : `string` ~ `*.rsb.bundle` = `?automatic`
+	* `bundle_directory` : `path` ~ `*.rsb.bundle` = `?automatic`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `?input`
 	
-	* `version_extended_texture_information_for_pvz2_cn` : `bigint` = `configuration.version_extended_texture_information_for_pvz2_cn`
+	* `version_extended_texture_information_for_pvz2_cn` : `integer` = `?input`
 	
-	* `layout_mode` : `string` = `configuration.layout_mode`
+	* `layout_mode` : `string` = `?input`
 	
 	* `output_resource` : `boolean` = `?input`
 	
@@ -1014,59 +898,47 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `bundle_directory` : `*.rsb.bundle`
 	
-	* `option_recase_path` : `boolean` = `configuration.resource_convert_option.recase_path`
+	* `option_recase_path` : `boolean` = `?input`
 	
-	* `option_rton` : `boolean` = `configuration.resource_convert_option.rton`
+	* `option_rton` : `boolean` = `?input`
 	
-	* `option_rton_version_number` : `integer` = `configuration.resource_convert_option.rton_version_number`
+	* `option_rton_version_number` : `integer` = `1`
 	
-	* `option_rton_version_native_string_encoding_use_utf8` : `boolean` = `configuration.resource_convert_option.rton_version_native_string_encoding_use_utf8`
+	* `option_rton_version_native_string_encoding_use_utf8` : `boolean` = `?input`
 	
-	* `option_rton_crypt` : `boolean` = `configuration.resource_convert_option.rton_crypt`
+	* `option_rton_crypt` : `boolean` = `?input`
 	
-	* `option_rton_crypt_key` : `string` = `configuration.resource_convert_option.rton_crypt_key`
+	* `option_rton_crypt_key` : `string` = `?input`
 	
-	* `option_ptx` : `boolean` = `configuration.resource_convert_option.ptx`
+	* `option_ptx` : `boolean` = `?input`
 	
-	* `option_ptx_texture_format_map_name` : `string` = `configuration.resource_convert_option.ptx_texture_format_map_name`
+	* `option_ptx_texture_format_map_name` : `string` = `?input`
 	
-	* `option_ptx_atlas` : `boolean` = `configuration.resource_convert_option.ptx_atlas`
+	* `option_ptx_atlas` : `boolean` = `?input`
 	
-	* `option_ptx_atlas_resize` : `boolean` = `configuration.resource_convert_option.ptx_atlas_resize`
+	* `option_ptx_atlas_resize` : `boolean` = `?input`
 	
-	* `option_ptx_sprite` : `boolean` = `configuration.resource_convert_option.ptx_sprite`
+	* `option_ptx_sprite` : `boolean` = `?input`
 	
-	* `option_pam` : `boolean` = `configuration.resource_convert_option.pam`
+	* `option_pam` : `boolean` = `?input`
 	
-	* `option_pam_version_number` : `integer` = `configuration.resource_convert_option.pam_version_number`
+	* `option_pam_version_number` : `integer` = `6`
 	
-	* `option_pam_json` : `boolean` = `configuration.resource_convert_option.pam_json`
+	* `option_pam_json` : `boolean` = `?input`
 	
-	* `option_pam_flash` : `boolean` = `configuration.resource_convert_option.pam_flash`
+	* `option_pam_flash` : `boolean` = `?input`
 	
-	* `option_bnk` : `boolean` = `configuration.resource_convert_option.bnk`
+	* `option_bnk` : `boolean` = `?input`
 	
-	* `option_bnk_version_number` : `integer` = `configuration.resource_convert_option.bnk_version_number`
+	* `option_bnk_version_number` : `integer` = `?input`
 	
-	* `option_wem` : `boolean` = `configuration.resource_convert_option.wem`
+	* `option_wem` : `boolean` = `?input`
 
 * `unpack_lenient` `*`
 	
 	* `data_file` : `*.rsb`
 	
-	* `bundle_directory` : `string` ~ `*.rsb.bundle` = `?automatic`
-
-* `<configuration>`
-	
-	* `version_number` : `bigint` = `?input`
-	
-	* `version_extended_texture_information_for_pvz2_cn` : `bigint` = `?input`
-	
-	* `layout_mode` : `string` = `?input`
-	
-	* `pack_buffer_size` : `string` = `1.25g`
-	
-	* `resource_convert_option` : `{ ... }` = `...`
+	* `bundle_directory` : `path` ~ `*.rsb.bundle` = `?automatic`
 
 ## `popcap.resource_stream_bundle_patch`
 
@@ -1074,39 +946,29 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `after_file` : `*.rsb`
 	
-	* `patch_file` : `string` ~ `*.rsbpatch` = `?automatic`
+	* `patch_file` : `path` ~ `*.rsbpatch` = `?automatic`
 	
-	* `before_file` : `string` = `?input`
+	* `before_file` : `path` = `?input`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
+	* `version_number` : `integer` = `1`
 	
-	* `use_raw_packet` : `boolean` = `configuration.use_raw_packet`
+	* `use_raw_packet` : `boolean` = `?input`
 	
-	* `buffer_size` : `string` = `configuration.encode_buffer_size`
+	* `buffer_size` : `size` = `1024.0m`
 
 * `decode`
 	
 	* `patch_file` : `*.rsbpatch`
 	
-	* `after_file` : `string` ~ `*.rsb` = `?automatic`
+	* `after_file` : `path` ~ `*.rsb` = `?automatic`
 	
-	* `before_file` : `string` = `?input`
+	* `before_file` : `path` = `?input`
 	
-	* `version_number` : `bigint` = `configuration.version_number`
-	
-	* `use_raw_packet` : `boolean` = `configuration.use_raw_packet`
-	
-	* `buffer_size` : `string` = `configuration.decode_buffer_size`
-
-* `<configuration>`
-	
-	* `version_number` : `bigint` = `1`
+	* `version_number` : `integer` = `1`
 	
 	* `use_raw_packet` : `boolean` = `?input`
 	
-	* `encode_buffer_size` : `string` = `1024.0m`
-	
-	* `decode_buffer_size` : `string` = `1024.0m`
+	* `buffer_size` : `size` = `1024.0m`
 
 ## `pvz2.text_table`
 
@@ -1116,9 +978,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `destination_version` : `string` = `?input`
 	
-	* `destination_file` : `string` ~ `*.convert.txt|json` = `?automatic`
-
-* `<configuration>`
+	* `destination_file` : `path` ~ `*.convert.txt|json` = `?automatic`
 
 ## `pvz2.resource_manifest`
 
@@ -1126,35 +986,29 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `definition_file` : `*.json`
 	
-	* `data_file` : `string` ~ `*.newton` = `?automatic`
+	* `data_file` : `path` ~ `*.newton` = `?automatic`
 	
-	* `buffer_size` : `string` = `configuration.new_type_object_notation_encode_buffer_size`
+	* `buffer_size` : `size` = `64.0m`
 
 * `new_type_object_notation.decode`
 	
 	* `data_file` : `*.newton`
 	
-	* `definition_file` : `string` ~ `*.json` = `?automatic`
+	* `definition_file` : `path` ~ `*.json` = `?automatic`
 
 * `regular.from`
 	
 	* `raw_file` : `*.json`
 	
-	* `ripe_file` : `string` ~ `*.regular.json` = `?automatic`
+	* `ripe_file` : `path` ~ `*.regular.json` = `?automatic`
 
 * `regular.to`
 	
 	* `ripe_file` : `*.json`
 	
-	* `raw_file` : `string` ~ `*.official.json` = `?automatic`
+	* `raw_file` : `path` ~ `*.official.json` = `?automatic`
 	
-	* `use_array_style_path` : `boolean` = `configuration.official_use_array_style_path`
-
-* `<configuration>`
-	
-	* `new_type_object_notation_encode_buffer_size` : `string` = `64.0m`
-	
-	* `official_use_array_style_path` : `boolean` = `?input`
+	* `use_array_style_path` : `boolean` = `?input`
 
 ## `pvz2.package_project`
 
@@ -1166,7 +1020,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `target_package` : `string` = `?input`
 	
-	* `buffer_size` : `string` = `configuration.compile_buffer_size`
+	* `buffer_size` : `size` = `8.0m`
 
 * `link`
 	
@@ -1176,29 +1030,19 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `remake_manifest` : `boolean` = `?input`
 	
-	* `buffer_size` : `string` = `configuration.link_buffer_size`
+	* `buffer_size` : `size` = `1024.0m`
 
 * `parse`
 	
 	* `project_directory` : `*.pvz2_package_project`
 	
-	* `package_directory` : `string` = `?input`
+	* `package_directory` : `path` = `?input`
 	
 	* `package_name` : `string` = `?automatic`
 	
-	* `package_version_number` : `bigint` = `configuration.parse_package_version_number`
+	* `package_version_number` : `integer` = `?input`
 	
-	* `package_version_extended_texture_information_for_pvz2_cn` : `bigint` = `configuration.parse_package_version_extended_texture_information_for_pvz2_cn`
-
-* `<configuration>`
-	
-	* `compile_buffer_size` : `string` = `8.0m`
-	
-	* `link_buffer_size` : `string` = `1024.0m`
-	
-	* `parse_package_version_number` : `bigint` = `?input`
-	
-	* `parse_package_version_extended_texture_information_for_pvz2_cn` : `bigint` = `?input`
+	* `package_version_extended_texture_information_for_pvz2_cn` : `integer` = `?input`
 
 ## `pvz2.remote_project`
 
@@ -1210,18 +1054,14 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `target` : `string` = `?input`
 
-* `<configuration>`
-
 ## `kairosoft.user_data`
 
 * `recrypt`
 	
 	* `old_directory` : `*`
 	
-	* `new_directory` : `string` ~ `*.recrypt` = `?automatic`
+	* `new_directory` : `path` ~ `*.recrypt` = `?automatic`
 	
 	* `old_key` : `string` = `?input`
 	
 	* `new_key` : `string` = `?input`
-
-* `<configuration>`

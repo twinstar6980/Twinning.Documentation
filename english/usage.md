@@ -185,9 +185,13 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		
 		Interaction language. Can be `English` or `Chinese` or `Vietnamese`.
 	
-	* `disable_cli_virtual_terminal_sequence` : `boolean` = `false`
+	* `console_cli_disable_virtual_terminal_sequence` : `boolean` = `false`
 		
 		Disable command-line virtual terminal sequences. Valid only when using a command-line shell.
+	
+	* `executor_typical_method_disable_name_filter` : `boolean` = `false`
+		
+		Disables the name filtering behavior of the command executor. By default, the tool will match the extension of the file path of the command input, unmatched methods will not be displayed to the user. When disabled, all functions will be displayed.
 	
 	* `byte_stream_use_big_endian` : `boolean` = `false`
 		
@@ -242,12 +246,10 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 	This module can visually select the methods you want to use and fill in the arguments.
 	
 	> Methods are defined by the `Method Configuration` file in the module settings.
-	
-	> The `launch_helper_forwarder.cmd` script in the home directory can quickly open the `Resource Forwarder`. Multiple files can be dragged onto the script and released to add additional arguments.
 
 * `Animation Viewer`
 	
-	This module is used to view PopCap Animation (PAM) file.
+	This module can view PopCap Animation (PAM) file.
 	
 	1. Click the ⌈ Animation File ⌋ button on the right side of the text box in the upper right corner of the ⌈ Stage ⌋ column on this module page, and select the `*.pam.json` file in the pop-up window; or drag `*.pam.json` file from ⌈ Explorer ⌋ to the application window then drop.
 		

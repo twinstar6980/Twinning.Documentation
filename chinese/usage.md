@@ -137,7 +137,7 @@
 	
 	一个十进制整数，不可包含小数点。
 
-* `Floater` 数
+* `Floater` 浮点数
 	
 	一个十进制数，可包含小数点。
 
@@ -185,9 +185,13 @@
 		
 		交互语言。可以为 `English` 或 `Chinese` 或 `Vietnamese` 。
 	
-	* `disable_cli_virtual_terminal_sequence` : `boolean` = `false`
+	* `console_cli_disable_virtual_terminal_sequence` : `boolean` = `false`
 		
 		禁用命令行虚拟终端序列。仅当使用命令行外壳时有效。
+	
+	* `executor_typical_method_disable_name_filter` : `boolean` = `false`
+		
+		禁用命令处理器的名称过滤行为。默认情况下，工具会对命令输入的文件路径进行扩展名匹配，不匹配的功能将不对用户显示；禁用后将显示所有功能。
 	
 	* `byte_stream_use_big_endian` : `boolean` = `false`
 		
@@ -239,15 +243,13 @@
 
 * `Command Sender`
 	
-	该模块可以可视化地选择需要使用的功能并填入参数。
+	该模块能够可视化地选择需要使用的功能并填入参数。
 	
 	> 功能由模块设置中的 `Method Configuration` 文件定义。
-	
-	> 主文件夹内的 `launch_helper_forwarder.cmd` 脚本可以快速开启 `Resource Forwarder` ，可以将多个文件拖拽至脚本上并释放，以追加附加参数。
 
 * `Animation Viewer`
 	
-	该模块用于播放 PopCap Animation (PAM) 动画文件。
+	该模块能够播放 PopCap Animation (PAM) 动画文件。
 	
 	1. 点击本模块页面 ⌈ Stage ⌋ 栏右上方的 ⌈ Animation File ⌋ 文本框的右侧按钮，在弹出的窗口中选择 `*.pam.json` 文件；或是从 ⌈ Explorer ⌋ 中拖拽 `*.pam.json` 文件至应用窗口中并释放。
 		
@@ -259,4 +261,4 @@
 
 * `Package Builder`
 	
-	该模块可以可视化地管理 `PvZ-2 Package Project` 项目。
+	该模块能够可视化地管理 `PvZ-2 Package Project` 项目。

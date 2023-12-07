@@ -120,7 +120,7 @@ The following table lists the supported content URI formats, and the application
 	
 	> By default, the tool will use control sequences to optimize the output effect, but if running in a terminal that does not support control sequences, the control sequences will be output directly as strings, which will affect the user's reading.
 	
-	> Users can disable the use of control sequences by modifying the `disable_cli_virtual_terminal_sequence ` entry to `true` in the `- <home>/script/Entry/Entry.json` configuration.
+	> Users can disable the use of control sequences by modifying the `disable_cli_virtual_terminal_sequence ` entry to `true` in the `<home>/script/Entry/Entry.json` configuration.
 
 3. Full fonts: optional, if not supported, some characters (e.g. Chinese characters, emoji) will not be displayed properly. However, you can fix this by changing the language to `English`. It was indicated in `installation.md`.
 
@@ -167,9 +167,7 @@ The JSON read and write rules for the tool are self-implementing and does not fo
 	
 	The comma after the last element of arrays and objects is called a trailing comma. The JSON standard does not allow trailing commas, but they are a permitted and even recommended syntax in JS and many programming languages. Considering the convenience that trailing commas provide for JSON reading and writing, tools support trailing commas and add them by default when outputting JSON.
 	
-	In some editors, trailing commas are treated as a formatting error by default, and users can disable trailing comma output by modifying the `json_format.disable_trailing_comma` item to `true` in the `- <home>/script/Entry/Entry.json` configuration.
-	
-	If you want to launch the JSON file to the game, it is recommended that you should `disable_trailing_comma` because the JSON Parsing system of the game follow the JSON Standard.
+	In some editors, trailing commas are treated as a formatting error by default, and users can disable trailing comma output by modifying the `json_format.disable_array_trailing_comma` and `json_format.disable_object_trailing_comma` item to `true` in the `<home>/script/Entry/Entry.json` configuration.
 	
 	> In `VS Code`, the following configuration can be added to `settings.json` to make the editor allow JSON trailing commas:
 	> 
@@ -240,7 +238,7 @@ In addition, the tool also implements additional `PopCap Reflection-Object-Notat
 
 By default, the tool always treats the processed files as little-endian. However, users may also need to process big-endian files, such as unpacking RSB files extracted from a big-endian device, Xbox.
 
-Before forwarding the big-endian file to the tool for processing, the user needs to modify the `byte_stream_use_big_endian` entry in the `- <home>/script/Entry/Entry.json` configuration to `true` to tell the tool to treat the incoming file as big-endian.
+Before forwarding the big-endian file to the tool for processing, the user needs to modify the `byte_stream_use_big_endian` entry in the `<home>/script/Entry/Entry.json` configuration to `true` to tell the tool to treat the incoming file as big-endian.
 
 After that, the big-endian files are forwarded to the tool, and if there are no errors in the files themselves, the program will be able to process the big-endian files normally.
 
@@ -254,7 +252,7 @@ For this reason, the tool does not consider the `.obb` file to be an RSB file, a
 
 In addition, it is possible to create soft links to `.obb` files with `.rsb` as the link extension, which avoids the need to rename `.rsb` to `.obb` after repackaging.
 
-> The regular expression for filtering RSB files in `- <home>/script/Entry/method/popcap.resource_stream_bundle.ts` can be modified to allow the tool to recognize `*.obb` files as RSB files.
+> The regular expression for filtering RSB files in `<home>/script/Entry/method/popcap.resource_stream_bundle.ts` can be modified to allow the tool to recognize `*.obb` files as RSB files.
 
 ## Processing SMF files
 

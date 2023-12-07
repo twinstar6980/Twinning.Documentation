@@ -120,7 +120,7 @@
 	
 	> 默认情况下，工具会使用控制序列来优化输出效果，但如果运行在不支持控制序列的终端中，控制序列将直接输出为字符串，影响用户的阅读。
 	> 
-	> 用户可以通过修改 `- <home>/script/Entry/Entry.json` 配置中的 `disable_cli_virtual_terminal_sequence` 项为 `true` 以禁用控制序列的使用。
+	> 用户可以通过修改 `<home>/script/Entry/Entry.json` 配置中的 `disable_cli_virtual_terminal_sequence` 项为 `true` 以禁用控制序列的使用。
 
 3. 完备的字体：可选，若不支持，一些字符（如汉字、emoji ）将无法正常显示。
 
@@ -167,7 +167,7 @@
 	
 	数组与对象的最末元素后的逗号称为尾随逗号，JSON 标准不允许尾随逗号的存在，但在 JS 及许多编程语言中，尾随逗号是被允许乃至被推荐使用的语法。考虑到尾随逗号为 JSON 读写提供的便利，工具支持尾随逗号，并且在输出 JSON 时默认添加尾随逗号。
 	
-	在一些编辑器中，尾随逗号会被默认视为格式错误，用户可以通过修改 `- <home>/script/Entry/Entry.json` 配置中的 `json_format.disable_trailing_comma` 项为 `true` 以禁止尾随逗号的输出。
+	在一些编辑器中，尾随逗号会被默认视为格式错误，用户可以通过修改 `<home>/script/Entry/Entry.json` 配置中的 `json_format.disable_array_trailing_comma` 与 `json_format.disable_object_trailing_comma` 项为 `true` 以禁止尾随逗号的输出。
 	
 	> 在 `VS Code` 中，可以将以下配置添加进 `settings.json` 中，以使编辑器允许 JSON 尾随逗号：
 	> 
@@ -238,7 +238,7 @@
 
 工具默认将处理的文件始终视为小端序。但是，用户也可能需要对大端序文件进行处理，例如对从大端序设备 Xbox 中提取的 RSB 文件进行解包。
 
-在将大端序文件转发给工具进行处理前，用户需要修改 `- <home>/script/Entry/Entry.json` 配置中的 `byte_stream_use_big_endian` 项为 `true` ，告知工具将传入的文件视为大端序。
+在将大端序文件转发给工具进行处理前，用户需要修改 `<home>/script/Entry/Entry.json` 配置中的 `byte_stream_use_big_endian` 项为 `true` ，告知工具将传入的文件视为大端序。
 
 之后，将大端序文件转发给工具，如果文件本身没有错误，程序将能正常处理这些大端序文件。
 
@@ -252,7 +252,7 @@
 
 此外，也可创建指向 `.obb` 文件的软链接，并以 `.rsb` 作为链接的扩展名，这可以避免重打包后用户还需将 `.rsb` 重命名为 `.obb` 的麻烦。
 
-> 可以通过修改 `- <home>/script/Entry/method/popcap.resource_stream_bundle.ts` 中对 RSB 文件进行筛选的正则表达式，以允许工具识别 `*.obb` 文件为 RSB 文件。
+> 可以通过修改 `<home>/script/Entry/method/popcap.resource_stream_bundle.ts` 中对 RSB 文件进行筛选的正则表达式，以允许工具识别 `*.obb` 文件为 RSB 文件。
 
 ## 处理 SMF 文件
 
