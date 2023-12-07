@@ -442,7 +442,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `data_file` : `path` ~ `*.dz` = `?automatic`
 	
-	* `version_number` : `integer` = `256.0m`
+	* `version_number` : `integer` = 0`
 
 ## `popcap.zlib`
 

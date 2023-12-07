@@ -442,7 +442,7 @@
 	
 	* `data_file` : `path` ~ `*.dz` = `?automatic`
 	
-	* `version_number` : `integer` = `256.0m`
+	* `version_number` : `integer` = `0`
 
 ## `popcap.zlib`
 
