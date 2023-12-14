@@ -442,7 +442,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `data_file` : `path` ~ `*.dz` = `?automatic`
 	
-	* `version_number` : `integer` = 0`
+	* `version_number` : `integer` = `0`
 
 ## `popcap.zlib`
 
@@ -524,7 +524,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `key` : `string` = `?input`
 
-* `encode_then_encrypt` `*`
+* `encode_cipher` `*`
 	
 	* `value_file` : `*.json`
 	
@@ -538,7 +538,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `buffer_size` : `size` = `64.0m`
 
-* `decrypt_then_decode` `*`
+* `decode_cipher` `*`
 	
 	* `data_file` : `*.rton`
 	
@@ -894,6 +894,12 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `output_packet` : `boolean` = `?input`
 
+* `unpack_lenient` `*`
+	
+	* `data_file` : `*.rsb`
+	
+	* `bundle_directory` : `path` ~ `*.rsb.bundle` = `?automatic`
+
 * `resource_convert` `*`
 	
 	* `bundle_directory` : `*.rsb.bundle`
@@ -904,7 +910,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `option_rton_version_number` : `integer` = `1`
 	
-	* `option_rton_version_native_string_encoding_use_utf8` : `boolean` = `?input`
+	* `option_rton_version_native_string_encoding_use_utf8` : `boolean` = `true`
 	
 	* `option_rton_crypt` : `boolean` = `?input`
 	
@@ -912,7 +918,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `option_ptx` : `boolean` = `?input`
 	
-	* `option_ptx_texture_format_map_name` : `string` = `?input`
+	* `option_ptx_format` : `string` = `?input`
 	
 	* `option_ptx_atlas` : `boolean` = `?input`
 	
@@ -933,12 +939,6 @@ All of the methods listed below are regular method. Some of the regular method h
 	* `option_bnk_version_number` : `integer` = `?input`
 	
 	* `option_wem` : `boolean` = `?input`
-
-* `unpack_lenient` `*`
-	
-	* `data_file` : `*.rsb`
-	
-	* `bundle_directory` : `path` ~ `*.rsb.bundle` = `?automatic`
 
 ## `popcap.resource_stream_bundle_patch`
 
@@ -1011,6 +1011,44 @@ All of the methods listed below are regular method. Some of the regular method h
 	* `use_array_style_path` : `boolean` = `?input`
 
 ## `pvz2.package_project`
+
+* `transpile`
+	
+	* `project_directory` : `*.pvz2_package_project`
+	
+	* `target_scope` : `string` = `?input`
+	
+	* `target_package` : `string` = `?input`
+	
+	* `option_generalize_rton` : `boolean` = `?input`
+	
+	* `option_generalize_ptx` : `boolean` = `?input`
+	
+	* `option_generalize_pam` : `boolean` = `?input`
+	
+	* `option_generalize_wem` : `boolean` = `?input`
+	
+	* `option_specialize_rton` : `boolean` = `?input`
+	
+	* `option_specialize_rton_version_number` : `integer` = `1`
+	
+	* `option_specialize_rton_version_native_string_encoding_use_utf8` : `boolean` = `true`
+	
+	* `option_specialize_rton_crypt` : `boolean` = `?input`
+	
+	* `option_specialize_rton_crypt_key` : `string` = `?input`
+	
+	* `option_specialize_ptx` : `boolean` = `?input`
+	
+	* `option_specialize_ptx_format` : `string` = `?input`
+	
+	* `option_specialize_pam` : `boolean` = `?input`
+	
+	* `option_specialize_pam_version_number` : `integer` = `6`
+	
+	* `option_specialize_wem` : `boolean` = `?input`
+	
+	* `buffer_size` : `size` = `8.0m`
 
 * `compile`
 	
