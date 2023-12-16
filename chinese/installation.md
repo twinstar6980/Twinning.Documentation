@@ -278,15 +278,13 @@
 
 工具的某些功能需要调用外部程序，需要用户自行下载与安装。
 
-* [WwiseConsole](https://www.audiokinetic.com/en/download)
+* [adb](https://developer.android.com/studio/releases/platform-tools)
 	
-	用于 **WEM 音频编码** 。
+	用于 **远程安卓辅助** 。
 	
-	安装并配置 `PATH` 环境变量，以确保工具能通过 `PATH` 环境变量检索到 `WwiseConsole.exe` 或 `WwiseConsole.sh` 可执行程序。
+	安装并配置 `PATH` 环境变量，以确保工具能通过 `PATH` 环境变量检索到 `adb` 可执行程序。
 	
-	> `WwiseConsole` 可执行程序的路径参见 [官方文档](https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=bankscommandline.html) 。
-	
-	> 该程序仅支持 `Windows` 、`Macintosh` 系统。
+	> 该程序仅支持 `Windows` 、`Linux` 、`Macintosh` 系统。
 
 * [vgmstream-cli](https://vgmstream.org/)
 	
@@ -296,10 +294,18 @@
 	
 	> 该程序仅支持 `Windows` 、`Linux` 、`Macintosh` 系统。
 
-* [adb](https://developer.android.com/studio/releases/platform-tools)
+* [WwiseConsole](https://www.audiokinetic.com/en/download) `=2019.2`
 	
-	用于 **远程安卓辅助** 。
+	用于 **WEM 音频编码** 。
 	
-	安装并配置 `PATH` 环境变量，以确保工具能通过 `PATH` 环境变量检索到 `adb` 可执行程序。
+	安装并配置 `PATH` 环境变量，以确保工具能通过 `PATH` 环境变量检索到 `WwiseConsole.exe` 或 `WwiseConsole.sh` 可执行程序。
 	
-	> 该程序仅支持 `Windows` 、`Linux` 、`Macintosh` 系统。
+	> `WwiseConsole` 可执行程序的路径参见 [官方文档](https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=bankscommandline.html) 。
+	
+	> 该程序仅支持 `Windows` 、`Macintosh` 系统。
+
+* [QuickTime](https://support.apple.com/kb/DL837) `>7.6`
+	
+	用于 **WEM 音频编码** 。
+	
+	如果需要编码 `AAC` 格式的 `WEM` ，请确保 `QuickTime` 已正确安装至系统中，该程序会被 `WwiseConsole` 调用。

@@ -221,6 +221,26 @@
 			
 			禁用对象换行。
 	
+	* `external_program` : `{ ... }`
+		
+		指定可能会调用的外部程序的路径，若为 null ，则将在运行时检索 `PATH` 环境变量。
+		
+		* `sh` : `null | string` = `null`
+			
+			用于 `/utility/AndroidHelper.ts` 。
+		
+		* `adb` : `null | string` = `null`
+			
+			用于 `/utility/AndroidHelper.ts` 。
+		
+		* `vgmstream` : `null | string` = `null`
+			
+			用于 `/Support/Wwise/Media/Decode.ts` 。
+		
+		* `wwise` : `null | string` = `null`
+			
+			用于 `/Support/Wwise/Media/Encode.ts` 。
+	
 	* `thread_limit` : `bigint` = `0`
 		
 		线程池上限数。目前无实际作用。

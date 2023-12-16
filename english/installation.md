@@ -276,15 +276,13 @@ You can clone this project and compile it, or just download the bundle package o
 
 Some methods of the tool require calling external programs, which need to be downloaded and installed by users.
 
-* [WwiseConsole](https://www.audiokinetic.com/en/download)
+* [adb](https://developer.android.com/studio/releases/platform-tools)
 	
-	Used for **WEM audio encode**.
+	For **Remote Android Helper**.
 	
-	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `WwiseConsole.exe` or `WwiseConsole.sh` executable through the `PATH` environment variable.
+	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `adb` executable through the `PATH` environment variable.
 	
-	> For the path of the `WwiseConsole` executable program, see [Official Documentation](https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=bankscommandline.html).
-	
-	> This program only supports `Windows` and `Macintosh` systems.
+	> This program only supports `Windows` and `Linux` and `Macintosh` systems.
 
 * [vgmstream-cli](https://vgmstream.org/)
 	
@@ -294,10 +292,18 @@ Some methods of the tool require calling external programs, which need to be dow
 	
 	> This program only supports `Windows` and `Linux` and `Macintosh` systems.
 
-* [adb](https://developer.android.com/studio/releases/platform-tools)
+* [WwiseConsole](https://www.audiokinetic.com/en/download) `=2019.2`
 	
-	For **Remote Android Helper**.
+	Used for **WEM audio encode**.
 	
-	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `adb` executable through the `PATH` environment variable.
+	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `WwiseConsole.exe` or `WwiseConsole.sh` executable through the `PATH` environment variable.
 	
-	> This program only supports `Windows` and `Linux` and `Macintosh` systems.
+	> For the path of the `WwiseConsole` executable program, see [Official Documentation](https://www.audiokinetic.com/zh/library/edge/?source=SDK&id=bankscommandline.html).
+	
+	> This program only supports `Windows` and `Macintosh` systems.
+
+* [QuickTime](https://support.apple.com/kb/DL837) `>7.6`
+	
+	Used for **WEM audio encode**.
+	
+	If you need to encode `WEM` in `AAC` format, please make sure that `QuickTime` is correctly installed on the system. This program will be called by `WwiseConsole`.

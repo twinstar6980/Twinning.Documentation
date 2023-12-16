@@ -221,6 +221,26 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 			
 			Disable object's line breaking.
 	
+	* `external_program` : `{ ... }`
+		
+		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
+		
+		* `sh` : `null | string` = `null`
+			
+			Used for `/utility/AndroidHelper.ts` 。
+		
+		* `adb` : `null | string` = `null`
+			
+			Used for `/utility/AndroidHelper.ts` 。
+		
+		* `vgmstream` : `null | string` = `null`
+			
+			Used for `/Support/Wwise/Media/Decode.ts` 。
+		
+		* `wwise` : `null | string` = `null`
+			
+			Used for `/Support/Wwise/Media/Encode.ts` 。
+	
 	* `thread_limit` : `bigint` = `0`
 		
 		The maximum number of thread pools. Currently has no practical effect.
