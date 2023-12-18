@@ -649,12 +649,16 @@
 	* `raw_file` : `*.pam.json`
 	
 	* `ripe_directory` : `path` ~ `*.pam.xfl` = `?automatic`
+	
+	* `version_number` : `integer` = `?input`
 
 * `convert.flash.to` `*`
 	
 	* `ripe_directory` : `*.pam.xfl`
 	
 	* `raw_file` : `path` ~ `*.pam.json` = `?automatic`
+	
+	* `version_number` : `integer` = `?input`
 
 * `convert.flash.resize` `*`
 	
