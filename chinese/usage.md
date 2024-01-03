@@ -240,6 +240,10 @@
 		* `wwise` : `null | string` = `null`
 			
 			用于 `/Support/Wwise/Media/Encode.ts` 。
+		
+		* `il2cpp_dumper` : `null | string` = `null`
+			
+			用于 `/Support/Kairosoft/Record/DisableVerify.ts` 。
 	
 	* `thread_limit` : `bigint` = `0`
 		

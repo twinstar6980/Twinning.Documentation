@@ -307,3 +307,11 @@ Some methods of the tool require calling external programs, which need to be dow
 	Used for **WEM audio encode**.
 	
 	If you need to encode `WEM` in `AAC` format, please make sure that `QuickTime` is correctly installed on the system. This program will be called by `WwiseConsole`.
+
+* [Il2CppDumper](https://github.com/Perfare/Il2CppDumper) `=6.7.40,x86`
+	
+	Used for **Kairosoft game record disable verify** 。
+	
+	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `Il2CppDumper-x86` executable through the `PATH` environment variable.
+	
+	> This program only supports `Windows` systems.

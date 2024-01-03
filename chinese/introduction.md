@@ -106,9 +106,11 @@
 	
 	* 转换
 
-* `Kairosoft User-Data` (.*)
+* `Kairosoft Record` (.*)
 	
 	* 重加密
+	
+	* 禁用验证（主程序）
 
 * ......
 

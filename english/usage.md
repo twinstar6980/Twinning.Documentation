@@ -240,6 +240,10 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		* `wwise` : `null | string` = `null`
 			
 			Used for `/Support/Wwise/Media/Encode.ts` 。
+		
+		* `il2cpp_dumper` : `null | string` = `null`
+			
+			Used for `/Support/Kairosoft/Record/DisableVerify.ts` 。
 	
 	* `thread_limit` : `bigint` = `0`
 		

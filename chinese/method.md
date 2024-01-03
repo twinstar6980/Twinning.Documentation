@@ -72,7 +72,7 @@
 
 - [pvz2.remote_project](#pvz2remote_project)
 
-- [kairosoft.user_data](#kairosoftuser_data)
+- [kairosoft.record](#kairosoftrecord)
 
 ## 介绍
 
@@ -1034,21 +1034,9 @@
 	
 	* `option_specialize_rton` : `boolean` = `?input`
 	
-	* `option_specialize_rton_version_number` : `integer` = `1`
-	
-	* `option_specialize_rton_version_native_string_encoding_use_utf8` : `boolean` = `true`
-	
-	* `option_specialize_rton_crypt` : `boolean` = `?input`
-	
-	* `option_specialize_rton_crypt_key` : `string` = `?input`
-	
 	* `option_specialize_ptx` : `boolean` = `?input`
 	
-	* `option_specialize_ptx_format` : `string` = `?input`
-	
 	* `option_specialize_pam` : `boolean` = `?input`
-	
-	* `option_specialize_pam_version_number` : `integer` = `6`
 	
 	* `option_specialize_wem` : `boolean` = `?input`
 	
@@ -1096,7 +1084,7 @@
 	
 	* `target` : `string` = `?input`
 
-## `kairosoft.user_data`
+## `kairosoft.record`
 
 * `recrypt`
 	
@@ -1107,3 +1095,7 @@
 	* `old_key` : `string` = `?input`
 	
 	* `new_key` : `string` = `?input`
+
+* `disable_verify`
+	
+	* `game_directory` : `*`

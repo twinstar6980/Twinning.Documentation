@@ -106,9 +106,11 @@ The following functions are currently available:
 	
 	* Convert
 
-* `Kairosoft User-Data` (.*)
+* `Kairosoft Record` (.*)
 	
 	* Recrypt
+	
+	* Disable verify (main program)
 
 * ......
 
