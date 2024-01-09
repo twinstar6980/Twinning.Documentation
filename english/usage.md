@@ -243,7 +243,7 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		
 		* `il2cpp_dumper` : `null | string` = `null`
 			
-			Used for `/Support/Kairosoft/Record/DisableVerify.ts` 。
+			Used for `/Support/Kairosoft/Game/ModifyProgram.ts` 。
 	
 	* `thread_limit` : `bigint` = `0`
 		

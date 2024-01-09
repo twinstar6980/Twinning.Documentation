@@ -72,7 +72,7 @@
 
 - [pvz2.remote_project](#pvz2remote_project)
 
-- [kairosoft.record](#kairosoftrecord)
+- [kairosoft.game](#kairosoftgame)
 
 ## Introduction
 
@@ -1084,18 +1084,18 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `target` : `string` = `?input`
 
-## `kairosoft.record`
+## `kairosoft.game`
 
-* `recrypt`
+* `encrypt_record`
 	
-	* `old_directory` : `*`
+	* `target_directory` : `*`
 	
-	* `new_directory` : `path` ~ `*.recrypt` = `?automatic`
-	
-	* `old_key` : `string` = `?input`
-	
-	* `new_key` : `string` = `?input`
+	* `key` : `string` = `?input`
 
-* `disable_verify`
+* `modify_program`
 	
-	* `game_directory` : `*`
+	* `target_directory` : `*`
+	
+	* `disable_record_encryption` : `boolean` = `?input`
+	
+	* `enable_debug_mode` : `boolean` = `?input`

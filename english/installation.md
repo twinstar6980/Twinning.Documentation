@@ -310,7 +310,7 @@ Some methods of the tool require calling external programs, which need to be dow
 
 * [Il2CppDumper](https://github.com/Perfare/Il2CppDumper) `=6.7.40,x86`
 	
-	Used for **Kairosoft game record disable verify** 。
+	Used for **Kairosoft game program modify** 。
 	
 	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `Il2CppDumper-x86` executable through the `PATH` environment variable.
 	

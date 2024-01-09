@@ -108,9 +108,9 @@ The following functions are currently available:
 
 * `Kairosoft Record` (.*)
 	
-	* Recrypt
+	* Encrypt record
 	
-	* Disable verify (main program)
+	* Modify program
 
 * ......
 

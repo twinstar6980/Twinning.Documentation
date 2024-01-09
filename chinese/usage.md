@@ -243,7 +243,7 @@
 		
 		* `il2cpp_dumper` : `null | string` = `null`
 			
-			用于 `/Support/Kairosoft/Record/DisableVerify.ts` 。
+			用于 `/Support/Kairosoft/Game/ModifyProgram.ts` 。
 	
 	* `thread_limit` : `bigint` = `0`
 		

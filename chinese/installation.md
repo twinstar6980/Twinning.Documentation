@@ -312,7 +312,7 @@
 
 * [Il2CppDumper](https://github.com/Perfare/Il2CppDumper) `=6.7.40,x86`
 	
-	用于 **开罗游戏存档禁用验证** 。
+	用于 **开罗游戏程序修改** 。
 	
 	安装并配置 `PATH` 环境变量，以确保工具能通过 `PATH` 环境变量检索到 `Il2CppDumper-x86` 可执行程序。
 	
