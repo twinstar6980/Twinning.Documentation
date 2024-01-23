@@ -12,7 +12,7 @@
 
 工具支持以下平台：
 
-* 操作系统：`Windows 7+` 、`Linux ~` 、`Macintosh 12~` 、`Android 9+` 、`iPhone 16~` 。
+* 操作系统：`Windows 7+` 、`Linux ~` 、`Macintosh 13~` 、`Android 9+` 、`iPhone 16~` 。
 
 * 处理器架构：`x86 32|64` 、`arm 32|64` 。
 
@@ -184,7 +184,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.ShellGUI_28.0.0.0_x64__7qfdsg797hj0p\shell_gui.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.ShellGUI_32.0.0.0_x64__7qfdsg797hj0p\shell_gui.exe" ^
 		-additional_argument %*
 	```
 	
@@ -192,7 +192,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_20.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_26.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
 		-WindowSize        496 968 ^
 		-WindowAlwaysOnTop true ^
 		-ModuleType        ModdingWorker ^
@@ -205,7 +205,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_20.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_26.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
 		-WindowSize        496 968 ^
 		-WindowAlwaysOnTop true ^
 		-ModuleType        ResourceForwarder ^

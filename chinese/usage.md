@@ -20,21 +20,21 @@
 
 通过 `Shell CLI` 可以在系统终端中以命令行的形式使用工具。
 
-用户需要在终端中启动 `Shell CLI` ，命令行参数的格式如下：
+用户需要在终端中启动 `Shell CLI` ，命令参数的格式如下：
 
 `<kernel> <script> <argument>...`
 
 * `<kernel>`
 	
-	第一参数为内核文件路径。
+	内核文件路径。
 
 * `<script>`
 	
-	第二参数是传给内核处理逻辑的脚本文件路径。也可以 `$` 为首字符标识，指示字符串的余下内容作为 JS 脚本。
+	脚本文件路径。也可以 `$` 为首字符标识，指示字符串的余下内容作为 JS 脚本。
 
 * `<argument>...`
 	
-	剩余参数作为传给内核处理逻辑的参数。
+	执行参数。
 
 若执行过程无错误发生，则 main 函数返回值为 0 ，否则为 1 。
 
@@ -44,21 +44,23 @@
 
 点击应用控制台界面下方的 `Launch` 按钮即可启动会话，长按该按钮可以编辑每次启动的附加参数。
 
-同样支持在终端中启动 `Shell GUI` ，命令行参数的格式如下：
+同样支持在终端中启动 `Shell GUI` ，命令参数的格式如下：
 
-`-additional_argument <additional_argument>...`
+`[ -additional_argument <additional_argument>... ]`
 
-* `<additional_argument>...`
+* `-additional_argument <additional_argument>...`
 	
-	传给内核处理逻辑的附加参数。
+	附加参数。若指定该项，应用将在启动后自动启动控制台。
 
-若传入命令行参数，则应用将在启动后自动启动控制台。
+`Android` 与 `iPhone` 系统不支持命令行传参，但可以通过应用链接传递启动参数：
 
-> @ `Android` `iPhone` \
-> 无法直接传入命令行参数。
-> 
-> @ `Android` \
-> 可以通过 `Intent` 传入命令行参数：`action = "com.twinstar.toolkit.shell_gui.action.LAUNCH", extra = { "command": Array<String> }` 。
+`twinstar.toolkit.shell-gui:/run?command=<command>`
+
+* `command`
+
+	命令参数。可以多次指定，所有查询值被视作字符串数组。
+
+仅在应用未启动时才可通过链接传参；若在应用已启动的状态下打开链接，应用会切换到前台，但不会接收新的命令参数。
 
 ## 使用 `Helper`
 

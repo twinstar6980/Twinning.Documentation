@@ -10,7 +10,7 @@
 
 ## Platform supportability
 
-* Operating systems: `Windows 7+`, `Linux ~ `, `Macintosh 12~`, `Android 9+`, `iPhone 16~`.
+* Operating systems: `Windows 7+`, `Linux ~ `, `Macintosh 13~`, `Android 9+`, `iPhone 16~`.
 
 * Processor architectures: `x86 32|64`, `arm 32|64`.
 
@@ -183,7 +183,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.ShellGUI_28.0.0.0_x64__7qfdsg797hj0p\shell_gui.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.ShellGUI_32.0.0.0_x64__7qfdsg797hj0p\shell_gui.exe" ^
 		-additional_argument %*
 	```
 	
@@ -191,7 +191,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_20.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_26.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
 		-WindowSize        496 968 ^
 		-WindowAlwaysOnTop true ^
 		-ModuleType        ModdingWorker ^
@@ -204,7 +204,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_20.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_26.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
 		-WindowSize        496 968 ^
 		-WindowAlwaysOnTop true ^
 		-ModuleType        ResourceForwarder ^

@@ -154,7 +154,7 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `cipher_file` : `path` ~ `*.bin` = `?automatic`
 	
-	* `key` : `integer` = `?input`
+	* `key` : `string` = `?input`
 
 * `rijndael.encrypt` `*`
 	

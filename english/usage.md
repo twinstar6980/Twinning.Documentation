@@ -26,15 +26,15 @@ The user needs to launch `Shell CLI` in the terminal via command line arguments 
 
 * `<kernel>`
 	
-	The first argument is the path to the kernel file.
+	The kernel file path.
 
 * `<script>`
 	
-	The second argument is the script file path passed to the kernel processing logic. It can also be marked with `$` as the first character, indicating that the rest of the string is used as a JS script.
+	The script file path. It can also be marked with `$` as the first character, indicating that the rest of the string is used as a JS script.
 
 * `<argument>...`
 	
-	The remaining arguments are passed as arguments to the kernel processing logic.
+	The execution argument.
 
 The main function returns 0 if no errors occur during execution, otherwise 1.
 
@@ -44,21 +44,23 @@ The `Shell GUI` provides a terminal-like UI, and not depend on the behavior of t
 
 Click the `Launch` button at the bottom of the application console interface to launch the session. Press and hold the button to edit additional parameters for each launch.
 
-Launching the `Shell GUI` in the terminal is also supported, with command line arguments in the following format:
+Launching the `Shell GUI` in the terminal is also supported, with command arguments in the following format:
 
-`-additional_argument <additional_argument>...`
+`[ -additional_argument <additional_argument>... ]`
 
-* `<additional_argument>...`
+* `-additional_argument <additional_argument>...`
 	
-	Additional arguments to the kernel processing logic.
+	Additional arguments, if set this, the application will automatically launch console after stared.
 
-If the command line arguments are passed in, the application will automatically launch console after stared.
+`Android` and `iPhone` systems are not support pass command via terminal command line, but command can be passed through application links:
 
-> @ `Android` `iPhone` \
-> cannot pass in command line arguments directly.
-> 
-> @ `Android` \
-> can pass in command line arguments through `Intent`: `action = "com.twinstar.toolkit.shell_gui.action.LAUNCH", extra = { "command": Array<String> }`.
+`twinstar.toolkit.shell-gui:/run?command=<command>`
+
+* `command`
+
+	command argument. can be specified multiple times, and all query values are treated as string arrays.
+
+command can be passed through the link only when the application is not started; if the link is opened while the application is started, the application will switch to the foreground but will not receive new command parameters.
 
 ## Using `Helper`
 

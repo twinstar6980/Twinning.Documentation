@@ -154,7 +154,7 @@
 	
 	* `cipher_file` : `path` ~ `*.bin` = `?automatic`
 	
-	* `key` : `integer` = `?input`
+	* `key` : `string` = `?input`
 
 * `rijndael.encrypt` `*`
 	
