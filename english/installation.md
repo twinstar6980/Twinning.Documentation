@@ -10,7 +10,7 @@
 
 ## Platform supportability
 
-* Operating systems: `Windows 7+`, `Linux ~ `, `Macintosh 13~`, `Android 9+`, `iPhone 16~`.
+* Operating systems: `Windows 7+`, `Linux ~ `, `Macintosh 13~`, `Android 9+`, `Iphone 16~`.
 
 * Processor architectures: `x86 32|64`, `arm 32|64`.
 
@@ -30,7 +30,7 @@ The tool consists of several modules, different modules provide different functi
 	
 	Optional modules, distributed as executable programs.
 	
-	> Using `Shell CLI` on `Android` and `iPhone` requires ROOT privileges, if your device is not ROOTed, use `Shell GUI`.
+	> Using `Shell CLI` on `Android` and `Iphone` requires ROOT privileges, if your device is not ROOTed, use `Shell GUI`.
 
 * `Shell GUI`
 	
@@ -96,7 +96,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Macintosh` - `x86_64` `arm_64`
 	
-	* `iPhone` - `arm_64`
+	* `Iphone` - `arm_64`
 	
 	* `Linux` - `x86_64`
 	
@@ -108,14 +108,15 @@ You can clone this project and compile it, or just download the bundle package o
 
 3. Sign the `kernel` and `shell_cli` files in the home directory.
 	
-	> This step only required for `iPhone` users, and need to operate on `Macintosh` device.
+	> If you don't need the `Shell CLI` module, you can skip this step. \
+	> This step only required for `Iphone` users, and need to operate on `Macintosh` device.
 	
 	Run these command in the system terminal: `> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell_cli` .
 
 4. Grant executable permissions to the `shell_cli` file in the home directory.
 	
 	> If you don't need the `Shell CLI` module, you can skip this step. \
-	> This step only required for `Linux`, `Macintosh`, `Android`, `iPhone` users.
+	> This step only required for `Linux`, `Macintosh`, `Android`, `Iphone` users.
 	
 	Run these command in the system terminal: `> chmod +x shell_cli` .
 
@@ -137,7 +138,7 @@ You can clone this project and compile it, or just download the bundle package o
 	> @ `Macintosh` \
 	> After mounting `dmg`, move the `*.app` directory to the system application directory.
 	> 
-	> @ `iPhone` \
+	> @ `Iphone` \
 	> Need to self-sign and install ipa through AltStore or other tools.
 
 7. Configure the `Shell GUI` settings.
@@ -154,13 +155,14 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Fallback Directory` = `<home>/workspace`.
 		
-		> This item is only available on `Android` and `iPhone`.
+		> This item is only available on `Android` and `Iphone`.
 	
 	* `Storage Permission` Click and grant storage space read and write permissions to the application.
 		
 		> This is only available on `Android`.
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
+
 8. Configure the `Forwarder For Windows` setting.
 	
 	> If you do not need the `Forwarder For Windows` module, you can skip this step.
@@ -230,6 +232,7 @@ You can clone this project and compile it, or just download the bundle package o
 	"/Applications/TwinStar ToolKit - Shell GUI.app/Contents/MacOS/TwinStar ToolKit - Shell GUI" \
 		-additional_argument "$@"
 	```
+
 10. Configure the `Helper` settings.
 	
 	> If you don't need the `Helper` module, you can skip this step.

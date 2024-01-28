@@ -12,7 +12,7 @@
 
 工具支持以下平台：
 
-* 操作系统：`Windows 7+` 、`Linux ~` 、`Macintosh 13~` 、`Android 9+` 、`iPhone 16~` 。
+* 操作系统：`Windows 7+` 、`Linux ~` 、`Macintosh 13~` 、`Android 9+` 、`Iphone 16~` 。
 
 * 处理器架构：`x86 32|64` 、`arm 32|64` 。
 
@@ -32,7 +32,7 @@
 	
 	可选模块，分发为可执行程序。
 	
-	> 在 `Android` 与 `iPhone` 系统中使用 `Shell CLI` 需要 ROOT 权限，若你的设备未获取 ROOT ，请使用 `Shell GUI` 。
+	> 在 `Android` 与 `Iphone` 系统中使用 `Shell CLI` 需要 ROOT 权限，若你的设备未获取 ROOT ，请使用 `Shell GUI` 。
 
 * `Shell GUI`
 	
@@ -70,6 +70,14 @@
 	
 	> 该模块仅适用于 `Android` 系统。
 
+* `Forwarder For Iphone`
+	
+	转发器，使用户可以通过 Iphone 文件分享功能将文件转发至工具。
+	
+	可选模块，分发为应用安装包。
+	
+	> 该模块仅适用于 `Iphone` 系统。
+
 * `Helper`
 	
 	助手，提供额外的高级功能。
@@ -96,26 +104,27 @@
 	
 	* `Macintosh` - `x86_64` `arm_64`
 	
-	* `iPhone` - `arm_64`
+	* `Iphone` - `arm_64`
 	
 	* `Linux` - `x86_64`
 	
 	其中，仅 `Windows` 与 `Android` 平台的预编译分发会始终跟随最新版本，其他平台的预编译分发一般很少更新，如果需要最新版本，或者你的平台不在上述列表中，请尝试自行编译。
 
-2. 选择主文件夹。
+2. 选择主目录。
 	
-	将解压得到的文件夹移动到适合的位置，它作为工具的主文件夹，绝对路径记录为 `<home>` 。
+	将解压得到的目录移动到适合的位置，它作为工具的主目录，绝对路径记录为 `<home>` 。
 
-3. 为主文件夹下的 `kernel` 与 `shell_cli` 文件签名。
+3. 为主目录下的 `kernel` 与 `shell_cli` 文件签名。
 	
-	> 该步骤只需 `iPhone` 用户操作，且需要在 `Macintosh` 设备上操作。
+	> 如果不需要 `Shell CLI` 模块，可以跳过该步骤。\
+	> 该步骤只需 `Iphone` 用户操作，且需要在 `Macintosh` 设备上操作。
 	
 	在系统终端中运行命令：`> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell_cli` 。
 
-4. 为主文件夹下的 `shell_cli` 文件赋予可执行权限。
+4. 为主目录下的 `shell_cli` 文件赋予可执行权限。
 	
 	> 如果不需要 `Shell CLI` 模块，可以跳过该步骤。\
-	> 该步骤只需 `Linux` 、`Macintosh` 、`Android` 、`iPhone` 用户操作。
+	> 该步骤只需 `Linux` 、`Macintosh` 、`Android` 、`Iphone` 用户操作。
 	
 	在系统终端中运行命令：`> chmod +x shell_cli` 。
 
@@ -124,9 +133,9 @@
 	> 如果不需要 `Shell CLI` 模块，可以跳过该步骤。\
 	> 该步骤只需 `Android` 用户操作。
 	
-	将主文件夹内的 `libc++_shared.so` 文件复制至系统库文件夹 `/system/lib64` 中。
+	将主目录内的 `libc++_shared.so` 文件复制至系统库目录 `/system/lib64` 中。
 
-6. 安装主文件夹内 `Shell GUI` 、`Forward` 、`Helper` 模块的应用安装包。
+6. 安装主目录内 `Shell GUI` 、`Forward` 、`Helper` 模块的应用安装包。
 	
 	应用安装包文件以 `msix` 、`dmg` 、`apk` 、`ipa` 等作为扩展名。
 	
@@ -135,9 +144,9 @@
 	> 右键查看 `.msix` 的属性，切换到 ⌈ 数字签名 ⌋ 页，选择列表中第一项，再点击 ⌈ 详细信息 ⌋ ，在弹出的窗口中依次选择 ⌈ 查看证书 ⌋ - ⌈ 安装证书 ⌋ - ⌈ 本地计算机 ⌋ - ⌈ 将所有证书都放入下列存储 ⌋ - ⌈ 受信任人 ⌋ ，完成证书的安装。
 	> 
 	> @ `Macintosh` \
-	> 挂载 `dmg` 后，将其中的 `*.app` 文件夹移动至系统应用文件夹中。
+	> 挂载 `dmg` 后，将其中的 `*.app` 目录移动至系统应用目录中。
 	> 
-	> @ `iPhone` \
+	> @ `Iphone` \
 	> 需要通过 AltStore 或其他工具对 ipa 进行自签名与安装。
 
 7. 配置 `Shell GUI` 设置项。
@@ -154,19 +163,19 @@
 	
 	* `Fallback Directory` = `<home>/workspace` 。
 		
-		> 该项仅适用于 `Android` 与 `iPhone` 。
+		> 该项仅适用于 `Android` 与 `Iphone` 。
 	
 	* `Storage Permission` 点击并为应用授予存储空间读写权限 。
 		
 		> 该项仅适用于 `Android` 。
 	
-	> 上述设置中的 `<home>` 需要替换为主文件夹的绝对路径。
+	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
 8. 配置 `Forwarder For Windows` 设置项。
 	
 	> 如果不需要 `Forwarder For Windows` 模块，可以跳过该步骤。
 	
-	打开新安装的 `Forwarder For Windows` 应用，会弹出一个文件夹窗口，其中有名为 `forward.cmd` 的文件，该脚本负责接收文件路径参数并启动工具，以文本形式打开并编辑该文件。
+	打开新安装的 `Forwarder For Windows` 应用，会弹出一个目录窗口，其中有名为 `forward.cmd` 的文件，该脚本负责接收文件路径参数并启动工具，以文本形式打开并编辑该文件。
 	
 	以下示例将参数转发至 `Shell CLI` ：
 	
@@ -220,7 +229,7 @@
 	
 	进入 ⌈ 系统设置 ⌋ - ⌈ 隐私与安全性 ⌋ - ⌈ 扩展 ⌋ - ⌈ 添加的扩展 ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ ，勾选其中的 ⌈ “访达”扩展 ⌋ ，确保应用能够生效。
 	
-	打开新安装的 `Forwarder For Macintosh` 应用，会弹出一个文件夹窗口，其中有名为 `forward.sh` 的文件，该脚本负责接收文件路径参数并启动工具，以文本形式打开并编辑该文件。
+	打开新安装的 `Forwarder For Macintosh` 应用，会弹出一个目录窗口，其中有名为 `forward.sh` 的文件，该脚本负责接收文件路径参数并启动工具，以文本形式打开并编辑该文件。
 	
 	> 注意：脚本的执行处于应用的沙盒环境中。
 	
@@ -248,11 +257,11 @@
 	
 	* `Command Sender` - `Method Configuration` = `<home>/helper/MethodConfiguration.json` 。
 	
-	> 上述设置中的 `<home>` 需要替换为主文件夹的绝对路径。
+	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
 11. 设置交互语言。
 	
-	以文本形式打开并编辑主文件夹内的 `script/Entry/Entry.json` 文件，找到 `"language": "English"` 部分，修改它以切换工具的交互语言。
+	以文本形式打开并编辑主目录内的 `script/Entry/Entry.json` 文件，找到 `"language": "English"` 部分，修改它以切换工具的交互语言。
 	
 	* `English` 英文（默认）
 	
@@ -263,16 +272,19 @@
 12. 至此，已经完成了所有安装步骤，可以通过终端命令行或直接打开应用的方式启动工具。
 	
 	> @ `Windows` \
-	> 可以直接双击主文件夹中的启动脚本 `launch*.cmd` 启动工具，或将文件对象拖拽至其上并释放。\
-	> 如果安装了 `Forwarder` 模块，可以在任意文件或文件夹的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。\
+	> 可以直接双击主目录中的启动脚本 `launch*.cmd` 启动工具，或将文件对象拖拽至其上并释放。\
+	> 如果安装了 `Forwarder` 模块，可以在任意文件或目录的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。\
 	> 如果安装了 `Helper` 模块，可以通过其中的 `Resource Forwarder` 进行更快捷的转发，也可以通过 `Command Sender` 可视化地选择需要的功能并编辑参数。
 	
 	> @ `Macintosh` \
-	> 如果安装了 `Forwarder` 模块，可以在任意文件或文件夹的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
+	> 如果安装了 `Forwarder` 模块，可以在任意文件或目录的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
 	
 	> @ `Android` \
 	> 如果安装了 `Forwarder` 模块，可以在系统或第三方的文件管理器的文件分享列表中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。\
 	> 注意：由于 Android 系统的限制，转发器无法直接获取所转发文件的绝对路径，而是将所转发文件的 Content URI 传递至 Shell GUI 作为其启动的命令参数，Shell GUI 会尝试解析 Content URI 。具体参见 [Android Content URI 处理方式](./question.md#Android-Content-URI-处理方式) 。
+	
+	> @ `Iphone` \
+	> 如果安装了 `Forwarder` 模块，可以在系统或第三方的文件管理器的文件分享列表中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
 
 ## 外部程序
 

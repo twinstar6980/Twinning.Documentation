@@ -56,7 +56,7 @@ If the shell module used is `Shell GUI`, access rights vary depending on the run
 		> 
 		> This directory is actually a mapping of `/data/media/<user>`. When accessing files through the `/storage/emulated/<user>` path, the access performance will be reduced due to the influence of FUSE, and the access permission is hard-coded to RW, and the file cannot be executed as a program; files can be accessed via the `/data/media/<user>` path to bypass FUSE, but ROOT permissions are required.
 
-* `iPhone`
+* `Iphone`
 	
 	* Application's specific sandbox storage : `/var/mobile/Containers/Data/Application/<application>` .
 	

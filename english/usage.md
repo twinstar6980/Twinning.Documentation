@@ -52,12 +52,12 @@ Launching the `Shell GUI` in the terminal is also supported, with command argume
 	
 	Additional arguments, if set this, the application will automatically launch console after stared.
 
-`Android` and `iPhone` systems are not support pass command via terminal command line, but command can be passed through application links:
+`Android` and `Iphone` systems are not support pass command via terminal command line, but command can be passed through application links:
 
 `twinstar.toolkit.shell-gui:/run?command=<command>`
 
 * `command`
-
+	
 	command argument. can be specified multiple times, and all query values are treated as string arrays.
 
 command can be passed through the link only when the application is not started; if the link is opened while the application is started, the application will switch to the foreground but will not receive new command parameters.
