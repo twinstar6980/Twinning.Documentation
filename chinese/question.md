@@ -10,7 +10,7 @@
 
 - [Android Content URI 处理方式](#Android-Content-URI-处理方式)
 
-- [Shell CLI 对宿主终端的要求](#Shell-CLI-对宿主终端的要求)
+- [Shell 对宿主终端的要求](#Shell-对宿主终端的要求)
 
 - [JSON 文件格式](#JSON-文件格式)
 
@@ -36,9 +36,9 @@
 
 工具需要拥有对所所涉及的存储空间的访问权限。
 
-如果使用的外壳模块为 `Shell CLI` ，则访问权限取决于启动程序的用户所具备的权限。
+如果使用的外壳模块为 `Shell` ，则访问权限取决于启动程序的用户所具备的权限。
 
-如果使用的外壳模块为 `Shell GUI` ，则访问权限根据运行系统的不同而不同：
+如果使用的外壳模块为 `Assistant` ，则访问权限根据运行系统的不同而不同：
 
 * `Windows` `Linux` `Macintosh`
 	
@@ -84,9 +84,9 @@
 
 由于 Android 的系统限制，用户所转发或选择的文件以 Content URI（而非绝对路径）的形式传递给应用。
 
-> `Forwarder For Android` 不会传递绝对路径给 `Shell GUI` ，而是传递 Content URI 。
+> `Forwarder - Android` 不会传递绝对路径给 `Assistant` ，而是传递 Content URI 。
 
-`Shell GUI` 在接收到 Content URI 后，会对其依次进行以下转换，再传递到脚本层：
+`Assistant` 在接收到 Content URI 后，会对其依次进行以下转换，再传递到脚本层：
 
 1. 尝试解析 URI ，得到其对应的绝对路径；URI 转换为原文件的绝对路径。
 
@@ -110,9 +110,9 @@
 
 > 建议使用上表中提及的第三方文件管理器应用，以避免不必要的文件复制开销。
 
-## Shell CLI 对宿主终端的要求
+## Shell 对宿主终端的要求
 
-`Shell CLI` 提供了基于终端的命令行界面，但需要宿主终端支持以下特性：
+`Shell` 提供了基于终端的命令行界面，但需要宿主终端支持以下特性：
 
 1. UTF-8 输入/输出：必需，若不支持，将导致程序无法正常进行输入输出。
 
@@ -120,7 +120,7 @@
 	
 	> 默认情况下，工具会使用控制序列来优化输出效果，但如果运行在不支持控制序列的终端中，控制序列将直接输出为字符串，影响用户的阅读。
 	> 
-	> 用户可以通过修改 `<home>/script/Entry/Entry.json` 配置中的 `disable_cli_virtual_terminal_sequence` 项为 `true` 以禁用控制序列的使用。
+	> 用户可以通过修改 `<home>/script/Entry/Entry.json` 配置中的 `disable_basic_virtual_terminal_sequence` 项为 `true` 以禁用控制序列的使用。
 
 3. 完备的字体：可选，若不支持，一些字符（如汉字、emoji ）将无法正常显示。
 
@@ -196,7 +196,7 @@
 	
 	* `\0` 转义为空字符。
 	
-	* `\oNNN` 3 位八进制数表示的 Unicode 字符，允许值超过 0xFF 。
+	* `\oNNN` 3 位八进制数表示的 Unicode 字符。
 	
 	* `\xNN` 2 位十六进制数表示的 Unicode 字符。
 	

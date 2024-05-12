@@ -1,10 +1,8 @@
 # Usage
 
-- [Using `Shell CLI`](#Using-Shell-CLI)
+- [Using `Shell`](#Using-Shell)
 
-- [Using `Shell GUI`](#Using-Shell-GUI)
-
-- [Using `Helper`](#Using-Helper)
+- [Using `Assistant`](#Using-Assistant)
 
 - [Forwarding file](#Forwarding-file)
 
@@ -14,61 +12,127 @@
 
 - [Configuration file](#Configuration-file)
 
-- [Using `Helper`'s advanced features](#Using-Helper's-advanced-features)
+## Using `Shell`
 
-## Using `Shell CLI`
+`Shell` allows you to use tools as a command line in the system terminal.
 
-`Shell CLI` allows you to use tools as a command line in the system terminal.
-
-The user needs to launch `Shell CLI` in the terminal via command line arguments in the following format:
+Command parameters need to be passed when starting the application, the format is as follows:
 
 `<kernel> <script> <argument>...`
 
-* `<kernel>`
+* `kernel` : *`string`*
 	
 	The kernel file path.
 
-* `<script>`
+* `script` : *`string`*
 	
 	The script file path. It can also be marked with `$` as the first character, indicating that the rest of the string is used as a JS script.
 
-* `<argument>...`
+* `argument` : *`string...`*
 	
 	The execution argument.
 
-The main function returns 0 if no errors occur during execution, otherwise 1.
+The main function returns `0` if no errors occur during execution, otherwise `1`.
 
-## Using `Shell GUI`
+## Using `Assistant`
 
-The `Shell GUI` provides a terminal-like UI, and not depend on the behavior of the system terminal.
+`Assistant` implements a variety of sub-functional modules based on `Kernel`, `Script` and other modules.
 
-Click the `Launch` button at the bottom of the application console interface to launch the session. Press and hold the button to edit additional parameters for each launch.
+`Assistant Plus` is a specialized version of `Assistant` on the `Windows` platform, and the design style is more consistent with the `Windows 11` system.
 
-Launching the `Shell GUI` in the terminal is also supported, with command arguments in the following format:
+Command parameters can be passed when starting the application, in the following format:
 
-`[ -additional_argument <additional_argument>... ]`
-
-* `-additional_argument <additional_argument>...`
+* **`-window_position`**
 	
-	Additional arguments, if set this, the application will automatically launch console after stared.
-
-`Android` and `Iphone` systems are not support pass command via terminal command line, but command can be passed through application links:
-
-`twinstar.toolkit.shell-gui:/run?command=<command>`
-
-* `command`
+	Window position. If not specified, it will be centered by default.
 	
-	command argument. can be specified multiple times, and all query values are treated as string arrays.
+	* `x` : *`integer`*
+		
+		Starting horizontal coordinate.
+	
+	* `y` : *`integer`*
+		
+		Starting vertical coordinate.
 
-command can be passed through the link only when the application is not started; if the link is opened while the application is started, the application will switch to the foreground but will not receive new command parameters.
+* **`-window_size`**
+	
+	Window size. If not specified, the initial size will be followed.
+	
+	* `width` : *`integer`*
+		
+		Width.
+	
+	* `height` : *`integer`*
+		
+		Height.
 
-## Using `Helper`
+* **`-initial_tab`**
+	
+	Initial tab page. If not specified, the launcher page will be displayed.
+	
+	* `title` : *`string`*
+		
+		Page title.
+	
+	* `type` : *`string`*
+		
+		Module type.
+	
+	* `option` : *`string...`*
+		
+		Module option.
 
-The `Modding Worker` module of `Helper` provides a UI similar to the `Shell GUI`, but the style is more modernize for the `Windows 11` system theme.
+> The command format of `Assistant Plus` is similar to `Assistant`, but the command name uses camel case *CamelCase* instead of snake style *snack_case*.
 
-After opening the `Modding Worker` page, click the `Launch` button at the bottom of the interface to launch the session. Click the pin button at the top right of the interface to edit additional arguments for each launch.
+In `Android` and `Iphone` systems, command can be passed through the application link:
 
-> The `launch_helper.cmd` script in the home directory can quickly start the `Modding Worker`. Multiple files can be dragged onto the script and released to append additional arguments.
+* ***`twinstar.toolkit.assistant:/run?`***
+	
+	* `command` : *`string...`*
+		
+		command argument. can be specified multiple times, and all query values are treated as string arrays.
+
+> If the link is opened while the application is started, the application will switch to the foreground but will not receive new command parameters.
+
+The following functional modules are provided:
+
+* `Modding Worker`
+	
+	This module simulates the `Shell` console UI.
+	
+	> `Kernel` 、`Script` 、`Argument` parameters need to be defined in the module settings.
+	
+	> The `launch.assistant_plus.modding_worker.cmd` script in the home directory can quickly open the this module. Multiple files can be dragged onto the script and released to add additional arguments.
+
+* `Resource Forwarder` *`<Plus-Only>`*
+	
+	This module provides a better file forwarding UI, which can filter the available options by inputting the file type and extension, and passes them to the `Modding Worker` for processing, making it more efficient and easier to use.
+	
+	> Options are defined by the `Option Configuration` file in the module setting.
+	
+	> The `launch.assistant_plus.resource_forwarder.cmd` script in the home directory can quickly open the this module. Multiple files can be dragged onto the script and released to add additional arguments.
+
+* `Command Sender` *`<Plus-Only>`*
+	
+	This module can visually select the methods you want to use and fill in the arguments.
+	
+	> Methods are defined by the `Method Configuration` file in the module settings.
+
+* `Animation Viewer` *`<Plus-Only>`*
+	
+	This module can view PopCap Animation (PAM) file.
+	
+	1. Click the ⌈ Animation File ⌋ button on the right side of the text box in the upper right corner of the ⌈ Stage ⌋ column on this module page, and select the `*.pam.json` file in the pop-up window; or drag `*.pam.json` file from ⌈ Explorer ⌋ to the application window then drop.
+		
+		> `*.pam.json` is obtained by decoding `*.pam` files by toolkit.
+	
+	2. If the exploded view required for the animation is located in the same directory as the animation file, the animation can be rendered normally. Otherwise, you need to click the button on the right side of the ⌈ Image Directory ⌋ text box to select the directory where the exploded view is located.
+	
+	3. Through other UI controls, you can select the sub-animation you want to play, adjust the playback interval and frame rate, set component filter items, etc.
+
+* `Package Builder` *`<Plus-Only>`*
+	
+	This module can visually manage the `PvZ-2 Package Project` project.
 
 ## Forwarding file
 
@@ -84,36 +148,31 @@ The file object to be processed is forwarded to the tool, and when the tool is l
 
 The user can pass in additional arguments when starting the tool, or if no additional arguments are provided, the user will be asked to enter them at runtime。 The additional arguments are in the following format：
 
-```
-[
-	<input>
-	[ -disable_filter ]
-	[ -method <method-id> ]
-	[ -argument <argument-json> ]
-]...
-```
-
-* `<input>`
+* `item`
 	
-	Specifies the input data of the command, usually the path to a file or directory, as the input argument of the method.
+	Single command item, can be specified multiple times.
 	
-	If the input value is `?` , the user will be asked to input the argument at runtime.
-
-* `[ -disable_filter ]`
+	* `input` : *`string`*
+		
+		Specifies the input data of the command, usually the path to a file or directory, as the input argument of the method.
+		
+		If the input value is `?` , the user will be asked to input the argument at runtime.
 	
-	Used to disable method filtering.
+	* **`-disable_filter`** : *`boolean`*
+		
+		Used to disable method filtering.
+		
+		By default, if `-method` is not specified, the tool will filter the available methods for user selection based on the type of input object (mainly by extension);
+		
+		If candidate method filtering is disabled, all methods will be listed for user selection. This should not be enabled because toolkit provides too many methods and it is always recommended to have filter on.
 	
-	By default, if `-method` is not specified, the tool will filter the available methods for user selection based on the type of input object (mainly by extension);
+	* **`-method`** : *`string`*
+		
+		Specify the method to be executed, followed by the ID of the method. If no method is specified, it will wait for the user to select the method at runtime.
 	
-	If candidate method filtering is disabled, all methods will be listed for user selection. This should not be enabled because toolkit provides too many methods and it is always recommended to have filter on.
-
-* `[ -method <method-id>]`
-	
-	Specify the method to be executed, followed by the ID of the method. If no method is specified, it will wait for the user to select the method at runtime.
-
-* `[ -argument <argument-json> ]`
-	
-	Specifies the argument to be passed to the method, followed by a JSON string, and must be parsable as an Object.
+	* **`-argument`** : *`string`*
+		
+		Specifies the argument to be passed to the method, followed by a JSON string, and must be parsable as an Object.
 
 The IDs of the methods and their arguments are defined in [method](. /method.md) section.
 
@@ -163,7 +222,7 @@ When the tool is running, it will output some message to the user or request the
 	> If the entered text is empty, it is deemed to have entered a null value;\
 	> If the input text starts with `::` , the tool will intercept the text after it as the real input. In this way, an empty string can be entered instead of a null value.
 	> 
-	> Enter `:p` will open the system file pick dialog (`GUI` or `Windwos CLI` 、`Linux CLI` 、`Macintosh CLI` only);\
+	> Enter `:p` will open the system file pick dialog;\
 	> Enter `:g` will generate avaliable path (append suffix);\
 	> Enter `:m` will move original file;\
 	> Enter `:d` will delete original file;\
@@ -187,9 +246,9 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		
 		Interaction language. Can be `English` or `Chinese` or `Vietnamese`.
 	
-	* `console_cli_disable_virtual_terminal_sequence` : `boolean` = `false`
+	* `disable_basic_virtual_terminal_sequence` : `boolean` = `false`
 		
-		Disable command-line virtual terminal sequences. Valid only when using a command-line shell.
+		Disable command-line virtual terminal sequences. Valid only when using `Shell`.
 	
 	* `executor_typical_method_disable_name_filter` : `boolean` = `false`
 		
@@ -256,35 +315,3 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		Command notification time limit. If the vaild execution duration exceeds this value (in milliseconds) after a command has completed, a system notification will be pushed to alert the user to set up the configuration. Setting to null will disable notifications.
 
 > Each group of functions provided by the script has a corresponding configuration file, see the [Method](./method.md) section.
-
-## Using `Helper`'s advanced features
-
-* `Resource Forwarder`
-	
-	This module provides a better file forwarding UI, which can filter the available options by inputting the file type and extension, and passes them to the `Modding Worker` for processing, making it more efficient and easier to use.
-	
-	> Options are defined by the `Option Configuration` file in the module setting.
-	
-	> The `launch_helper_forwarder.cmd` script in the home directory can quickly open the `Resource Forwarder`. Multiple files can be dragged onto the script and released to add additional arguments.
-
-* `Command Sender`
-	
-	This module can visually select the methods you want to use and fill in the arguments.
-	
-	> Methods are defined by the `Method Configuration` file in the module settings.
-
-* `Animation Viewer`
-	
-	This module can view PopCap Animation (PAM) file.
-	
-	1. Click the ⌈ Animation File ⌋ button on the right side of the text box in the upper right corner of the ⌈ Stage ⌋ column on this module page, and select the `*.pam.json` file in the pop-up window; or drag `*.pam.json` file from ⌈ Explorer ⌋ to the application window then drop.
-		
-		> `*.pam.json` is obtained by decoding `*.pam` files by toolkit.
-	
-	2. If the exploded view required for the animation is located in the same directory as the animation file, the animation can be rendered normally. Otherwise, you need to click the button on the right side of the ⌈ Image Directory ⌋ text box to select the directory where the exploded view is located.
-	
-	3. Through other UI controls, you can select the sub-animation you want to play, adjust the playback interval and frame rate, set component filter items, etc.
-
-* `Package Builder`
-	
-	This module can visually manage the `PvZ-2 Package Project` project.

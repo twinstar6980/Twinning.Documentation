@@ -30,7 +30,7 @@ The tool uses a front-end and back-end separation architecture, divided into thr
 
 * The `Shell`: the front-end, responsible for user interaction without any data processing; `Shell` is distributed as a native application for each platform, which will load the kernel dynamic library and call the interface functions of the kernel dynamic library with user-supplied scripts as arguments.
 	
-	> `Shell CLI` and `Shell GUI` modules implement this layer respectively.
+	> `Shell` and `Assistant` and `Assistant Plus` are modules implement this layer.
 
 * `Script`: the bridge between the front and back end, which performs data processing and user interaction by calling interface functions provided by the kernel and shell; `Script` is distributed as platform-independent JavaScript scripts.
 	
@@ -64,37 +64,29 @@ Users can integrate the tool backend (`Kernel`) into their projects through the 
 
 Refer to several shell implementations in this tool:
 
-* `Shell CLI` with [`C++`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge)
+* [`Shell`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge) with `C++`
 
-* `Shell GUI` with [`Dart`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellGUI/lib/bridge)
+* [`Assistant`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Assistant/lib/bridge) with `Dart`
 
-* `Helper` with [`C#`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Helper/Bridge)
+* [`Assistant Plus`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/AssistantPlus.Windows/Bridge) with `C#`
 
-The following is an example of how to integrate `Kernel` with the [`Shell CLI`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge) modules:
+The following is an example of how to integrate `Kernel` with the [`Shell`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge) modules:
 
-1. [`interface.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/interface.hpp): Declare the interface of `Kernel`.
+1. [`data.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/data.hpp): Declare the data type of `Kernel`.
 	
 	> The declaration of the interface for `C++` is already provided in the `Kernel` module [`interface.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Kernel/kernel/interface/interface.hpp)
 
-2. [`symbol.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/symbol.hpp): defines the export symbols for the `Kernel` interface, used to get the addresses of the interfaces in the `Kernel` library.
+2. [`proxy.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/proxy.hpp) : Creates a helper class for the `C-style` structure parsing and constructing.
 
-3. [`library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/library.hpp): defines the abstract class of the `Kernel` library, which encapsulates the library loading and symbolic calls to `Kernel`.
+3. [`service.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/service.hpp): defines the service type of the `Kernel`.
+
+4. [`library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/library.hpp): defines the abstract class of the `Kernel` library, which encapsulates the library loading and symbolic getting to `Kernel`.
+
+5. [`client.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/bridge/client.hpp): Define a `Shell` client abstract class.
 	
-	* [`static_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/static_library.hpp): This implements the wrapper for static library.
-	
-	* [`dynamic_library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/dynamic_library.hpp): This implements the wrapper for dynamic library.
+	> [`main_console_bridge_client.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/main_console_bridge_client.hpp): implements the CLI-style `Shell` client.
 
-4. [`converter.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/converter.hpp) : Creates a helper class for the required `C-style` structure construction and destructuring.
-	
-	> `Kernel` interface requires the user to pass C-style structures as argument values and return values.
-
-5. [`invoker.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/invoker.hpp): Create a helper class to encapsulate the `Kernel` interface so that it can simply be called without having to consider the details of the call including type conversion.
-
-6. [`host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/ShellCLI/shell_cli/bridge/host.hpp): Define a `Shell` abstract class that encapsulates which increase the lifecycle of the `Shell` and the callback functions that need to be provided to `Kernel`.
-	
-	> [`cli_host.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/ShellCLI/shell_cli/bridge/cli_host.hpp): implements the CLI-style `Shell`.
-
-7. [`launcher.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/ShellCLI/shell_cli/bridge/launcher.hpp) : Creates a helper class for simply launcher tool.
+6. [`launcher.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/launcher.hpp) : Create a helper class to call the `Kernel` interface with `Library` and `Client` instances.
 
 ## Custom Scripts
 
@@ -116,15 +108,15 @@ The following section describes how to customize the script.
 
 ```ts
 type JS_MainFunction = (data: {
-	argument: Array<string>; // Input. The script argument passed to the tool by the user.
-	result: string | undefined; // Output. The result of the script execution, which must be set to `non-undefined` before the end of the program.
-	error: any | undefined; // Output. If the error occurs while the script is running and is not `undefined`, the tool will treat the script execution as an error and throw an exception.
+	argument: Array<string>;           // Input. The script argument passed to the tool by the user.
+	result: Array<string> | undefined; // Output. The result of the script execution, which must be set to `non-undefined` before the end of the program.
+	error: any | undefined;            // Output. If the error occurs while the script is running and is not `undefined`, the tool will treat the script execution as an error and throw an exception.
 }) => void;
 ```
 
 The main function must be synchronous, but asynchronous functions can be called within it, and `Kernel` will wait for all asynchronous calls to finish executing.
 
-> Note that if an error thrown during asynchronous execution is not handled by Promise.catch, the error will be silently ignored.
+> Note that if an error thrown during asynchronous execution is not handled by `Promise.catch`, the error will be silently ignored.
 
 ### Kernel Interface
 
@@ -337,6 +329,6 @@ Kernel interfaces are cumbersome to call. `Script` has encapsulated the kernel i
 
 * `Shell`: Wraps shell callbacks and shell-specific functions.
 
-* `Console`: Wraps console interaction, providing consistent user interaction between `Shell CLI` and `Shell GUI` .
+* `Console`: Wraps console interaction, providing consistent user interaction between difference `Shell` clients.
 
 * `...`

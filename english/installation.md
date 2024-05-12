@@ -24,19 +24,13 @@ The tool consists of several modules, different modules provide different functi
 	
 	Required modules, distributed as an dynamic library.
 
-* `Shell CLI`
+* `Shell`
 	
-	Shell, provides the command line interface.
+	Shell, provides the basic user interface.
 	
 	Optional modules, distributed as executable programs.
 	
-	> Using `Shell CLI` on `Android` and `Iphone` requires ROOT privileges, if your device is not ROOTed, use `Shell GUI`.
-
-* `Shell GUI`
-	
-	Shell, provides the graphical interface.
-	
-	Optional module, distributed as an application installation package.
+	> Using `Shell` on `Android` and `Iphone` requires ROOT privileges, if your device is not ROOTed, use `Assistant`.
 
 * `Script`
 	
@@ -44,33 +38,23 @@ The tool consists of several modules, different modules provide different functi
 	
 	Required module, distributed as a script package.
 
-* `Forwarder For Windows`
+* `Forwarder`
 	
-	Forwarder, which enables users to forward files to tools via the Windows Explorer right-click menu.
-	
-	Optional module, distributed as an application installation package.
-	
-	> This module is only avaliable for `Windows` systems.
-
-* `Forwarder For Macintosh`
-	
-	Forwarder, which enables users to forward files to tools via the Macintosh Finder right-click menu.
+	Forwarder, injects shortcut options into the system-level file sharing interface.
 	
 	Optional module, distributed as an application installation package.
 	
-	> This module is only avaliable for `Macintosh` system.
+	> This module is only avaliable for `Windows` and `Macintosh` and `Android` and `Iphone` systems.
 
-* `Forwarder For Android`
+* `Assistant`
 	
-	Forwarder, which enables users to forward files to tools via the Android file sharing.
+	Assistant, implements additional advanced helper functions.
 	
 	Optional module, distributed as an application installation package.
-	
-	> This module is only avaliable for `Android` system.
 
-* `Helper`
+* `Assistant Plus`
 	
-	Helper, which provides additional advanced functions.
+	Assistant+, Specialized version for Windows platform.
 	
 	Optional module, distributed as an application installation package.
 	
@@ -106,28 +90,28 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	Move the unzipped directory to a suitable location. It will serve as the home directory of the toolkit. recorded the absolute path as `<home>`.
 
-3. Sign the `kernel` and `shell_cli` files in the home directory.
+3. Sign the `kernel` and `shell` files in the home directory.
 	
-	> If you don't need the `Shell CLI` module, you can skip this step. \
+	> If you don't need the `Shell` module, you can skip this step. \
 	> This step only required for `Iphone` users, and need to operate on `Macintosh` device.
 	
-	Run these command in the system terminal: `> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell_cli` .
+	Run these command in the system terminal: `> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell` .
 
-4. Grant executable permissions to the `shell_cli` file in the home directory.
+4. Grant executable permissions to the `shell` file in the home directory.
 	
-	> If you don't need the `Shell CLI` module, you can skip this step. \
+	> If you don't need the `Shell` module, you can skip this step. \
 	> This step only required for `Linux`, `Macintosh`, `Android`, `Iphone` users.
 	
-	Run these command in the system terminal: `> chmod +x shell_cli` .
+	Run these command in the system terminal: `> chmod +x shell` .
 
 5. Install the C++ shared library for your system.
 	
-	> If you don't need the `Shell CLI` module, you can skip this step. \
+	> If you don't need the `Shell` module, you can skip this step. \
 	> This step only required for `Android` user.
 	
 	Copy the `libc++_shared.so` file in the home directory to the system library directory `/system/lib64` .
 
-6. Install the application installation packages of the `Shell GUI`, `Forward`, and `Helper` modules in the home directory.
+6. Install the application installation packages of the `Forward`, `Assistant`, and `Assistant Plus` modules in the home directory.
 	
 	Application installation package files have extensions such as `msix`, `dmg`, `apk`, `ipa`, etc.
 	
@@ -135,109 +119,108 @@ You can clone this project and compile it, or just download the bundle package o
 	> You need to trust the signing certificate in MSIX before installation. \
 	> Right-click the properties of `.msix`, switch to the ⌈Digital Signatures ⌋ page, select the first item in the list, and then click ⌈Details ⌋ , and in the pop-up window, select ⌈View Certificate⌋ - ⌈Install Certificate⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈Trusted persons⌋, to complete the installation of the certificates.
 	> 
-	> @ `Macintosh` \
-	> After mounting `dmg`, move the `*.app` directory to the system application directory.
-	> 
 	> @ `Iphone` \
-	> Need to self-sign and install ipa through AltStore or other tools.
+	> Need to self-sign and install `ipa` through AltStore or other tools.
 
-7. Configure the `Shell GUI` settings.
+7. Configure the `Forwarder - Windows` setting.
 	
-	> If you do not need the `Shell GUI` module, you can skip this step.
+	> If you do not need the `Forwarder - Windows` module, you can skip this step.
 	
-	Open the newly installed `Shell GUI` application, click the `Setting` button in the lower right corner to enter the settings page, and edit the following setting items:
+	Open the newly installed `Forwarder` application, and a directory window will pop up with a file named `forward.cmd`. This script is responsible for receiving the file path parameter and launching the tool. Open and edit the file as text.
 	
-	* `Kernel` = `<home>/kernel`.
-	
-	* `Script` = `<home>/script/main.js`.
-	
-	* `Argument` = `<home>` .
-	
-	* `Fallback Directory` = `<home>/workspace`.
-		
-		> This item is only available on `Android` and `Iphone`.
-	
-	* `Storage Permission` Click and grant storage space read and write permissions to the application.
-		
-		> This is only available on `Android`.
-	
-	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
-
-8. Configure the `Forwarder For Windows` setting.
-	
-	> If you do not need the `Forwarder For Windows` module, you can skip this step.
-	
-	Open the newly installed `Forwarder For Windows` application, and a directory window will pop up with a file named `forward.cmd`. This script is responsible for receiving the file path parameter and launching the tool. Open and edit the file as text.
-	
-	The following example forward arguments to `Shell CLI` :
+	The following example forward arguments to `Shell` :
 	
 	```cmd
 	@echo off
 	set home=C:\TwinStar.ToolKit
-	start "" "%home%\shell_cli.exe" ^
+	start "" "%home%\shell.exe" ^
 		"%home%\kernel" ^
 		"%home%\script\main.js" ^
 		"%home%" ^
 		%*
 	```
 	
-	The following example forward arguments to `Shell GUI` :
+	The following example forward arguments to `Assistant` - `Modding Worker` :
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.ShellGUI_32.0.0.0_x64__7qfdsg797hj0p\shell_gui.exe" ^
-		-additional_argument %*
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Assistant_34.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
+		"-initial_tab" ^
+			"Modding Worker" ^
+			"modding_worker" ^
+			"-additional_argument" ^
+				%*
 	```
 	
-	The following example forward arguments to `Helper` - `Modding Worker` :
+	The following example forward arguments to `Assistant Plus` - `Modding Worker` :
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_26.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
-		-WindowSize        496 968 ^
-		-WindowAlwaysOnTop true ^
-		-ModuleType        ModdingWorker ^
-		-ModuleOption ^
-			-ImmediateLaunch    true ^
-			-AdditionalArgument %*
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_29.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+		"-WindowSize" ^
+			"496" ^
+			"968" ^
+		"-InitialTab" ^
+			"Modding Worker" ^
+			"ModdingWorker" ^
+			"-ImmediateLaunch" ^
+				"true" ^
+			"-AdditionalArgument" ^
+				%*
 	```
 	
-	The following example forward arguments to `Helper` - `Resource Forwarder` :
+	The following example forward arguments to `Assistant Plus` - `Resource Forwarder` :
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Helper_26.0.0.0_x64__7qfdsg797hj0p\Helper.exe" ^
-		-WindowSize        496 968 ^
-		-WindowAlwaysOnTop true ^
-		-ModuleType        ResourceForwarder ^
-		-ModuleOption ^
-			-AutomaticClose true ^
-			-Input          %*
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_29.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+		"-WindowSize" ^
+			"496" ^
+			"968" ^
+		"-InitialTab" ^
+			"Resource Forwarder" ^
+			"ResourceForwarder" ^
+			"-AutomaticClose" ^
+				"true" ^
+			"-Input" ^
+				%*
 	```
 
-9. Configure the `Forwarder For Macintosh` setting.
+8. Configure the `Forwarder - Macintosh` setting.
 	
-	> If you do not need the `Forwarder For Macintosh` module, you can skip this step.
+	> If you do not need the `Forwarder - Macintosh` module, you can skip this step.
 	
 	Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ and check the ⌈ "Finder" extension ⌋ to ensure that the application can take effect.
 	
-	Open the newly installed `Forwarder For Macintosh` application, and a directory window will pop up with a file named `forward.sh`. This script is responsible for receiving the file path parameter and launching the tool. Open and edit the file as text.
+	Open the newly installed `Forwarder` application, and a directory window will pop up with a file named `forward.sh`. This script is responsible for receiving the file path parameter and launching the tool. Open and edit the file as text.
 	
 	> Note: The script is executed in the application's sandbox environment.
 	
-	The following example forward arguments to `Shell GUI` :
+	The following example forward arguments to `Assistant` :
 	
 	```sh
 	#!/bin/bash
-	"/Applications/TwinStar ToolKit - Shell GUI.app/Contents/MacOS/TwinStar ToolKit - Shell GUI" \
-		-additional_argument "$@"
+	"/Applications/TwinStar ToolKit - Assistant.app/Contents/MacOS/TwinStar ToolKit - Assistant" \
+		"-initial_tab" \
+			"Modding Worker" \
+			"modding_worker" \
+			"-additional_argument" \
+				"$@"
 	```
 
-10. Configure the `Helper` settings.
+9. Configure the `Assistant` settings.
 	
-	> If you don't need the `Helper` module, you can skip this step.
+	> If you don't need the `Assistant` module, you can skip this step.
 	
-	Open the newly installed `Helper` application, click the gear icon on the upper right side of each module button on the page to open the module settings dialog and edit the following settings:
+	Open the newly installed `Assistant` application, click the gear icon to the right of each module list item on the homepage to open the module settings dialog box and edit the following settings:
+	
+	* `Storage Permission` Click and grant storage read and write permissions to the app.
+		
+		> This is only available on `Android`.
+	
+	* `Fallback Directory` = `<home>/workspace` .
+		
+		> This is only available on `Android`.
 	
 	* `Modding Worker` - `Kernel` = `<home>/kernel`.
 	
@@ -245,9 +228,23 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Modding Worker` - `Argument` = `<home>`.
 	
-	* `Resource Forwarder` - `Option Configuration` = `<home>/helper/OptionConfiguration.json`.
+	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
+
+10. Configure the `Assistant Plus - Windows` settings.
 	
-	* `Command Sender` - `Method Configuration` = `<home>/helper/MethodConfiguration.json`.
+	> If you don't need the `Assistant Plus - Windows` module, you can skip this step.
+	
+	Open the newly installed `Assistant` application, click the gear icon to the right of each module list item on the homepage to open the module settings dialog box and edit the following settings:
+	
+	* `Modding Worker` - `Kernel` = `<home>/kernel`.
+	
+	* `Modding Worker` - `Script` = `<home>/script/main.js`.
+	
+	* `Modding Worker` - `Argument` = `<home>`.
+	
+	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json`.
+	
+	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/MethodConfiguration.json`.
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
@@ -264,16 +261,16 @@ You can clone this project and compile it, or just download the bundle package o
 12. At this point, all installation steps have been completed and the tool can be launched from the terminal command line or by opening the application directly.
 	
 	> @ `Windows` \
-	> You can launch the tool directly by double-clicking on the launch script `launch*.cmd` in the home directory, or by dragging and dropping a file object onto it and releasing it.\
+	> You can launch the tool directly by double-clicking on the launch script `launch.cmd` in the home directory, or by dragging and dropping a file object onto it and releasing it.\
 	> If the `Forwarder` module is installed, you can see `⌈ TwinStar ToolKit - Forwarder ⌋` in the right-click menu item of any file or directory, and use it to quickly forward file objects to the tool.\
-	> If the `Helper` module is installed, you can use the `Resource Forwarder` in it for faster forwarding, or you can use the `Command Sender` to visually select the desired method and edit the arguments.
+	> If the `Assistant Plus` module is installed, you can use the `Resource Forwarder` in it for faster forwarding, or you can use the `Command Sender` to visually select the desired method and edit the arguments.
 	
 	> @ `Macintosh` \
 	> If the `Forwarder` module is installed, you can see `⌈ TwinStar ToolKit - Forwarder ⌋` in the right-click menu item of any file or directory, and use it to quickly forward file objects to the tool.
 	
 	> @ `Android` \
 	> If the `Forwarder` module is installed, you can see `⌈ TwinStar ToolKit - Forwarder ⌋` can in the file sharing list of the system or third-party file manager, and through which file objects can be quickly forwarded to the tool.\
-	> Due to the limitations of the Android system, the forwarder cannot directly obtain the absolute path of the forwarded file, but passes the Content URI of the forwarded file to the Shell GUI as a command argument for its startup, and the Shell GUI will try to parse the Content URI. See [Android Content URI processing strategy](./question.md#Android-Content-URI-processing-strategy) for details.
+	> Due to the limitations of the Android system, the forwarder cannot directly obtain the absolute path of the forwarded file, but passes the Content URI of the forwarded file to the `Assistant` as a command argument for its startup, and the `Assistant` will try to parse the Content URI. See [Android Content URI processing strategy](./question.md#Android-Content-URI-processing-strategy) for details.
 
 ## External programs
 

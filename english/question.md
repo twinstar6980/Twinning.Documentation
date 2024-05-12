@@ -10,7 +10,7 @@
 
 - [Android Content URI processing strategy](#Android-Content-URI-processing-strategy)
 
-- [Shell CLI requirements for the terminal](#Shell-CLI-requirements-for-the-terminal)
+- [Shell requirements for the terminal](#Shell-requirements-for-the-terminal)
 
 - [JSON file format](#JSON-file-format)
 
@@ -36,9 +36,9 @@ Users should always use the latest version and only use older versions when proj
 
 Tools need to have access to the storage space involved.
 
-If the shell module used is `Shell CLI`, access permissions depend on the permissions of the user who started the program.
+If the shell module used is `Shell`, access permissions depend on the permissions of the user who started the program.
 
-If the shell module used is `Shell GUI`, access rights vary depending on the running system:
+If the shell module used is `Assistant`, access rights vary depending on the running system:
 
 * `Windows` `Linux` `Macintosh`
 	
@@ -84,9 +84,9 @@ In order to improve the execution efficiency of the tool, consider moving the ma
 
 Due to Android system limitations, files forwarded or selected by the user are passed to the application as a Content URI instead of an absolute path.
 
-> `Forwarder For Android` will not pass absolute path to `Shell GUI`, but pass Content URI instead.
+> `Forwarder - Android` will not pass absolute path to `Assistant`, but pass Content URI instead.
 
-After `Shell GUI` receives the Content URI, it will perform the following transformations in turn, and then pass it to the script layer:
+After `Assistant` receives the Content URI, it will perform the following transformations in turn, and then pass it to the script layer:
 
 1. Try to parse the URI to get its corresponding absolute path; the URI is converted to the absolute path of the original file.
 
@@ -110,9 +110,9 @@ The following table lists the supported content URI formats, and the application
 
 > It is recommended to use a third-party file manager app mentioned in the table above to avoid unnecessary file copy overhead.
 
-## Shell CLI requirements for the terminal
+## Shell requirements for the terminal
 
-`Shell CLI` provides a terminal-based command line interface, but it requires the host terminal to support the following features:
+`Shell` provides a terminal-based command line interface, but it requires the host terminal to support the following features:
 
 1. UTF-8 input/output: required, if not supported, the program will not be able to do input/output properly (Or poorly displayed).
 
@@ -120,7 +120,7 @@ The following table lists the supported content URI formats, and the application
 	
 	> By default, the tool will use control sequences to optimize the output effect, but if running in a terminal that does not support control sequences, the control sequences will be output directly as strings, which will affect the user's reading.
 	
-	> Users can disable the use of control sequences by modifying the `disable_cli_virtual_terminal_sequence ` entry to `true` in the `<home>/script/Entry/Entry.json` configuration.
+	> Users can disable the use of control sequences by modifying the `disable_basic_virtual_terminal_sequence ` entry to `true` in the `<home>/script/Entry/Entry.json` configuration.
 
 3. Full fonts: optional, if not supported, some characters (e.g. Chinese characters, emoji) will not be displayed properly. However, you can fix this by changing the language to `English`. It was indicated in `installation.md`.
 
@@ -190,19 +190,19 @@ The JSON read and write rules for the tool are self-implementing and does not fo
 	
 	The tool's escape character support does not follow the JSON standard, and the escape rules are as follows:
 	
-	* `\\\ \' \"` escapes to the original character.
+	* `\\ \' \"` escapes to the original character.
 	
 	* `\a \b \f \n \r \t \v` is escaped to the corresponding control character.
 	
 	* `\0` Escape to the null character.
 	
-	* `\oNNN` Unicode character represented by a 3-bit octal number, allowing values above 0xFF.
+	* `\oNNN` Unicode character represented by 3 octal number.
 	
-	* `\xNNN` 2-bit Unicode character in hexadecimal numbers.
+	* `\xNNN` Unicode character represented by 2 hexadecimal numbers.
 	
-	* `\uNNNN` 4-bit hexadecimal Unicode character.
+	* `\uNNNN` Unicode character represented by 4 hexadecimal numbers.
 	
-	* `\UNNNNNNNN` 8-bit hexadecimal Unicode character.
+	* `\UNNNNNNNN` Unicode character represented by 8 hexadecimal numbers.
 
 4. Number formatting
 	
