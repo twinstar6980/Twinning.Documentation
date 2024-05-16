@@ -84,7 +84,7 @@
 
 5. [`client.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/bridge/client.hpp) ：定义 `Shell` 客户端的抽象类。
 	
-	> [`main_console_bridge_client.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/main_console_bridge_client.hpp) ：实现了对基本的命令行式 `Shell` 客户端的封装。
+	> [`main_console_bridge_client.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/main_console_bridge_client.hpp) ：实现了对基本的命令行式 `Shell` 客户端的封装。
 
 6. [`launcher.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/launcher.hpp) ：创建一个辅助类，配合 `Library` 与 `Client` 实例调用 `Kernel` 接口。
 

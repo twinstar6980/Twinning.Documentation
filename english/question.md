@@ -120,7 +120,7 @@ The following table lists the supported content URI formats, and the application
 	
 	> By default, the tool will use control sequences to optimize the output effect, but if running in a terminal that does not support control sequences, the control sequences will be output directly as strings, which will affect the user's reading.
 	
-	> Users can disable the use of control sequences by modifying the `disable_basic_virtual_terminal_sequence ` entry to `true` in the `<home>/script/Entry/Entry.json` configuration.
+	> Users can disable the use of control sequences by modifying the `disable_basic_virtual_terminal_sequence` entry to `true` in the `<home>/script/Entry/Entry.json` configuration.
 
 3. Full fonts: optional, if not supported, some characters (e.g. Chinese characters, emoji) will not be displayed properly. However, you can fix this by changing the language to `English`. It was indicated in `installation.md`.
 
@@ -161,7 +161,7 @@ The JSON read and write rules for the tool are self-implementing and does not fo
 
 1. Comments
 	
-	The JSON standard does not allow comments, but the tools do allow comments, including line comments `// ... ` and block comments `/* ... */`.
+	The JSON standard does not allow comments, but the tools do allow comments, including line comments `// ...` and block comments `/* ... */`.
 
 2. Trailing commas
 	

@@ -10,7 +10,7 @@
 
 ## Platform supportability
 
-* Operating systems: `Windows 7+`, `Linux ~ `, `Macintosh 13~`, `Android 9+`, `Iphone 16~`.
+* Operating systems: `Windows 7+`, `Linux ~`, `Macintosh 13~`, `Android 9+`, `Iphone 16~`.
 
 * Processor architectures: `x86 32|64`, `arm 32|64`.
 
@@ -196,7 +196,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> Note: The script is executed in the application's sandbox environment.
 	
-	The following example forward arguments to `Assistant` :
+	The following example forward arguments to `Assistant` - `Modding Worker` :
 	
 	```sh
 	#!/bin/bash
@@ -278,7 +278,7 @@ Some methods of the tool require calling external programs, which need to be dow
 
 * [adb](https://developer.android.com/studio/releases/platform-tools)
 	
-	For **Remote Android Helper**.
+	Used for **Remote Android Helper**.
 	
 	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `adb` executable through the `PATH` environment variable.
 	

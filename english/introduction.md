@@ -106,7 +106,7 @@ The following functions are currently available:
 	
 	* Convert
 
-* `Kairosoft Record` (.*)
+* `Kairosoft Game` (.*)
 	
 	* Encrypt record
 	

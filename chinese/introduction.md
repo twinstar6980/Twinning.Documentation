@@ -106,7 +106,7 @@
 	
 	* 转换
 
-* `Kairosoft Record` (.*)
+* `Kairosoft Game` (.*)
 	
 	* 加密存档
 	

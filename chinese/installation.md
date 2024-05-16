@@ -195,7 +195,7 @@
 	
 	> 注意：脚本的执行处于应用的沙盒环境中。
 	
-	以下示例将参数转发至 `Assistant` ：
+	以下示例将参数转发至 `Assistant` - `Modding Worker` ：
 	
 	```sh
 	#!/bin/bash
