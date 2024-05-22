@@ -95,7 +95,7 @@ You can clone this project and compile it, or just download the bundle package o
 	> If you don't need the `Shell` module, you can skip this step. \
 	> This step only required for `Iphone` users, and need to operate on `Macintosh` device.
 	
-	Run these command in the system terminal: `> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell` .
+	Run these command in the system terminal: `> codesign -s <certificate-name> kernel shell` .
 
 4. Grant executable permissions to the `shell` file in the home directory.
 	

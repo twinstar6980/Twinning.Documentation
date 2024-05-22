@@ -94,7 +94,7 @@
 	
 	> 该步骤只需 `Iphone` 用户操作，且需要在 `Macintosh` 设备上操作。
 	
-	在系统终端中运行命令：`> codesign -s <certificate-name> kernel` & `> codesign -s <certificate-name> shell` 。
+	在系统终端中运行命令：`> codesign -s <certificate-name> kernel shell` 。
 
 4. 为主目录下的 `shell` 文件赋予可执行权限。
 	

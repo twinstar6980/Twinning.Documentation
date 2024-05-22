@@ -8,6 +8,8 @@ TwinStar ToolKit Documentation.
 
 ## 文档列表 | document list
 
+* [更新日志](./CHANGELOG.md)
+
 * [工具介绍](./chinese/introduction.md) | [Introduction](./english/introduction.md)
 
 * [安装步骤](./chinese/installation.md) | [Installation](./english/installation.md)
