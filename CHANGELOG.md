@@ -4,6 +4,8 @@
 
 - [24-05-23](#24-05-23)
 
+- [24-05-25](#24-05-25)
+
 ## 24-05-22
 
 * `Shell` 38
@@ -73,3 +75,54 @@
 * `Forwarder.Windows`
 
 	* 迁移项目至 Visual Studio 2022 17.10 。
+
+## 24-05-25
+
+* `Shell` 39
+
+	* 在目录选择对话框中将显示 WSL 等非本地磁盘文件。
+
+* `Script` 107
+
+	* 修复无法正常解析 Size 字符串表达式的 BUG 。
+
+* `Assistant` 38
+
+	* 优化代码。
+
+	* 修复 SettingItem 后缀组件布局溢出的 BUG 。
+
+	* 应用设置文件增加含制表符缩进，以便于手动编辑。
+
+	* 选择在 Windows 平台中目录选择对话框选中非文件系统对象时返回空字符串而非空值的 BUG 。
+
+	* 在 WSL 环境下也可以调起文件选择对话框。
+
+	* `Modding Worker` 当历史输入列表为空时，点击历史记录按钮依然将显示空菜单。
+
+	* `Resource Forwarder` 新增模块。
+
+* `AssistantPlus.Windows` 32
+
+	* 简化部分控件的 `"Pick In Window"` 文本为 `"Pick"` 。
+
+	* `Modding Worker` 移除 AlternativeLaunchScript 选项，不再支持通过外部脚本代理转发行为。
+
+	* `Modding Worker` 移除全页范围的文件拖放操作，该功能原本用于将接收的文件路径添加至附加参数列表中。
+
+	* `Modding Worker` 附加参数编辑控件 Flyout Placement 更改为 Full 。
+
+	* `Resource Forwarder` 性能优化。
+
+	* `Resource Forwarder` 优化输入项控件 UI 。
+
+	* `Resource Forwarder` 移除无输入项时的页面提示 UI 。
+
+	* `Resource Forwarder` 移除在执行转发后自动关闭标签页的行为。
+
+	* `Resource Descriptor` 支持全页范围的文件拖放操作，用以接受 `DescriptionFile` 。
+
+	* `Animation Viewer` 修复页面左右两侧无法接收文件拖放操作的 BUG 。
+
+	* `Package Builder` 支持全页范围的文件拖放操作，用以接受 `PackageDirectory` 。
+

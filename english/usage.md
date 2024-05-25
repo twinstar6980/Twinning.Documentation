@@ -102,21 +102,21 @@ The following functional modules are provided:
 	
 	> `Kernel` 、`Script` 、`Argument` parameters need to be defined in the module settings.
 	
-	> The `launch.assistant_plus.modding_worker.cmd` script in the home directory can quickly open the this module. Multiple files can be dragged onto the script and released to add additional arguments.
-
-* `Resource Forwarder` *`<Plus-Only>`*
-	
-	This module provides a better file forwarding UI, which can filter the available options by inputting the file type and extension, and passes them to the `Modding Worker` for processing, making it more efficient and easier to use.
-	
-	> Options are defined by the `Option Configuration` file in the module setting.
-	
-	> The `launch.assistant_plus.resource_forwarder.cmd` script in the home directory can quickly open the this module. Multiple files can be dragged onto the script and released to add additional arguments.
+	> The `launch.assistant.modding_worker.cmd` script in the home directory can quickly start this module. Multiple files can be dragged onto the script and released to add additional arguments.
 
 * `Command Sender` *`<Plus-Only>`*
 	
 	This module can visually select the methods you want to use and fill in the arguments.
 	
 	> Methods are defined by the `Method Configuration` file in the module settings.
+
+* `Resource Forwarder`
+	
+	This module provides a better file forwarding UI, which can filter the available options by inputting the file type and extension, and passes them to the `Modding Worker` for processing, making it more efficient and easier to use.
+	
+	> Options are defined by the `Option Configuration` file in the module setting.
+	
+	> The `launch.assistant.resource_forwarder.cmd` script in the home directory can quickly start this module. Multiple files can be dragged onto the script and released to add additional arguments.
 
 * `Animation Viewer` *`<Plus-Only>`*
 	

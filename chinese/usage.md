@@ -100,21 +100,21 @@
 	
 	> `Kernel` 、`Script` 、`Argument` 参数需要在模块设置中定义。
 	
-	> 主目录内的 `launch.assistant_plus.modding_worker.cmd` 脚本可以快速开启该模块，可以将多个文件拖拽至脚本上并释放，以追加附加参数。
-
-* `Resource Forwarder` *`<Plus-Only>`*
-	
-	该模块提供了更好的文件转发 UI ，能够通过输入文件的类型、扩展名来筛选可用的选项，并传递给 `Modding Worker` 处理，更加高效易用。
-	
-	> 选项由模块设置中的 `Option Configuration` 文件定义。
-	
-	> 主目录内的 `launch.assistant_plus.resource_forwarder.cmd` 脚本可以快速开启该模块，可以将多个文件拖拽至脚本上并释放，以追加附加参数。
+	> 主目录内的 `launch.assistant.modding_worker.cmd` 脚本可以快速启动该模块，可以将多个文件拖拽至脚本上并释放，以追加附加参数。
 
 * `Command Sender` *`<Plus-Only>`*
 	
 	该模块能够可视化地选择需要使用的功能并填入参数。
 	
 	> 功能由模块设置中的 `Method Configuration` 文件定义。
+
+* `Resource Forwarder`
+	
+	该模块提供了更好的文件转发 UI ，能够通过输入文件的类型、扩展名来筛选可用的选项，并传递给 `Modding Worker` 处理，更加高效易用。
+	
+	> 选项由模块设置中的 `Option Configuration` 文件定义。
+	
+	> 主目录内的 `launch.assistant.resource_forwarder.cmd` 脚本可以快速启动该模块，可以将多个文件拖拽至脚本上并释放，以追加附加参数。
 
 * `Animation Viewer` *`<Plus-Only>`*
 	

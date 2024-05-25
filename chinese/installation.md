@@ -143,11 +143,31 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Assistant_34.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Assistant_38.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
+		"-window_size" ^
+			"496" ^
+			"968" ^
 		"-initial_tab" ^
 			"Modding Worker" ^
 			"modding_worker" ^
+			"-immediate_launch" ^
+				"true" ^
 			"-additional_argument" ^
+				%*
+	```
+	
+	以下示例将参数转发至 `Assistant` - `Resource Forwarder`：
+	
+	```cmd
+	@echo off
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Assistant_38.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
+		"-window_size" ^
+			"496" ^
+			"968" ^
+		"-initial_tab" ^
+			"Resource Forwarder" ^
+			"resource_forwarder" ^
+			"-input" ^
 				%*
 	```
 	
@@ -155,7 +175,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_29.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_32.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
 		"-WindowSize" ^
 			"496" ^
 			"968" ^
@@ -172,15 +192,13 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_29.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_32.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
 		"-WindowSize" ^
 			"496" ^
 			"968" ^
 		"-InitialTab" ^
 			"Resource Forwarder" ^
 			"ResourceForwarder" ^
-			"-AutomaticClose" ^
-				"true" ^
 			"-Input" ^
 				%*
 	```
@@ -200,10 +218,30 @@
 	```sh
 	#!/bin/bash
 	"/Applications/TwinStar ToolKit - Assistant.app/Contents/MacOS/TwinStar ToolKit - Assistant" \
+		"-window_size" \
+			"496" \
+			"968" \
 		"-initial_tab" \
 			"Modding Worker" \
 			"modding_worker" \
+			"-immediate_launch" \
+				"true" \
 			"-additional_argument" \
+				"$@"
+	```
+	
+	以下示例将参数转发至 `Assistant` - `Resource Forwarder` ：
+	
+	```sh
+	#!/bin/bash
+	"/Applications/TwinStar ToolKit - Assistant.app/Contents/MacOS/TwinStar ToolKit - Assistant" \
+		"-window_size" \
+			"496" \
+			"968" \
+		"-initial_tab" \
+			"Resource Forwarder" \
+			"resource_forwarder" \
+			"-input" \
 				"$@"
 	```
 
@@ -227,6 +265,8 @@
 	
 	* `Modding Worker` - `Argument` = `<home>` 。
 	
+	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
+	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
 10. 配置 `Assistant Plus - Windows` 设置项。
@@ -241,9 +281,9 @@
 	
 	* `Modding Worker` - `Argument` = `<home>` 。
 	
-	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json` 。
-	
 	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/MethodConfiguration.json` 。
+	
+	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json` 。
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 

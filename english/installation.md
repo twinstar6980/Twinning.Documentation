@@ -144,11 +144,31 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Assistant_34.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Assistant_38.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
+		"-window_size" ^
+			"496" ^
+			"968" ^
 		"-initial_tab" ^
 			"Modding Worker" ^
 			"modding_worker" ^
+			"-immediate_launch" ^
+				"true" ^
 			"-additional_argument" ^
+				%*
+	```
+	
+	The following example forward arguments to `Assistant` - `Resource Forwarder` :
+	
+	```cmd
+	@echo off
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Assistant_38.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
+		"-window_size" ^
+			"496" ^
+			"968" ^
+		"-initial_tab" ^
+			"Resource Forwarder" ^
+			"resource_forwarder" ^
+			"-input" ^
 				%*
 	```
 	
@@ -156,7 +176,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_29.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_32.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
 		"-WindowSize" ^
 			"496" ^
 			"968" ^
@@ -173,15 +193,13 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_29.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_32.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
 		"-WindowSize" ^
 			"496" ^
 			"968" ^
 		"-InitialTab" ^
 			"Resource Forwarder" ^
 			"ResourceForwarder" ^
-			"-AutomaticClose" ^
-				"true" ^
 			"-Input" ^
 				%*
 	```
@@ -201,10 +219,30 @@ You can clone this project and compile it, or just download the bundle package o
 	```sh
 	#!/bin/bash
 	"/Applications/TwinStar ToolKit - Assistant.app/Contents/MacOS/TwinStar ToolKit - Assistant" \
+		"-window_size" \
+			"496" \
+			"968" \
 		"-initial_tab" \
 			"Modding Worker" \
 			"modding_worker" \
+			"-immediate_launch" \
+				"true" \
 			"-additional_argument" \
+				"$@"
+	```
+	
+	The following example forward arguments to `Assistant` - `Resource Forwarder` :
+	
+	```sh
+	#!/bin/bash
+	"/Applications/TwinStar ToolKit - Assistant.app/Contents/MacOS/TwinStar ToolKit - Assistant" \
+		"-window_size" \
+			"496" \
+			"968" \
+		"-initial_tab" \
+			"Resource Forwarder" \
+			"resource_forwarder" \
+			"-input" \
 				"$@"
 	```
 
@@ -228,6 +266,8 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Modding Worker` - `Argument` = `<home>`.
 	
+	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
+	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
 10. Configure the `Assistant Plus - Windows` settings.
@@ -242,9 +282,9 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Modding Worker` - `Argument` = `<home>`.
 	
-	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json`.
-	
 	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/MethodConfiguration.json`.
+	
+	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json`.
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
