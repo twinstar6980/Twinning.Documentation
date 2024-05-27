@@ -6,6 +6,8 @@
 
 - [24-05-25](#24-05-25)
 
+- [24-05-27](#24-05-27)
+
 ## 24-05-22
 
 * `Shell` 38
@@ -125,4 +127,26 @@
 	* `Animation Viewer` 修复页面左右两侧无法接收文件拖放操作的 BUG 。
 
 	* `Package Builder` 支持全页范围的文件拖放操作，用以接受 `PackageDirectory` 。
+
+## 24-05-27
+
+* `Assistant` 39
+
+	* 优化代码。
+
+* `Forwarder.Macintosh` 7
+
+	* 优化代码。
+
+* `Forwarder.Android` 9
+
+	* 增加主活动页。
+
+	* 应用现在将资源文件转发至 `Assistant - Resource Forwarder` 模块。
+
+* `Forwarder.Iphone` 4
+
+	* 增加主活动页。
+
+	* 应用现在将资源文件转发至 `Assistant - Resource Forwarder` 模块。
 

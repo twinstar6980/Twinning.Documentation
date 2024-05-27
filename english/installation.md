@@ -38,6 +38,12 @@ The tool consists of several modules, different modules provide different functi
 	
 	Required module, distributed as a script package.
 
+* `Assistant`
+	
+	Assistant, implements additional advanced helper functions.
+	
+	Optional module, distributed as an application installation package.
+
 * `Forwarder`
 	
 	Forwarder, injects shortcut options into the system-level file sharing interface.
@@ -45,12 +51,6 @@ The tool consists of several modules, different modules provide different functi
 	Optional module, distributed as an application installation package.
 	
 	> This module is only avaliable for `Windows` and `Macintosh` and `Android` and `Iphone` systems.
-
-* `Assistant`
-	
-	Assistant, implements additional advanced helper functions.
-	
-	Optional module, distributed as an application installation package.
 
 * `Assistant Plus`
 	
@@ -111,7 +111,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	Copy the `libc++_shared.so` file in the home directory to the system library directory `/system/lib64` .
 
-6. Install the application installation packages of the `Forward`, `Assistant`, and `Assistant Plus` modules in the home directory.
+6. Install the application installation packages of the `Assistant`, `Assistant Plus`, and `Forward`, modules in the home directory.
 	
 	Application installation package files have extensions such as `msix`, `dmg`, `apk`, `ipa`, etc.
 	
@@ -122,7 +122,49 @@ You can clone this project and compile it, or just download the bundle package o
 	> @ `Iphone` \
 	> Need to self-sign and install `ipa` through AltStore or other tools.
 
-7. Configure the `Forwarder - Windows` setting.
+7. Configure the `Assistant` settings.
+	
+	> If you don't need the `Assistant` module, you can skip this step.
+	
+	Open the newly installed `Assistant` application, click the gear icon to the right of each module list item on the homepage to open the module settings dialog box and edit the following settings:
+	
+	* `Storage Permission` Click and grant storage read and write permissions to the app.
+		
+		> This is only available on `Android`.
+	
+	* `Fallback Directory` = `<home>/workspace` .
+		
+		> This is only available on `Android`.
+	
+	* `Modding Worker` - `Kernel` = `<home>/kernel`.
+	
+	* `Modding Worker` - `Script` = `<home>/script/main.js`.
+	
+	* `Modding Worker` - `Argument` = `<home>`.
+	
+	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
+	
+	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
+
+8. Configure the `Assistant Plus - Windows` settings.
+	
+	> If you don't need the `Assistant Plus - Windows` module, you can skip this step.
+	
+	Open the newly installed `Assistant` application, click the gear icon to the right of each module list item on the homepage to open the module settings dialog box and edit the following settings:
+	
+	* `Modding Worker` - `Kernel` = `<home>/kernel`.
+	
+	* `Modding Worker` - `Script` = `<home>/script/main.js`.
+	
+	* `Modding Worker` - `Argument` = `<home>`.
+	
+	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/MethodConfiguration.json`.
+	
+	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json`.
+	
+	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
+
+9. Configure the `Forwarder - Windows` setting.
 	
 	> If you do not need the `Forwarder - Windows` module, you can skip this step.
 	
@@ -204,7 +246,7 @@ You can clone this project and compile it, or just download the bundle package o
 				%*
 	```
 
-8. Configure the `Forwarder - Macintosh` setting.
+10. Configure the `Forwarder - Macintosh` setting.
 	
 	> If you do not need the `Forwarder - Macintosh` module, you can skip this step.
 	
@@ -245,48 +287,6 @@ You can clone this project and compile it, or just download the bundle package o
 			"-input" \
 				"$@"
 	```
-
-9. Configure the `Assistant` settings.
-	
-	> If you don't need the `Assistant` module, you can skip this step.
-	
-	Open the newly installed `Assistant` application, click the gear icon to the right of each module list item on the homepage to open the module settings dialog box and edit the following settings:
-	
-	* `Storage Permission` Click and grant storage read and write permissions to the app.
-		
-		> This is only available on `Android`.
-	
-	* `Fallback Directory` = `<home>/workspace` .
-		
-		> This is only available on `Android`.
-	
-	* `Modding Worker` - `Kernel` = `<home>/kernel`.
-	
-	* `Modding Worker` - `Script` = `<home>/script/main.js`.
-	
-	* `Modding Worker` - `Argument` = `<home>`.
-	
-	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
-	
-	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
-
-10. Configure the `Assistant Plus - Windows` settings.
-	
-	> If you don't need the `Assistant Plus - Windows` module, you can skip this step.
-	
-	Open the newly installed `Assistant` application, click the gear icon to the right of each module list item on the homepage to open the module settings dialog box and edit the following settings:
-	
-	* `Modding Worker` - `Kernel` = `<home>/kernel`.
-	
-	* `Modding Worker` - `Script` = `<home>/script/main.js`.
-	
-	* `Modding Worker` - `Argument` = `<home>`.
-	
-	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/MethodConfiguration.json`.
-	
-	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json`.
-	
-	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
 11. Set the interactive language.
 	

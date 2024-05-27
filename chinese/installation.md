@@ -40,6 +40,12 @@
 	
 	必需模块，发为脚本包。
 
+* `Assistant`
+	
+	助理者，实现了额外的高级辅助功能。
+	
+	可选模块，分发为应用安装包。
+
 * `Forwarder`
 	
 	转发器，将快捷选项注入系统级文件分享接口。
@@ -47,12 +53,6 @@
 	可选模块，分发为应用安装包。
 	
 	> 该模块仅适用于 `Windows` 、`Macintosh` 、`Android` 、`Iphone` 系统。
-
-* `Assistant`
-	
-	助理者，实现了额外的高级辅助功能。
-	
-	可选模块，分发为应用安装包。
 
 * `Assistant Plus`
 	
@@ -110,7 +110,7 @@
 	
 	将主目录内的 `libc++_shared.so` 文件复制至系统库目录 `/system/lib64` 中。
 
-6. 安装主目录内 `Forward` 、`Assistant` 、`Assistant Plus` 模块的应用安装包。
+6. 安装主目录内 `Assistant` 、`Assistant Plus` 、`Forward` 模块的应用安装包。
 	
 	应用安装包文件以 `msix` 、`dmg` 、`apk` 、`ipa` 等作为扩展名。
 	
@@ -121,7 +121,49 @@
 	> @ `Iphone` \
 	> 需要通过 AltStore 或其他工具对 `ipa` 进行自签名与安装。
 
-7. 配置 `Forwarder - Windows` 设置项。
+7. 配置 `Assistant` 设置项。
+	
+	> 如果不需要 `Assistant` 模块，可以跳过该步骤。
+	
+	打开新安装的 `Assistant` 应用，点击主页中各个模块列表项右侧的齿轮图标可以打开模块设置对话框，编辑以下设置项：
+	
+	* `Storage Permission` 点击并为应用授予存储空间读写权限 。
+		
+		> 该项仅适用于 `Android` 。
+	
+	* `Fallback Directory` = `<home>/workspace` 。
+		
+		> 该项仅适用于 `Android` 。
+	
+	* `Modding Worker` - `Kernel` = `<home>/kernel` 。
+	
+	* `Modding Worker` - `Script` = `<home>/script/main.js` 。
+	
+	* `Modding Worker` - `Argument` = `<home>` 。
+	
+	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
+	
+	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
+
+8. 配置 `Assistant Plus - Windows` 设置项。
+	
+	> 如果不需要 `Assistant Plus - Windows` 模块，可以跳过该步骤。
+	
+	打开新安装的 `Assistant Plus` 应用，点击主页中各个模块列表项右侧的齿轮图标可以打开模块设置对话框，编辑以下设置项：
+	
+	* `Modding Worker` - `Kernel` = `<home>/kernel` 。
+	
+	* `Modding Worker` - `Script` = `<home>/script/main.js` 。
+	
+	* `Modding Worker` - `Argument` = `<home>` 。
+	
+	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/MethodConfiguration.json` 。
+	
+	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json` 。
+	
+	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
+
+9. 配置 `Forwarder - Windows` 设置项。
 	
 	> 如果不需要 `Forwarder - Windows` 模块，可以跳过该步骤。
 	
@@ -203,7 +245,7 @@
 				%*
 	```
 
-8. 配置 `Forwarder - Macintosh` 设置项。
+10. 配置 `Forwarder - Macintosh` 设置项。
 	
 	> 如果不需要 `Forwarder - Macintosh` 模块，可以跳过该步骤。
 	
@@ -244,48 +286,6 @@
 			"-input" \
 				"$@"
 	```
-
-9. 配置 `Assistant` 设置项。
-	
-	> 如果不需要 `Assistant` 模块，可以跳过该步骤。
-	
-	打开新安装的 `Assistant` 应用，点击主页中各个模块列表项右侧的齿轮图标可以打开模块设置对话框，编辑以下设置项：
-	
-	* `Storage Permission` 点击并为应用授予存储空间读写权限 。
-		
-		> 该项仅适用于 `Android` 。
-	
-	* `Fallback Directory` = `<home>/workspace` 。
-		
-		> 该项仅适用于 `Android` 。
-	
-	* `Modding Worker` - `Kernel` = `<home>/kernel` 。
-	
-	* `Modding Worker` - `Script` = `<home>/script/main.js` 。
-	
-	* `Modding Worker` - `Argument` = `<home>` 。
-	
-	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
-	
-	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
-
-10. 配置 `Assistant Plus - Windows` 设置项。
-	
-	> 如果不需要 `Assistant Plus - Windows` 模块，可以跳过该步骤。
-	
-	打开新安装的 `Assistant Plus` 应用，点击主页中各个模块列表项右侧的齿轮图标可以打开模块设置对话框，编辑以下设置项：
-	
-	* `Modding Worker` - `Kernel` = `<home>/kernel` 。
-	
-	* `Modding Worker` - `Script` = `<home>/script/main.js` 。
-	
-	* `Modding Worker` - `Argument` = `<home>` 。
-	
-	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/MethodConfiguration.json` 。
-	
-	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json` 。
-	
-	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
 11. 设置交互语言。
 	
