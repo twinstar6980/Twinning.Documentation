@@ -1,5 +1,7 @@
 # Twinning - Documentation
 
+![x](./image/logo.png) ***A tool to help us create PvZ-2 MOD .***
+
 > The English version is translated by [Haruma](https://github.com/Haruma-VN) .
 
 ## 文档列表 | document list
@@ -22,12 +24,8 @@
 
 ![x](./image/preview/shell.1.png)
 
-![x](./image/preview/assistant.1.png)
+![x](./image/preview/assistant.1.png) ![x](./image/preview/assistant.2.png)
 
-![x](./image/preview/assistant.2.png)
-
-![x](./image/preview/assistant_plus.1.png)
-
-![x](./image/preview/assistant_plus.2.png)
+![x](./image/preview/assistant_plus.1.png) ![x](./image/preview/assistant_plus.2.png)
 
 ![x](./image/preview/forwarder.1.png)
