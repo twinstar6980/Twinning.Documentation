@@ -68,7 +68,7 @@ You can clone this project and compile it, or just download the bundle package o
 
 1. Download and unzip the bundle package.
 	
-	View the [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) page, the bundle distribution is named `<version>.<system>.<architecture>.bundle.zip`, where `system` represents the adapted operating system and `architecture` represents the adapted CPU architecture.
+	View the [Release](https://github.com/twinkles-twinstar/Twinning.Documentation/releases/tag/Latest) page, the bundle distribution is named `<version>.<system>.<architecture>.bundle.zip`, where `system` represents the adapted operating system and `architecture` represents the adapted CPU architecture.
 	
 	> Only the latest bundle is saved in the Release page. If you need historical versions, you can found them on my [Personal OneDrive](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9).
 	
@@ -174,7 +174,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	set home=C:\TwinStar.ToolKit
+	set home=C:\Twinning
 	start "" "%home%\shell.exe" ^
 		"%home%\kernel" ^
 		"%home%\script\main.js" ^
@@ -186,7 +186,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Assistant_38.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.Assistant_41.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
 		"-window_size" ^
 			"496" ^
 			"968" ^
@@ -203,7 +203,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Assistant_38.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.Assistant_41.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
 		"-window_size" ^
 			"496" ^
 			"968" ^
@@ -218,7 +218,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_32.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_34.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
 		"-WindowSize" ^
 			"496" ^
 			"968" ^
@@ -235,7 +235,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_32.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_34.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
 		"-WindowSize" ^
 			"496" ^
 			"968" ^
@@ -250,7 +250,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> If you do not need the `Forwarder - Macintosh` module, you can skip this step.
 	
-	Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ and check the ⌈ "Finder" extension ⌋ to ensure that the application can take effect.
+	Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ Twinning Forwarder ⌋ and check the ⌈ "Finder" extension ⌋ to ensure that the application can take effect.
 	
 	Open the newly installed `Forwarder` application, and a directory window will pop up with a file named `forward.sh`. This script is responsible for receiving the file path parameter and launching the tool. Open and edit the file as text.
 	
@@ -260,7 +260,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```sh
 	#!/bin/bash
-	"/Applications/TwinStar ToolKit - Assistant.app/Contents/MacOS/TwinStar ToolKit - Assistant" \
+	"/Applications/Twinning Assistant.app/Contents/MacOS/Twinning Assistant" \
 		"-window_size" \
 			"496" \
 			"968" \
@@ -277,7 +277,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```sh
 	#!/bin/bash
-	"/Applications/TwinStar ToolKit - Assistant.app/Contents/MacOS/TwinStar ToolKit - Assistant" \
+	"/Applications/Twinning Assistant.app/Contents/MacOS/Twinning Assistant" \
 		"-window_size" \
 			"496" \
 			"968" \
@@ -302,15 +302,18 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> @ `Windows` \
 	> You can launch the tool directly by double-clicking on the launch script `launch.cmd` in the home directory, or by dragging and dropping a file object onto it and releasing it.\
-	> If the `Forwarder` module is installed, you can see `⌈ TwinStar ToolKit - Forwarder ⌋` in the right-click menu item of any file or directory, and use it to quickly forward file objects to the tool.\
+	> If the `Forwarder` module is installed, you can see `⌈ Twinning Forwarder ⌋` in the right-click menu item of any file or directory, and use it to quickly forward file objects to the tool.\
 	> If the `Assistant Plus` module is installed, you can use the `Resource Forwarder` in it for faster forwarding, or you can use the `Command Sender` to visually select the desired method and edit the arguments.
 	
 	> @ `Macintosh` \
-	> If the `Forwarder` module is installed, you can see `⌈ TwinStar ToolKit - Forwarder ⌋` in the right-click menu item of any file or directory, and use it to quickly forward file objects to the tool.
+	> If the `Forwarder` module is installed, you can see `⌈ Twinning Forwarder ⌋` in the right-click menu item of any file or directory, and use it to quickly forward file objects to the tool.
 	
 	> @ `Android` \
-	> If the `Forwarder` module is installed, you can see `⌈ TwinStar ToolKit - Forwarder ⌋` can in the file sharing list of the system or third-party file manager, and through which file objects can be quickly forwarded to the tool.\
+	> If the `Forwarder` module is installed, you can see `⌈ Twinning Forwarder ⌋` in the file sharing list of the system or third-party file manager, and through which file objects can be quickly forwarded to the tool.\
 	> Due to the limitations of the Android system, the forwarder cannot directly obtain the absolute path of the forwarded file, but passes the Content URI of the forwarded file to the `Assistant` as a command argument for its startup, and the `Assistant` will try to parse the Content URI. See [Android Content URI processing strategy](./question.md#Android-Content-URI-processing-strategy) for details.
+	
+	> @ `Iphone` \
+	> If the `Forwarder` module is installed, you can see `⌈ Twinning Forwarder ⌋` in the file sharing list of the system or third-party file manager, and through which file objects can be quickly forwarded to the tool.
 
 ## External programs
 

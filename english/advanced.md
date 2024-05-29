@@ -64,29 +64,29 @@ Users can integrate the tool backend (`Kernel`) into their projects through the 
 
 Refer to several shell implementations in this tool:
 
-* [`Shell`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge) with `C++`
+* [`Shell`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge) with `C++`
 
-* [`Assistant`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Assistant/lib/bridge) with `Dart`
+* [`Assistant`](https://github.com/twinkles-twinstar/Twinning/tree/master/Assistant/lib/bridge) with `Dart`
 
-* [`Assistant Plus`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/AssistantPlus.Windows/Bridge) with `C#`
+* [`Assistant Plus`](https://github.com/twinkles-twinstar/Twinning/tree/master/AssistantPlus.Windows/Bridge) with `C#`
 
-The following is an example of how to integrate `Kernel` with the [`Shell`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge) modules:
+The following is an example of how to integrate `Kernel` with the [`Shell`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge) modules:
 
-1. [`data.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/data.hpp): Declare the data type of `Kernel`.
+1. [`data.hpp`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge/data.hpp): Declare the data type of `Kernel`.
 	
-	> The declaration of the interface for `C++` is already provided in the `Kernel` module [`interface.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Kernel/kernel/interface/interface.hpp)
+	> The declaration of the interface for `C++` is already provided in the `Kernel` module [`interface.hpp`](https://github.com/twinkles-twinstar/Twinning/blob/master/Kernel/kernel/interface/interface.hpp)
 
-2. [`proxy.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/proxy.hpp) : Creates a helper class for the `C-style` structure parsing and constructing.
+2. [`proxy.hpp`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge/proxy.hpp) : Creates a helper class for the `C-style` structure parsing and constructing.
 
-3. [`service.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/service.hpp): defines the service type of the `Kernel`.
+3. [`service.hpp`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge/service.hpp): defines the service type of the `Kernel`.
 
-4. [`library.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/library.hpp): defines the abstract class of the `Kernel` library, which encapsulates the library loading and symbolic getting to `Kernel`.
+4. [`library.hpp`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge/library.hpp): defines the abstract class of the `Kernel` library, which encapsulates the library loading and symbolic getting to `Kernel`.
 
-5. [`client.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/bridge/client.hpp): Define a `Shell` client abstract class.
+5. [`client.hpp`](https://github.com/twinkles-twinstar/Twinning/blob/master/Shell/shell/bridge/client.hpp): Define a `Shell` client abstract class.
 	
-	> [`main_console_bridge_client.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Shell/shell/main_console_bridge_client.hpp): implements the CLI-style `Shell` client.
+	> [`main_console_bridge_client.hpp`](https://github.com/twinkles-twinstar/Twinning/blob/master/Shell/shell/main_console_bridge_client.hpp): implements the CLI-style `Shell` client.
 
-6. [`launcher.hpp`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Shell/shell/bridge/launcher.hpp) : Create a helper class to call the `Kernel` interface with `Library` and `Client` instances.
+6. [`launcher.hpp`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge/launcher.hpp) : Create a helper class to call the `Kernel` interface with `Library` and `Client` instances.
 
 ## Custom Scripts
 
@@ -96,7 +96,7 @@ The `Script` layer of the tool uses `JavaScript` as the scripting language. JS e
 
 Users can customize scripts to make the tool execute the results they want.
 
-You can rewrite the logic of the main script yourself, but it is recommended to build on the existing [Script module](https://github.com/twinkles-twinstar/TwinStar.ToolKit/tree/master/Script), which already provides a rich set of functions with a good interaction mechanism.
+You can rewrite the logic of the main script yourself, but it is recommended to build on the existing [Script module](https://github.com/twinkles-twinstar/Twinning/tree/master/Script), which already provides a rich set of functions with a good interaction mechanism.
 
 The following section describes how to customize the script.
 
@@ -122,7 +122,7 @@ The main function must be synchronous, but asynchronous functions can be called 
 
 The `Kernel` of the tool is responsible for executing the scripts provided by the user. The kernel interface defined therein provides various functions for the scripting layer, such as basic functions like file reading and writing, data manipulation, and advanced functions like BNK, PAM, etc...
 
-The kernel interface has strict type restrictions, so at the development level, `TypeScript` should be used as the development language and compiled to `JavaScript` for use in tools. The [`Kernel.d.ts`](https://github.com/twinkles-twinstar/TwinStar.ToolKit/blob/master/Script/Kernel.d.ts) in the `Script` module declares the interfaces defined by `Kernel`.
+The kernel interface has strict type restrictions, so at the development level, `TypeScript` should be used as the development language and compiled to `JavaScript` for use in tools. The [`Kernel.d.ts`](https://github.com/twinkles-twinstar/Twinning/blob/master/Script/Kernel.d.ts) in the `Script` module declares the interfaces defined by `Kernel`.
 
 Kernel interfaces are divided into kernel types and kernel functions. Kernel types encapsulate the `C++` types in `Kernel`, for example, the `Kernel.Boolean` class in the interface encapsulates the `C++ Boolean` class in `Kernel`. The user needs the kernel type in order to interact with the kernel functions.
 

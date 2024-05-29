@@ -84,7 +84,7 @@
 
 在 `Android` 与 `Iphone` 系统中，可以通过应用链接传递启动参数：
 
-* ***`twinstar.toolkit.assistant:/run?`***
+* ***`twinstar.twinning.assistant:/run?`***
 	
 	* `command` : *`string...`*
 		

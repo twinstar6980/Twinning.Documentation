@@ -68,7 +68,7 @@
 
 1. 下载并解压捆绑包。
 	
-	查看 [Release](https://github.com/twinkles-twinstar/TwinStar.ToolKit.Document/releases/tag/Latest) ，捆绑包分发的命名为 `<version>.<system>.<architecture>.bundle.zip` ，其中 `system` 代表适配的操作系统，`architecture` 代表适配的 CPU 架构。
+	查看 [Release](https://github.com/twinkles-twinstar/Twinning.Documentation/releases/tag/Latest) ，捆绑包分发的命名为 `<version>.<system>.<architecture>.bundle.zip` ，其中 `system` 代表适配的操作系统，`architecture` 代表适配的 CPU 架构。
 	
 	> Release 页中只保存了最新的捆绑包，如果需要历史版本，可以查看我的 [个人 OneDrive](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9) 。
 	
@@ -173,7 +173,7 @@
 	
 	```cmd
 	@echo off
-	set home=C:\TwinStar.ToolKit
+	set home=C:\Twinning
 	start "" "%home%\shell.exe" ^
 		"%home%\kernel" ^
 		"%home%\script\main.js" ^
@@ -185,7 +185,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Assistant_38.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.Assistant_41.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
 		"-window_size" ^
 			"496" ^
 			"968" ^
@@ -202,7 +202,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.Assistant_38.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.Assistant_41.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
 		"-window_size" ^
 			"496" ^
 			"968" ^
@@ -217,7 +217,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_32.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_34.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
 		"-WindowSize" ^
 			"496" ^
 			"968" ^
@@ -234,7 +234,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.ToolKit.AssistantPlus_32.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_34.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
 		"-WindowSize" ^
 			"496" ^
 			"968" ^
@@ -249,7 +249,7 @@
 	
 	> 如果不需要 `Forwarder - Macintosh` 模块，可以跳过该步骤。
 	
-	进入 ⌈ 系统设置 ⌋ - ⌈ 隐私与安全性 ⌋ - ⌈ 扩展 ⌋ - ⌈ 添加的扩展 ⌋ - ⌈ TwinStar ToolKit - Forwarder ⌋ ，勾选其中的 ⌈ “访达”扩展 ⌋ ，确保应用能够生效。
+	进入 ⌈ 系统设置 ⌋ - ⌈ 隐私与安全性 ⌋ - ⌈ 扩展 ⌋ - ⌈ 添加的扩展 ⌋ - ⌈ Twinning Forwarder ⌋ ，勾选其中的 ⌈ “访达”扩展 ⌋ ，确保应用能够生效。
 	
 	打开新安装的 `Forwarder` 应用，会弹出一个目录窗口，其中有名为 `forward.sh` 的文件，该脚本负责接收文件路径参数并启动工具，以文本形式打开并编辑该文件。
 	
@@ -259,7 +259,7 @@
 	
 	```sh
 	#!/bin/bash
-	"/Applications/TwinStar ToolKit - Assistant.app/Contents/MacOS/TwinStar ToolKit - Assistant" \
+	"/Applications/Twinning Assistant.app/Contents/MacOS/Twinning Assistant" \
 		"-window_size" \
 			"496" \
 			"968" \
@@ -276,7 +276,7 @@
 	
 	```sh
 	#!/bin/bash
-	"/Applications/TwinStar ToolKit - Assistant.app/Contents/MacOS/TwinStar ToolKit - Assistant" \
+	"/Applications/Twinning Assistant.app/Contents/MacOS/Twinning Assistant" \
 		"-window_size" \
 			"496" \
 			"968" \
@@ -301,18 +301,18 @@
 	
 	> @ `Windows` \
 	> 可以直接双击主目录中的启动脚本 `launch.cmd` 启动工具，或将文件对象拖拽至其上并释放。\
-	> 如果安装了 `Forwarder` 模块，可以在任意文件或目录的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。\
+	> 如果安装了 `Forwarder` 模块，可以在任意文件或目录的右键菜单项中看到 `⌈ Twinning Forwarder ⌋` ，并通过它将文件对象快速转发至工具。\
 	> 如果安装了 `Assistant Plus` 模块，可以通过其中的 `Resource Forwarder` 进行更快捷的转发，也可以通过 `Command Sender` 可视化地选择需要的功能并编辑参数。
 	
 	> @ `Macintosh` \
-	> 如果安装了 `Forwarder` 模块，可以在任意文件或目录的右键菜单项中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
+	> 如果安装了 `Forwarder` 模块，可以在任意文件或目录的右键菜单项中看到 `⌈ Twinning Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
 	
 	> @ `Android` \
-	> 如果安装了 `Forwarder` 模块，可以在系统或第三方的文件管理器的文件分享列表中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。\
+	> 如果安装了 `Forwarder` 模块，可以在系统或第三方的文件管理器的文件分享列表中看到 `⌈ Twinning Forwarder ⌋` ，并通过它将文件对象快速转发至工具。\
 	> 注意：由于 Android 系统的限制，转发器无法直接获取所转发文件的绝对路径，而是将所转发文件的 Content URI 传递至 `Assistant` 作为其启动的命令参数，`Assistant` 会尝试解析 Content URI 。具体参见 [Android Content URI 处理方式](./question.md#Android-Content-URI-处理方式) 。
 	
 	> @ `Iphone` \
-	> 如果安装了 `Forwarder` 模块，可以在系统或第三方的文件管理器的文件分享列表中看到 `⌈ TwinStar ToolKit - Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
+	> 如果安装了 `Forwarder` 模块，可以在系统或第三方的文件管理器的文件分享列表中看到 `⌈ Twinning Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
 
 ## 外部程序
 

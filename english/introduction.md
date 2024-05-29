@@ -1,10 +1,10 @@
 # Introduction
 
-`TwinStar.ToolKit` is a tool mainly used for **PvZ-2** data modification, providing many functions necessary for PvZ-2 MOD creation, such as RTON encoding, RSB building, etc.
+`Twinning` is a tool mainly used for **PvZ-2** data modification, providing many functions necessary for PvZ-2 MOD creation, such as RTON encoding, RSB building, etc.
 
 This tool is a improvement of `PvZTool`, `SPCUtil` and `TaiJi`, with better and more functions; the first three tools are made by me and no longer maintained, so it is recommended to abandon them and use this tool with more functions.
 
-If you occur any bugs, please give report in [ISSUE](https://github.com/twinkles-twinstar/TwinStar.ToolKit/issues). You can also join the [Discord server](https://discord.com/invite/v7qvttSX8K) of this tool to check the version update log or ask help for using the tool.
+If you occur any bugs, please give report in [ISSUE](https://github.com/twinkles-twinstar/Twinning/issues). You can also join the [Discord server](https://discord.com/invite/v7qvttSX8K) of this tool to check the version update log or ask help for using the tool.
 
 The following functions are currently available:
 

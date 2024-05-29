@@ -86,7 +86,7 @@ Command parameters can be passed when starting the application, in the following
 
 In `Android` and `Iphone` systems, command can be passed through the application link:
 
-* ***`twinstar.toolkit.assistant:/run?`***
+* ***`twinstar.twinning.assistant:/run?`***
 	
 	* `command` : *`string...`*
 		

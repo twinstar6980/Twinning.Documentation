@@ -1,8 +1,4 @@
-# TwinStar ToolKit - Document
-
-TwinStar ToolKit 的说明文档。
-
-TwinStar ToolKit Documentation.
+# Twinning - Documentation
 
 > The English version is translated by [Haruma](https://github.com/Haruma-VN) .
 

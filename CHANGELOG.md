@@ -8,6 +8,10 @@
 
 - [24-05-27](#24-05-27)
 
+- [24-05-28](#24-05-28)
+
+- [24-05-29](#24-05-29)
+
 ## 24-05-22
 
 * `Shell` 38
@@ -150,3 +154,50 @@
 
 	* 应用现在将资源文件转发至 `Assistant - Resource Forwarder` 模块。
 
+## 24-05-28
+
+* `Kernel` 65
+
+* `Shell` 40
+
+* `Script` 108
+
+* `Assistant` 40
+
+* `Forwarder.Windows` 39
+
+* `Forwarder.Macintosh` 8
+
+* `Forwarder.Android` 10
+
+* `Forwarder.Iphone` 5
+
+* `AssistantPlus.Windows` 33
+
+## 24-05-29
+
+* `Kernel` 66
+
+	* 修复创建子进程后未关闭其句柄的 BUG 。
+
+	* 重命名部分函数与脚本接口名。
+
+* `Script` 109
+
+* `Assistant` 41
+
+	* About 页面的操作 Chip 改成自适应尺寸，以避免一些情况下出现文本溢出的情况。
+
+* `Forwarder.Windows` 40
+
+	* 优化代码。
+
+	* 修复创建子进程后未关闭其句柄的 BUG 。
+
+* `Forwarder.Macintosh` 9
+
+	* 优化代码。
+
+* `AssistantPlus.Windows` 34
+
+	* 修复创建子进程后未关闭其句柄的 BUG 。
