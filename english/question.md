@@ -28,9 +28,7 @@ For purposes of bug fixing, semantic correctness, etc., updates to the tool may 
 
 When a corrupt change is introduced in an update, users need to use the old version of the tool to encode the project files into binary format (e.g. `*.pam.json` encoded as `*.pam`, `*.rsb.bundle` packaged as `*.rsb`), then update to the new version and decode these binary formats to get the project files for the new version of the tool.
 
-Destructive changes are marked in the version update log, and users can join the [Discord server](https://discord.com/invite/v7qvttSX8K) of this tool to view the version update log.
-
-Users should always use the latest version and only use older versions when project file version migration is required. Distributions in GitHub Release are the latest version only, and all historical distributions can be found in my [Personal OneDrive](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9).
+Destructive changes are marked in the [change log](../CHANGELOG.md). Users should always use the latest version and only use older versions when project file version migration is required. Distributions in GitHub Release are the latest version only, and all historical distributions can be found in my [Personal OneDrive](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9).
 
 ## Storage space access permission
 

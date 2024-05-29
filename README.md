@@ -20,12 +20,14 @@
 
 ## 预览 | preview
 
-![x](./image/preview/s-1.png)
+![x](./image/preview/shell.1.png)
 
-![x](./image/preview/s-2.png)
+![x](./image/preview/assistant.1.png)
 
-![x](./image/preview/s-3.png)
+![x](./image/preview/assistant.2.png)
 
-![x](./image/preview/f-1.png)
+![x](./image/preview/assistant_plus.1.png)
 
-![x](./image/preview/f-2.png)
+![x](./image/preview/assistant_plus.2.png)
+
+![x](./image/preview/forwarder.1.png)
