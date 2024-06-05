@@ -90,18 +90,18 @@
 	
 	将解压得到的目录移动到适合的位置，它作为工具的主目录，绝对路径记录为 `<home>` 。
 
-3. 为主目录下的 `kernel` 与 `shell` 文件签名。
+3. 为主目录下的 `kernel` 与 `shell` 文件进行签名。
 	
-	> 该步骤只需 `Iphone` 用户操作，且需要在 `Macintosh` 设备上操作。
+	> 该步骤只需 `Iphone` 用户操作。
 	
-	在系统终端中运行命令：`> codesign -s <certificate-name> kernel shell` 。
+	在系统终端中运行命令：`> ldid -S ./kernel` & `> ldid -S ./shell` 。
 
 4. 为主目录下的 `shell` 文件赋予可执行权限。
 	
 	> 如果不需要 `Shell` 模块，可以跳过该步骤。\
 	> 该步骤只需 `Linux` 、`Macintosh` 、`Android` 、`Iphone` 用户操作。
 	
-	在系统终端中运行命令：`> chmod +x shell` 。
+	在系统终端中运行命令：`> chmod +x ./shell` 。
 
 5. 为系统安装 C++ 共享库。
 	
@@ -110,7 +110,7 @@
 	
 	将主目录内的 `libc++_shared.so` 文件复制至系统库目录 `/system/lib64` 中。
 
-6. 安装主目录内 `Assistant` 、`Assistant Plus` 、`Forward` 模块的应用安装包。
+6. 安装主目录内 `Assistant` 、`Assistant Plus` 、`Forwarder` 模块的应用安装包。
 	
 	应用安装包文件以 `msix` 、`dmg` 、`apk` 、`ipa` 等作为扩展名。
 	
@@ -125,7 +125,7 @@
 	
 	> 如果不需要 `Assistant` 模块，可以跳过该步骤。
 	
-	打开新安装的 `Assistant` 应用，点击主页中各个模块列表项右侧的齿轮图标可以打开模块设置对话框，编辑以下设置项：
+	打开 `Assistant` 应用，点击页面中各个模块列表项右侧的齿轮图标可以打开模块设置对话框，编辑以下设置项：
 	
 	* `Storage Permission` 点击并为应用授予存储空间读写权限 。
 		
@@ -145,11 +145,11 @@
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
-8. 配置 `Assistant Plus - Windows` 设置项。
+8. 配置 `Assistant Plus` 设置项。
 	
-	> 如果不需要 `Assistant Plus - Windows` 模块，可以跳过该步骤。
+	> 如果不需要 `Assistant Plus` 模块，可以跳过该步骤。
 	
-	打开新安装的 `Assistant Plus` 应用，点击主页中各个模块列表项右侧的齿轮图标可以打开模块设置对话框，编辑以下设置项：
+	打开 `Assistant Plus` 应用，点击页面中各个模块列表项右侧的齿轮图标可以打开模块设置对话框，编辑以下设置项：
 	
 	* `Modding Worker` - `Kernel` = `<home>/kernel` 。
 	
@@ -163,11 +163,17 @@
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
-9. 配置 `Forwarder - Windows` 设置项。
+9. 配置 `Forwarder` 设置项。
 	
-	> 如果不需要 `Forwarder - Windows` 模块，可以跳过该步骤。
+	> 如果不需要 `Forwarder` 模块，可以跳过该步骤。
 	
-	打开新安装的 `Forwarder` 应用，会弹出一个目录窗口，其中有名为 `forward.cmd` 的文件，该脚本负责接收文件路径参数并启动工具，以文本形式打开并编辑该文件。
+	`Forwarder` 通过应用链接调起 `Assistant` 并传递所转发的文件路径，不需要用户进行额外配置。
+	
+	对于 `Macintosh` 系统，需要启动一次 `Forwarder` ，然后，进入 ⌈ 系统设置 ⌋ - ⌈ 隐私与安全性 ⌋ - ⌈ 扩展 ⌋ - ⌈ 添加的扩展 ⌋ - ⌈ Twinning Forwarder ⌋ ，勾选其中的 ⌈ “访达”扩展 ⌋ 。
+	
+	对于 `Windows` 系统，还可以创建自定义的命令脚本，当存在自定义脚本时，`Forwarder` 将执行脚本而不是启动应用链接。
+	
+	如果需要自定义脚本行为，请打开 `Forwarder` 应用，并在控制台窗口中输入数字 `2` ，应用将创建空白的自定义脚本文件，并打开文本编辑器窗口，请在其中编写你想要执行的命令。
 	
 	以下示例将参数转发至 `Shell` ：
 	
@@ -181,113 +187,23 @@
 		%*
 	```
 	
-	以下示例将参数转发至 `Assistant` - `Modding Worker`：
-	
-	```cmd
-	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.Assistant_41.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
-		"-window_size" ^
-			"496" ^
-			"968" ^
-		"-initial_tab" ^
-			"Modding Worker" ^
-			"modding_worker" ^
-			"-immediate_launch" ^
-				"true" ^
-			"-additional_argument" ^
-				%*
-	```
-	
-	以下示例将参数转发至 `Assistant` - `Resource Forwarder`：
-	
-	```cmd
-	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.Assistant_41.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
-		"-window_size" ^
-			"496" ^
-			"968" ^
-		"-initial_tab" ^
-			"Resource Forwarder" ^
-			"resource_forwarder" ^
-			"-input" ^
-				%*
-	```
-	
-	以下示例将参数转发至 `Assistant Plus` - `Modding Worker`：
-	
-	```cmd
-	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_34.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
-		"-WindowSize" ^
-			"496" ^
-			"968" ^
-		"-InitialTab" ^
-			"Modding Worker" ^
-			"ModdingWorker" ^
-			"-ImmediateLaunch" ^
-				"true" ^
-			"-AdditionalArgument" ^
-				%*
-	```
-	
 	以下示例将参数转发至 `Assistant Plus` - `Resource Forwarder`：
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_34.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_35.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+		"Launch" ^
 		"-WindowSize" ^
 			"496" ^
 			"968" ^
-		"-InitialTab" ^
+		"-InsertTab" ^
 			"Resource Forwarder" ^
 			"ResourceForwarder" ^
 			"-Input" ^
 				%*
 	```
 
-10. 配置 `Forwarder - Macintosh` 设置项。
-	
-	> 如果不需要 `Forwarder - Macintosh` 模块，可以跳过该步骤。
-	
-	进入 ⌈ 系统设置 ⌋ - ⌈ 隐私与安全性 ⌋ - ⌈ 扩展 ⌋ - ⌈ 添加的扩展 ⌋ - ⌈ Twinning Forwarder ⌋ ，勾选其中的 ⌈ “访达”扩展 ⌋ ，确保应用能够生效。
-	
-	打开新安装的 `Forwarder` 应用，会弹出一个目录窗口，其中有名为 `forward.sh` 的文件，该脚本负责接收文件路径参数并启动工具，以文本形式打开并编辑该文件。
-	
-	> 注意：脚本的执行处于应用的沙盒环境中。
-	
-	以下示例将参数转发至 `Assistant` - `Modding Worker` ：
-	
-	```sh
-	#!/bin/bash
-	"/Applications/Twinning Assistant.app/Contents/MacOS/Twinning Assistant" \
-		"-window_size" \
-			"496" \
-			"968" \
-		"-initial_tab" \
-			"Modding Worker" \
-			"modding_worker" \
-			"-immediate_launch" \
-				"true" \
-			"-additional_argument" \
-				"$@"
-	```
-	
-	以下示例将参数转发至 `Assistant` - `Resource Forwarder` ：
-	
-	```sh
-	#!/bin/bash
-	"/Applications/Twinning Assistant.app/Contents/MacOS/Twinning Assistant" \
-		"-window_size" \
-			"496" \
-			"968" \
-		"-initial_tab" \
-			"Resource Forwarder" \
-			"resource_forwarder" \
-			"-input" \
-				"$@"
-	```
-
-11. 设置交互语言。
+10. 设置交互语言。
 	
 	以文本形式打开并编辑主目录内的 `script/Entry/Entry.json` 文件，找到 `"language": "English"` 部分，修改它以切换工具的交互语言。
 	
@@ -297,7 +213,7 @@
 	
 	* `Vietnamese` 越文
 
-12. 至此，已经完成了所有安装步骤，可以通过终端命令行或直接打开应用的方式启动工具。
+11. 至此，已经完成了所有安装步骤，可以通过终端命令行或直接打开应用的方式启动工具。
 	
 	> @ `Windows` \
 	> 可以直接双击主目录中的启动脚本 `launch.cmd` 启动工具，或将文件对象拖拽至其上并释放。\

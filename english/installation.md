@@ -93,16 +93,16 @@ You can clone this project and compile it, or just download the bundle package o
 3. Sign the `kernel` and `shell` files in the home directory.
 	
 	> If you don't need the `Shell` module, you can skip this step. \
-	> This step only required for `Iphone` users, and need to operate on `Macintosh` device.
+	> This step only required for `Iphone` users.
 	
-	Run these command in the system terminal: `> codesign -s <certificate-name> kernel shell` .
+	Run these command in the system terminal: `> ldid -S ./kernel` & `> ldid -S ./shell` .
 
 4. Grant executable permissions to the `shell` file in the home directory.
 	
 	> If you don't need the `Shell` module, you can skip this step. \
 	> This step only required for `Linux`, `Macintosh`, `Android`, `Iphone` users.
 	
-	Run these command in the system terminal: `> chmod +x shell` .
+	Run these command in the system terminal: `> chmod +x ./shell` .
 
 5. Install the C++ shared library for your system.
 	
@@ -111,7 +111,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	Copy the `libc++_shared.so` file in the home directory to the system library directory `/system/lib64` .
 
-6. Install the application installation packages of the `Assistant`, `Assistant Plus`, and `Forward`, modules in the home directory.
+6. Install the application installation packages of the `Assistant`, `Assistant Plus`, and `Forwarder`, modules in the home directory.
 	
 	Application installation package files have extensions such as `msix`, `dmg`, `apk`, `ipa`, etc.
 	
@@ -126,7 +126,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> If you don't need the `Assistant` module, you can skip this step.
 	
-	Open the newly installed `Assistant` application, click the gear icon to the right of each module list item on the homepage to open the module settings dialog box and edit the following settings:
+	Open the `Assistant` application, click the gear icon to the right of each module list item on the page to open the module settings dialog box and edit the following settings:
 	
 	* `Storage Permission` Click and grant storage read and write permissions to the app.
 		
@@ -146,11 +146,11 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
-8. Configure the `Assistant Plus - Windows` settings.
+8. Configure the `Assistant Plus` settings.
 	
-	> If you don't need the `Assistant Plus - Windows` module, you can skip this step.
+	> If you don't need the `Assistant Plus` module, you can skip this step.
 	
-	Open the newly installed `Assistant` application, click the gear icon to the right of each module list item on the homepage to open the module settings dialog box and edit the following settings:
+	Open the `Assistant Plus` application, click the gear icon to the right of each module list item on the page to open the module settings dialog box and edit the following settings:
 	
 	* `Modding Worker` - `Kernel` = `<home>/kernel`.
 	
@@ -164,11 +164,17 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
-9. Configure the `Forwarder - Windows` setting.
+9. Configure the `Forwarder` setting.
 	
-	> If you do not need the `Forwarder - Windows` module, you can skip this step.
+	> If you do not need the `Forwarder` module, you can skip this step.
 	
-	Open the newly installed `Forwarder` application, and a directory window will pop up with a file named `forward.cmd`. This script is responsible for receiving the file path parameter and launching the tool. Open and edit the file as text.
+	`Forwarder` will launch `Assistant` via application link and passes the forwarded file path, without the need for additional configuration by the user.
+	
+	For `Macintosh` system, you need to start `Forwarder` once, then, Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ Twinning Forwarder ⌋ and check the ⌈ "Finder" extension ⌋ to ensure that the application can take effect.
+	
+	For `Windows` system, you can also create custom command scripts. When a custom script exists, `Forwarder` will execute the script instead of open application link.
+	
+	If you need the custom script behavior, please open the `Forwarder` application and enter the number `2` in the console window. The application will create a blank custom script file and open a text editor window, please write the command you want to execute in it.
 	
 	The following example forward arguments to `Shell` :
 	
@@ -182,113 +188,23 @@ You can clone this project and compile it, or just download the bundle package o
 		%*
 	```
 	
-	The following example forward arguments to `Assistant` - `Modding Worker` :
-	
-	```cmd
-	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.Assistant_41.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
-		"-window_size" ^
-			"496" ^
-			"968" ^
-		"-initial_tab" ^
-			"Modding Worker" ^
-			"modding_worker" ^
-			"-immediate_launch" ^
-				"true" ^
-			"-additional_argument" ^
-				%*
-	```
-	
-	The following example forward arguments to `Assistant` - `Resource Forwarder` :
-	
-	```cmd
-	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.Assistant_41.0.0.0_x64__7qfdsg797hj0p\assistant.exe" ^
-		"-window_size" ^
-			"496" ^
-			"968" ^
-		"-initial_tab" ^
-			"Resource Forwarder" ^
-			"resource_forwarder" ^
-			"-input" ^
-				%*
-	```
-	
-	The following example forward arguments to `Assistant Plus` - `Modding Worker` :
-	
-	```cmd
-	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_34.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
-		"-WindowSize" ^
-			"496" ^
-			"968" ^
-		"-InitialTab" ^
-			"Modding Worker" ^
-			"ModdingWorker" ^
-			"-ImmediateLaunch" ^
-				"true" ^
-			"-AdditionalArgument" ^
-				%*
-	```
-	
 	The following example forward arguments to `Assistant Plus` - `Resource Forwarder` :
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_34.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_35.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+		"Launch" ^
 		"-WindowSize" ^
 			"496" ^
 			"968" ^
-		"-InitialTab" ^
+		"-InsertTab" ^
 			"Resource Forwarder" ^
 			"ResourceForwarder" ^
 			"-Input" ^
 				%*
 	```
 
-10. Configure the `Forwarder - Macintosh` setting.
-	
-	> If you do not need the `Forwarder - Macintosh` module, you can skip this step.
-	
-	Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ Twinning Forwarder ⌋ and check the ⌈ "Finder" extension ⌋ to ensure that the application can take effect.
-	
-	Open the newly installed `Forwarder` application, and a directory window will pop up with a file named `forward.sh`. This script is responsible for receiving the file path parameter and launching the tool. Open and edit the file as text.
-	
-	> Note: The script is executed in the application's sandbox environment.
-	
-	The following example forward arguments to `Assistant` - `Modding Worker` :
-	
-	```sh
-	#!/bin/bash
-	"/Applications/Twinning Assistant.app/Contents/MacOS/Twinning Assistant" \
-		"-window_size" \
-			"496" \
-			"968" \
-		"-initial_tab" \
-			"Modding Worker" \
-			"modding_worker" \
-			"-immediate_launch" \
-				"true" \
-			"-additional_argument" \
-				"$@"
-	```
-	
-	The following example forward arguments to `Assistant` - `Resource Forwarder` :
-	
-	```sh
-	#!/bin/bash
-	"/Applications/Twinning Assistant.app/Contents/MacOS/Twinning Assistant" \
-		"-window_size" \
-			"496" \
-			"968" \
-		"-initial_tab" \
-			"Resource Forwarder" \
-			"resource_forwarder" \
-			"-input" \
-				"$@"
-	```
-
-11. Set the interactive language.
+10. Set the interactive language.
 	
 	Open and edit `script/Entry/Entry.json` file in the home directory as text, find the `"language": "English"` section, and modify it to switch the interactive language of the tool.
 	
@@ -298,7 +214,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Vietnamese`
 
-12. At this point, all installation steps have been completed and the tool can be launched from the terminal command line or by opening the application directly.
+11. At this point, all installation steps have been completed and the tool can be launched from the terminal command line or by opening the application directly.
 	
 	> @ `Windows` \
 	> You can launch the tool directly by double-clicking on the launch script `launch.cmd` in the home directory, or by dragging and dropping a file object onto it and releasing it.\

@@ -156,6 +156,8 @@
 
 ## 24-05-28
 
+> 这个版本更新了项目的名称与图标。
+
 * `Kernel` 65
 
 * `Shell` 40
@@ -201,3 +203,59 @@
 * `AssistantPlus.Windows` 34
 
 	* 修复创建子进程后未关闭其句柄的 BUG 。
+
+## 24-05-30
+
+> 这个版本优化了项目中的构建系统配置，并将签名相关的敏感配置统一剥离至 `/common/certificate` 中。
+
+* `Assistant` 42
+
+	* 修改了应用启动命令的参数格式，现在要求显式地向应用传递 `launch` 作为首项参数以指示余下参数为启动命令。
+
+	* 移除 `window_position` 与 `window_size` 命令支持。
+
+	* 应用链接增加对 `Windows` 、`Macintosh` 系统的支持。
+
+	* 在受支持的系统上，通过应用链接启动应用时，如果系统中已存在应用实例，该实例将会接收新的应用链接，而不创建新的实例。
+
+	* `Android` 更改应用的启动模式为“单个实例”，就如应用在 `Iphone` 系统上的行为一样。
+
+	* `Macintosh` 修复应用在菜单栏左侧显示的应用名称为 `assistant` 而非 `Twinning Assistant` 的问题，应用的可执行文件更名为 `Runner` 以与 `Iphone` 保持一致。
+
+	* 修改默认的主题色。
+
+	* `Android` 修复应用在推送消息时使用了无效图标资源的 BUG 。
+
+	* `Modding Worker` 修复当通过 `-additional_argument` 参数启动标签页时，左下角的参数计数 Badge 未同步更新的 BUG 。
+
+	* `Resource Forwarder` 当通过命令行指定的输入对象路径为 Windows-Style 时，内部将自动转换为 POSIX-Style 路径。
+
+* `AssistantPlus.Windows` 35
+
+	* 修改了应用启动命令的参数格式，现在要求显式地向应用传递 `Launch` 作为首项参数以指示余下参数为启动命令。
+
+	* 当用户通过文件对象拖放操作而获取路径时，将始终获取到长路径，在此之前对于目录会获取到短路径。
+
+	* 将 `/Bridge/Data.cs` 中的数据类型定义为平台相关类型，使代码能够兼容 32 位环境。
+
+* `Forwarder.Windows` 41
+
+	* 默认的转发行为改为生成并打开 `Assistant` 的应用链接，仍可提供脚本文件以让应用执行脚本。
+
+	* 应用现在将转发 POSIX 风格的文件路径，而非之前的 Windows 风格。
+
+* `Forwarder.Macintosh` 10
+
+	* 转发行为改为生成并打开 `Assistant` 的应用链接，移除脚本文件的支持。
+
+* `Forwarder.Android` 11
+
+	* 修改打开应用链接时的 intent flag 。
+
+	* 修复当所选文件路径中包含特殊字符时无法正确转发的 BUG 。
+
+* `Forwarder.Iphone` 6
+
+	* 移除项目中不需要的 Storyboard 文件。
+
+	* 修复当所选文件路径中包含特殊字符时无法正确转发的 BUG 。

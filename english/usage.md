@@ -40,35 +40,17 @@ The main function returns `0` if no errors occur during execution, otherwise `1`
 
 `Assistant Plus` is a specialized version of `Assistant` on the `Windows` platform, and the design style is more consistent with the `Windows 11` system.
 
-Command parameters can be passed when starting the application, in the following format:
+Command can be passed when launching the application, in the following format:
 
-* **`-window_position`**
+* ***`launch`***
 	
-	Window position. If not specified, it will be centered by default.
+	Set the first argument to this value to instruct the application to read and apply the remaining arguments as command.
 	
-	* `x` : *`integer`*
-		
-		Starting horizontal coordinate.
-	
-	* `y` : *`integer`*
-		
-		Starting vertical coordinate.
+	Otherwise, the application silently ignores all arguments ​​and does not execute any command.
 
-* **`-window_size`**
+* **`-insert_tab`**
 	
-	Window size. If not specified, the initial size will be followed.
-	
-	* `width` : *`integer`*
-		
-		Width.
-	
-	* `height` : *`integer`*
-		
-		Height.
-
-* **`-initial_tab`**
-	
-	Initial tab page. If not specified, the launcher page will be displayed.
+	Insert tab page.
 	
 	* `title` : *`string`*
 		
@@ -82,17 +64,19 @@ Command parameters can be passed when starting the application, in the following
 		
 		Module option.
 
+> When launching an application via command arguments, a new application instance will always be created.
+
 > The command format of `Assistant Plus` is similar to `Assistant`, but the command name uses camel case *CamelCase* instead of snake style *snack_case*.
 
-In `Android` and `Iphone` systems, command can be passed through the application link:
+It is also allowed to pass command via application link, which are available on `Windows`, `Macintosh`, `Android`, and `Iphone` system:
 
-* ***`twinstar.twinning.assistant:/run?`***
+* ***`twinstar.twinning.assistant:/launch?`***
 	
 	* `command` : *`string...`*
 		
 		command argument. can be specified multiple times, and all query values are treated as string arrays.
 
-> If the link is opened while the application is started, the application will switch to the foreground but will not receive new command parameters.
+> When launching an application through an application link, a new application instance will be created only if one does not exist. If an application instance already exists in the system, it will be switched to the foreground and the new command argument will be applied.
 
 The following functional modules are provided:
 
