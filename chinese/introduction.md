@@ -4,7 +4,7 @@
 
 本工具是 `PvZTool` 、`SPCUtil` 、`TaiJi` 的重开发，功能更加丰富、完善；前三者已停止维护，建议弃用并使用本工具。
 
-如有 BUG ，请在 [ISSUE](https://github.com/twinkles-twinstar/Twinning/issues) 中反馈。你也可以加入本工具的 [Discord](https://discord.com/invite/v7qvttSX8K) 以查看版本更新日志或寻求工具使用帮助。
+如有 BUG ，请在 [ISSUE](https://github.com/twinstar6980/Twinning/issues) 中反馈。
 
 目前提供以下功能：
 
@@ -125,14 +125,6 @@
 - [常见问题](./question.md)
 
 - [高级应用](./advanced.md)
-
-## 与我联系
-
-* GitHub : [TwinStar](https://github.com/twinkles-twinstar/)
-
-* BILIBILI : [-TwinStar-](https://space.bilibili.com/12258540)
-
-* Outlook : twinkles.twinstar@outlook.com
 
 ## 捐赠
 

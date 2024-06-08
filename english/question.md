@@ -82,25 +82,21 @@ In order to improve the execution efficiency of the tool, consider moving the ma
 
 Due to Android system limitations, files forwarded or selected by the user are passed to the application as a Content URI instead of an absolute path.
 
-> `Forwarder - Android` will not pass absolute path to `Assistant`, but pass Content URI instead.
+> On `Android` system, the `Forwarder` forwards the Content URI of the file to the `Assistant` instead of the absolute path.
 
 After `Assistant` receives the Content URI, it will perform the following transformations in turn, and then pass it to the script layer:
 
-1. Try to parse the URI to get its corresponding absolute path; the URI is converted to the absolute path of the original file.
+1. Try to parse the URI to get its corresponding absolute path.
 
-2. If the absolute path cannot be obtained, copy the file corresponding to the URI to the user-defined fallback directory; the URI is converted to the absolute path of the copied file.
-
-3. If the copy cannot be completed for some reason, no further processing is attempted; the URI is not converted.
+2. If the absolute path cannot be parsable, the application will pop up a confirming dialog: if user select "Duplicate", the application will copy the file corresponding to the URI to the user-defined fallback directory and return the absolute path of the duplicate file; if user select "Ignore", the application will return null, as if it has never received the URI.
 
 The following table lists the supported content URI formats, and the application can resolve the absolute path from the following types of content URI:
 
 | Application Name | URI Provider                                | URI Path              |
 |:----------------:|:-------------------------------------------:|:---------------------:|
-| AOSP DocumentsUI | com.android.externalstorage.documents       | /tree/primary:...     |
 | AOSP DocumentsUI | com.android.externalstorage.documents       | /document/primary:... |
-| AOSP DocumentsUI | com.android.providers.downloads.documents   | /document/raw:...     |
+| AOSP DocumentsUI | com.android.externalstorage.documents       | /tree/primary:...     |
 | Material Files   | me.zhanghai.android.files.file_provider     | /file://...           |
-| Explorer         | com.speedsoftware.explorer.fileprovider     | /root/...             |
 | Root Explorer    | com.speedsoftware.rootexplorer.fileprovider | /root/...             |
 | Solid Explorer   | pl.solidexplorer2.files                     | /...                  |
 | MT Manager       | bin.mt.plus.fp                              | /...                  |

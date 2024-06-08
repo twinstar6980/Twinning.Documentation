@@ -82,25 +82,21 @@
 
 由于 Android 的系统限制，用户所转发或选择的文件以 Content URI（而非绝对路径）的形式传递给应用。
 
-> `Forwarder - Android` 不会传递绝对路径给 `Assistant` ，而是传递 Content URI 。
+> 在 `Android` 系统上，`Forwarder` 向 `Assistant` 转发文件的 Content URI 而非绝对路径。
 
 `Assistant` 在接收到 Content URI 后，会对其依次进行以下转换，再传递到脚本层：
 
-1. 尝试解析 URI ，得到其对应的绝对路径；URI 转换为原文件的绝对路径。
+1. 尝试解析 URI ，得到其对应的绝对路径。
 
-2. 若无法获取绝对路径，则将 URI 对应的文件复制到用户定义的回退目录中；URI 转换为副本文件的绝对路径。
-
-3. 若因某些原因无法完成复制，则不再尝试处理；URI 不做转换。
+2. 若无法解析出绝对路径，应用会弹出确认对话框：若选择“复制”，应用会将 URI 对应的文件复制到用户定义的回退目录中，并返回副本文件的绝对路径；若选择“忽略”，应用会返回 null ，如同从未接收过 URI 一般。
 
 下表列出了受支持的 Content URI 格式，应用能够从以下几类 Content URI 中解析出绝对路径：
 
 | 应用名称         | URI Provider                                | URI Path              |
 |:----------------:|:-------------------------------------------:|:---------------------:|
-| AOSP DocumentsUI | com.android.externalstorage.documents       | /tree/primary:...     |
 | AOSP DocumentsUI | com.android.externalstorage.documents       | /document/primary:... |
-| AOSP DocumentsUI | com.android.providers.downloads.documents   | /document/raw:...     |
+| AOSP DocumentsUI | com.android.externalstorage.documents       | /tree/primary:...     |
 | Material Files   | me.zhanghai.android.files.file_provider     | /file://...           |
-| Explorer         | com.speedsoftware.explorer.fileprovider     | /root/...             |
 | Root Explorer    | com.speedsoftware.rootexplorer.fileprovider | /root/...             |
 | Solid Explorer   | pl.solidexplorer2.files                     | /...                  |
 | MT Manager       | bin.mt.plus.fp                              | /...                  |

@@ -12,6 +12,10 @@
 
 - [24-05-29](#24-05-29)
 
+- [24-06-06](#24-06-06)
+
+- [24-06-08](#24-06-08)
+
 ## 24-05-22
 
 * `Shell` 38
@@ -204,7 +208,7 @@
 
 	* 修复创建子进程后未关闭其句柄的 BUG 。
 
-## 24-05-30
+## 24-06-06
 
 > 这个版本优化了项目中的构建系统配置，并将签名相关的敏感配置统一剥离至 `/common/certificate` 中。
 
@@ -259,3 +263,31 @@
 	* 移除项目中不需要的 Storyboard 文件。
 
 	* 修复当所选文件路径中包含特殊字符时无法正确转发的 BUG 。
+
+## 24-06-08
+
+* `Shell` 41
+
+	* 重命名部分 Shell Callback 函数。
+
+	* 回退第三方依赖项 `tinyfiledialogs` 的版本至 `3.17.5` ，以修复在 `Windows` 上调用 `push_system_notification` 函数弹出文本框而非系统级通知的 BUG 。
+
+* `Script` 110
+
+* `Assistant` 43
+
+	* 重命名部分 MethodChannel 函数。
+
+	* `Android` 优化 Content URI 处理方案。
+
+	* `Android` 修复选择文件时指定初始目录可能无效的 BUG 。
+
+	* `Android` 选取文件时使用的 action 由 GET_CONTENT 更改为 OPEN_DOCUMENT ，前者在 singleInstance 应用中无法使用部分 UI 功能。
+
+	* `Modding Worker` 重命名部分 Shell Callback 函数。
+
+* `AssistantPlus.Windows` 36
+
+	* 支持应用链接。
+
+	* `Modding Worker` 重命名部分 Shell Callback 函数。

@@ -68,7 +68,7 @@
 
 1. 下载并解压捆绑包。
 	
-	查看 [Release](https://github.com/twinkles-twinstar/Twinning.Documentation/releases/tag/Latest) ，捆绑包分发的命名为 `<version>.<system>.<architecture>.bundle.zip` ，其中 `system` 代表适配的操作系统，`architecture` 代表适配的 CPU 架构。
+	查看 [Release](https://github.com/twinstar6980/Twinning.Documentation/releases/tag/Latest) ，捆绑包分发的命名为 `<version>.<system>.<architecture>.bundle.zip` ，其中 `system` 代表适配的操作系统，`architecture` 代表适配的 CPU 架构。
 	
 	> Release 页中只保存了最新的捆绑包，如果需要历史版本，可以查看我的 [个人 OneDrive](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9) 。
 	

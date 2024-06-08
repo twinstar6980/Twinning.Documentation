@@ -38,7 +38,7 @@
 
 `Assistant Plus` 是 `Assistant` 在 `Windows` 平台的特化版本，界面样式与 `Windows 11` 系统更加契合。
 
-可以在启动应用时传递命令，格式如下：
+可以通过命令行参数传递命令，这在 `Windows` 、`Linux` 、`Macintosh` 系统中可用：
 
 * ***`launch`***
 	
@@ -62,11 +62,9 @@
 		
 		模块参数。
 
-> 通过命令参数启动应用时，将始终创建新的应用实例。
+> 通过命令行参数启动应用时，将始终创建新的应用实例。
 
-> `Assistant Plus` 的命令格式与 `Assistant` 类似，但指令名使用驼峰风格 *CamelCase* 而非蛇形风格 *snack_case* 。
-
-也可以通过应用链接传递命令，这在 `Windows` 、`Macintosh` 、`Android` 、`Iphone` 系统中可用：
+也可通过应用链接传递命令，这在 `Windows` 、`Macintosh` 、`Android` 、`Iphone` 系统中可用：
 
 * ***`twinstar.twinning.assistant:/launch?`***
 	
@@ -75,6 +73,8 @@
 		命令参数。可以多次指定，所有查询值被视作字符串数组。
 
 > 通过应用链接启动应用时，只会在不存在应用实例时才会创建新的应用实例，如果系统中已存在的应用实例，会将其切换至前台并应用新的命令参数。
+
+> `Assistant Plus` 的命令格式与 `Assistant` 类似，但指令名使用驼峰风格 *CamelCase* 而非蛇形风格 *snack_case* 。
 
 提供以下功能模块：
 

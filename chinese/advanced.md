@@ -5,19 +5,19 @@
 - [第三方集成](#第三方集成)
 
 - [自定义脚本](#自定义脚本)
-
+	
 	- [主脚本](#主脚本)
-
+	
 	- [内核接口](#内核接口)
-
+	
 	- [内存操作](#内存操作)
-
+	
 	- [文件系统](#文件系统)
-
+	
 	- [JSON 读写](#JSON-读写)
-
+	
 	- [特殊文件编码解码](#特殊文件编码解码)
-
+	
 	- [内核接口封装](#内核接口封装)
 
 ## 理解运行流程
@@ -64,29 +64,29 @@
 
 具体参照本工具内的几个外壳实现：
 
-* [`Shell`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge) with `C++`
+* [`Shell`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge) with `C++`
 
-* [`Assistant`](https://github.com/twinkles-twinstar/Twinning/tree/master/Assistant/lib/bridge) with `Dart`
+* [`Assistant`](https://github.com/twinstar6980/Twinning/tree/master/Assistant/lib/bridge) with `Dart`
 
-* [`Assistant Plus`](https://github.com/twinkles-twinstar/Twinning/tree/master/AssistantPlus.Windows/Bridge) with `C#`
+* [`Assistant Plus`](https://github.com/twinstar6980/Twinning/tree/master/AssistantPlus.Windows/Bridge) with `C#`
 
-下面以 [`Shell`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge) 模块为例介绍应如何集成 `Kernel` ：
+下面以 [`Shell`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge) 模块为例介绍应如何集成 `Kernel` ：
 
-1. [`data.hpp`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge/data.hpp) ：声明 `Kernel` 中的数据类型。
+1. [`data.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/data.hpp) ：声明 `Kernel` 中的数据类型。
 	
-	> `Kernel` 模块中已经提供了适用于 `C++` 的接口声明 [`interface.hpp`](https://github.com/twinkles-twinstar/Twinning/blob/master/Kernel/kernel/interface/interface.hpp) ，接口需要用户传递 C 式的结构体作为参数值与返回值。
+	> `Kernel` 模块中已经提供了适用于 `C++` 的接口声明 [`interface.hpp`](https://github.com/twinstar6980/Twinning/blob/master/Kernel/kernel/interface/interface.hpp) ，接口需要用户传递 C 式的结构体作为参数值与返回值。
 
-2. [`proxy.hpp`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge/proxy.hpp) ：创建一个辅助类，负责接口所需的 C 式结构体的解析与构造。
+2. [`proxy.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/proxy.hpp) ：创建一个辅助类，负责接口所需的 C 式结构体的解析与构造。
 
-3. [`service.hpp`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge/service.hpp) ：声明 `Kernel` 导出的服务类型。
+3. [`service.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/service.hpp) ：声明 `Kernel` 导出的服务类型。
 
-4. [`library.hpp`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge/library.hpp) ：定义 `Kernel` 库的抽象类，它封装了对 `Kernel` 的库加载与符号获取。
+4. [`library.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/library.hpp) ：定义 `Kernel` 库的抽象类，它封装了对 `Kernel` 的库加载与符号获取。
 
-5. [`client.hpp`](https://github.com/twinkles-twinstar/Twinning/blob/master/Shell/shell/bridge/client.hpp) ：定义 `Shell` 客户端的抽象类。
+5. [`client.hpp`](https://github.com/twinstar6980/Twinning/blob/master/Shell/shell/bridge/client.hpp) ：定义 `Shell` 客户端的抽象类。
 	
-	> [`main_console_bridge_client.hpp`](https://github.com/twinkles-twinstar/Twinning/blob/master/Shell/shell/main_console_bridge_client.hpp) ：实现了对基本的命令行式 `Shell` 客户端的封装。
+	> [`main_console_bridge_client.hpp`](https://github.com/twinstar6980/Twinning/blob/master/Shell/shell/main_console_bridge_client.hpp) ：实现了对基本的命令行式 `Shell` 客户端的封装。
 
-6. [`launcher.hpp`](https://github.com/twinkles-twinstar/Twinning/tree/master/Shell/shell/bridge/launcher.hpp) ：创建一个辅助类，配合 `Library` 与 `Client` 实例调用 `Kernel` 接口。
+6. [`launcher.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/launcher.hpp) ：创建一个辅助类，配合 `Library` 与 `Client` 实例调用 `Kernel` 接口。
 
 ## 自定义脚本
 
@@ -96,7 +96,7 @@
 
 用户可以通过自定义脚本让工具执行出自己想要的结果。
 
-用户可以自行重写主脚本的运行逻辑，但更推荐在已有的 [Script 模块](https://github.com/twinkles-twinstar/Twinning/tree/master/Script) 基础上扩展开发，它已为用户提供了丰富的功能与良好的交互机制。
+用户可以自行重写主脚本的运行逻辑，但更推荐在已有的 [Script 模块](https://github.com/twinstar6980/Twinning/tree/master/Script) 基础上扩展开发，它已为用户提供了丰富的功能与良好的交互机制。
 
 下面介绍如何自定义脚本。
 
@@ -124,7 +124,7 @@ type JS_MainFunction = (
 
 工具的 `Kernel` 负责执行用户提供的脚本，其中定义的内核接口为脚本层提供了多样的功能，例如文件读写、数据操作等基本功能与 BNK 、PAM 编解码等高级功能。
 
-内核接口具有严格的类型限制，因此，在开发层面，应使用 `TypeScript` 作为开发语言，并编译为 `JavaScript` 供工具使用。`Script` 模块中的 [`Kernel.d.ts`](https://github.com/twinkles-twinstar/Twinning/blob/master/Script/Kernel.d.ts) 声明了 `Kernel` 所定义的接口。
+内核接口具有严格的类型限制，因此，在开发层面，应使用 `TypeScript` 作为开发语言，并编译为 `JavaScript` 供工具使用。`Script` 模块中的 [`Kernel.d.ts`](https://github.com/twinstar6980/Twinning/blob/master/Script/Kernel.d.ts) 声明了 `Kernel` 所定义的接口。
 
 内核接口分为内核类型与内核函数，内核类型是对 `Kernel` 中的 `C++` 类型的封装，例如接口中的 `Kernel.Boolean` 类是对 `Kernel` 中 `C++ Boolean` 类的封装。用户需要借助内核类型才能与内核函数交互。
 

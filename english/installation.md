@@ -68,7 +68,7 @@ You can clone this project and compile it, or just download the bundle package o
 
 1. Download and unzip the bundle package.
 	
-	View the [Release](https://github.com/twinkles-twinstar/Twinning.Documentation/releases/tag/Latest) page, the bundle distribution is named `<version>.<system>.<architecture>.bundle.zip`, where `system` represents the adapted operating system and `architecture` represents the adapted CPU architecture.
+	View the [Release](https://github.com/twinstar6980/Twinning.Documentation/releases/tag/Latest) page, the bundle distribution is named `<version>.<system>.<architecture>.bundle.zip`, where `system` represents the adapted operating system and `architecture` represents the adapted CPU architecture.
 	
 	> Only the latest bundle is saved in the Release page. If you need historical versions, you can found them on my [Personal OneDrive](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9).
 	

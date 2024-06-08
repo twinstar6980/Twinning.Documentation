@@ -40,7 +40,7 @@ The main function returns `0` if no errors occur during execution, otherwise `1`
 
 `Assistant Plus` is a specialized version of `Assistant` on the `Windows` platform, and the design style is more consistent with the `Windows 11` system.
 
-Command can be passed when launching the application, in the following format:
+Command can be passed via command line argument, which is available on `Windows`, `Linux`, and `Macintosh` system:
 
 * ***`launch`***
 	
@@ -64,11 +64,9 @@ Command can be passed when launching the application, in the following format:
 		
 		Module option.
 
-> When launching an application via command arguments, a new application instance will always be created.
+> When launching an application via command line argument, a new application instance will always be created.
 
-> The command format of `Assistant Plus` is similar to `Assistant`, but the command name uses camel case *CamelCase* instead of snake style *snack_case*.
-
-It is also allowed to pass command via application link, which are available on `Windows`, `Macintosh`, `Android`, and `Iphone` system:
+Command can also be passed via application link, which is available on `Windows`, `Macintosh`, `Android`, and `Iphone` system:
 
 * ***`twinstar.twinning.assistant:/launch?`***
 	
@@ -77,6 +75,8 @@ It is also allowed to pass command via application link, which are available on 
 		command argument. can be specified multiple times, and all query values are treated as string arrays.
 
 > When launching an application through an application link, a new application instance will be created only if one does not exist. If an application instance already exists in the system, it will be switched to the foreground and the new command argument will be applied.
+
+> The command format of `Assistant Plus` is similar to `Assistant`, but the command name uses camel case *CamelCase* instead of snake style *snack_case*.
 
 The following functional modules are provided:
 
