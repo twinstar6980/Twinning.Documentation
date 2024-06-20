@@ -88,7 +88,7 @@ The following functional modules are provided:
 	
 	> The `launch.assistant.modding_worker.cmd` script in the home directory can quickly start this module. Multiple files can be dragged onto the script and released to add additional arguments.
 
-* `Command Sender` *`<Plus-Only>`*
+* `Command Sender`
 	
 	This module can visually select the methods you want to use and fill in the arguments.
 	

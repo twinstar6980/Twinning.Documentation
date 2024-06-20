@@ -16,6 +16,10 @@
 
 - [24-06-08](#24-06-08)
 
+- [24-06-20](#24-06-20)
+
+- [已知问题](#已知问题)
+
 ## 24-05-22
 
 * `Shell` 38
@@ -291,3 +295,93 @@
 	* 支持应用链接。
 
 	* `Modding Worker` 重命名部分 Shell Callback 函数。
+
+## 24-06-20
+
+> 这个版本更新了项目的图标。
+
+* `Shell` 42
+
+	* `ExecutorProxy` 的默认实现将抛出 `runtime_error` 而非 `string` 。
+
+	* 更改 `pick_storage_item` 外壳回调的参数规则。
+
+* `Script` 111
+
+	* 现在会在脚本开始执行时向用户显示所传递的参数列表。
+
+	* 执行功能时会显示用户传递的参数。
+
+* `Assistant` 44
+
+	* 优化一些 UI 与处理逻辑。
+
+	* 在所有平台上统一使用标准视觉密度，在桌面系统中会导致部分控件尺寸略大于之前版本。
+
+	* 修复在显示主题颜色值时错误地填补了尾随 0 的 BUG 。
+
+	* `Modding Worker` 更改 `pick_storage_item` 外壳回调的参数规则。
+
+	* `Command Sender` 新增模块，用于可视化地编辑适用于 `Modding Worker` 的命令参数。
+
+	* `Resource Forwarder` 更改命令参数中的 `-input` 为 `-resource` 。
+
+	* `Resource Forwarder` 重命名设置项 `Parallel Execute` 为 `Parallel Forward`。
+
+	* `Resource Forwarder` 增加清除所有资源项的选项。
+
+	* `Resource Forwarder` 移除在执行转发后清除所以资源项的设置项。
+
+	* `Resource Forwarder` 优化选项列表控件性能。
+
+	* `Resource Forwarder` 添加输入项后将保留弹出菜单。
+
+	* `Resource Forwarder` 修复切换 EnableFilter 设置项时可能导致选项列表子项状态混淆的 BUG 。
+
+	* `Resource Forwarder` 修复在启用平行转发设置项时转发资源可能报错的 BUG 。
+
+* `AssistantPlus.Windows` 37
+
+	* 优化一些 UI 与处理逻辑。
+
+	* 优化添加固定标签项时的策略，现在将直接添加至列表底部；在之前的版本中，会添加至列表顶部，且当存在相似项时会将其冒泡至顶部而不添加新项。
+
+	* `Modding Worker` 更改 `pick_storage_item` 外壳回调的参数规则。
+
+	* `Command Sender` 移除配置文件中的 `initial` 设置项，现在初始值始终为 `null` ；添加 `preset` 设置项以支持快速选择预置参数。
+
+	* `Command Sender` 重命名设置项 `Parallel Execute` 为 `Parallel Forward`。
+
+	* `Command Sender` 支持 `Command` 参数以指定初始命令。
+
+	* `Command Sender` 移除直接打开 Modding Worker 而不传递任何参数的按钮。
+
+	* `Resource Forwarder` 更改命令参数中的 `-Input` 为 `-Resource` 。
+
+	* `Resource Forwarder` 重命名设置项 `Parallel Execute` 为 `Parallel Forward`。
+
+	* `Resource Forwarder` 增加清除所有资源项的选项。
+
+	* `Resource Forwarder` 移除在执行转发后清除所以资源项的设置项。
+
+	* `Resource Forwarder` 不再在转发后添加近期标签项。
+
+* `Forwarder.Windows` 42
+
+* `Forwarder.Macintosh` 11
+
+* `Forwarder.Android` 12
+
+* `Forwarder.Iphone` 7
+
+## 已知问题
+
+* `Assistant`
+
+	* 应用内的一些编辑控件只在触发失焦事件时才会对数据与 UI 进行更新，这是预期行为；但是，在 Android 上，如果在编辑控件时直接与需要消费编辑控件所控制的数据的控件进行交互时，该控件无法接收到最新编辑的数据值，必须先在 IME 中键入 “完成” 按钮以使控件失焦。
+
+	* 在 `Android` 上，AboutPanel 中的第一行文本可能被截断了一些顶部区域，在与界面中的 Chip 进行一次交互后会恢复正常。尚不知该 BUG 的成因，故无法修复。
+
+* `AssistantPlus.Windows`
+
+	* 由于写死了部分对话框的尺寸，在低尺寸窗口的情况下无法显示完整的对话框。

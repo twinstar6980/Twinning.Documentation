@@ -142,6 +142,8 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Modding Worker` - `Argument` = `<home>`.
 	
+	* `Command Sender` - `Method Configuration` = `<home>/assistant/method_configuration.json` .
+	
 	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
@@ -192,7 +194,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_35.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_37.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
 		"Launch" ^
 		"-WindowSize" ^
 			"496" ^
@@ -200,7 +202,7 @@ You can clone this project and compile it, or just download the bundle package o
 		"-InsertTab" ^
 			"Resource Forwarder" ^
 			"ResourceForwarder" ^
-			"-Input" ^
+			"-Resource" ^
 				%*
 	```
 

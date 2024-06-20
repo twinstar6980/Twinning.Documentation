@@ -86,7 +86,7 @@
 	
 	> 主目录内的 `launch.assistant.modding_worker.cmd` 脚本可以快速启动该模块，可以将多个文件拖拽至脚本上并释放，以追加附加参数。
 
-* `Command Sender` *`<Plus-Only>`*
+* `Command Sender`
 	
 	该模块能够可视化地选择需要使用的功能并填入参数。
 	

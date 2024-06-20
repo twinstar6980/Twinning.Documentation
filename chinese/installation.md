@@ -141,6 +141,8 @@
 	
 	* `Modding Worker` - `Argument` = `<home>` 。
 	
+	* `Command Sender` - `Method Configuration` = `<home>/assistant/method_configuration.json` 。
+	
 	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
@@ -191,7 +193,7 @@
 	
 	```cmd
 	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_35.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
+	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_37.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
 		"Launch" ^
 		"-WindowSize" ^
 			"496" ^
@@ -199,7 +201,7 @@
 		"-InsertTab" ^
 			"Resource Forwarder" ^
 			"ResourceForwarder" ^
-			"-Input" ^
+			"-Resource" ^
 				%*
 	```
 
