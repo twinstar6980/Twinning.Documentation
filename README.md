@@ -1,6 +1,6 @@
 # Twinning - Documentation
 
-![x](./image/logo.png) ***A tool to help us create PvZ-2 MOD .***
+![x](./image/logo.png) ***Toolbox for processing specific file format.***
 
 > The English version is translated by [Haruma](https://github.com/Haruma-VN) .
 

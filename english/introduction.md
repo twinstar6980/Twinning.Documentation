@@ -1,6 +1,6 @@
 # Introduction
 
-`Twinning` is a tool mainly used for **PvZ-2** data modification, providing many functions necessary for PvZ-2 MOD creation, such as RTON encoding, RSB building, etc.
+`Twinning` is a toolbox that processing a variety of specific file format, provides functions such as RTON encoding and RSB packaging.
 
 This tool is a improvement of `PvZTool`, `SPCUtil` and `TaiJi`, with better and more functions; the first three tools are made by me and no longer maintained, so it is recommended to abandon them and use this tool with more functions.
 
