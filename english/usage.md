@@ -85,22 +85,22 @@ The following functional modules are provided:
 	This module simulates the `Shell` console UI.
 	
 	> `Kernel` 、`Script` 、`Argument` parameters need to be defined in the module settings.
-	
-	> The `launch.assistant.modding_worker.cmd` script in the home directory can quickly start this module. Multiple files can be dragged onto the script and released to add additional arguments.
 
 * `Command Sender`
 	
-	This module can visually select the methods you want to use and fill in the arguments.
+	This module is used with `Modding Worker`, it can visually edit the methods and arguments you wants to use.
 	
 	> Methods are defined by the `Method Configuration` file in the module settings.
 
 * `Resource Forwarder`
 	
-	This module provides a better file forwarding UI, which can filter the available options by inputting the file type and extension, and passes them to the `Modding Worker` for processing, making it more efficient and easier to use.
+	This module is used with `Modding Worker`, it can easily forward files and select the methods and arguments you wants to use.
 	
 	> Options are defined by the `Option Configuration` file in the module setting.
+
+* `Reflection Descriptor` *`<Plus-Only>`*
 	
-	> The `launch.assistant.resource_forwarder.cmd` script in the home directory can quickly start this module. Multiple files can be dragged onto the script and released to add additional arguments.
+	This module can view RTON object structure definition files.
 
 * `Animation Viewer` *`<Plus-Only>`*
 	

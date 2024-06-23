@@ -83,26 +83,26 @@
 	该模块模拟了 `Shell` 的控制台 UI 。
 	
 	> `Kernel` 、`Script` 、`Argument` 参数需要在模块设置中定义。
-	
-	> 主目录内的 `launch.assistant.modding_worker.cmd` 脚本可以快速启动该模块，可以将多个文件拖拽至脚本上并释放，以追加附加参数。
 
 * `Command Sender`
 	
-	该模块能够可视化地选择需要使用的功能并填入参数。
+	该模块配合 `Modding Worker` 使用，能够直观地编辑想要使用的功能与参数。
 	
 	> 功能由模块设置中的 `Method Configuration` 文件定义。
 
 * `Resource Forwarder`
 	
-	该模块提供了更好的文件转发 UI ，能够通过输入文件的类型、扩展名来筛选可用的选项，并传递给 `Modding Worker` 处理，更加高效易用。
+	该模块配合 `Modding Worker` 使用，能够方便地转发文件并选择想要使用的功能与参数。
 	
 	> 选项由模块设置中的 `Option Configuration` 文件定义。
+
+* `Reflection Descriptor` *`<Plus-Only>`*
 	
-	> 主目录内的 `launch.assistant.resource_forwarder.cmd` 脚本可以快速启动该模块，可以将多个文件拖拽至脚本上并释放，以追加附加参数。
+	该模块能够查看 RTON 对象结构定义文件。
 
 * `Animation Viewer` *`<Plus-Only>`*
 	
-	该模块能够播放 PopCap Animation (PAM) 动画文件。
+	该模块能够查看 PopCap Animation (PAM) 动画文件。
 	
 	1. 点击本模块页面 ⌈ Stage ⌋ 栏右上方的 ⌈ Animation File ⌋ 文本框的右侧按钮，在弹出的窗口中选择 `*.pam.json` 文件；或是从 ⌈ Explorer ⌋ 中拖拽 `*.pam.json` 文件至应用窗口中并释放。
 		

@@ -226,7 +226,7 @@ string.value = "xxx";
 // Move the memory from Kernel.String to Kernel.ByteArray, the contents of Kernel.String will become empty and Kernel.ByteArray will hold the memory space originally belonging to Kernel.
 let data = Kernel.Miscellaneous.cast_moveable_String_to_ByteArray(string);
 // Move the memory from Kernel.ByteArray to Kernel.String, but make sure that the memory data is a UTF-8 string.
-let string_in_memory = Kernel.Miscellaneous.cast_moveable_String_to_ByteArray(string);
+let string_in_memory = Kernel.Miscellaneous.cast_moveable_ByteArray_to_String(string);
 ```
 
 ### File System

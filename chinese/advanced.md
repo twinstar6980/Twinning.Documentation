@@ -228,7 +228,7 @@ string.value = 'xxx';
 // 可以将 Kernel.String 的内存转交给 Kernel.ByteArray 对象，Kernel.String 的内容将变为空，Kernel.ByteArray 将持有原本归属 Kernel.String 的内存空间。
 let data = Kernel.Miscellaneous.cast_moveable_String_to_ByteArray(string);
 // 同样可以将 Kernel.ByteArray 的内存转交给 Kernel.String ，但应确保 Kernel.ByteArray 所持有的内存存储的是 UTF-8 字符串数据
-let string_in_memory = Kernel.Miscellaneous.cast_moveable_String_to_ByteArray(string);
+let string_in_memory = Kernel.Miscellaneous.cast_moveable_ByteArray_to_String(string);
 ```
 
 ### 文件系统
