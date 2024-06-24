@@ -154,7 +154,7 @@ The user can pass in additional arguments when starting the tool, or if no addit
 
 * `item`
 	
-	Single command item, can be specified multiple times.
+	Command items can be specified multiple times, and the tool will process them one by one.
 	
 	* `input` : *`string`*
 		
