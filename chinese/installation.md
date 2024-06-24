@@ -12,9 +12,9 @@
 
 工具支持以下平台：
 
-* 操作系统：`Windows 7+` 、`Linux ~` 、`Macintosh 13~` 、`Android 9+` 、`Iphone 16~` 。
+* 操作系统：`Windows 7+` 、`Linux ~` 、`Macintosh 11~` 、`Android 9+` 、`Iphone 14~` 。
 
-* 处理器架构：`x86 32|64` 、`arm 32|64` 。
+* 处理器架构：`x86_64` 、`arm_64` 。
 
 ## 模块组成
 
@@ -46,14 +46,6 @@
 	
 	可选模块，分发为应用安装包。
 
-* `Forwarder`
-	
-	转发器，将快捷选项注入系统级文件分享接口。
-	
-	可选模块，分发为应用安装包。
-	
-	> 该模块仅适用于 `Windows` 、`Macintosh` 、`Android` 、`Iphone` 系统。
-
 * `Assistant Plus`
 	
 	助理者+，面向 Windows 平台的特化版本。
@@ -83,8 +75,6 @@
 	* `Iphone` - `arm_64`
 	
 	* `Linux` - `x86_64`
-	
-	其中，仅 `Windows` 与 `Android` 平台的预编译分发会始终跟随最新版本，其他平台的预编译分发一般很少更新，如果需要最新版本，或者你的平台不在上述列表中，请尝试自行编译。
 
 2. 选择主目录。
 	
@@ -110,7 +100,7 @@
 	
 	将主目录内的 `libc++_shared.so` 文件复制至系统库目录 `/system/lib64` 中。
 
-6. 安装主目录内 `Assistant` 、`Assistant Plus` 、`Forwarder` 模块的应用安装包。
+6. 安装主目录内 `Assistant` 、`Assistant Plus` 模块的应用安装包。
 	
 	应用安装包文件以 `msix` 、`dmg` 、`apk` 、`ipa` 等作为扩展名。
 	
@@ -147,7 +137,22 @@
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
-8. 配置 `Assistant Plus` 设置项。
+8. 启用 `Assistant` 转发器扩展。
+	
+	> 如果不需要 `Assistant` 模块，可以跳过该步骤。
+	> 该步骤只需 `Windows` 、`Macintosh` 、`Android` 、`Iphone` 用户操作。
+	
+	`Assistant` 提供了可选的转发器扩展，能够在系统文件管理器中为文件与目录提供快速转发至应用的选项。
+	
+	* `Windows` ：默认禁用转发器扩展，如果需要启用，请在 `%APPDATA%/TwinStar.Twinning.Assistant` 目录中创建空白的 `forwarder` 文件。
+	
+	* `Macintosh` ：默认禁用转发器扩展，如果需要启用，请打开 `Assistant` 并关闭，然后打开 ⌈ 系统设置 ⌋ - ⌈ 隐私与安全性 ⌋ - ⌈ 扩展 ⌋ - ⌈ 添加的扩展 ⌋ - ⌈ Twinning Assistant ⌋ ，勾选其中的 ⌈ “访达”扩展 ⌋ 。
+	
+	* `Android` ：始终启用转发器扩展。
+	
+	* `Iphone` ：默认禁用转发器扩展，如果需要启用，请打开 ⌈ 文件 ⌋ ，选择任意文件后点击 ⌈ 共享 ⌋ - ⌈ 编辑操作... ⌋ - ⌈ Twinning Assistant ⌋ ，勾选右侧的开关按钮。
+
+9. 配置 `Assistant Plus` 设置项。
 	
 	> 如果不需要 `Assistant Plus` 模块，可以跳过该步骤。
 	
@@ -165,47 +170,7 @@
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
-9. 配置 `Forwarder` 设置项。
-	
-	> 如果不需要 `Forwarder` 模块，可以跳过该步骤。
-	
-	`Forwarder` 通过应用链接调起 `Assistant` 并传递所转发的文件路径，不需要用户进行额外配置。
-	
-	对于 `Macintosh` 系统，需要启动一次 `Forwarder` ，然后，进入 ⌈ 系统设置 ⌋ - ⌈ 隐私与安全性 ⌋ - ⌈ 扩展 ⌋ - ⌈ 添加的扩展 ⌋ - ⌈ Twinning Forwarder ⌋ ，勾选其中的 ⌈ “访达”扩展 ⌋ 。
-	
-	对于 `Windows` 系统，还可以创建自定义的命令脚本，当存在自定义脚本时，`Forwarder` 将执行脚本而不是启动应用链接。
-	
-	如果需要自定义脚本行为，请打开 `Forwarder` 应用，并在控制台窗口中输入数字 `2` ，应用将创建空白的自定义脚本文件，并打开文本编辑器窗口，请在其中编写你想要执行的命令。
-	
-	以下示例将参数转发至 `Shell` ：
-	
-	```cmd
-	@echo off
-	set home=C:\Twinning
-	start "" "%home%\shell.exe" ^
-		"%home%\kernel" ^
-		"%home%\script\main.js" ^
-		"%home%" ^
-		%*
-	```
-	
-	以下示例将参数转发至 `Assistant Plus` - `Resource Forwarder`：
-	
-	```cmd
-	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_37.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
-		"Launch" ^
-		"-WindowSize" ^
-			"496" ^
-			"968" ^
-		"-InsertTab" ^
-			"Resource Forwarder" ^
-			"ResourceForwarder" ^
-			"-Resource" ^
-				%*
-	```
-
-10. 设置交互语言。
+10. 设置脚本交互语言。
 	
 	以文本形式打开并编辑主目录内的 `script/Entry/Entry.json` 文件，找到 `"language": "English"` 部分，修改它以切换工具的交互语言。
 	
@@ -215,22 +180,7 @@
 	
 	* `Vietnamese` 越文
 
-11. 至此，已经完成了所有安装步骤，可以通过终端命令行或直接打开应用的方式启动工具。
-	
-	> @ `Windows` \
-	> 可以直接双击主目录中的启动脚本 `launch.cmd` 启动工具，或将文件对象拖拽至其上并释放。\
-	> 如果安装了 `Forwarder` 模块，可以在任意文件或目录的右键菜单项中看到 `⌈ Twinning Forwarder ⌋` ，并通过它将文件对象快速转发至工具。\
-	> 如果安装了 `Assistant Plus` 模块，可以通过其中的 `Resource Forwarder` 进行更快捷的转发，也可以通过 `Command Sender` 可视化地选择需要的功能并编辑参数。
-	
-	> @ `Macintosh` \
-	> 如果安装了 `Forwarder` 模块，可以在任意文件或目录的右键菜单项中看到 `⌈ Twinning Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
-	
-	> @ `Android` \
-	> 如果安装了 `Forwarder` 模块，可以在系统或第三方的文件管理器的文件分享列表中看到 `⌈ Twinning Forwarder ⌋` ，并通过它将文件对象快速转发至工具。\
-	> 注意：由于 Android 系统的限制，转发器无法直接获取所转发文件的绝对路径，而是将所转发文件的 Content URI 传递至 `Assistant` 作为其启动的命令参数，`Assistant` 会尝试解析 Content URI 。具体参见 [Android Content URI 处理方式](./question.md#Android-Content-URI-处理方式) 。
-	
-	> @ `Iphone` \
-	> 如果安装了 `Forwarder` 模块，可以在系统或第三方的文件管理器的文件分享列表中看到 `⌈ Twinning Forwarder ⌋` ，并通过它将文件对象快速转发至工具。
+11. 至此，已经完成了所有安装步骤，你可以通过终端或 GUI 应用使用工具。
 
 ## 外部程序
 

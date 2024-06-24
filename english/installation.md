@@ -10,9 +10,9 @@
 
 ## Platform supportability
 
-* Operating systems: `Windows 7+`, `Linux ~`, `Macintosh 13~`, `Android 9+`, `Iphone 16~`.
+* Operating systems: `Windows 7+` 、`Linux ~` 、`Macintosh 11~` 、`Android 9+` 、`Iphone 14~`.
 
-* Processor architectures: `x86 32|64`, `arm 32|64`.
+* Processor architectures: `x86_64`, `arm_64`.
 
 ## Module types
 
@@ -44,14 +44,6 @@ The tool consists of several modules, different modules provide different functi
 	
 	Optional module, distributed as an application installation package.
 
-* `Forwarder`
-	
-	Forwarder, injects shortcut options into the system-level file sharing interface.
-	
-	Optional module, distributed as an application installation package.
-	
-	> This module is only avaliable for `Windows` and `Macintosh` and `Android` and `Iphone` systems.
-
 * `Assistant Plus`
 	
 	Assistant+, Specialized version for Windows platform.
@@ -81,8 +73,6 @@ You can clone this project and compile it, or just download the bundle package o
 	* `Iphone` - `arm_64`
 	
 	* `Linux` - `x86_64`
-	
-	Among them, only the precompiled distributions for `Windows` and `Android` platforms will always follow the latest version. Precompiled distributions for other platforms are generally rarely updated. If you need the latest version, or your platform is not in the above list, please try to compile it by yourself.
 
 2. Select the home directory.
 	
@@ -109,7 +99,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	Copy the `libc++_shared.so` file in the home directory to the system library directory `/system/lib64` .
 
-6. Install the application installation packages of the `Assistant`, `Assistant Plus`, and `Forwarder`, modules in the home directory.
+6. Install the application installation packages of the `Assistant` and `Assistant Plus` modules in the home directory.
 	
 	Application installation package files have extensions such as `msix`, `dmg`, `apk`, `ipa`, etc.
 	
@@ -146,7 +136,22 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
-8. Configure the `Assistant Plus` settings.
+8. Enable the `Assistant` forwarder extension.
+	
+	> If you don't need the `Assistant` module, you can skip this step. \
+	> This step only required for `Windows`, `Macintosh`, `Android`, `Iphone` user.
+	
+	`Assistant` provides an optional forwarder extension that provides a quick option to forward files and directories to applications in the system file manager.
+	
+	* `Windows`: The forwarder extension is disabled by default. If you need to enable it, please create a blank `forwarder` file in the `%APPDATA%/TwinStar.Twinning.Assistant` directory.
+	
+	* `Macintosh`: The forwarder extension is disabled by default. If you need to enable it, open `Assistant` and close it, then open ⌈ System Settings ⌋ - ⌈ Privacy & Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ Twinning Assistant ⌋ and check ⌈ Finder Extension ⌋ .
+	
+	* `Android`: The forwarder extension is always enabled.
+	
+	* `Iphone`: The forwarder extension is disabled by default. If you need to enable it, open ⌈ Files ⌋ , select any file, click ⌈ Share ⌋ - ⌈ Edit Actions... ⌋ - ⌈ Twinning Assistant ⌋ , and check the switch button on the right.
+
+9. Configure the `Assistant Plus` settings.
 	
 	> If you don't need the `Assistant Plus` module, you can skip this step.
 	
@@ -164,47 +169,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
-9. Configure the `Forwarder` setting.
-	
-	> If you do not need the `Forwarder` module, you can skip this step.
-	
-	`Forwarder` will launch `Assistant` via application link and passes the forwarded file path, without the need for additional configuration by the user.
-	
-	For `Macintosh` system, you need to start `Forwarder` once, then, Go to ⌈ System Settings ⌋ - ⌈ Privacy and Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ Twinning Forwarder ⌋ and check the ⌈ "Finder" extension ⌋ to ensure that the application can take effect.
-	
-	For `Windows` system, you can also create custom command scripts. When a custom script exists, `Forwarder` will execute the script instead of open application link.
-	
-	If you need the custom script behavior, please open the `Forwarder` application and enter the number `2` in the console window. The application will create a blank custom script file and open a text editor window, please write the command you want to execute in it.
-	
-	The following example forward arguments to `Shell` :
-	
-	```cmd
-	@echo off
-	set home=C:\Twinning
-	start "" "%home%\shell.exe" ^
-		"%home%\kernel" ^
-		"%home%\script\main.js" ^
-		"%home%" ^
-		%*
-	```
-	
-	The following example forward arguments to `Assistant Plus` - `Resource Forwarder` :
-	
-	```cmd
-	@echo off
-	start "" "C:\Program Files\WindowsApps\TwinStar.Twinning.AssistantPlus_37.0.0.0_x64__7qfdsg797hj0p\AssistantPlus.exe" ^
-		"Launch" ^
-		"-WindowSize" ^
-			"496" ^
-			"968" ^
-		"-InsertTab" ^
-			"Resource Forwarder" ^
-			"ResourceForwarder" ^
-			"-Resource" ^
-				%*
-	```
-
-10. Set the interactive language.
+10. Set the script's interactive language.
 	
 	Open and edit `script/Entry/Entry.json` file in the home directory as text, find the `"language": "English"` section, and modify it to switch the interactive language of the tool.
 	
@@ -214,22 +179,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Vietnamese`
 
-11. At this point, all installation steps have been completed and the tool can be launched from the terminal command line or by opening the application directly.
-	
-	> @ `Windows` \
-	> You can launch the tool directly by double-clicking on the launch script `launch.cmd` in the home directory, or by dragging and dropping a file object onto it and releasing it.\
-	> If the `Forwarder` module is installed, you can see `⌈ Twinning Forwarder ⌋` in the right-click menu item of any file or directory, and use it to quickly forward file objects to the tool.\
-	> If the `Assistant Plus` module is installed, you can use the `Resource Forwarder` in it for faster forwarding, or you can use the `Command Sender` to visually select the desired method and edit the arguments.
-	
-	> @ `Macintosh` \
-	> If the `Forwarder` module is installed, you can see `⌈ Twinning Forwarder ⌋` in the right-click menu item of any file or directory, and use it to quickly forward file objects to the tool.
-	
-	> @ `Android` \
-	> If the `Forwarder` module is installed, you can see `⌈ Twinning Forwarder ⌋` in the file sharing list of the system or third-party file manager, and through which file objects can be quickly forwarded to the tool.\
-	> Due to the limitations of the Android system, the forwarder cannot directly obtain the absolute path of the forwarded file, but passes the Content URI of the forwarded file to the `Assistant` as a command argument for its startup, and the `Assistant` will try to parse the Content URI. See [Android Content URI processing strategy](./question.md#Android-Content-URI-processing-strategy) for details.
-	
-	> @ `Iphone` \
-	> If the `Forwarder` module is installed, you can see `⌈ Twinning Forwarder ⌋` in the file sharing list of the system or third-party file manager, and through which file objects can be quickly forwarded to the tool.
+11. At this point, all the installation steps have been completed and you can use the tool through the terminal or GUI application.
 
 ## External programs
 

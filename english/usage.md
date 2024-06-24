@@ -78,7 +78,27 @@ Command can also be passed via application link, which is available on `Windows`
 
 > The command format of `Assistant Plus` is similar to `Assistant`, but the command name uses camel case *CamelCase* instead of snake style *snack_case*.
 
-The following functional modules are provided:
+The application also provides file's forwarder extension support, which is available in `Windows`, `Macintosh`, `Android`, and `Iphone` systems:
+
+* `Windows`
+
+	If the forwarder extension is enabled, you can see the `⌈ Twinning Assistant ⌋` option in the file context menu of `Explorer`.
+
+* `Macintosh`
+
+	If the forwarder extension is enabled, you can see the `⌈ Twinning Assistant ⌋` option in the file context menu of `Finder`.
+
+* `Android`
+
+	If the forwarder extension is enabled, you can see the `⌈ Twinning Assistant ⌋` option in the file sharing list of the system or third-party file manager.
+
+	> Note: Due to the limitations of the Android system, the application cannot directly obtain the absolute path of the forwarded file. For details, see [Android Content URI processing strategy](./question.md#Android-Content-URI-processing-strategy) .
+
+* `Iphone`
+
+	If the forwarder extension is enabled, you can see the `⌈ Twinning Assistant ⌋` option in the file sharing list of the system or third-party file manager.
+
+The following functional modules are provided by application:
 
 * `Modding Worker`
 	
@@ -120,7 +140,7 @@ The following functional modules are provided:
 
 ## Forwarding file
 
-The tool is designed to primarily handle file objects in external storage space. The term ⌈ **forwarding** ⌋ refers to launching the tool with the path to the file object as an additional argument. Forwarding can be done through startup scripts, system extension provided by the forwarder module, etc.
+The tool is designed to primarily handle file objects in external storage space. The term ⌈ **forwarding** ⌋ refers to launching the tool with the path to the file object as an additional argument. You can forward the file by passing arguments through the command line.
 
 The file object to be processed is forwarded to the tool, and when the tool is launched, the available methods are listed according to the type of that file object, and the user can enter the serial number of the method to be executed.
 

@@ -80,15 +80,11 @@ In order to improve the execution efficiency of the tool, consider moving the ma
 
 ## Android Content URI processing strategy
 
-Due to Android system limitations, files forwarded or selected by the user are passed to the application as a Content URI instead of an absolute path.
-
-> On `Android` system, the `Forwarder` forwards the Content URI of the file to the `Assistant` instead of the absolute path.
-
-After `Assistant` receives the Content URI, it will perform the following transformations in turn, and then pass it to the script layer:
+Due to Android system limitations, files forwarded or selected by the user are passed to the application as a Content URI instead of an absolute path. After `Assistant` receives the Content URI, it will perform the following transformations in turn:
 
 1. Try to parse the URI to get its corresponding absolute path.
 
-2. If the absolute path cannot be parsable, the application will pop up a confirming dialog: if user select "Duplicate", the application will copy the file corresponding to the URI to the user-defined fallback directory and return the absolute path of the duplicate file; if user select "Ignore", the application will return null, as if it has never received the URI.
+2. If the absolute path cannot be parsable, the application will pop up a confirming dialog: if user select "Duplicate", the application will copy the file corresponding to the URI to the user-defined fallback directory and return the absolute path of the duplicate file; if user select "Ignore", the application will return null, it is considered that an invalid path was received..
 
 The following table lists the supported content URI formats, and the application can resolve the absolute path from the following types of content URI:
 

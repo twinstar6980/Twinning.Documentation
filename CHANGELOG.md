@@ -20,6 +20,8 @@
 
 - [24-06-23](#24-06-23)
 
+- [24-06-24](#24-06-24)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -394,6 +396,16 @@
 
 * `Forwarder.Iphone` 8
 
+## 24-06-24
+
+> 这个版本将 `Forwarder` 模块整合进了 `Assistant` 模块中。
+
+* `Assistant` 46
+
+	* `Macintosh` 调整目标系统版本为 11.0 。
+
+	* `Iphone` 调整目标系统版本为 14.0 。
+
 ## 已知问题
 
 * `Kernel`
@@ -407,6 +419,8 @@
 	* 在 `Android` 上，AboutPanel 中的第一行文本可能被截断了一些顶部区域，在与界面中的 Chip 进行一次交互后会恢复正常。尚不知该 BUG 的成因，故无法修复。
 
 	* 在 `Android` 上，默认遵循的系统配色值未适配 Flutter 3.22 的变更，因此会出现部分颜色混淆的 BUG 。需要等待第三方依赖包的修复。
+
+	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
 * `AssistantPlus.Windows`
 
