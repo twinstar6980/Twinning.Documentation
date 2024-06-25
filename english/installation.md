@@ -46,7 +46,7 @@ The tool consists of several modules, different modules provide different functi
 
 * `Assistant Plus`
 	
-	Assistant+, Specialized version for Windows platform.
+	Assistant+, specialized version for Windows platform.
 	
 	Optional module, distributed as an application installation package.
 	
