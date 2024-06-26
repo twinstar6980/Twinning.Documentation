@@ -68,13 +68,13 @@
 	
 	* `Windows` - `x86_64`
 	
-	* `Android` - `arm_64`
-	
-	* `Macintosh` - `x86_64` `arm_64`
-	
-	* `Iphone` - `arm_64`
+	* `Macintosh` - `x86_64`
 	
 	* `Linux` - `x86_64`
+	
+	* `Android` - `arm_64`
+	
+	* `Iphone` - `arm_64`
 
 2. 选择主目录。
 	

@@ -24,6 +24,8 @@
 
 - [24-06-25](#24-06-25)
 
+- [24-06-26](#24-06-26)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -412,6 +414,26 @@
 
 > 这个版本将 `AssistantPlus.Windows` 模块重命名为 `AssistantPlus` ，并为各模块增加了构建分发脚本。
 
+## 24-06-26
+
+* `Assistant` 47
+
+	* `Windows` 修复应用弹出系统级通知后点击通知无任何行为的 BUG ，现在会将应用窗口置为前台。
+
+	* `Windows` 转发扩展现在根据是否存在任意类型的 forwarder 文件对象（而不是必须为文件）来判断是否启用上下文扩展。
+
+* `AssistantPlus` 39
+
+	* 调整项目结构。
+
+	* 更改应用图标。
+
+	* 更改应用的共享数据目录位置，原本位于应用的沙盒存储空间中，现在更改为非沙盒的 `%APPDATA%/<App>` 。
+
+	* 应用退出时，将正确地注销关联的系统级通知。
+
+	* 提供对 explorer 上下文扩展的支持。
+
 ## 已知问题
 
 * `Kernel`
@@ -426,8 +448,12 @@
 
 	* 在 `Android` 上，默认遵循的系统配色值未适配 Flutter 3.22 的变更，因此会出现部分颜色混淆的 BUG 。需要等待第三方依赖包的修复。
 
+	* 在 `Windows` 上，应用的图标四角存在黑边。这是用于打包应用的第三方依赖 `msix` 的问题。
+
+	* 在 `Windows` 上，应用通知只有在刚弹出的时候才能相应点击事件，系统通知中心的应用通知无法响应点击事件。这是第三方依赖 `local_notifier` 的 BUG 。
+
 	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
-* `AssistantPlus.Windows`
+* `AssistantPlus`
 
 	* 由于写死了部分对话框的尺寸，在低尺寸窗口的情况下无法显示完整的对话框。
