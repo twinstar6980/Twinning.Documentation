@@ -26,6 +26,8 @@
 
 - [24-06-26](#24-06-26)
 
+- [24-06-27](#24-06-27)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -434,6 +436,12 @@
 
 	* 提供对 explorer 上下文扩展的支持。
 
+## 24-06-27
+
+* `Assistant` 48
+
+	* 桌面平台现在支持部分控件的文件拖放操作。
+
 ## 已知问题
 
 * `Kernel`
@@ -441,6 +449,8 @@
 	* 由于所依赖的第三方库 `md5` 的不足，应用在计算大文件（4G及以上）时会无限循环。
 
 * `Assistant`
+
+	* 在 debug 模式下启动 `Modding Worker` 会触发异常，这是由于 dart 错误地对 void 返回类型进行了空值检查，需要等待 dart 3.5 的修复。
 
 	* 应用内的一些编辑控件只在触发失焦事件时才会对数据与 UI 进行更新，这是预期行为；但是，在 `Android` 与 `Iphone` 上，如果在编辑控件时直接与需要消费编辑控件所控制的数据的控件进行交互，该控件将无法接收到最新编辑的数据值，必须先退出 IME 以使控件失焦。
 
@@ -451,6 +461,8 @@
 	* 在 `Windows` 上，应用的图标四角存在黑边。这是用于打包应用的第三方依赖 `msix` 的问题。
 
 	* 在 `Windows` 上，应用通知只有在刚弹出的时候才能相应点击事件，系统通知中心的应用通知无法响应点击事件。这是第三方依赖 `local_notifier` 的 BUG 。
+
+	* 在 `Windows` 上，使用文件选择对话框时可能报错，但可以直接忽略而无其他副作用（大概？）。这是第三方依赖 `file_selector` 的 BUG 。
 
 	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
