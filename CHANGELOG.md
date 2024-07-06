@@ -28,6 +28,8 @@
 
 - [24-06-27](#24-06-27)
 
+- [24-07-07](#24-07-07)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -442,6 +444,62 @@
 
 	* 桌面平台现在支持部分控件的文件拖放操作。
 
+## 24-07-07
+
+* `Script` 113
+
+	* 修复 RSB 资源转换功能在一些情况下报错的 BUG 。
+
+* `Assistant` 49
+
+	* 优化 UI 。
+
+	* 更好地适配 Android 系统导航栏与状态栏。
+
+	* 改进文本输入控件的值更新规则，现在只会在输入控件失焦时进行更新，而不是每次键入文本时都更新一次。
+
+	* 对于关联值为路径类型的文本输入控件，添加调起文件选择窗口的后缀按钮，同时，会在执行值更新时自动对路径值执行规范化。
+
+	* 修复移除标签项时被删除项的按钮水波特效会显示在下一个标签项按钮上的 BUG 。
+
+	* 移除标签页时不再弹出确认对话框。
+
+	* 修复在 `Windows` 上，第一次唤起文件选择对话框时，初始目录未成功设置为 `C:/` 的 BUG 。
+
+	* `Modding Worker` 如果在会话处于运行状态时尝试移除标签页，应用将弹出对话框告知用户无法移除。强制移除将会致使后台 Isolate 一直等待并占用部分资源。
+
+	* `Modding Worker` 修复快速多次点击启动按钮可能会重复启动任务会话的 BUG 。
+
+	* `Modding Worker` 优化 ArgumentBar Type=Size 的行为。
+
+	* `Command Sender` 在串行模式下执行转发时，始终调起新的 `Modding Worker` 标签项，即使命令列表为空。
+
+	* `Command Sender` 为命令项添加收起模式，该模式下仅列出非空参数的纯文本视图。
+
+	* `Command Sender` 移除命令项时，若存在不为空的参数值，将弹出确认窗口。
+
+	* `Command Sender` 修复文件选择窗口与 `Modding Worker` 的文件选择窗口共用路径记录的 BUG 。
+
+	* `Command Sender` 优化 ArgumentBar Type=Size 的行为。
+
+	* `Resource Forwarder` 修复参数列表不保留展开状态的 BUG 。
+
+	* `Resource Forwarder` 修复在启用批处理模式的情况下仍进行名称匹配的 BUG 。
+
+	* `Resource Forwarder` 修复选项列表不保留展开状态的 BUG 。
+
+	* `Animation Viewer` 新增模块，用于查看 PAM 动画。目前还在开发测试阶段，存在 UI 错误、功能缺失的问题。
+
+* `AssistantPlus` 40
+
+	* 修复 AboutPanel 中的一处 typo 。
+
+	* 优化 pam.json 动画文件的读取逻辑。
+
+	* `Command Sender` 在串行模式下执行转发时，始终调起新的 `Modding Worker` 标签项，即使命令列表为空。
+
+	* `Resource Forwarder` 修复在启用批处理模式的情况下仍进行名称匹配的 BUG 。
+
 ## 已知问题
 
 * `Kernel`
@@ -450,15 +508,21 @@
 
 * `Assistant`
 
-	* 在 debug 模式下启动 `Modding Worker` 会触发异常，这是由于 dart 错误地对 void 返回类型进行了空值检查，需要等待 dart 3.5 的修复。
+	* 在 debug 模式下启动 `Modding Worker` 会触发异常，这是由于 dart 错误地对 void 函数的返回进行了空值检查，需要等待 dart 3.5 的修复。参见 [flutter issue #149017](https://github.com/flutter/flutter/issues/149017) 。
 
 	* 应用内的一些编辑控件只在触发失焦事件时才会对数据与 UI 进行更新，这是预期行为；但是，在 `Android` 与 `Iphone` 上，如果在编辑控件时直接与需要消费编辑控件所控制的数据的控件进行交互，该控件将无法接收到最新编辑的数据值，必须先退出 IME 以使控件失焦。
 
+	* 文本输入框组件在离开视图区域后可能会被回收，当它再次进入视图时，会重构新的 TextEditingController ，此时，之前的输入历史记录会丢失，无法通过 Undo/Redo 快捷键切换输入值。这是预期行为。
+
+	* ListTile 的水波特效会溢出父容器的约束范围，这在一些情境下会对视觉效果造成负面影响。参见 [flutter issue #86584](https://github.com/flutter/flutter/issues/86584) 。
+
+	* 可滚动的组件的滚动条底部可能存在额外的 padding ，这会影响视觉效果（一般见于 `Android` ）。这是 Flutter 的 BUG ，参见 [flutter issue #151343](https://github.com/flutter/flutter/issues/151343) 。
+
 	* 在 `Android` 上，AboutPanel 中的第一行文本可能被截断了一些顶部区域，在与界面中的 Chip 进行一次交互后会恢复正常。尚不知该 BUG 的成因，故无法修复。
 
-	* 在 `Android` 上，默认遵循的系统配色值未适配 Flutter 3.22 的变更，因此会出现部分颜色混淆的 BUG 。需要等待第三方依赖包的修复。
+	* 在 `Android` 上，默认遵循的系统配色值未适配 Flutter 3.22 的变更，因此会出现部分颜色混淆的 BUG 。需要等待第三方依赖包的修复。参见 [dynamic_color issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
 
-	* 在 `Windows` 上，应用的图标四角存在黑边。这是用于打包应用的第三方依赖 `msix` 的问题。
+	* 在 `Windows` 上，应用的图标四角存在黑边。这是用于打包应用的第三方依赖 `msix` 的问题，参见 [msix issue #239](https://github.com/YehudaKremer/msix/issues/239) 。
 
 	* 在 `Windows` 上，应用通知只有在刚弹出的时候才能相应点击事件，系统通知中心的应用通知无法响应点击事件。这是第三方依赖 `local_notifier` 的 BUG 。
 
@@ -466,6 +530,16 @@
 
 	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
+	* `Modding Worker` 尽管整个消息列表内的文本都处于同一选择域内，但当用户执行全选时，有可能弹出报错对话框，这是因为无法获取列表内处于非可视区的文本控件的内容。这是预期行为。
+
 * `AssistantPlus`
 
 	* 由于写死了部分对话框的尺寸，在低尺寸窗口的情况下无法显示完整的对话框。
+
+	* 由于 `FileSavePicker` 的限制，文件保存对话框无法很好地显示为无扩展名模式。
+
+	* 有时，可滚动的 UI 控件无法滚动到最底部，而是会呈现出一种混乱的滚动行为，且有可能导致程序崩溃。这似乎是 WinUI 的 BUG 。
+
+	* `Modding Worker` 在消息列表中，每个文本控件都有各自独立的选择域，无法跨多个文本控件选择文本。
+
+	* `Modding Worker` 快速多次点击启动按钮可能会重复启动任务会话，多个任务会话中只有一个会成功启动，其余会失败并向消息列表中添加错误消息。计划修复这个 BUG 。
