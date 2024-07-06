@@ -1,6 +1,8 @@
 # Twinning - Documentation
 
-![x](./image/logo.png) ***Toolbox for processing specific file format.***
+![x](./image/logo/squircle-light.png) ![x](./image/logo/squircle-dark.png)
+
+***Toolbox for processing specific file format.***
 
 > The English version is translated by [Haruma](https://github.com/Haruma-VN) .
 

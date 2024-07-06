@@ -120,7 +120,7 @@
 	
 	该模块能够查看 RTON 对象结构定义文件。
 
-* `Animation Viewer` *`<Plus-Only>`*
+* `Animation Viewer`
 	
 	该模块能够查看 PopCap Animation (PAM) 动画文件。
 	

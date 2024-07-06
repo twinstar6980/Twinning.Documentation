@@ -122,7 +122,7 @@ The following functional modules are provided by application:
 	
 	This module can view RTON object structure definition files.
 
-* `Animation Viewer` *`<Plus-Only>`*
+* `Animation Viewer`
 	
 	This module can view PopCap Animation (PAM) file.
 	
