@@ -1,8 +1,8 @@
 # Twinning - Documentation
 
-![x](./image/logo/squircle-light.png) ![x](./image/logo/squircle-dark.png)
+![logo-light](./media/logo/squircle-light.png) ![logo-dark](./media/logo/squircle-dark.png)
 
-***Toolbox for processing specific file format.***
+***A toolbox for processing specific file format.***
 
 > The English version is translated by [Haruma](https://github.com/Haruma-VN) .
 
@@ -24,10 +24,10 @@
 
 ## 预览 | preview
 
-![x](./image/preview/shell.1.png)
+![x](./media/preview/shell.1.png)
 
-![x](./image/preview/assistant.1.png) ![x](./image/preview/assistant.2.png)
+![x](./media/preview/assistant.1.png) ![x](./media/preview/assistant.2.png)
 
-![x](./image/preview/assistant_plus.1.png) ![x](./image/preview/assistant_plus.2.png)
+![x](./media/preview/assistant_plus.1.png) ![x](./media/preview/assistant_plus.2.png)
 
-![x](./image/preview/forwarder.1.png)
+![x](./media/preview/forwarder.1.png)

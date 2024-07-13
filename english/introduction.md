@@ -130,5 +130,5 @@ The following functions are currently available:
 
 This project will always remain open source and free, but if you like my tools, donating some money to support me in subsequent development.
 
-![Alipay](../image/donate/alipay.jpg "Alipay")
-![WeChat](../image/donate/wechat.jpg "WeChat")
+![Alipay](../media/donate/alipay.jpg "Alipay")
+![WeChat](../media/donate/wechat.jpg "WeChat")

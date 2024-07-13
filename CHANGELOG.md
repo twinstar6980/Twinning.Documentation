@@ -32,6 +32,8 @@
 
 - [24-07-08](#24-07-08)
 
+- [24-07-14](#24-07-14)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -526,6 +528,32 @@
 
 	* 更改转发器扩展的 Verb Id 。
 
+## 24-07-14
+
+* `Assistant` 51
+
+	* 优化 UI 。
+
+	* 修复文件拖放区域的空白部分无法接收放置事件的 BUG 。
+
+	* 为 Tooltip 在桌面平台的触发添加 1000 毫秒的等待时间。
+
+	* 优化 AboutPanel 页面中显示共享目录选项的逻辑，并支持在 `Iphone` 平台上跳转至 `Files` 以显示目录。
+
+	* `Resource Forwarder` 清除所有资源项时显示确认对话框。
+
+	* `Resource Forwarder` 资源项的显示方式由 Menu 更改为 BottomSheet 。
+
+* `Assistant Plus` 42
+
+	* 优化 UI 。
+
+	* 修复报错对话框内容文本过多时无法滚动以查看更多错误信息的问题。
+
+	* `Resource Forwarder` 清除所有资源项时显示确认对话框。
+
+	* `Resource Forwarder` 新增手动输入资源路径的选项。
+
 ## 已知问题
 
 * `Kernel`
@@ -536,13 +564,11 @@
 
 	* 在 debug 模式下启动 `Modding Worker` 会触发异常，这是由于 dart 错误地对 void 函数的返回进行了空值检查，需要等待 dart 3.5 的修复。参见 [flutter issue #149017](https://github.com/flutter/flutter/issues/149017) 。
 
-	* 文本输入框组件在离开视图区域后可能会被回收，当它再次进入视图时，会重构新的 TextEditingController ，此时，之前的输入历史记录会丢失，无法通过 Undo/Redo 快捷键切换输入值。这是预期行为。
+	* 文本输入框组件在离开视图区域后可能会被回收，当它再次进入视图时，会重构新的 State ，此时，之前的输入历史记录将丢失，故而无法通过 Undo/Redo 快捷键切换输入值。这是预期行为。
 
 	* ListTile 的水波特效会溢出父容器的约束范围，这在一些情境下会对视觉效果造成负面影响。参见 [flutter issue #86584](https://github.com/flutter/flutter/issues/86584) 。
 
 	* 应用覆盖了文本输入控件的默认 onTapOutside 行为，以使控件在移动平台上也会在点击外部时失焦，但这也导致用户无法在显示 IME 的情况下对应用 UI 进行列表滚动等操作。
-
-	* 向模块页拖放文件时，底部栏区域内只有可交互控件的位置能够接收拖放操作。
 
 	* 为 `Iphone` 构建时能够完成打包，但无法通过 flutter 进行调试，期间会弹出未正确配置证书的错误。这似乎是在引入 `super_drag_and_drop` 第三方包后出现的问题。
 
@@ -552,11 +578,11 @@
 
 	* 在 `Android` 上，默认遵循的系统配色值未适配 Flutter 3.22 的变更，因此会出现部分颜色混淆的 BUG 。需要等待第三方依赖包的修复。参见 [dynamic_color issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
 
-	* 在 `Windows` 上，应用的图标四角存在黑边。这是用于打包应用的第三方依赖 `msix` 的问题，参见 [msix issue #239](https://github.com/YehudaKremer/msix/issues/239) 。
+	* 在 `Windows` 上，使用文件选择对话框时可能报错，但可以直接忽略而无其他副作用（大概？）。这是第三方依赖 `file_selector` 的 BUG 。
 
 	* 在 `Windows` 上，应用通知只有在刚弹出的时候才能相应点击事件，系统通知中心的应用通知无法响应点击事件。这是第三方依赖 `local_notifier` 的 BUG 。
 
-	* 在 `Windows` 上，使用文件选择对话框时可能报错，但可以直接忽略而无其他副作用（大概？）。这是第三方依赖 `file_selector` 的 BUG 。
+	* 在 `Windows` 上，应用的图标四角存在黑边。这是用于打包应用的第三方依赖 `msix` 的问题，参见 [msix issue #239](https://github.com/YehudaKremer/msix/issues/239) 。
 
 	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
@@ -564,12 +590,12 @@
 
 * `AssistantPlus`
 
+	* 有时，标题栏顶部的一部分区域（高度为标准标题栏的高度）会错误地变为可拖拽区域，同时区域中的图标等控件无法响应鼠标输入。这似乎是 WindowsAppSDK 的 BUG ，使用早先版本的 WindowsAppSDK 时似乎没有这个 BUG 。
+
+	* 有时，可滚动的 UI 控件无法滚动到最底部，而是会呈现出一种混乱的滚动效果，且有可能导致程序崩溃。这似乎是 WindowsAppSDK 的 BUG 。
+
 	* 由于写死了部分对话框的尺寸，在低尺寸窗口的情况下无法显示完整的对话框。
 
 	* 由于 `FileSavePicker` 的限制，文件保存对话框无法很好地显示为无扩展名模式。
 
-	* 有时，可滚动的 UI 控件无法滚动到最底部，而是会呈现出一种混乱的滚动行为，且有可能导致程序崩溃。这似乎是 WinUI 的 BUG 。
-
 	* `Modding Worker` 在消息列表中，每个文本控件都有各自独立的选择域，无法跨多个文本控件选择文本。
-
-	* `Modding Worker` 快速多次点击启动按钮可能会重复启动任务会话，多个任务会话中只有一个会成功启动，其余会失败并向消息列表中添加错误消息。计划修复这个 BUG 。

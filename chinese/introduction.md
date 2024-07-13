@@ -130,5 +130,5 @@
 
 本项目将一直保持开源、免费，但如果你喜欢我的工具，可以考虑为我捐赠一些金钱，支持我进行后续开发。
 
-![支付宝](../image/donate/alipay.jpg "支付宝")
-![微信](../image/donate/wechat.jpg "微信")
+![支付宝](../media/donate/alipay.jpg "支付宝")
+![微信](../media/donate/wechat.jpg "微信")
