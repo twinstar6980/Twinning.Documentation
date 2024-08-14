@@ -36,6 +36,8 @@
 
 - [24-07-25](#24-07-25)
 
+- [24-08-14](#24-08-14)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -566,6 +568,30 @@
 
 * `Assistant` 52
 
+## 24-08-14
+
+* `Kernel` 67
+
+	* 更新工具链及依赖项，移除不必要的依赖项 `ETCPACK` 。
+
+	* 在 `Linux` 上，程序将依赖 `libc++` 而非 `libstdc++` 。
+
+	* 重命名部分函数与脚本接口名。
+
+	* 修复在输出 JSON 文件时，有可能将数字输出为科学计数法的 BUG ，现在始终输出为 fixed 格式。
+
+* `Shell` 43
+
+	* 更新工具链及依赖项。
+
+	* 在 `Linux` 上，程序将依赖 `libc++` 而非 `libstdc++` 。
+
+* `Script` 115
+
+* `Assistant` 53
+
+	* 更新工具链及依赖项。
+
 ## 已知问题
 
 * `Kernel`
@@ -574,15 +600,13 @@
 
 * `Assistant`
 
-	* 在 debug 模式下启动 `Modding Worker` 会触发异常，这是由于 dart 错误地对 void 函数的返回进行了空值检查，需要等待 dart 3.5 的修复。参见 [flutter issue #149017](https://github.com/flutter/flutter/issues/149017) 。
-
 	* 文本输入框组件在离开视图区域后可能会被回收，当它再次进入视图时，会重构新的 State ，此时，之前的输入历史记录将丢失，故而无法通过 Undo/Redo 快捷键切换输入值。这是预期行为。
 
 	* ListTile 的水波特效会溢出父容器的约束范围，这在一些情境下会对视觉效果造成负面影响。参见 [flutter issue #86584](https://github.com/flutter/flutter/issues/86584) 。
 
 	* 应用覆盖了文本输入控件的默认 onTapOutside 行为，以使控件在移动平台上也会在点击外部时失焦，但这也导致用户无法在显示 IME 的情况下对应用 UI 进行列表滚动等操作。
 
-	* 为 `Iphone` 构建时能够完成打包，但无法通过 flutter 进行调试，期间会弹出未正确配置证书的错误。这似乎是在引入 `super_drag_and_drop` 第三方包后出现的问题。
+	* 为 `Iphone` 构建时能够完成打包，但无法通过 flutter 进行实机调试，期间会弹出未正确配置证书的错误。这是在某次更新后才出现的问题。
 
 	* 在 `Android` 上，用户在系统设置中更改系统显示大小时，应用可能不会立即更新显示大小，每次更改显示大小都要到下一次更改显示大小时才会生效。
 
@@ -594,7 +618,9 @@
 
 	* 在 `Windows` 上，应用通知只有在刚弹出的时候才能相应点击事件，系统通知中心的应用通知无法响应点击事件。这是第三方依赖 `local_notifier` 的 BUG 。
 
-	* 在 `Windows` 上，应用的图标四角存在黑边。这是用于打包应用的第三方依赖 `msix` 的问题，参见 [msix issue #239](https://github.com/YehudaKremer/msix/issues/239) 。
+	* 在 `Windows` 上，应用的图标四角存在黑边。这是第三方依赖 `msix` 的 BUG ，参见 [msix issue #239](https://github.com/YehudaKremer/msix/issues/239) 。
+
+	* 在 `Windows` 上，需要手动移除所生成的 MSIX 包中的 `msvcp140.dll` 、`vcruntime140.dll` 、`vcruntime140_1.dll` 文件。这是第三方依赖 `msix` 的 BUG ，参见 [msix issue #272](https://github.com/YehudaKremer/msix/issues/272) 。
 
 	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
