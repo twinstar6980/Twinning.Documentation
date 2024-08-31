@@ -38,6 +38,8 @@
 
 - [24-08-14](#24-08-14)
 
+- [24-09-01](#24-09-01)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -592,6 +594,16 @@
 
 	* 更新工具链及依赖项。
 
+## 24-09-01
+
+* `Assistant` 54
+
+	* 更新工具链及依赖项。
+
+* `Assistant Plus` 43
+
+	* 更新工具链及依赖项。
+
 ## 已知问题
 
 * `Kernel`
@@ -620,15 +632,13 @@
 
 	* 在 `Windows` 上，应用的图标四角存在黑边。这是第三方依赖 `msix` 的 BUG ，参见 [msix issue #239](https://github.com/YehudaKremer/msix/issues/239) 。
 
-	* 在 `Windows` 上，需要手动移除所生成的 MSIX 包中的 `msvcp140.dll` 、`vcruntime140.dll` 、`vcruntime140_1.dll` 文件。这是第三方依赖 `msix` 的 BUG ，参见 [msix issue #272](https://github.com/YehudaKremer/msix/issues/272) 。
-
 	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
 	* `Modding Worker` 尽管整个消息列表内的文本都处于同一选择域内，但当用户执行全选时，有可能弹出报错对话框，这是因为无法获取列表内处于非可视区的文本控件的内容。这是预期行为。
 
 * `AssistantPlus`
 
-	* 有时，标题栏顶部的一部分区域（高度为标准标题栏的高度）会错误地变为可拖拽区域，同时区域中的图标等控件无法响应鼠标输入。这似乎是 WindowsAppSDK 的 BUG ，使用早先版本的 WindowsAppSDK 时似乎没有这个 BUG 。
+	* 有时，标题栏顶部的一部分区域（高度为标准标题栏的高度）会错误地变为可拖拽区域，同时区域中的图标等控件无法响应鼠标输入。这似乎是 WindowsAppSDK 的 BUG 。
 
 	* 有时，可滚动的 UI 控件无法滚动到最底部，而是会呈现出一种混乱的滚动效果，且有可能导致程序崩溃。这似乎是 WindowsAppSDK 的 BUG 。
 
