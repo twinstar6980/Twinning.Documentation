@@ -612,9 +612,9 @@
 
 * `Assistant`
 
-	* 文本输入框组件在离开视图区域后可能会被回收，当它再次进入视图时，会重构新的 State ，此时，之前的输入历史记录将丢失，故而无法通过 Undo/Redo 快捷键切换输入值。这是预期行为。
+	* ListTile 的水波特效会溢出父容器的约束范围，这在一些情境下会对视觉效果造成负面影响。这是 `Flutter` 的 BUG ，参见 [issue #86584](https://github.com/flutter/flutter/issues/86584) 。
 
-	* ListTile 的水波特效会溢出父容器的约束范围，这在一些情境下会对视觉效果造成负面影响。参见 [flutter issue #86584](https://github.com/flutter/flutter/issues/86584) 。
+	* 文本输入框组件在离开视图区域后可能会被回收，当它再次进入视图时，会重构新的 State ，此时，之前的输入历史记录将丢失，故而无法通过 Undo/Redo 快捷键切换输入值。这是预期行为。
 
 	* 应用覆盖了文本输入控件的默认 onTapOutside 行为，以使控件在移动平台上也会在点击外部时失焦，但这也导致用户无法在显示 IME 的情况下对应用 UI 进行列表滚动等操作。
 
@@ -622,15 +622,15 @@
 
 	* 在 `Android` 上，用户在系统设置中更改系统显示大小时，应用可能不会立即更新显示大小，每次更改显示大小都要到下一次更改显示大小时才会生效。
 
-	* 在 `Android` 上，AboutPanel 中的第一行文本可能被截断了一些顶部区域，在与界面中的 Chip 进行交互时会恢复正常，但交互结束后又会显示为被截断，更换主题字体后可能不会出现这种情况。尚不知该 BUG 的成因，故无法修复。
+	* 在 `Android` 上，AboutPanel 中的第一行文本可能被截断了一些顶部区域，在与界面中的 Chip 进行交互时会恢复正常，但交互结束后又会显示为被截断，更换主题字体后可能不会出现这种情况。这是 `Flutter` 的 BUG ，参见 [issue #151540](https://github.com/flutter/flutter/issues/151540) 。
 
-	* 在 `Android` 上，默认遵循的系统配色值未适配 Flutter 3.22 的变更，因此会出现部分颜色混淆的 BUG 。需要等待第三方依赖包的修复。参见 [dynamic_color issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
+	* 在 `Android` 上，默认遵循的系统配色值未适配 Flutter 3.22 的变更，因此会出现部分颜色混淆的 BUG 。这是第三方依赖 `dynamic_color` 的 BUG ，参见 [issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
 
 	* 在 `Windows` 上，使用文件选择对话框时可能报错，但可以直接忽略而无其他副作用（大概？）。这是第三方依赖 `file_selector` 的 BUG 。
 
 	* 在 `Windows` 上，应用通知只有在刚弹出的时候才能相应点击事件，系统通知中心的应用通知无法响应点击事件。这是第三方依赖 `local_notifier` 的 BUG 。
 
-	* 在 `Windows` 上，应用的图标四角存在黑边。这是第三方依赖 `msix` 的 BUG ，参见 [msix issue #239](https://github.com/YehudaKremer/msix/issues/239) 。
+	* 在 `Windows` 上，应用的图标四角存在黑边。这是第三方依赖 `msix` 的 BUG ，参见 [issue #239](https://github.com/YehudaKremer/msix/issues/239) 。
 
 	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
