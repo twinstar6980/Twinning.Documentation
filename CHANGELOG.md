@@ -50,6 +50,8 @@
 
 - [24-11-29](#24-11-29)
 
+- [24-12-03](#24-12-03)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -688,6 +690,24 @@
 
 	* 更新工具链及依赖项。
 
+## 24-12-03
+
+* `Kernel` 71
+
+	* 更新工具链及依赖项。
+
+* `Script` 117
+
+	* 优化部分功能的命名。
+
+* `Assistant` 58
+
+	* 更新工具链及依赖项。
+
+	* `Modding Worker` 修复输出消息文本颜色错误的 BUG 。
+
+	* `Animation Viewer` 完善 UI 与功能，现在能够满足基本的 PAM 播放需求。
+
 ## 已知问题
 
 * `Kernel`
@@ -719,6 +739,8 @@
 	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
 	* `Modding Worker` 尽管整个消息列表内的文本都处于同一选择域内，但当用户执行全选时，有可能弹出报错对话框，这是因为无法获取列表内处于非可视区的文本控件的内容。这是预期行为。
+
+	* `Animation Viewer` 无法选择帧范围与隐藏特定控件，应在未来进行补全。
 
 * `AssistantPlus`
 
