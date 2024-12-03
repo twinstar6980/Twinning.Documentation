@@ -52,6 +52,8 @@
 
 - [24-12-03](#24-12-03)
 
+- [24-12-03](#24-12-03)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -707,6 +709,16 @@
 	* `Modding Worker` 修复输出消息文本颜色错误的 BUG 。
 
 	* `Animation Viewer` 完善 UI 与功能，现在能够满足基本的 PAM 播放需求。
+
+## 24-12-03
+
+* `Assistant` 59
+
+	* `Animation Viewer` 优化代码。
+
+* `Assistant Plus` 48
+
+	* `Animation Viewer` 优化代码，支持直接浏览 Image 元件。
 
 ## 已知问题
 

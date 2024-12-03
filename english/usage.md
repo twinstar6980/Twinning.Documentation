@@ -130,7 +130,7 @@ The following functional modules are provided by application:
 		
 		> `*.pam.json` is obtained by decoding `*.pam` files by toolkit.
 	
-	2. If the exploded view required for the animation is located in the same directory as the animation file, the animation can be rendered normally. Otherwise, you need to click the button on the right side of the ⌈ Image Directory ⌋ text box to select the directory where the exploded view is located.
+	2. If the exploded view required for the animation is located in the same directory as the animation file, the animation can be rendered normally. Otherwise, you need to click the button on the right side of the ⌈ Texture Directory ⌋ text box to select the directory where the exploded view is located.
 	
 	3. Through other UI controls, you can select the sub-animation you want to play, adjust the playback interval and frame rate, set component filter items, etc.
 
