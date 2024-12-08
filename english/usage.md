@@ -42,13 +42,13 @@ The main function returns `0` if no errors occur during execution, otherwise `1`
 
 Command can be passed via command line argument, which is available on `Windows`, `Linux`, and `Macintosh` system:
 
-* ***`launch`***
+* ***`application`***
 	
 	Set the first argument to this value to instruct the application to read and apply the remaining arguments as command.
 	
 	Otherwise, the application silently ignores all arguments ​​and does not execute any command.
 
-* **`-insert_tab`**
+* **`-launch`**
 	
 	Insert tab page.
 	
@@ -68,7 +68,7 @@ Command can be passed via command line argument, which is available on `Windows`
 
 Command can also be passed via application link, which is available on `Windows`, `Macintosh`, `Android`, and `Iphone` system:
 
-* ***`twinstar.twinning.assistant:/launch?`***
+* ***`twinstar.twinning.assistant:/application?`***
 	
 	* `command` : *`string...`*
 		
@@ -112,15 +112,11 @@ The following functional modules are provided by application:
 	
 	> Methods are defined by the `Method Configuration` file in the module settings.
 
-* `Resource Forwarder`
+* `Resource Shipper`
 	
 	This module is used with `Modding Worker`, it can easily forward files and select the methods and arguments you wants to use.
 	
 	> Options are defined by the `Option Configuration` file in the module setting.
-
-* `Reflection Descriptor` *`<Plus-Only>`*
-	
-	This module can view RTON object structure definition files.
 
 * `Animation Viewer`
 	
@@ -133,6 +129,10 @@ The following functional modules are provided by application:
 	2. If the exploded view required for the animation is located in the same directory as the animation file, the animation can be rendered normally. Otherwise, you need to click the button on the right side of the ⌈ Texture Directory ⌋ text box to select the directory where the exploded view is located.
 	
 	3. Through other UI controls, you can select the sub-animation you want to play, adjust the playback interval and frame rate, set component filter items, etc.
+
+* `Reflection Descriptor` *`<Plus-Only>`*
+	
+	This module can view RTON object structure definition files.
 
 * `Package Builder` *`<Plus-Only>`*
 	
@@ -250,7 +250,7 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		
 		Interaction language. Can be `English` or `Chinese` or `Vietnamese`.
 	
-	* `disable_basic_virtual_terminal_sequence` : `boolean` = `false`
+	* `console_basic_disable_virtual_terminal_sequence` : `boolean` = `false`
 		
 		Disable command-line virtual terminal sequences. Valid only when using `Shell`.
 	
@@ -266,49 +266,51 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		
 		The size of the common buffer. Used for encoding JSON strings, encoding PNG images, etc. If the amount of memory required for encoding exceeds this size, the tool will fail to process it.
 	
-	* `json_format` : `{ ... }`
+	* `json_format_disable_array_trailing_comma` : `boolean` = `false`
 		
-		JSON output format.
-		
-		* `disable_array_trailing_comma` : `boolean` = `false`
-			
-			Disable array's trailing comma.
-		
-		* `disable_array_line_breaking` : `boolean` = `false`
-			
-			Disable array's line breaking.
-		
-		* `disable_object_trailing_comma` : `boolean` = `false`
-			
-			Disable object's trailing comma.
-		
-		* `disable_object_line_breaking` : `boolean` = `false`
-			
-			Disable object's line breaking.
+		When outputting JSON, disable array's trailing comma.
 	
-	* `external_program` : `{ ... }`
+	* `json_format_disable_array_line_breaking` : `boolean` = `false`
+		
+		When outputting JSON, disable array's line breaking.
+	
+	* `json_format_disable_object_trailing_comma` : `boolean` = `false`
+		
+		When outputting JSON, disable object's trailing comma.
+	
+	* `json_format_disable_object_line_breaking` : `boolean` = `false`
+		
+		When outputting JSON, disable object's line breaking.
+	
+	* `external_program_sh` : `null | string` = `null`
 		
 		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
 		
-		* `sh` : `null | string` = `null`
-			
-			Used for `/utility/AndroidHelper.ts` 。
+		Used for `/utility/AndroidHelper.ts` 。
+	
+	* `external_program_adb` : `null | string` = `null`
 		
-		* `adb` : `null | string` = `null`
-			
-			Used for `/utility/AndroidHelper.ts` 。
+		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
 		
-		* `vgmstream` : `null | string` = `null`
-			
-			Used for `/Support/Wwise/Media/Decode.ts` 。
+		Used for `/utility/AndroidHelper.ts` 。
+	
+	* `external_program_vgmstream` : `null | string` = `null`
 		
-		* `wwise` : `null | string` = `null`
-			
-			Used for `/Support/Wwise/Media/Encode.ts` 。
+		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
 		
-		* `il2cpp_dumper` : `null | string` = `null`
-			
-			Used for `/Support/Kairosoft/Game/ModifyProgram.ts` 。
+		Used for `/Support/Wwise/Media/Decode.ts` 。
+	
+	* `external_program_wwise` : `null | string` = `null`
+		
+		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
+		
+		Used for `/Support/Wwise/Media/Encode.ts` 。
+	
+	* `external_program_il2cpp_dumper` : `null | string` = `null`
+		
+		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
+		
+		Used for `/Support/Kairosoft/Game/ModifyProgram.ts` 。
 	
 	* `thread_limit` : `bigint` = `0`
 		

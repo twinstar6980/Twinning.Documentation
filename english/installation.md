@@ -10,7 +10,7 @@
 
 ## Platform supportability
 
-* Operating systems: `Windows 7+` 、`Linux ~` 、`Macintosh 11~` 、`Android 9+` 、`Iphone 14~`.
+* Operating systems: `Windows 10+` 、`Linux ~` 、`Macintosh 11~` 、`Android 9+` 、`Iphone 14~`.
 
 * Processor architectures: `x86_64`, `arm_64`.
 
@@ -132,7 +132,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Command Sender` - `Method Configuration` = `<home>/assistant/method_configuration.json` .
 	
-	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
+	* `Resource Shipper` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
@@ -165,7 +165,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/MethodConfiguration.json`.
 	
-	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json`.
+	* `Resource Shipper` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json`.
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 

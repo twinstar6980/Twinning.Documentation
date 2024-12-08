@@ -114,33 +114,13 @@ The following table lists the supported content URI formats, and the application
 
 3. Full fonts: optional, if not supported, some characters (e.g. Chinese characters, emoji) will not be displayed properly. However, you can fix this by changing the language to `English`. It was indicated in `installation.md`.
 
-Some operating systems do not provide (or turn off by default) these support in the default terminal, users can install a third-party terminal and run this program in it, you can refer to the following list:
+Some operating systems do not provide terminal programs, or the default terminal program does not provide (or turn off by default) these supports, users can install third-party terminals and run this program in them, you can refer to the following list:
 
-* Windows 7 ~ 8
-	
-	Windows 7 to 8 does not provide support for cmd, I recommend using [cmder](https://cmder.app/).
+* Windows - [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701)
 
-* Windows 10
-	
-	Windows 10 comes with cmd support turned off by default, I recommend using [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701).
+* Android - [Termux](https://termux.dev/en/)
 
-* Windows 11
-	
-	Windows 11 comes with cmd default shutdown support, and comes with Windows Terminal to provide support, please set it as the default terminal of your system.
-
-* Macintosh 12+
-	
-	Macintosh 12+ comes with Terminal support.
-
-* Linux - Ubuntu 20+
-	
-	Terminal support is included.
-
-* Android
-	
-	I recommend using [Termux](https://termux.dev/en/).
-	
-	> Of course, you can also use the terminal of your desktop system via ADB.
+* iPhone - [Filza](https://www.tigisoftware.com/default/?page_id=78)
 
 > @ `Windows` \
 > When you double-click to run the launch script, it will run the program in the system default terminal. To change it to run in a specified third-party terminal, change `launch.cmd`, but switching terminals will cause the cmd window to blink once, unless you use Windows 11 and set Windows Terminal as the system default terminal.

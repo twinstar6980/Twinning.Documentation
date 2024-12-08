@@ -12,7 +12,7 @@
 
 工具支持以下平台：
 
-* 操作系统：`Windows 7+` 、`Linux ~` 、`Macintosh 11~` 、`Android 9+` 、`Iphone 14~` 。
+* 操作系统：`Windows 10+` 、`Linux ~` 、`Macintosh 11~` 、`Android 9+` 、`Iphone 14~` 。
 
 * 处理器架构：`x86_64` 、`arm_64` 。
 
@@ -133,7 +133,7 @@
 	
 	* `Command Sender` - `Method Configuration` = `<home>/assistant/method_configuration.json` 。
 	
-	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
+	* `Resource Shipper` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
@@ -166,7 +166,7 @@
 	
 	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/MethodConfiguration.json` 。
 	
-	* `Resource Forwarder` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json` 。
+	* `Resource Shipper` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json` 。
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 

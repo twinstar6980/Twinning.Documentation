@@ -40,13 +40,13 @@
 
 可以通过命令行参数传递命令，这在 `Windows` 、`Linux` 、`Macintosh` 系统中可用：
 
-* ***`launch`***
+* ***`application`***
 	
 	将首个参数设为该值，以指示应用读取并应用余下参数作为命令。
 	
 	否则，应用将静默地忽略所有参数，不会执行任何命令。
 
-* **`-insert_tab`**
+* **`-launch`**
 	
 	插入标签页。
 	
@@ -66,7 +66,7 @@
 
 也可通过应用链接传递命令，这在 `Windows` 、`Macintosh` 、`Android` 、`Iphone` 系统中可用：
 
-* ***`twinstar.twinning.assistant:/launch?`***
+* ***`twinstar.twinning.assistant:/application?`***
 	
 	* `command` : *`string...`*
 		
@@ -110,15 +110,11 @@
 	
 	> 功能由模块设置中的 `Method Configuration` 文件定义。
 
-* `Resource Forwarder`
+* `Resource Shipper`
 	
 	该模块配合 `Modding Worker` 使用，能够方便地转发文件并选择想要使用的功能与参数。
 	
 	> 选项由模块设置中的 `Option Configuration` 文件定义。
-
-* `Reflection Descriptor` *`<Plus-Only>`*
-	
-	该模块能够查看 RTON 对象结构定义文件。
 
 * `Animation Viewer`
 	
@@ -131,6 +127,10 @@
 	2. 如果动画所需的分解图位于动画文件同级目录内，则可以正常渲染动画，否则需要点击 ⌈ Texture Directory ⌋ 文本框的右侧按钮，选择分解图所在目录。
 	
 	3. 通过其他 UI 控件可以选择想要播放的子动画、调整播放区间与帧率、设置元件过滤项、等。
+
+* `Reflection Descriptor` *`<Plus-Only>`*
+	
+	该模块能够查看 RTON 对象结构定义文件。
 
 * `Package Builder` *`<Plus-Only>`*
 	
@@ -248,7 +248,7 @@
 		
 		交互语言。可以为 `English` 或 `Chinese` 或 `Vietnamese` 。
 	
-	* `disable_basic_virtual_terminal_sequence` : `boolean` = `false`
+	* `console_basic_disable_virtual_terminal_sequence` : `boolean` = `false`
 		
 		禁用命令行虚拟终端序列。仅当使用 `Shell` 时有效。
 	
@@ -264,49 +264,51 @@
 		
 		公用缓存区大小。用于编码 JSON 字符串、编码 PNG 图像等，如果编码时所需的内存用量超过这一大小，工具将处理失败。
 	
-	* `json_format` : `{ ... }`
+	* `json_format_disable_array_trailing_comma` : `boolean` = `false`
 		
-		JSON 输出格式。
-		
-		* `disable_array_trailing_comma` : `boolean` = `false`
-			
-			禁用数组尾随逗号。
-		
-		* `disable_array_line_breaking` : `boolean` = `false`
-			
-			禁用数组换行。
-		
-		* `disable_object_trailing_comma` : `boolean` = `false`
-			
-			禁用对象尾随逗号。
-		
-		* `disable_object_line_breaking` : `boolean` = `false`
-			
-			禁用对象换行。
+		输出 JSON 时禁用数组尾随逗号。
 	
-	* `external_program` : `{ ... }`
+	* `json_format_disable_array_line_breaking` : `boolean` = `false`
+		
+		输出 JSON 时禁用数组换行。
+	
+	* `json_format_disable_object_trailing_comma` : `boolean` = `false`
+		
+		输出 JSON 时禁用对象尾随逗号。
+	
+	* `json_format_disable_object_line_breaking` : `boolean` = `false`
+		
+		输出 JSON 时禁用对象换行。
+	
+	* `external_program_sh` : `null | string` = `null`
 		
 		指定可能会调用的外部程序的路径，若为 null ，则将在运行时检索 `PATH` 环境变量。
 		
-		* `sh` : `null | string` = `null`
-			
-			用于 `/utility/AndroidHelper.ts` 。
+		用于 `/utility/AndroidHelper.ts` 。
+	
+	* `external_program_adb` : `null | string` = `null`
 		
-		* `adb` : `null | string` = `null`
-			
-			用于 `/utility/AndroidHelper.ts` 。
+		指定可能会调用的外部程序的路径，若为 null ，则将在运行时检索 `PATH` 环境变量。
 		
-		* `vgmstream` : `null | string` = `null`
-			
-			用于 `/Support/Wwise/Media/Decode.ts` 。
+		用于 `/utility/AndroidHelper.ts` 。
+	
+	* `external_program_vgmstream` : `null | string` = `null`
 		
-		* `wwise` : `null | string` = `null`
-			
-			用于 `/Support/Wwise/Media/Encode.ts` 。
+		指定可能会调用的外部程序的路径，若为 null ，则将在运行时检索 `PATH` 环境变量。
 		
-		* `il2cpp_dumper` : `null | string` = `null`
-			
-			用于 `/Support/Kairosoft/Game/ModifyProgram.ts` 。
+		用于 `/Support/Wwise/Media/Decode.ts` 。
+	
+	* `external_program_wwise` : `null | string` = `null`
+		
+		指定可能会调用的外部程序的路径，若为 null ，则将在运行时检索 `PATH` 环境变量。
+		
+		用于 `/Support/Wwise/Media/Encode.ts` 。
+	
+	* `external_program_il2cpp_dumper` : `null | string` = `null`
+		
+		指定可能会调用的外部程序的路径，若为 null ，则将在运行时检索 `PATH` 环境变量。
+		
+		用于 `/Support/Kairosoft/Game/ModifyProgram.ts` 。
 	
 	* `thread_limit` : `bigint` = `0`
 		

@@ -114,33 +114,13 @@
 
 3. 完备的字体：可选，若不支持，一些字符（如汉字、emoji ）将无法正常显示。
 
-有些操作系统的默认终端不提供（或默认关闭）这些支持，用户可以安装第三方终端并在其中运行本程序，可以参照以下列表：
+有些操作系统未提供终端程序，或默认终端程序不提供（或默认关闭）这些支持，用户可以安装第三方终端并在其中运行本程序，可以参照以下列表：
 
-* Windows 7 ~ 8
-	
-	自带 cmd 不提供支持，推荐使用 [cmder](https://cmder.app/) 。
+* Windows - [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701)
 
-* Windows 10
-	
-	自带 cmd 默认关闭支持，推荐使用 [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701) 。
+* Android - [Termux](https://termux.dev/en/)
 
-* Windows 11
-	
-	自带 cmd 默认关闭支持，自带 Windows Terminal 提供支持，请将其设置为系统的默认终端。
-
-* Macintosh 12+
-	
-	自带终端提供支持。
-
-* Linux - Ubuntu 20+
-	
-	自带终端提供支持。
-
-* Android
-	
-	推荐使用 [Termux](https://termux.dev/en/) 。
-	
-	> 当然，你也可以通过 ADB 来使用桌面系统的终端。
+* iPhone - [Filza](https://www.tigisoftware.com/default/?page_id=78)
 
 > @ `Windows` \
 > 双击以运行启动脚本时，将在系统默认终端中运行程序，若想更改为在指定第三方终端中运行，请修改 `launch.cmd` ，但切换终端将导致一次 cmd 窗口闪烁，除非你使用 Windows 11 并将 Windows Terminal 设为系统默认终端。
