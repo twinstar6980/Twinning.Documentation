@@ -2,7 +2,7 @@
 
 - [Introduction](#Introduction)
 
-- [js](#js)
+- [script.js](#scriptjs)
 
 - [data.hash](#datahash)
 
@@ -118,7 +118,7 @@ The following will list the methods with their corresponding configuration rules
 
 All of the methods listed below are regular method. Some of the regular method have a batch version, which is the same as the regular method, but with the `.batch` suffix appended to the method ID .
 
-## `js`
+## `script.js`
 
 * `execute` `*`
 	

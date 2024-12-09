@@ -68,7 +68,7 @@
 
 * [`Assistant`](https://github.com/twinstar6980/Twinning/tree/master/Assistant/lib/bridge) with `Dart`
 
-* [`Assistant Plus`](https://github.com/twinstar6980/Twinning/tree/master/AssistantPlus.Windows/Bridge) with `C#`
+* [`Assistant Plus`](https://github.com/twinstar6980/Twinning/tree/master/AssistantPlus/Application/Bridge) with `C#`
 
 下面以 [`Shell`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge) 模块为例介绍应如何集成 `Kernel` ：
 

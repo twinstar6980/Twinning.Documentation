@@ -50,7 +50,7 @@ Command can be passed via command line argument, which is available on `Windows`
 
 * **`-launch`**
 	
-	Insert tab page.
+	Launch new tab page.
 	
 	* `title` : *`string`*
 		
@@ -63,6 +63,14 @@ Command can be passed via command line argument, which is available on `Windows`
 	* `option` : *`string...`*
 		
 		Module option.
+
+* **`-forward`**
+	
+	Forward resources to a module.
+	
+	* `item` : *`string...`*
+		
+		Resource item.
 
 > When launching an application via command line argument, a new application instance will always be created.
 
@@ -162,9 +170,9 @@ The user can pass in additional arguments when starting the tool, or if no addit
 		
 		If the input value is `?` , the user will be asked to input the argument at runtime.
 	
-	* **`-disable_filter`** : *`boolean`*
+	* **`-filterless`** : *`boolean`*
 		
-		Used to disable method filtering.
+		Used to disable candidate method filtering.
 		
 		By default, if `-method` is not specified, the tool will filter the available methods for user selection based on the type of input object (mainly by extension);
 		

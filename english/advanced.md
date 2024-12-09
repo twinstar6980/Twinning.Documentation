@@ -68,7 +68,7 @@ Refer to several shell implementations in this tool:
 
 * [`Assistant`](https://github.com/twinstar6980/Twinning/tree/master/Assistant/lib/bridge) with `Dart`
 
-* [`Assistant Plus`](https://github.com/twinstar6980/Twinning/tree/master/AssistantPlus.Windows/Bridge) with `C#`
+* [`Assistant Plus`](https://github.com/twinstar6980/Twinning/tree/master/AssistantPlus/Application/Bridge) with `C#`
 
 The following is an example of how to integrate `Kernel` with the [`Shell`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge) modules:
 
