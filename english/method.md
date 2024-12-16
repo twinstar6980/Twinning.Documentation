@@ -148,7 +148,7 @@ All of the methods listed below are regular method. Some of the regular method h
 
 ## `data.encryption`
 
-* `xor.encrypt` `*`
+* `exor.encrypt` `*`
 	
 	* `plain_file` : `*`
 	

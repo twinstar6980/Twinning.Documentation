@@ -169,7 +169,7 @@ s1.value === "this is a string value.";
 // Set the path object
 let target_path = Kernel.Path.value(`C:/sample.txt`);
 // Call the kernel function, pass the path object, and get the Kernel.
-let state = Kernel.FileSystem.exist_file(target_path);
+let state = Kernel.Storage.exist_file(target_path);
 // fetch the value of the Kernel.Boolean object
 let state_value = state.value;
 if (state_value) {
@@ -238,7 +238,7 @@ The kernel interface provides access to the local file system.
 // Set the path to the file
 let path = Kernel.Path.value("file.txt");
 // read the file data
-let data = Kernel.FileSystem.read_file(path);
+let data = Kernel.Storage.read_file(path);
 // convert Kernel.ByteArray to Kernel.String by moving memory
 let string = Kernel.Miscellaneous.cast_moveable_ByteArray_to_String(data);
 // Get the JS string corresponding to Kernel.
@@ -252,7 +252,7 @@ let target = Kernel.Path.value("C:/dir1");
 // set traversal depth, if null, traverse all levels
 let depth = Kernel.SizeOptional.value(2n);
 // get all the subfile paths in the directory
-let path_list = Kernel.FileSystem.list_file(target, depth);
+let path_list = Kernel.Storage.list_file(target, depth);
 for (let e of path_list.value) {
 	// iterate through the subfile paths
 }
@@ -292,7 +292,7 @@ export function decode_fs(
 	// Version number
 	let version_c = Kernel.Tool.Wwise.SoundBank.Version.value(version);
 	// Read data from external memory to memory
-	let data = FileSystem.read_file(data_file);
+	let data = Storage.read_file(data_file);
 	// Construct the stream view object as input to the decode function
 	let stream = Kernel.ByteStreamView.watch(data.view());
 	// Construct the definition object as the output of the decode function

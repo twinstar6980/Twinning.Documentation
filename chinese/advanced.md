@@ -171,7 +171,7 @@ s1.value === 'this is a string value.'
 // 设定路径对象
 let target_path = Kernel.Path.value(`C:/sample.txt`);
 // 调用内核函数，传递路径对象，得到 Kernel.Boolean 对象
-let state = Kernel.FileSystem.exist_file(target_path);
+let state = Kernel.Storage.exist_file(target_path);
 // 取出 Kernel.Boolean 对象的值
 let state_value = state.value;
 if (state_value) {
@@ -240,7 +240,7 @@ let string_in_memory = Kernel.Miscellaneous.cast_moveable_ByteArray_to_String(st
 // 设定文件路径
 let path = Kernel.Path.value('file.txt');
 // 读取文件数据
-let data = Kernel.FileSystem.read_file(path);
+let data = Kernel.Storage.read_file(path);
 // 通过移动内存的方式将 Kernel.ByteArray 转换为 Kernel.String
 let string = Kernel.Miscellaneous.cast_moveable_ByteArray_to_String(data);
 // 得到 Kernel.String 对应的 JS 字符串
@@ -254,7 +254,7 @@ let target = Kernel.Path.value('C:/dir1');
 // 设定遍历深度，如果为null，则遍历所有层级
 let depth = Kernel.SizeOptional.value(2n);
 // 获取目录中的所有子文件路径
-let path_list = Kernel.FileSystem.list_file(target, depth);
+let path_list = Kernel.Storage.list_file(target, depth);
 for (let e of path_list.value) {
 	// 遍历子文件路径
 }
@@ -294,7 +294,7 @@ export function decode_fs(
 	// 文件版本
 	let version_c = Kernel.Tool.Wwise.SoundBank.Version.value(version);
 	// 从外存读取数据到内存
-	let data = FileSystem.read_file(data_file);
+	let data = Storage.read_file(data_file);
 	// 构造流视图对象，作为解码函数的输入
 	let stream = Kernel.ByteStreamView.watch(data.view());
 	// 构造定义对象，作为解码函数的输出

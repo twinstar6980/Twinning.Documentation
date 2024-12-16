@@ -148,7 +148,7 @@
 
 ## `data.encryption`
 
-* `xor.encrypt` `*`
+* `exor.encrypt` `*`
 	
 	* `plain_file` : `*`
 	
