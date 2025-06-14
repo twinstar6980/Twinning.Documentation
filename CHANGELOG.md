@@ -82,6 +82,8 @@
 
 - [25-06-14](#25-06-14)
 
+- [25-06-14](#25-06-14)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -1022,6 +1024,12 @@
 
 	* 优化 `Forwarder` 模块报错时的弹窗 UI 。
 
+## 25-06-14
+
+* `Assistant` 71
+
+	* `Iphone` 修复了因 `forwarder` 模块编译设置错误而导致应用包无法安装的 BUG 。
+
 ## 已知问题
 
 * `Kernel`
@@ -1037,8 +1045,6 @@
 	* 文本输入框组件在离开视图区域后可能会被回收，当它再次进入视图时，会重构新的 State ，此时，之前的输入历史记录将丢失，故而无法通过 Undo/Redo 快捷键切换输入值。这是预期行为。
 
 	* 应用覆盖了文本输入控件的默认 `onTapOutside` 行为，以使控件在移动平台上也会在点击外部时失焦，但这也导致用户无法在显示 `IME` 的情况下对应用 UI 进行列表滚动等操作。
-
-	* 为 `Iphone` 构建时能够完成打包，但无法通过 `Flutter` 进行实机调试，期间会弹出未正确配置证书的错误。这是在某次更新后才出现的问题。
 
 	* 在 `Android` 上，用户在系统设置中更改系统显示大小时，应用可能不会立即更新显示大小，每次更改显示大小都要到下一次更改显示大小时才会生效。这是 `Flutter` 的 BUG 。
 
@@ -1056,7 +1062,7 @@
 
 	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
-	* 在 `Windows` 上，`Forwarder` 模块可能导致 COM Surrogate 进程陷入错误状态，等待后续调查。
+	* 在 `Windows` 上，`forwarder` 模块可能导致 COM Surrogate 进程陷入错误状态，等待后续调查。
 
 	* `Modding Worker` 尽管整个消息列表内的文本都处于同一选择域内，但当用户执行全选时，有可能弹出报错对话框，这是因为无法获取列表内处于非可视区的文本控件的内容。这是预期行为。
 
