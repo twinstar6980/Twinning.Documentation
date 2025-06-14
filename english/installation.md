@@ -126,15 +126,15 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Forwarder Extension` Click to enable the forwarder extension (optional).
 		
-		> `Windows`: The forwarder extension is disabled by default. If you need to change it, click the switch in the dialog.
+		> `Windows`: The forwarder extension is disabled by application. If you need to change it, click the switch in the dialog.
 		
-		> `Macintosh`: The forwarder extension is disabled by default. If you need to change it, click the switch in the dialog box and in the pop-up interface, click ⌈ Extensions ⌋ - ⌈ Document Provider ⌋ - ⌈ Twinning Assistant ⌋ and check the switch button on the right.
+		> `Macintosh`: The forwarder extension is default disabled by system. If you need to change it, click the switch in the dialog box and in the pop-up interface, click ⌈ Extensions ⌋ - ⌈ Document Provider ⌋ - ⌈ Twinning Assistant ⌋ and check the switch button on the right.
 		
 		> `Linux`: The forwarder extension are not supported.
 		
-		> `Android`: The forwarder extension is always enabled by the system and cannot be changed by apps themselves.
+		> `Android`: The forwarder extension is always enabled by system and cannot be changed by application.
 		
-		> `Iphone`: The forwarder extension is disabled by default and cannot be enabled by the app. If you need to change it, open ⌈ File ⌋ , select any file, click ⌈ Share ⌋ - ⌈ Edit Actions... ⌋ - ⌈ Twinning Assistant ⌋ , and check the switch button on the right.
+		> `Iphone`: The forwarder extension is default enabled by system and cannot be changed by application. If you need to change it, open ⌈ File ⌋ , select any file, click ⌈ Share ⌋ - ⌈ Edit Actions... ⌋ - ⌈ Twinning Assistant ⌋ , and check the switch button on the right.
 	
 	* `Modding Worker` - `Kernel` = `<home>/kernel`.
 	
