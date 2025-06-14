@@ -12,7 +12,7 @@
 
 工具支持以下平台：
 
-* 操作系统：`Windows 10+` 、`Linux ~` 、`Macintosh 11~` 、`Android 9+` 、`Iphone 14~` 。
+* 操作系统：`Windows 10+` 、`Linux ~` 、`Macintosh 11+` 、`Android 9+` 、`Iphone 15+` 。
 
 * 处理器架构：`x86_64` 、`arm_64` 。
 
@@ -68,7 +68,7 @@
 	
 	* `Windows` - `x86_64`
 	
-	* `Macintosh` - `x86_64`
+	* `Macintosh` - `arm_64`
 	
 	* `Linux` - `x86_64`
 	
@@ -117,13 +117,25 @@
 	
 	打开 `Assistant` 应用，点击页面中各个模块列表项右侧的齿轮图标可以打开模块设置对话框，编辑以下设置项：
 	
-	* `Storage Permission` 点击并为应用授予存储空间读写权限 。
+	* `Storage Permission` 点击以授予应用存储空间读写权限。
 		
 		> 该项仅适用于 `Android` 。
 	
-	* `Fallback Directory` = `<home>/workspace` 。
+	* `Storage Fallback Directory` = `<home>/workspace` 。
 		
 		> 该项仅适用于 `Android` 。
+	
+	* `Forwarder Extension` 点击以启用转发器扩展（可选）。
+		
+		> 对于 `Windows` ，应用默认禁用转发器扩展，如果需要更改，点击对话框中的开关即可。
+		
+		> 对于 `Macintosh` ，系统默认禁用转发器扩展，如果需要更改，点击对话框中的开关，并在点击后弹出的界面中点击 ⌈ 扩展 ⌋ - ⌈ 文档提供程序 ⌋ - ⌈ Twinning Assistant ⌋ ，勾选右侧的开关按钮。
+		
+		> 对于 `Linux` ，转发器扩展不支持。
+		
+		> 对于 `Android` ，系统将始终启用转发器扩展，应用无法自行更改启用状态。
+		
+		> 对于 `Iphone` ，系统默认禁用转发器扩展，应用无法自行更改启用状态，如果需要更改，请打开 ⌈ 文件 ⌋ ，选择任意文件后点击 ⌈ 共享 ⌋ - ⌈ 编辑操作... ⌋ - ⌈ Twinning Assistant ⌋ ，勾选右侧的开关按钮。
 	
 	* `Modding Worker` - `Kernel` = `<home>/kernel` 。
 	
@@ -137,26 +149,13 @@
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
-8. 启用 `Assistant` 转发器扩展。
-	
-	> 如果不需要 `Assistant` 模块，可以跳过该步骤。
-	> 该步骤只需 `Windows` 、`Macintosh` 、`Android` 、`Iphone` 用户操作。
-	
-	`Assistant` 提供了可选的转发器扩展，能够在系统文件管理器中为文件与目录提供快速转发至应用的选项。
-	
-	* `Windows` ：默认禁用转发器扩展，如果需要启用，请在 `%APPDATA%/TwinStar.Twinning.Assistant` 目录中创建空白的 `forwarder` 文件。
-	
-	* `Macintosh` ：默认禁用转发器扩展，如果需要启用，请打开 `Assistant` 并关闭，然后打开 ⌈ 系统设置 ⌋ - ⌈ 隐私与安全性 ⌋ - ⌈ 扩展 ⌋ - ⌈ 添加的扩展 ⌋ - ⌈ Twinning Assistant ⌋ ，勾选其中的 ⌈ “访达”扩展 ⌋ 。
-	
-	* `Android` ：始终启用转发器扩展。
-	
-	* `Iphone` ：默认禁用转发器扩展，如果需要启用，请打开 ⌈ 文件 ⌋ ，选择任意文件后点击 ⌈ 共享 ⌋ - ⌈ 编辑操作... ⌋ - ⌈ Twinning Assistant ⌋ ，勾选右侧的开关按钮。
-
-9. 配置 `Assistant Plus` 设置项。
+8. 配置 `Assistant Plus` 设置项。
 	
 	> 如果不需要 `Assistant Plus` 模块，可以跳过该步骤。
 	
 	打开 `Assistant Plus` 应用，点击页面中各个模块列表项右侧的齿轮图标可以打开模块设置对话框，编辑以下设置项：
+	
+	* `Forwarder Extension` 点击以启用转发器扩展（可选）。
 	
 	* `Modding Worker` - `Kernel` = `<home>/kernel` 。
 	
@@ -170,7 +169,7 @@
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
-10. 设置脚本交互语言。
+9. 设置脚本交互语言。
 	
 	以文本形式打开并编辑主目录内的 `script/Entry/Entry.json` 文件，找到 `"language": "English"` 部分，修改它以切换工具的交互语言。
 	
@@ -180,7 +179,7 @@
 	
 	* `Vietnamese` 越文
 
-11. 至此，已经完成了所有安装步骤，你可以通过终端或 GUI 应用使用工具。
+10. 至此，已经完成了所有安装步骤，你可以通过终端或 GUI 应用使用工具。
 
 ## 外部程序
 

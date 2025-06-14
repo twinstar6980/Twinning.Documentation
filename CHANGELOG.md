@@ -80,6 +80,8 @@
 
 - [25-05-11](#25-05-11)
 
+- [25-06-13](#25-06-13)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -964,6 +966,62 @@
 
 	* 添加软件包可见性需求声明。
 
+## 25-06-13
+
+> 这个版本的分发调整了适配的 `Macintosh` 、`Iphone` 系统版本，并规范了文本文件编码与换行符。
+
+* `Kernel` 78
+
+	* 更新工具链及依赖项。
+
+	* 文件系统相关给函数中，重命名、删除文件对象时将要求指定文件必须存在，而非静默地失败。
+
+* `Shell` 50
+
+	* 规范文本文件编码与换行符。
+
+	* 更新工具链及依赖项。
+
+* `Script` 122
+
+	* 优化代码。
+
+* `Assistant` 70
+
+	* 更新工具链及依赖项。
+
+	* 优化代码。
+
+	* 更新版权注释年份。
+
+	* 优化设置页面 UI ，为一些操作添加完成通知。
+
+	* 在设置页面中添加启用/禁用 `Forwarder` 模块的 UI 。
+
+	* 修正了重置应用设置后会同时清除全局应用状态的 BUG 。
+
+	* 移除在桌面系统上的自定义标题栏，现在仅使用系统标题栏。
+
+	* `Windows` 优化 `forwarder` 模块报错时的弹窗 UI 。
+
+	* `Windows` 修复因文件路径非法而导致程序崩溃的 BUG 。
+
+	* `Macintosh` 修复因项目设置问题而导致新版本 Flutter 无法完成编译的 BUG 。
+
+* `Assistant Plus` 56
+
+	* 优化代码。
+
+	* 更新版权注释年份。
+
+	* 优化设置页面 UI ，为一些操作添加完成通知。
+
+	* 在设置页面中添加启用/禁用 `Forwarder` 模块的 UI 。
+
+	* 修复 exe 命令行样例中的错误文本。
+
+	* 优化 `Forwarder` 模块报错时的弹窗 UI 。
+
 ## 已知问题
 
 * `Kernel`
@@ -972,25 +1030,25 @@
 
 * `Assistant`
 
-	* ListTile 的水波特效会溢出父容器的约束范围，这在一些情境下会对视觉效果造成负面影响。这是 `Flutter` 的 BUG ，参见 [issue #86584](https://github.com/flutter/flutter/issues/86584) 。
+	* `SnackBar` 会显示在模态 `BottomSheet` 的下层，这会导致一些情况下无法看到 `SnackBar` 。这是 `Flutter` 的预期行为。
+
+	* `ListTile` 的水波特效会溢出父容器的约束范围，这在一些情境下会对视觉效果造成负面影响。这是 `Flutter` 的 BUG ，参见 [issue #86584](https://github.com/flutter/flutter/issues/86584) 。
 
 	* 文本输入框组件在离开视图区域后可能会被回收，当它再次进入视图时，会重构新的 State ，此时，之前的输入历史记录将丢失，故而无法通过 Undo/Redo 快捷键切换输入值。这是预期行为。
 
-	* 应用覆盖了文本输入控件的默认 onTapOutside 行为，以使控件在移动平台上也会在点击外部时失焦，但这也导致用户无法在显示 IME 的情况下对应用 UI 进行列表滚动等操作。
+	* 应用覆盖了文本输入控件的默认 `onTapOutside` 行为，以使控件在移动平台上也会在点击外部时失焦，但这也导致用户无法在显示 `IME` 的情况下对应用 UI 进行列表滚动等操作。
 
-	* 为 `Iphone` 构建时能够完成打包，但无法通过 flutter 进行实机调试，期间会弹出未正确配置证书的错误。这是在某次更新后才出现的问题。
+	* 为 `Iphone` 构建时能够完成打包，但无法通过 `Flutter` 进行实机调试，期间会弹出未正确配置证书的错误。这是在某次更新后才出现的问题。
 
 	* 在 `Android` 上，用户在系统设置中更改系统显示大小时，应用可能不会立即更新显示大小，每次更改显示大小都要到下一次更改显示大小时才会生效。这是 `Flutter` 的 BUG 。
 
-	* 在 `Android` 上，AboutPanel 中的第一行文本可能被截断了一些顶部区域，在与界面中的 Chip 进行交互时会恢复正常，但交互结束后又会显示为被截断，更换主题字体后可能不会出现这种情况。这是 `Flutter` 的 BUG ，参见 [issue #151540](https://github.com/flutter/flutter/issues/151540) 。
+	* 在 `Android` 上，`AboutPanel` 中的第一行文本可能被截断了一些顶部区域，在与界面中的 `Chip` 进行交互时会恢复正常，但交互结束后又会显示为被截断，更换主题字体后可能不会出现这种情况。这是 `Flutter` 的 BUG ，参见 [issue #151540](https://github.com/flutter/flutter/issues/151540) 。
 
-	* 在 `Android` 上，默认遵循的系统配色值未适配 Flutter 3.22 的变更，因此会出现部分颜色混淆的 BUG 。这是第三方依赖 `dynamic_color` 的 BUG ，参见 [issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
+	* 在 `Android` 上，默认遵循的系统配色值未适配 `Flutter` 3.22 的变更，因此会出现部分颜色混淆的 BUG 。这是第三方依赖 `dynamic_color` 的 BUG ，参见 [issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
 
 	* 在 `Linux` 上，使用文件选择对话框时，若用户取消了选择（关闭选择对话框），应用将显示一条报错信息，该信息可以直接忽略。这是第三方依赖 `file_selector` 的 BUG 。
 
-	* 在 `Linux` 上，当 Kernel 模块抛出异常时，可能不会被上层捕获，而是导致程序崩溃，这是 `Dart` 的 BUG ，参见 [issue #53267](https://github.com/dart-lang/sdk/issues/53267) 。
-
-	* 在 `Windows` 上，若应用在尝试访问文件时指定的路径为某些非法值（如空字符串、单个空格），应用将直接崩溃而非抛出异常，这将导致用户无法在应用内编辑一些设置项，需要手动编辑 `setting.json` 。这是 `Flutter 3.27.0+` 的 BUG ，参见 [issue #164855](https://github.com/flutter/flutter/issues/164855) 。
+	* 在 `Linux` 上，当 `Kernel` 模块抛出异常时，可能不会被上层捕获，而是导致程序崩溃。这是 `Dart` 的 BUG ，参见 [issue #53267](https://github.com/dart-lang/sdk/issues/53267) 。
 
 	* 在 `Windows` 上，使用文件选择对话框时可能报错，但可以直接忽略而无其他副作用（大概？）。这是第三方依赖 `file_selector` 的 BUG 。
 
@@ -998,21 +1056,27 @@
 
 	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
+	* 在 `Windows` 上，`Forwarder` 模块可能导致 COM Surrogate 进程陷入错误状态，等待后续调查。
+
 	* `Modding Worker` 尽管整个消息列表内的文本都处于同一选择域内，但当用户执行全选时，有可能弹出报错对话框，这是因为无法获取列表内处于非可视区的文本控件的内容。这是预期行为。
 
 	* `Animation Viewer` 无法选择帧范围与隐藏特定控件，应在未来进行补全。
 
 * `AssistantPlus`
 
-	* 有时，标题栏顶部的一部分区域（高度为标准标题栏的高度）会错误地变为可拖拽区域，同时区域中的图标等控件无法响应鼠标输入。这似乎是 WindowsAppSDK 的 BUG 。
+	* 有时，标题栏顶部的一部分区域（高度为标准标题栏的高度）会错误地变为可拖拽区域，同时区域中的图标等控件无法响应鼠标输入。这似乎是 `WindowsAppSDK` 的 BUG 。
 
-	* 有时，可滚动的 UI 控件无法滚动到最底部，而是会呈现出一种混乱的滚动效果，且有可能导致程序崩溃。这似乎是 WindowsAppSDK 的 BUG 。
+	* 有时，可滚动的 UI 控件无法滚动到最底部，而是会呈现出一种混乱的滚动效果，且有可能导致程序崩溃。这似乎是 `WindowsAppSDK` 的 BUG 。
 
-	* 由于写死了部分对话框的尺寸，在低尺寸窗口的情况下无法显示完整的对话框。
+	* 由于写死了部分对话框的尺寸，在低尺寸窗口的情况下无法显示完整的对话框，等待后续修复。
 
 	* 由于 `FileSavePicker` 的限制，文件保存对话框无法很好地显示为无扩展名模式。
 
-	* 应用内的 `TreeView` 项目可能不遵循所设定的 `IsExpanded` 值，致使本应展开的项目呈现为折叠状态。这似乎是 WindowsAppSDK 1.6 的 BUG 。
+	* 应用内的 `TreeView` 项目可能不遵循所设定的 `IsExpanded` 值，致使本应展开的项目呈现为折叠状态。这似乎是 `WindowsAppSDK` 1.6 的 BUG 。
+
+	* 暗色模式下，`SplitButton` 的边框与 `Button` 等常规图标不一致。这是 `WindowsAppSDK` 的 BUG ，参见 [issue #6829](https://github.com/microsoft/microsoft-ui-xaml/pull/6829) 。
+
+	* `Forwarder` 模块可能导致 COM Surrogate 进程陷入错误状态，等待后续调查。
 
 	* `Modding Worker` 在消息列表中，每个文本控件都有各自独立的选择域，无法跨多个文本控件选择文本。
 

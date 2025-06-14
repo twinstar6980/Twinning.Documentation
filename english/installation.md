@@ -10,7 +10,7 @@
 
 ## Platform supportability
 
-* Operating systems: `Windows 10+` 、`Linux ~` 、`Macintosh 11~` 、`Android 9+` 、`Iphone 14~`.
+* Operating systems: `Windows 10+`, `Linux ~`, `Macintosh 11+`, `Android 9+`, `Iphone 15+`.
 
 * Processor architectures: `x86_64`, `arm_64`.
 
@@ -66,7 +66,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Windows` - `x86_64`
 	
-	* `Macintosh` - `x86_64`
+	* `Macintosh` - `arm_64`
 	
 	* `Linux` - `x86_64`
 	
@@ -116,13 +116,25 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	Open the `Assistant` application, click the gear icon to the right of each module list item on the page to open the module settings dialog box and edit the following settings:
 	
-	* `Storage Permission` Click and grant storage read and write permissions to the app.
+	* `Storage Permission` Click to grant the app storage read and write permissions.
 		
 		> This is only available on `Android`.
 	
-	* `Fallback Directory` = `<home>/workspace` .
+	* `Storage Fallback Directory` = `<home>/workspace` .
 		
 		> This is only available on `Android`.
+	
+	* `Forwarder Extension` Click to enable the forwarder extension (optional).
+		
+		> `Windows`: The forwarder extension is disabled by default. If you need to change it, click the switch in the dialog.
+		
+		> `Macintosh`: The forwarder extension is disabled by default. If you need to change it, click the switch in the dialog box and in the pop-up interface, click ⌈ Extensions ⌋ - ⌈ Document Provider ⌋ - ⌈ Twinning Assistant ⌋ and check the switch button on the right.
+		
+		> `Linux`: The forwarder extension are not supported.
+		
+		> `Android`: The forwarder extension is always enabled by the system and cannot be changed by apps themselves.
+		
+		> `Iphone`: The forwarder extension is disabled by default and cannot be enabled by the app. If you need to change it, open ⌈ File ⌋ , select any file, click ⌈ Share ⌋ - ⌈ Edit Actions... ⌋ - ⌈ Twinning Assistant ⌋ , and check the switch button on the right.
 	
 	* `Modding Worker` - `Kernel` = `<home>/kernel`.
 	
@@ -130,32 +142,19 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Modding Worker` - `Argument` = `<home>`.
 	
-	* `Command Sender` - `Method Configuration` = `<home>/assistant/method_configuration.json` .
+	* `Command Sender` - `Method Configuration` = `<home>/assistant/method_configuration.json`.
 	
-	* `Resource Shipper` - `Option Configuration` = `<home>/assistant/option_configuration.json` 。
+	* `Resource Shipper` - `Option Configuration` = `<home>/assistant/option_configuration.json`.
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
-8. Enable the `Assistant` forwarder extension.
-	
-	> If you don't need the `Assistant` module, you can skip this step. \
-	> This step only required for `Windows`, `Macintosh`, `Android`, `Iphone` user.
-	
-	`Assistant` provides an optional forwarder extension that provides a quick option to forward files and directories to applications in the system file manager.
-	
-	* `Windows`: The forwarder extension is disabled by default. If you need to enable it, please create a blank `forwarder` file in the `%APPDATA%/TwinStar.Twinning.Assistant` directory.
-	
-	* `Macintosh`: The forwarder extension is disabled by default. If you need to enable it, open `Assistant` and close it, then open ⌈ System Settings ⌋ - ⌈ Privacy & Security ⌋ - ⌈ Extensions ⌋ - ⌈ Added Extensions ⌋ - ⌈ Twinning Assistant ⌋ and check ⌈ Finder Extension ⌋ .
-	
-	* `Android`: The forwarder extension is always enabled.
-	
-	* `Iphone`: The forwarder extension is disabled by default. If you need to enable it, open ⌈ Files ⌋ , select any file, click ⌈ Share ⌋ - ⌈ Edit Actions... ⌋ - ⌈ Twinning Assistant ⌋ , and check the switch button on the right.
-
-9. Configure the `Assistant Plus` settings.
+8. Configure the `Assistant Plus` settings.
 	
 	> If you don't need the `Assistant Plus` module, you can skip this step.
 	
 	Open the `Assistant Plus` application, click the gear icon to the right of each module list item on the page to open the module settings dialog box and edit the following settings:
+	
+	* `Forwarder Extension` Click to enable the forwarder extension (optional).
 	
 	* `Modding Worker` - `Kernel` = `<home>/kernel`.
 	
@@ -169,7 +168,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
-10. Set the script's interactive language.
+9. Set the script's interactive language.
 	
 	Open and edit `script/Entry/Entry.json` file in the home directory as text, find the `"language": "English"` section, and modify it to switch the interactive language of the tool.
 	
@@ -179,7 +178,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Vietnamese`
 
-11. At this point, all the installation steps have been completed and you can use the tool through the terminal or GUI application.
+10. At this point, all the installation steps have been completed and you can use the tool through the terminal or GUI application.
 
 ## External programs
 
@@ -219,7 +218,7 @@ Some methods of the tool require calling external programs, which need to be dow
 
 * [Il2CppDumper](https://github.com/Perfare/Il2CppDumper) `=6.7.40,x86`
 	
-	Used for **Kairosoft game program modify** 。
+	Used for **Kairosoft game program modify** .
 	
 	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `Il2CppDumper-x86` executable through the `PATH` environment variable.
 	

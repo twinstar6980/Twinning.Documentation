@@ -112,7 +112,7 @@ The following functional modules are provided by application:
 	
 	This module simulates the `Shell` console UI.
 	
-	> `Kernel` 、`Script` 、`Argument` parameters need to be defined in the module settings.
+	> `Kernel`, `Script`, `Argument` parameters need to be defined in the module settings.
 
 * `Command Sender`
 	
@@ -158,7 +158,7 @@ The file object to be processed is forwarded to the tool, and when the tool is l
 
 ## Additional argument
 
-The user can pass in additional arguments when starting the tool, or if no additional arguments are provided, the user will be asked to enter them at runtime。 The additional arguments are in the following format：
+The user can pass in additional arguments when starting the tool, or if no additional arguments are provided, the user will be asked to enter them at runtime. The additional arguments are in the following format：
 
 * `item`
 	
@@ -294,31 +294,31 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		
 		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
 		
-		Used for `/utility/AndroidHelper.ts` 。
+		Used for `/utility/AndroidHelper.ts` .
 	
 	* `external_program_adb` : `null | string` = `null`
 		
 		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
 		
-		Used for `/utility/AndroidHelper.ts` 。
+		Used for `/utility/AndroidHelper.ts` .
 	
 	* `external_program_vgmstream` : `null | string` = `null`
 		
 		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
 		
-		Used for `/Support/Wwise/Media/Decode.ts` 。
+		Used for `/Support/Wwise/Media/Decode.ts` .
 	
 	* `external_program_wwise` : `null | string` = `null`
 		
 		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
 		
-		Used for `/Support/Wwise/Media/Encode.ts` 。
+		Used for `/Support/Wwise/Media/Encode.ts` .
 	
 	* `external_program_il2cpp_dumper` : `null | string` = `null`
 		
 		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
 		
-		Used for `/Support/Kairosoft/Game/ModifyProgram.ts` 。
+		Used for `/Support/Kairosoft/Game/ModifyProgram.ts` .
 	
 	* `thread_limit` : `bigint` = `0`
 		
