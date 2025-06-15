@@ -126,9 +126,9 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Forwarder Extension` Click to enable the forwarder extension (optional).
 		
-		> `Windows`: The forwarder extension is disabled by application. If you need to change it, click the switch in the dialog.
+		> `Windows`: The forwarder extension is disabled by application. If you need to change it, please click the switch in the dialog.
 		
-		> `Macintosh`: The forwarder extension is default disabled by system. If you need to change it, click the switch in the dialog box and in the pop-up interface, click ⌈ Extensions ⌋ - ⌈ Document Provider ⌋ - ⌈ Twinning Assistant ⌋ and check the switch button on the right.
+		> `Macintosh`: The forwarder extension is default disabled by system. If you need to change it, please click the switch in the dialog to jump to the system settings panel, and then switch the corresponding switch of this application in the window.
 		
 		> `Linux`: The forwarder extension are not supported.
 		
