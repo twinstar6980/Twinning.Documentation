@@ -86,6 +86,8 @@
 
 - [25-06-15](#25-06-15)
 
+- [25-06-20](#25-06-20)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -1037,6 +1039,32 @@
 * `Assistant` 72
 
 	* `Macintosh` 优化了切换 `Forwarder` 模块状态时跳转到的系统设置面板。
+
+## 25-06-20
+
+> 这个版本开始，使用 `MinGW-ucrt` 作为 `Kernel` 与 `Shell` 的编译环境，不再尝试适配 `MSVC` 。
+
+* `Kernel` 79
+
+	* 优化代码。
+
+* `Shell` 51
+
+	* 优化代码。
+
+	* `Windows` 加载 `Kernel` 库时，使用 Clang/GCC 风格的 C++ 符号名查找变量，因为该库的编译环境已由 `MSVC` 转向 `MinGW` 。
+
+* `Assistant` 73
+
+	* `Windows` 加载 `Kernel` 库时，使用 Clang/GCC 风格的 C++ 符号名查找变量，因为该库的编译环境已由 `MSVC` 转向 `MinGW` 。
+
+* `Assistant Plus` 57
+
+	* 修正了重置应用设置后会同时清除全局应用状态的 BUG 。
+
+	* 修复了 `Bridge.Library` 对象在未成功加载 `Kernel` 库时也视为加载成功的 BUG 。
+
+	* 加载 `Kernel` 库时，使用 Clang/GCC 风格的 C++ 符号名查找变量，因为该库的编译环境已由 `MSVC` 转向 `MinGW` 。
 
 ## 已知问题
 
