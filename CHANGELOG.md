@@ -88,6 +88,8 @@
 
 - [25-06-20](#25-06-20)
 
+- [25-07-03](#25-07-03)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -1066,6 +1068,28 @@
 
 	* 加载 `Kernel` 库时，使用 Clang/GCC 风格的 C++ 符号名查找变量，因为该库的编译环境已由 `MSVC` 转向 `MinGW` 。
 
+## 25-07-03
+
+* `Assistant` 74
+
+	* 优化代码。
+
+	* 优化 UI 。
+
+* `Assistant Plus` 58
+
+	* 优化代码。
+
+	* 优化 UI 。
+
+	* 修复页面区域可能自动调整自身宽度的 BUG 。
+
+	* 减小一些页面区域的最小宽度要求。
+
+	* 支持转发时选择目标模块，而非始终转发至 `Resource Shipper` 。
+
+	* 暂时禁用代码裁剪与 AOT ，以避免 `Package Builder` 使程序异常崩溃的 BUG 。
+
 ## 已知问题
 
 * `Kernel`
@@ -1084,7 +1108,7 @@
 
 	* 在 `Android` 上，用户在系统设置中更改系统显示大小时，应用可能不会立即更新显示大小，每次更改显示大小都要到下一次更改显示大小时才会生效。这是 `Flutter` 的 BUG 。
 
-	* 在 `Android` 上，`AboutPanel` 中的第一行文本可能被截断了一些顶部区域，在与界面中的 `Chip` 进行交互时会恢复正常，但交互结束后又会显示为被截断，更换主题字体后可能不会出现这种情况。这是 `Flutter` 的 BUG ，参见 [issue #151540](https://github.com/flutter/flutter/issues/151540) 。
+	* 在 `Android` 上，一些控件在交互时可能出现显示上的细微异常，这可能与主题字体有关。这是 `Flutter` 的 BUG ，参见 [issue #151540](https://github.com/flutter/flutter/issues/151540) 。
 
 	* 在 `Android` 上，默认遵循的系统配色值未适配 `Flutter` 3.22 的变更，因此会出现部分颜色混淆的 BUG 。这是第三方依赖 `dynamic_color` 的 BUG ，参见 [issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
 
@@ -1106,13 +1130,13 @@
 
 * `AssistantPlus`
 
+	* 由于写死了部分对话框的尺寸，在低尺寸窗口的情况下无法显示完整的对话框，这是预期行为。
+
+	* 由于 `FileSavePicker` 的限制，文件保存对话框无法很好地显示为无扩展名模式。
+
 	* 有时，标题栏顶部的一部分区域（高度为标准标题栏的高度）会错误地变为可拖拽区域，同时区域中的图标等控件无法响应鼠标输入。这似乎是 `WindowsAppSDK` 的 BUG 。
 
 	* 有时，可滚动的 UI 控件无法滚动到最底部，而是会呈现出一种混乱的滚动效果，且有可能导致程序崩溃。这似乎是 `WindowsAppSDK` 的 BUG 。
-
-	* 由于写死了部分对话框的尺寸，在低尺寸窗口的情况下无法显示完整的对话框，等待后续修复。
-
-	* 由于 `FileSavePicker` 的限制，文件保存对话框无法很好地显示为无扩展名模式。
 
 	* 应用内的 `TreeView` 项目可能不遵循所设定的 `IsExpanded` 值，致使本应展开的项目呈现为折叠状态。这似乎是 `WindowsAppSDK` 1.6 的 BUG 。
 
@@ -1122,4 +1146,4 @@
 
 	* `Modding Worker` 在消息列表中，每个文本控件都有各自独立的选择域，无法跨多个文本控件选择文本。
 
-	* `Package Builder` 由于 AOT 对反射系统的影响，该模块暂时不可用，等待后续修复。
+	* `Package Builder` 由于 `CollectionViewSource` 疑似存在 BUG ，在开启代码裁剪的情况下通过 `ItemsPath` 检索对象属性将导致程序异常崩溃，这阻止了应用使用 AOT 优化构建，等待后续修复。
