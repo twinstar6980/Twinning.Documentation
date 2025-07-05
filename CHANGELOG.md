@@ -92,6 +92,8 @@
 
 - [25-07-03](#25-07-03)
 
+- [25-07-05](#25-07-05)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -1110,6 +1112,30 @@
 
 	* 增加执行应用内置命令与资源转发的按钮。
 
+## 25-07-05
+
+* `Shell` 53
+
+	* 修复了编译环境转为 `MinGW` 后，应用的 DPI 感知失效的 BUG 。
+
+* `Assistant` 76
+
+	* `Animation Viewer` 加强对 PAM 文件的正确性校验。
+
+	* `Animation Viewer` 支持过滤指定资源图层的功能。
+
+	* `Animation Viewer` 修复修改帧区间最大值时可能导致最小值被错误改动的 BUG 。
+
+* `Assistant Plus` 60
+
+	* 优化代码。
+
+	* 启用代码裁剪以减小包体积。
+
+	* 由于 `WindowsAppSDK` 1.7 的一些 BUG ，回退版本到 1.6 。
+
+	* `Animation Viewer` 加强对 PAM 文件的正确性校验。
+
 ## 已知问题
 
 * `Kernel`
@@ -1159,6 +1185,8 @@
 	* 有时，可滚动的 UI 控件无法滚动到最底部，而是会呈现出一种混乱的滚动效果，且有可能导致程序崩溃。这似乎是 `WindowsAppSDK` 的 BUG 。
 
 	* 应用内的 `TreeView` 项目可能不遵循所设定的 `IsExpanded` 值，致使本应展开的项目呈现为折叠状态。这似乎是 `WindowsAppSDK` 1.6 的 BUG 。
+
+	* 在新版本的 `WindowsAppSDK` 中，当出现未处理的异常时，程序会直接崩溃，而不被全局异常处理函数处理，因此暂时不更新该依赖项。这是 `WindowsAppSDK` 1.7 的 BUG ，参见 [issue #10447](https://github.com/microsoft/microsoft-ui-xaml/issues/10447) 。
 
 	* 暗色模式下，`SplitButton` 的边框与 `Button` 等常规图标不一致。这是 `WindowsAppSDK` 的 BUG ，参见 [issue #6829](https://github.com/microsoft/microsoft-ui-xaml/pull/6829) 。
 
