@@ -93,14 +93,7 @@
 	
 	在系统终端中运行命令：`> chmod +x ./shell` 。
 
-5. 为系统安装 C++ 共享库。
-	
-	> 如果不需要 `Shell` 模块，可以跳过该步骤。\
-	> 该步骤只需 `Android` 用户操作。
-	
-	将主目录内的 `libc++_shared.so` 文件复制至系统库目录 `/system/lib64` 中。
-
-6. 安装主目录内 `Assistant` 、`Assistant Plus` 模块的应用安装包。
+5. 安装主目录内 `Assistant` 、`Assistant Plus` 模块的应用安装包。
 	
 	应用安装包文件以 `msix` 、`dmg` 、`apk` 、`ipa` 等作为扩展名。
 	
@@ -111,7 +104,7 @@
 	> @ `Iphone` \
 	> 需要通过 AltStore 或其他工具对 `ipa` 进行自签名与安装。
 
-7. 配置 `Assistant` 设置项。
+6. 配置 `Assistant` 设置项。
 	
 	> 如果不需要 `Assistant` 模块，可以跳过该步骤。
 	
@@ -137,6 +130,10 @@
 		
 		> 对于 `Iphone` ，系统默认启用转发器扩展，应用无法自行更改启用状态，如果需要更改，请打开 ⌈ 文件 ⌋ ，选择任意文件后点击 ⌈ 共享 ⌋ - ⌈ 编辑操作... ⌋ - ⌈ Twinning Assistant ⌋ ，勾选右侧的开关按钮。
 	
+	* `Forwarder Default Target` 转发器扩展的默认转发目标模块。
+	
+	* `Forwarder Immediate Jump` 转发器扩展是否立即转发至默认目标模块，而非等待用户选择。
+	
 	* `Modding Worker` - `Kernel` = `<home>/kernel` 。
 	
 	* `Modding Worker` - `Script` = `<home>/script/main.js` 。
@@ -149,13 +146,17 @@
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
-8. 配置 `Assistant Plus` 设置项。
+7. 配置 `Assistant Plus` 设置项。
 	
 	> 如果不需要 `Assistant Plus` 模块，可以跳过该步骤。
 	
 	打开 `Assistant Plus` 应用，点击页面中各个模块列表项右侧的齿轮图标可以打开模块设置对话框，编辑以下设置项：
 	
 	* `Forwarder Extension` 点击以启用转发器扩展（可选）。
+	
+	* `Forwarder Default Target` 转发器扩展的默认转发目标模块。
+	
+	* `Forwarder Immediate Jump` 转发器扩展是否立即转发至默认目标模块，而非等待用户选择。
 	
 	* `Modding Worker` - `Kernel` = `<home>/kernel` 。
 	
@@ -169,7 +170,7 @@
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
-9. 设置脚本交互语言。
+8. 设置脚本交互语言。
 	
 	以文本形式打开并编辑主目录内的 `script/Entry/Entry.json` 文件，找到 `"language": "English"` 部分，修改它以切换工具的交互语言。
 	
@@ -179,7 +180,7 @@
 	
 	* `Vietnamese` 越文
 
-10. 至此，已经完成了所有安装步骤，你可以通过终端或 GUI 应用使用工具。
+9. 至此，已经完成了所有安装步骤，你可以通过终端或 GUI 应用使用工具。
 
 ## 外部程序
 

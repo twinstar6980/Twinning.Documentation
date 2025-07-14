@@ -92,14 +92,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	Run these command in the system terminal: `> chmod +x ./shell` .
 
-5. Install the C++ shared library for your system.
-	
-	> If you don't need the `Shell` module, you can skip this step. \
-	> This step only required for `Android` user.
-	
-	Copy the `libc++_shared.so` file in the home directory to the system library directory `/system/lib64` .
-
-6. Install the application installation packages of the `Assistant` and `Assistant Plus` modules in the home directory.
+5. Install the application installation packages of the `Assistant` and `Assistant Plus` modules in the home directory.
 	
 	Application installation package files have extensions such as `msix`, `dmg`, `apk`, `ipa`, etc.
 	
@@ -110,7 +103,7 @@ You can clone this project and compile it, or just download the bundle package o
 	> @ `Iphone` \
 	> Need to self-sign and install `ipa` through AltStore or other tools.
 
-7. Configure the `Assistant` settings.
+6. Configure the `Assistant` settings.
 	
 	> If you don't need the `Assistant` module, you can skip this step.
 	
@@ -136,6 +129,10 @@ You can clone this project and compile it, or just download the bundle package o
 		
 		> `Iphone`: The forwarder extension is default enabled by system and cannot be changed by application. If you need to change it, open ⌈ File ⌋ , select any file, click ⌈ Share ⌋ - ⌈ Edit Actions... ⌋ - ⌈ Twinning Assistant ⌋ , and check the switch button on the right.
 	
+	* `Forwarder Default Target` The default forwarding target module for the forwarder extension.
+	
+	* `Forwarder Immediate Jump` Whether the forwarder extension should forward to the default target module immediately, rather than waiting for user selection.
+	
 	* `Modding Worker` - `Kernel` = `<home>/kernel`.
 	
 	* `Modding Worker` - `Script` = `<home>/script/main.js`.
@@ -148,13 +145,17 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
-8. Configure the `Assistant Plus` settings.
+7. Configure the `Assistant Plus` settings.
 	
 	> If you don't need the `Assistant Plus` module, you can skip this step.
 	
 	Open the `Assistant Plus` application, click the gear icon to the right of each module list item on the page to open the module settings dialog box and edit the following settings:
 	
 	* `Forwarder Extension` Click to enable the forwarder extension (optional).
+	
+	* `Forwarder Default Target` The default forwarding target module for the forwarder extension.
+	
+	* `Forwarder Immediate Jump` Whether the forwarder extension should forward to the default target module immediately, rather than waiting for user selection.
 	
 	* `Modding Worker` - `Kernel` = `<home>/kernel`.
 	
@@ -168,7 +169,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
-9. Set the script's interactive language.
+8. Set the script's interactive language.
 	
 	Open and edit `script/Entry/Entry.json` file in the home directory as text, find the `"language": "English"` section, and modify it to switch the interactive language of the tool.
 	
@@ -178,7 +179,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Vietnamese`
 
-10. At this point, all the installation steps have been completed and you can use the tool through the terminal or GUI application.
+9. At this point, all the installation steps have been completed and you can use the tool through the terminal or GUI application.
 
 ## External programs
 
