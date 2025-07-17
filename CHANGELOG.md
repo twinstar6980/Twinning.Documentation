@@ -98,6 +98,8 @@
 
 - [25-07-15](#25-07-15)
 
+- [25-07-18](#25-07-18)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -1170,6 +1172,16 @@
 
 	* 优化 UI 。
 
+## 25-07-18
+
+* `Assistant` 79
+
+	* 更新工具链及依赖项。
+
+	* 优化代码。
+
+	* `Android` 修复使用系统默认配色的情况下，部分颜色混淆的 BUG 。
+
 ## 已知问题
 
 * `Kernel`
@@ -1177,8 +1189,6 @@
 	* 由于所依赖的第三方库 `md5` 的不足，应用在计算大文件（4G及以上）时会无限循环。
 
 * `Assistant`
-
-	* `SnackBar` 会显示在模态 `BottomSheet` 的下层，这会导致一些情况下无法看到 `SnackBar` 。这是 `Flutter` 的预期行为。
 
 	* `ListTile` 的水波特效会溢出父容器的约束范围，这在一些情境下会对视觉效果造成负面影响。这是 `Flutter` 的 BUG ，参见 [issue #86584](https://github.com/flutter/flutter/issues/86584) 。
 
@@ -1190,7 +1200,7 @@
 
 	* 在 `Android` 上，一些控件在交互时可能出现显示上的细微异常，这可能与主题字体有关。这是 `Flutter` 的 BUG ，参见 [issue #151540](https://github.com/flutter/flutter/issues/151540) 。
 
-	* 在 `Android` 上，默认遵循的系统配色值未适配 `Flutter` 3.22 的变更，因此会出现部分颜色混淆的 BUG 。这是第三方依赖 `dynamic_color` 的 BUG ，参见 [issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
+	* 在 `Android` 上，默认遵循的系统配色值未适配 `Flutter` 3.22 的变更，因此会出现部分颜色混淆的 BUG ，目前暂时通过创建新 `ColorScheme` 的方式解决该问题。这是第三方依赖 `dynamic_color` 的 BUG ，参见 [issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
 
 	* 在 `Linux` 上，使用文件选择对话框时，若用户取消了选择（关闭选择对话框），应用将显示一条报错信息，该信息可以直接忽略。这是第三方依赖 `file_selector` 的 BUG 。
 
