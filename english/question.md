@@ -61,6 +61,8 @@ If the shell module used is `Assistant`, access rights vary depending on the run
 	* Other application's shared storage : `/var/mobile/Containers/Data/Application/<application>/Documents` .
 	
 	> Files in the above storage cannot be executed as programs.
+	> 
+	> If the device is jailbroken, the application can access most of the storage space including system files and is not restricted by sandbox rules.
 
 ## Windows file path length limit
 
@@ -84,7 +86,7 @@ Due to Android system limitations, files forwarded or selected by the user are p
 
 1. Try to parse the URI to get its corresponding absolute path.
 
-2. If the absolute path cannot be parsable, the application will pop up a confirming dialog: if user select "Duplicate", the application will copy the file corresponding to the URI to the user-defined fallback directory and return the absolute path of the duplicate file; if user select "Ignore", the application will return null, it is considered that an invalid path was received..
+2. If the absolute path cannot be parsable, the application will pop up a confirming dialog: if user select "Duplicate", the application will copy the file corresponding to the URI to the user-defined fallback directory and return the absolute path of the duplicate file; if user select "Ignore", the application will return null, it is considered the user canceling the selection.
 
 The following table lists the supported content URI formats, and the application can resolve the absolute path from the following types of content URI:
 

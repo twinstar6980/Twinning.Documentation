@@ -100,6 +100,8 @@
 
 - [25-07-18](#25-07-18)
 
+- [25-07-19](#25-07-19)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -1182,6 +1184,12 @@
 
 	* `Android` 修复使用系统默认配色的情况下，部分颜色混淆的 BUG 。
 
+## 25-07-19
+
+* `Assistant` 80
+
+	* 优化代码。
+
 ## 已知问题
 
 * `Kernel`
@@ -1196,16 +1204,6 @@
 
 	* 应用覆盖了文本输入控件的默认 `onTapOutside` 行为，以使控件在移动平台上也会在点击外部时失焦，但这也导致用户无法在显示 `IME` 的情况下对应用 UI 进行列表滚动等操作。
 
-	* 在 `Android` 上，用户在系统设置中更改系统显示大小时，应用可能不会立即更新显示大小，每次更改显示大小都要到下一次更改显示大小时才会生效。这是 `Flutter` 的 BUG 。
-
-	* 在 `Android` 上，一些控件在交互时可能出现显示上的细微异常，这可能与主题字体有关。这是 `Flutter` 的 BUG ，参见 [issue #151540](https://github.com/flutter/flutter/issues/151540) 。
-
-	* 在 `Android` 上，默认遵循的系统配色值未适配 `Flutter` 3.22 的变更，因此会出现部分颜色混淆的 BUG ，目前暂时通过创建新 `ColorScheme` 的方式解决该问题。这是第三方依赖 `dynamic_color` 的 BUG ，参见 [issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
-
-	* 在 `Linux` 上，使用文件选择对话框时，若用户取消了选择（关闭选择对话框），应用将显示一条报错信息，该信息可以直接忽略。这是第三方依赖 `file_selector` 的 BUG 。
-
-	* 在 `Linux` 上，当 `Kernel` 模块抛出异常时，可能不会被上层捕获，而是导致程序崩溃。这是 `Dart` 的 BUG ，参见 [issue #53267](https://github.com/dart-lang/sdk/issues/53267) 。
-
 	* 在 `Windows` 上，使用文件选择对话框时可能报错，但可以直接忽略而无其他副作用（大概？）。这是第三方依赖 `file_selector` 的 BUG 。
 
 	* 在 `Windows` 上，应用的图标四角存在黑边。这是第三方依赖 `msix` 的 BUG ，参见 [issue #239](https://github.com/YehudaKremer/msix/issues/239) 。
@@ -1213,6 +1211,16 @@
 	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
 
 	* 在 `Windows` 上，`forwarder` 模块可能导致 COM Surrogate 进程陷入错误状态，等待后续调查。
+
+	* 在 `Linux` 上，使用文件选择对话框时，若用户取消了选择（关闭选择对话框），应用将显示一条报错信息，该信息可以直接忽略。这是第三方依赖 `file_selector` 的 BUG 。
+
+	* 在 `Linux` 上，当 `Kernel` 模块抛出异常时，可能不会被上层捕获，而是导致程序崩溃。这是 `Dart` 的 BUG ，参见 [issue #53267](https://github.com/dart-lang/sdk/issues/53267) 。
+
+	* 在 `Android` 上，用户在系统设置中更改系统显示大小时，应用可能不会立即更新显示大小，每次更改显示大小都要到下一次更改显示大小时才会生效。这是 `Flutter` 的 BUG 。
+
+	* 在 `Android` 上，一些控件在交互时可能出现显示上的细微异常，这可能与主题字体有关。这是 `Flutter` 的 BUG ，参见 [issue #151540](https://github.com/flutter/flutter/issues/151540) 。
+
+	* 在 `Android` 上，默认遵循的系统配色值未适配 `Flutter` 3.22 的变更，因此会出现部分颜色混淆的 BUG ，目前暂时通过创建新 `ColorScheme` 的方式解决该问题。这是第三方依赖 `dynamic_color` 的 BUG ，参见 [issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
 
 	* `Modding Worker` 尽管整个消息列表内的文本都处于同一选择域内，但当用户执行全选时，有可能弹出报错对话框，这是因为无法获取列表内处于非可视区的文本控件的内容。这是预期行为。
 
@@ -1238,4 +1246,4 @@
 
 	* `Modding Worker` 在消息列表中，每个文本控件都有各自独立的选择域，无法跨多个文本控件选择文本。
 
-	* `Package Builder` 由于 `CollectionViewSource` 疑似存在 BUG ，在开启代码裁剪的情况下通过 `ItemsPath` 检索对象属性将导致程序异常崩溃，这阻止了应用使用 AOT 优化构建，等待后续修复。
+	* `Package Builder` 由于 `CollectionViewSource` 疑似存在 BUG ，在启用 AOT 的情况下，其对应的列表将无法显示任何内容。暂时禁用 AOT 构建，等待后续修复。
