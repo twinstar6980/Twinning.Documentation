@@ -225,20 +225,20 @@ When the tool is running, it will output some message to the user or request the
 	A line of text.
 	
 	> If the entered text is empty, it is deemed to have entered a null value;\
-	> If the input text starts with `::` , the tool will intercept the text after it as the real input. In this way, an empty string can be entered instead of a null value.
+	> If the input text starts with `==` , the tool will intercept the text after it as the real input. In this way, an empty string can be entered instead of a null value.
 
 * `Path`
 	
 	The paths that can be used in the local file system, divided into input paths and output paths, the former points to the path of an existing file or directory on the disk, and the latter points to a path that does not exist on the disk.
 	
 	> If the entered text is empty, it is deemed to have entered a null value;\
-	> If the input text starts with `::` , the tool will intercept the text after it as the real input. In this way, an empty string can be entered instead of a null value.
+	> If the input text starts with `==` , the tool will intercept the text after it as the real input. In this way, an empty string can be entered instead of a null value.
 	> 
-	> Enter `:p` will open the system file pick dialog;\
-	> Enter `:g` will generate avaliable path (append suffix);\
-	> Enter `:m` will move original file;\
-	> Enter `:d` will delete original file;\
-	> Enter `:o` will overwrite original file.
+	> Enter `=p` will open the system file pick dialog;\
+	> Enter `=g` will generate avaliable path (append suffix);\
+	> Enter `=m` will move original file;\
+	> Enter `=d` will delete original file;\
+	> Enter `=o` will overwrite original file.
 	>
 	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `<home>/workspace` .
 
