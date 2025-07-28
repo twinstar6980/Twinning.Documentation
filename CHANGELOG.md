@@ -106,6 +106,8 @@
 
 - [25-07-25](#25-07-25)
 
+- [25-07-28](#25-07-28)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -1228,13 +1230,43 @@
 
 	* 优化代码。
 
-	* 文件选择对话框选择目录时，将会设该目录为下次打开对话框时的初始目录，而非此前的该目录的所在目录。
+	* 文件选择对话框选择目录时，将会设该目录为下次打开对话框时的初始目录，此前，记忆的是该目录的所在目录。
 
-	* `Iphone `文件选择对话框的默认初始目录现在是应用的共享目录 `Documents` 。
+	* `Iphone` 文件选择对话框会记忆初始目录。
 
 * `Assistant Plus` 63
 
 	* 修复文件选择对话框相关函数在启用代码裁剪的情况下报错的 BUG 。
+
+## 25-07-28
+
+> 这个版本更新了项目的图标。
+
+* `Shell` 56
+
+	* 优化代码。
+
+* `Assistant` 83
+
+	* 更新工具链及依赖项。
+
+	* 优化代码。
+
+	* `Windows` 通过自定义脚本而非第三方依赖项来打包 MSIX 安装包，以修复与 MSIX 相关的 BUG 。
+
+* `Assistant Plus` 64
+
+	* 更新工具链及依赖项。
+
+	* 优化代码。
+
+	* 设置文件变更。
+
+	* 若传递给程序或模块页面的命令参数存在一处错误，整个命令都将不执行。
+
+	* 修复传递空查询参数的 URL 时，应用报错的 BUG 。
+
+	* `Animation Viewer` 最大缩放率上调至 10000% 。
 
 ## 已知问题
 
@@ -1252,10 +1284,6 @@
 
 	* 在 `Windows` 上，使用文件选择对话框时可能报错，但可以直接忽略而无其他副作用（大概？）。这是第三方依赖 `file_selector` 的 BUG 。
 
-	* 在 `Windows` 上，应用的图标四角存在黑边。这是第三方依赖 `msix` 的 BUG ，参见 [issue #239](https://github.com/YehudaKremer/msix/issues/239) 。
-
-	* 在 `Windows` 上，如果 AppData 目录中不存在应用自身的数据目录，应用会在自身的沙盒 AppData 目录中新建自身的数据目录并存储数据；预期行为应当是始终读写非沙盒 AppData 目录。如果要修复这个 BUG ，需要在 MSIX appxmanifest 中添加 `<rescap:Capability Name="unvirtualizedResources" />` 及 `<desktop6:FileSystemWriteVirtualization>disabled</desktop6:FileSystemWriteVirtualization>` 配置项。用于打包应用的第三方依赖 `msix` 目前只能构建容器化的安装包，需要手动修改所生成的 MSIX 并重打包。
-
 	* 在 `Windows` 上，`forwarder` 模块可能导致 COM Surrogate 进程陷入错误状态，等待后续调查。
 
 	* 在 `Linux` 上，使用文件选择对话框时，若用户取消了选择（关闭选择对话框），应用将显示一条报错信息，该信息可以直接忽略。这是第三方依赖 `file_selector` 的 BUG 。
@@ -1268,11 +1296,13 @@
 
 	* 在 `Android` 上，默认遵循的系统配色值未适配 `Flutter` 3.22 的变更，因此会出现部分颜色混淆的 BUG ，目前暂时通过创建新 `ColorScheme` 的方式解决该问题。这是第三方依赖 `dynamic_color` 的 BUG ，参见 [issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
 
+	* `Iphone` 但由于沙盒存储机制的限制，当打开文件选择对话框时，若应用将初始目录设置为专属沙盒存储空间以外的目录，则初始目录设置无法生效。这是预期行为。
+
 	* `Modding Worker` 尽管整个消息列表内的文本都处于同一选择域内，但当用户执行全选时，有可能弹出报错对话框，这是因为无法获取列表内处于非可视区的文本控件的内容。这是预期行为。
 
 	* `Animation Viewer` 无法选择帧范围，应在未来进行补全。
 
-* `AssistantPlus`
+* `Assistant Plus`
 
 	* 由于写死了部分对话框的尺寸，在低尺寸窗口的情况下无法显示完整的对话框，这是预期行为。
 

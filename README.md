@@ -1,6 +1,6 @@
 # Twinning - Documentation
 
-![logo-light](./media/logo/squircle-light.png) ![logo-dark](./media/logo/squircle-dark.png)
+![logo](./media/logo/64.png)
 
 ***A toolbox for processing specific file format.***
 
