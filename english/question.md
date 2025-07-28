@@ -60,8 +60,6 @@ If the shell module used is `Assistant`, access rights vary depending on the run
 	
 	* Other application's shared storage : `/var/mobile/Containers/Data/Application/<application>/Documents` .
 	
-	> Files in the above storage cannot be executed as programs.
-	> 
 	> If the device is jailbroken, the application can access most of the storage space including system files and is not restricted by sandbox rules.
 
 ## Windows file path length limit

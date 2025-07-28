@@ -58,8 +58,6 @@
 	
 	* 应用的专属沙盒存储空间：`/var/mobile/Containers/Data/Application/<application>` 。
 	
-	> 以上存储空间内的文件无法被作为程序执行。
-	> 
 	> 若设备已越狱，则应用可以访问系统文件在内的绝大部分存储空间，不受沙盒规则限制。
 
 ## Windows 文件路径长度限制
