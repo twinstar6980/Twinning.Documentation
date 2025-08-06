@@ -1324,7 +1324,7 @@
 
 * `Kernel` 83
 
-	* 优化代码。
+	* 优化 RTON 编码时，对 UID 类型 RTID 的判断。
 
 * `Script` 125
 
