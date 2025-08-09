@@ -118,6 +118,8 @@
 
 - [25-08-07](#25-08-07)
 
+- [25-08-09](#25-08-09)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -1350,58 +1352,74 @@
 
 	* `Windows` 优化了 `forwarder` 模块的实现。
 
+## 25-08-09
+
+* `Script` 127
+
+	* 修复在进行 `Lzma` 压缩时，因缓冲区容量设置较小导致压缩失败的 BUG 。
+
+* `Assistant` 88
+
+	* 导出设置文件时，弹出的文件保存对话框中将指定初始文件名。
+
+	* `Windows` 优化了 `forwarder` 模块的实现。
+
+	* `Linux` 迁移至 `libc++` ，以修复当 `Kernel` 重抛异常后，异常无法被再次捕获，程序将崩溃的 BUG 。
+
+* `Assistant Plus` 69
+
+	* 修复了调用文件选择对话框时存在内存泄漏的 BUG 。
+
+	* 优化了 `forwarder` 模块的实现。
+
 ## 已知问题
 
 * `Kernel`
 
-	* 生成异常堆栈信息时，源码文件路径会出现部分显示为相对路径，部分显示为绝对路径的问题，疑似 `Clang` 的 BUG 。
+	* **`BUG`** 由于 `Clang` 疑似存在的 BUG ，生成异常堆栈信息时，部分源码文件的路径会显示为编译时所在的绝对路径，而非项目根目录的相对路径。
 
-	* 由于所依赖的第三方库 `md5` 的不足，应用在计算大文件（4G及以上）时会无限循环。
+	* **`BUG`** 由于 `md5` 的 BUG ，应用在计算大文件（4G及以上）的 MD5 时会无限循环。
 
 * `Assistant`
 
-	* `ListTile` 的水波特效会溢出父容器的约束范围，这在一些情境下会对视觉效果造成负面影响。这是 `Flutter` 的 BUG ，参见 [issue #86584](https://github.com/flutter/flutter/issues/86584) 。
+	* **`OK`** 文本输入控件在离开视图区域后可能会被回收，当它再次进入视图时，会重构新的 State ，此时，之前的输入历史记录将丢失，无法通过 Undo/Redo 快捷键切换输入值。
 
-	* 文本输入框组件在离开视图区域后可能会被回收，当它再次进入视图时，会重构新的 State ，此时，之前的输入历史记录将丢失，故而无法通过 Undo/Redo 快捷键切换输入值。这是预期行为。
+	* **`OK`** 应用覆盖了文本输入控件的默认 `onTapOutside` 行为，以使控件在移动平台上也会在点击外部时失焦，但这也导致用户无法在已显示 `IME` 的情况下对应用 UI 进行列表滚动等操作。
 
-	* 应用覆盖了文本输入控件的默认 `onTapOutside` 行为，以使控件在移动平台上也会在点击外部时失焦，但这也导致用户无法在显示 `IME` 的情况下对应用 UI 进行列表滚动等操作。
+	* **`BUG`** 由于 `Flutter` 的 [issue #86584](https://github.com/flutter/flutter/issues/86584) ，`ListTile` 的水波特效会溢出父容器的约束范围，这在一些情境下会对视觉效果造成负面影响。
 
-	* 在 `Windows` 上，使用文件选择对话框时可能报错，但可以直接忽略而无其他副作用（大概？）。这是第三方依赖 `file_selector` 的 BUG 。
+	* **`BUG` `Windows`** 转发器扩展 `forwarder` 有时会一直在后台运行，导致无法卸载应用，需要手动在任务管理器中终止对应的 COM Surrogate 进程。
 
-	* 在 `Windows` 上，`forwarder` 模块可能导致 COM Surrogate 进程陷入错误状态，等待后续调查。
+	* **`OK` `Android`** 由于 `SFA` 行为的限制，当打开文件保存对话框时，若指定的文件名已存在，且文件名是用户通过 IME 手动输入的，SFA 将无提示地为文件名添加后缀 ` (n)` ，若需要覆盖已存在的文件，请点击视图中对应的文件。
 
-	* 在 `Linux` 上，使用文件选择对话框时，若用户取消了选择（关闭选择对话框），应用将显示一条报错信息，该信息可以直接忽略。这是第三方依赖 `file_selector` 的 BUG 。
+	* **`BUG` `Android`** 由于 `Flutter` 的 BUG ，用户在系统设置中更改系统显示大小后，应用可能不会立即更新显示大小，每次更改显示大小都要到下一次更改显示大小时才会生效。
 
-	* 在 `Linux` 上，当 `Kernel` 模块抛出异常时，可能不会被上层捕获，而是导致程序崩溃。这是 `Dart` 的 BUG ，参见 [issue #53267](https://github.com/dart-lang/sdk/issues/53267) 。
+	* **`BUG` `Android`** 由于 `Flutter` 的 [issue #151540](https://github.com/flutter/flutter/issues/151540) ，一些控件在交互时可能出现显示上的细微异常，这可能与主题字体有关。
 
-	* 在 `Android` 上，用户在系统设置中更改系统显示大小时，应用可能不会立即更新显示大小，每次更改显示大小都要到下一次更改显示大小时才会生效。这是 `Flutter` 的 BUG 。
+	* **`BUG` `Android`** 由于 `dynamic_color` 的 [issue #582](https://github.com/material-foundation/flutter-packages/issues/582) ，默认遵循的系统配色值未适配 `Flutter` 3.22 的变更，因此会出现部分颜色混淆的 BUG ，目前暂时通过创建新 `ColorScheme` 的方式解决该问题。
 
-	* 在 `Android` 上，一些控件在交互时可能出现显示上的细微异常，这可能与主题字体有关。这是 `Flutter` 的 BUG ，参见 [issue #151540](https://github.com/flutter/flutter/issues/151540) 。
+	* **`OK` `Iphone`** 由于 `Sandbox` 机制的限制，当打开文件选择对话框时，若应用将初始目录设置为专属沙盒存储空间以外的目录，则初始目录设置无法生效。
 
-	* 在 `Android` 上，默认遵循的系统配色值未适配 `Flutter` 3.22 的变更，因此会出现部分颜色混淆的 BUG ，目前暂时通过创建新 `ColorScheme` 的方式解决该问题。这是第三方依赖 `dynamic_color` 的 BUG ，参见 [issue #582](https://github.com/material-foundation/flutter-packages/issues/582) 。
+	* **`OK` `Modding Worker`** 尽管整个消息列表内的文本都处于同一选择域内，但当用户执行全选时，有可能弹出报错对话框，这是因为无法获取列表内处于非可视区的文本控件的内容。
 
-	* `Iphone` 但由于沙盒存储机制的限制，当打开文件选择对话框时，若应用将初始目录设置为专属沙盒存储空间以外的目录，则初始目录设置无法生效。这是预期行为。
-
-	* `Modding Worker` 尽管整个消息列表内的文本都处于同一选择域内，但当用户执行全选时，有可能弹出报错对话框，这是因为无法获取列表内处于非可视区的文本控件的内容。这是预期行为。
-
-	* `Animation Viewer` 无法选择帧范围，应在未来进行补全。
+	* **`TODO` `Animation Viewer`** 目前无法选择帧范围，应在未来进行补全。
 
 * `Assistant Plus`
 
-	* 由于写死了部分对话框的尺寸，在低尺寸窗口的情况下无法显示完整的对话框，这是预期行为。
+	* **`OK`** 由于写死了部分对话框的尺寸，在低尺寸窗口的情况下无法显示完整的对话框。
 
-	* 有时，标题栏顶部的一部分区域（高度为标准标题栏的高度）会错误地变为可拖拽区域，同时区域中的图标等控件无法响应鼠标输入。这似乎是 `WindowsAppSDK` 的 BUG 。
+	* **`BUG`** 由于 `WindowsAppSDK` 疑似存在的 BUG ，有时，标题栏顶部的一部分区域（高度为标准标题栏的高度）会错误地变为可拖拽区域，同时区域中的图标等控件无法响应鼠标输入。
 
-	* 有时，可滚动的 UI 控件无法滚动到最底部，而是会呈现出一种混乱的滚动效果，且有可能导致程序崩溃。这似乎是 `WindowsAppSDK` 的 BUG 。
+	* **`BUG`** 由于 `WindowsAppSDK` 疑似存在的 BUG ，有时，可滚动的 UI 控件无法滚动到最底部，而是会呈现出一种混乱的滚动效果，且有可能导致程序崩溃。
 
-	* 应用内的 `TreeView` 项目可能不遵循所设定的 `IsExpanded` 值，致使本应展开的项目呈现为折叠状态。这似乎是 `WindowsAppSDK` 1.6 的 BUG 。
+	* **`BUG`** 由于 `WindowsAppSDK 1.6` 疑似存在的 BUG ，应用内的 `TreeView` 项目可能不遵循所设定的 `IsExpanded` 值，致使本应展开的项目呈现为折叠状态。
 
-	* 在新版本的 `WindowsAppSDK` 中，当出现未处理的异常时，程序会直接崩溃，而不被全局异常处理函数处理，因此暂时不更新该依赖项。这是 `WindowsAppSDK` 1.7 的 BUG ，参见 [issue #10447](https://github.com/microsoft/microsoft-ui-xaml/issues/10447) 。
+	* **`BUG`** 由于 `WindowsAppSDK 1.7` 的 [issue #10447](https://github.com/microsoft/microsoft-ui-xaml/issues/10447) ，在新版本的 `WindowsAppSDK` 中，当出现未处理的异常时，程序会直接崩溃，而不被全局异常处理函数处理，因此暂时不更新该依赖项。
 
-	* 暗色模式下，`SplitButton` 的边框与 `Button` 等常规图标不一致。这是 `WindowsAppSDK` 的 BUG ，参见 [issue #6829](https://github.com/microsoft/microsoft-ui-xaml/pull/6829) 。
+	* **`BUG`** 由于 `WindowsAppSDK` 的 [issue #6829](https://github.com/microsoft/microsoft-ui-xaml/pull/6829) ，暗色模式下，`SplitButton` 的边框与 `Button` 等常规图标不一致。
 
-	* `Forwarder` 模块可能导致 COM Surrogate 进程陷入错误状态，等待后续调查。
+	* **`BUG`** 转发器扩展 `forwarder` 有时会一直在后台运行，导致无法卸载应用，需要手动在任务管理器中终止对应的 COM Surrogate 进程。
 
-	* `Modding Worker` 在消息列表中，每个文本控件都有各自独立的选择域，无法跨多个文本控件选择文本。
+	* **`OK` `Modding Worker`** 在消息列表中，每个文本控件都有各自独立的选择域，无法跨多个文本控件选择文本。
 
-	* `Package Builder` 由于 `CollectionViewSource` 疑似存在 BUG ，在启用 AOT 的情况下，其对应的列表将无法显示任何内容。暂时禁用 AOT 构建，等待后续修复。
+	* **`BUG` `Package Builder`** 由于 `CollectionViewSource` 疑似存在的 BUG ，在启用 AOT 的情况下，其对应的列表将无法显示任何内容，因此暂时禁用 AOT 构建。
