@@ -120,6 +120,8 @@
 
 - [25-08-09](#25-08-09)
 
+- [25-08-12](#25-08-12)
+
 - [已知问题](#已知问题)
 
 ## 24-05-22
@@ -1372,6 +1374,20 @@
 
 	* 优化了 `forwarder` 模块的实现。
 
+## 25-08-12
+
+* `Assistant` 89
+
+	* 优化代码。
+
+	* `Modding Worker` 设置页中的 `Argument` 设置项现在可以调用系统文件选择对话框选择文件或目录。
+
+	* `Command Sender` 部分命令参数的含义发生变动。
+
+* `Assistant Plus` 70
+
+	* 优化代码。
+
 ## 已知问题
 
 * `Kernel`
@@ -1412,11 +1428,13 @@
 
 	* **`BUG`** 由于 `WindowsAppSDK` 疑似存在的 BUG ，有时，可滚动的 UI 控件无法滚动到最底部，而是会呈现出一种混乱的滚动效果，且有可能导致程序崩溃。
 
-	* **`BUG`** 由于 `WindowsAppSDK 1.6` 疑似存在的 BUG ，应用内的 `TreeView` 项目可能不遵循所设定的 `IsExpanded` 值，致使本应展开的项目呈现为折叠状态。
+	* **`BUG`** 由于 `WindowsAppSDK` 的 [issue #6829](https://github.com/microsoft/microsoft-ui-xaml/pull/6829) ，暗色模式下，`SplitButton` 的边框与 `Button` 等常规图标不一致。
+
+	* **`BUG`** 由于 `WindowsAppSDK` 的 [issue #8298](https://github.com/microsoft/microsoft-ui-xaml/issues/8298)，应用内的 `TreeViewItem` 可能在禁用状态下的文本并未呈现出禁用颜色，目前暂时通过覆盖默认样式的方式解决该问题。
+
+	* **`BUG`** 由于 `WindowsAppSDK 1.6` 的 [issue #10309](https://github.com/microsoft/microsoft-ui-xaml/issues/10309)，应用内的 `TreeViewItem` 可能不遵循所设定的初始 `IsExpanded` 值，致使本应展开的项目呈现为折叠状态。
 
 	* **`BUG`** 由于 `WindowsAppSDK 1.7` 的 [issue #10447](https://github.com/microsoft/microsoft-ui-xaml/issues/10447) ，在新版本的 `WindowsAppSDK` 中，当出现未处理的异常时，程序会直接崩溃，而不被全局异常处理函数处理，因此暂时不更新该依赖项。
-
-	* **`BUG`** 由于 `WindowsAppSDK` 的 [issue #6829](https://github.com/microsoft/microsoft-ui-xaml/pull/6829) ，暗色模式下，`SplitButton` 的边框与 `Button` 等常规图标不一致。
 
 	* **`BUG`** 转发器扩展 `forwarder` 有时会一直在后台运行，导致无法卸载应用，需要手动在任务管理器中终止对应的 COM Surrogate 进程。
 
