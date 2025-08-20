@@ -168,7 +168,7 @@ The user can pass in additional arguments when starting the tool, or if no addit
 		
 		Specifies the input data of the command, usually the path to a file or directory, as the input argument of the method.
 		
-		If the input value is `?` , the user will be asked to input the argument at runtime.
+		If the input value is `?` , the actual value is `null` .
 	
 	* **`-filterless`** : *`boolean`*
 		
@@ -250,7 +250,7 @@ When the tool is running, it will output some message to the user or request the
 
 In the tool's script directory `<home>/script`, the file with the extension `.json` is the configuration file of the tool. The configuration items in it will affect certain behaviors of the tool, such as the output format of JSON. Users can modify the configuration file.
 
-`<home>/script/Entry/Entry.json` is the main configuration file of the tool, and its configuration items are as follows.
+`<home>/script/Runner/Runner.json` is the main configuration file of the tool, and its configuration items are as follows.
 
 * `<configuration>`
 	

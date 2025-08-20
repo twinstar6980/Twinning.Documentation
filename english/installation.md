@@ -171,7 +171,7 @@ You can clone this project and compile it, or just download the bundle package o
 
 8. Set the script's interactive language.
 	
-	Open and edit `script/Entry/Entry.json` file in the home directory as text, find the `"language": "English"` section, and modify it to switch the interactive language of the tool.
+	Open and edit `script/Runner/Runner.json` file in the home directory as text, find the `"language": "English"` section, and modify it to switch the interactive language of the tool.
 	
 	* `English` (default)
 	

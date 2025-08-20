@@ -172,7 +172,7 @@
 
 8. 设置脚本交互语言。
 	
-	以文本形式打开并编辑主目录内的 `script/Entry/Entry.json` 文件，找到 `"language": "English"` 部分，修改它以切换工具的交互语言。
+	以文本形式打开并编辑主目录内的 `script/Runner/Runner.json` 文件，找到 `"language": "English"` 部分，修改它以切换工具的交互语言。
 	
 	* `English` 英文（默认）
 	
