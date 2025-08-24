@@ -360,31 +360,31 @@
 
 * `WindowsExplorerExtension` 14
 
-	* 不再会出现执行cmd脚本的弹窗。
+	* 不再会出现执行 cmd 脚本的弹窗。
 
 ## 23-02-20
 
 * `Core` 28
 
-	* 修复RTON解码逻辑时的一处错误。
+	* 修复 RTON 解码逻辑时的一处错误。
 
-	* 修复RSB打包逻辑时的一处错误。
+	* 修复 RSB 打包逻辑时的一处错误。
 
-	* 警告：对RSB逻辑的修复引入了一项破坏性修改，新旧版本的RSB Manifest将互不兼容，请先使用旧版工具对你的RSB Bundle工程进行打包，再使用新版工具进行解包。
+	* 警告：对 RSB 逻辑的修复引入了一项破坏性修改，新旧版本的 RSB Manifest 将互不兼容，请先使用旧版工具对 RSB Bundle 工程进行打包，再使用新版工具进行解包。
 
 * `Script` 31
 
-	* 提高RSB修复脚本的修复能力。
+	* 提高 RSB 修复脚本的修复能力。
 
 ## 23-02-22
 
 * `Core` 29
 
-	* 修复旧版本中对PNG文件读取的低兼容性与颜色变化BUG，现在工具能够读取各类颜色类型（调色板、灰度、真彩色）与位深的PNG。
+	* 修复旧版本中对 PNG 文件读取的低兼容性与颜色变化 BUG ，现在工具能够读取各类颜色类型（调色板、灰度、真彩色）与位深的 PNG 。
 
 * `Script` 33
 
-	* 修复解码不携带Alpha的PTX时输出图像为透明的BUG。
+	* 修复解码不携带 Alpha 的 PTX 时输出图像为透明的 BUG 。
 
 * `WindowsExplorerExtension` 15
 
@@ -438,13 +438,13 @@
 
 * `Script` 42
 
-	* 修复 pvz2 10.4 rsb resources.json 引起的 bug 。
+	* 修复 pvz2 10.4 rsb resources.json 引起的 BUG 。
 
 ## 23-03-03
 
 * `Helper` 2
 
-	* 对UI进行微调， 修复 Windows 10 下背景全黑的 bug 。
+	* 对 UI 进行微调，修复 Windows 10 下背景全黑的 BUG 。
 
 ## 23-03-05
 
@@ -510,11 +510,11 @@
 
 * `Script` 49
 
-	* 根据 Core 的行为变更，RSB 修复功能也做出了对应的行为变更。
+	* 根据 `Core` 的行为变更，RSB 修复功能也做出了对应的行为变更。
 
 * `WindowsExplorerExtension` 24
 
-	* Windows Explorer 扩展现在可以通过注册表设置项以在某些功能组（一级菜单）为不可用状态时进行隐藏，以减少对右键菜单空间的占用。
+	* 现在可以通过注册表设置项以在某些功能组（一级菜单）为不可用状态时进行隐藏，以减少对右键菜单空间的占用。
 
 ## 23-03-19
 
@@ -576,9 +576,9 @@
 
 * `Core` 46
 
-	* 不再依赖 windows utf8 locale 环境，以提升对 windows 7 的兼容性。
+	* `Windows` 不再依赖 utf8 locale 环境，以提升对 Windows 7 的兼容性。
 
-	* 更新所依赖的 Android NDK 工具链为 r25c 。
+	* `Android` 更新所依赖的 NDK 工具链为 r25c 。
 
 * `Shell` 24
 
@@ -618,7 +618,7 @@
 
 * `Script` 58
 
-	* 修复一些小 bug 。
+	* 修复一些小 BUG 。
 
 ## 23-04-09
 
@@ -640,7 +640,7 @@
 
 * `Script` 60
 
-	* 优化RSB资源转换功能，增加BNK提取选项
+	* 优化 RSB 资源转换功能，增加 BNK 提取选项
 
 ## 23-04-17
 
@@ -668,7 +668,7 @@
 
 * `ShellGUI` 11
 
-	* 为了在各平台保持更一致的体验，ShellGUI 现在内置并使用等宽字体（Noto Sans Mono CJK），因此应用包体积会增大20~30M。
+	* 为了在各平台保持更一致的体验，现在内置并使用等宽字体（Noto Sans Mono CJK），因此应用包体积会增大20~30M。
 
 * `Script` 67
 
@@ -684,7 +684,7 @@
 
 * `Core` 53
 
-	* 设置工具脚本路径时不再需要以 @ 作为首字符。
+	* 设置工具脚本路径时不再需要以 `@` 作为首字符。
 
 * `Script` 68
 
@@ -752,13 +752,13 @@
 
 * `ShellGUI` 14
 
-	* iPhone 将应用沙盒存储中的 Document 目录公开为共享目录，可以通过“文件”应用访问，也可以通过 Finder/iTunes 进行文件传输，可以无需越狱环境使用工具。
+	* `iPhone` 将应用沙盒存储中的 Document 目录公开为共享目录，可以通过“文件”应用访问，也可以通过 Finder/iTunes 进行文件传输，可以无需越狱环境使用工具。
 
-	* Android/iPhone 应用内设置页增加“共享目录”选项，用于获取应用的共享目录路径。
+	* `Android` `iPhone` 应用内设置页增加“共享目录”选项，用于获取应用的共享目录路径。
 
-	* Android 应用内设置页增加“申请存储权限”选项。
+	* `Android` 应用内设置页增加“申请存储权限”选项。
 
-	* Android/iPhone 现在可以使用文件选择器来输入路径，由于系统限制，应用可能无法直接获取所选文件的绝对路径，应用将复制所选文件至用户定义的回退目录中。
+	* `Android` `iPhone` 现在可以使用文件选择器来输入路径，由于系统限制，应用可能无法直接获取所选文件的绝对路径，应用将复制所选文件至用户定义的回退目录中。
 
 * `Script` 73
 
@@ -780,7 +780,7 @@
 
 * `ShellGUI` 15
 
-	* 修复 Windows 版本的 ShellGUI 中必须为kernel文件指定dll扩展名的bug。
+	* `Windows` 修复必须为 kernel 文件指定 dll 扩展名的 BUG 。
 
 更新依赖库。
 
@@ -804,11 +804,11 @@
 
 * `ShellGUI` 16
 
-	* 优化Console页列表滚动体验。
+	* 优化 Console 页列表滚动体验。
 
 * `Script` 77
 
-	* 修复一处英文文本的typo 。
+	* 修复一处英文文本错误。
 
 ## 23-08-13
 
@@ -852,7 +852,7 @@
 
 * `ShellGUI` 18
 
-	* 修复 Macintosh 系统上将应用设置保存在公共目录的 BUG 。
+	* `Macintosh` 修复将应用设置保存在公共目录的 BUG 。
 
 * `ForwarderForWindows` 32
 
@@ -888,7 +888,7 @@
 
 * `ShellGUI` 19
 
-	* 修复在 Windows 上启动文件选择对话框后崩溃的 BUG 。
+	* `Windows` 修复启动文件选择对话框后崩溃的 BUG 。
 
 * `Script` 81
 
@@ -936,7 +936,7 @@
 
 	* 批处理过程中若出现处理失败的项目，将不再暂停等待用户相应，并在批处理完成后回报所有处理失败的项目。
 
-	* 修复在ShellGUI环境下，输入路径:p时导致的错误。
+	* 修复在 ShellGUI 环境下，输入路径 :p 时导致的错误。
 
 	* 功能执行完毕后的耗时回报将只包含有效执行时间，不再包含功能参数输入过程的用时。
 
@@ -956,7 +956,7 @@
 
 * `Helper` 13
 
-	* 支持命令行参数与JumpList。
+	* 支持命令行参数与 JumpList 。
 
 	* `Animation Viewer` 修复一些情况下重复渲染动画导致执行时间延长的BUG。
 
@@ -968,15 +968,15 @@
 
 * `ShellGUI` 21
 
-	* 不再内置Noto字体，允许在设置页中设置应用所使用的字体的文件路径（TTF/OTF）。
+	* 不再内置 Noto 字体，允许在设置页中设置应用所使用的字体的文件路径（TTF/OTF）。
 
 	* 支持在设置页中自定义窗口启动时的位置和大小。
 
 * `Script` 84
 
-	* 增加NEWTON文件的编码/解码支持。
+	* 增加 NEWTON 文件的编码/解码支持。
 
-	* RSB资源转换功能在检测到RSB中包含多个清单文件时，将会请求用户选择需要应用的清单文件，清单文件路径为 /^properties\/resources(.+)?\.(rton|newton)$/i 。
+	* RSB 资源转换功能在检测到RSB中包含多个清单文件时，将会请求用户选择需要应用的清单文件，清单文件路径为 /^properties\/resources(.+)?\.(rton|newton)$/i 。
 
 * `Helper` 14
 
@@ -1014,7 +1014,7 @@
 
 * `ShellGUI` 24
 
-	* Android 将会自动删除 kernel 库文件的副本，避免其占用用户存储空间。
+	* `Android` 将会自动删除 kernel 库文件的副本，避免其占用用户存储空间。
 
 * `Script` 86
 
@@ -1038,7 +1038,7 @@
 
 * `Shell` 34
 
-	* 修复 Windows 上选择路径返回 Windows-style 路径的问题，现统一返回 POSIX-style 路径。
+	* `Windows` 修复选择路径返回 Windows-style 路径的问题，现统一返回 POSIX-style 路径。
 
 * `ShellGUI` 25
 
@@ -1052,7 +1052,7 @@
 
 * `ShellGUI` 26
 
-	* 修复在一些情况下无法通过 Android Intent 启动应用的 BUG 。
+	* `Android` 修复在一些情况下无法通过 Intent 启动应用的 BUG 。
 
 	* 命令行格式变更。
 
@@ -1068,7 +1068,7 @@
 
 * `Script` 88
 
-	* 修复 RSB 宽松解包功能的一处 bug 。
+	* 修复 RSB 宽松解包功能的一处 BUG 。
 
 ## 23-10-22
 
@@ -1076,7 +1076,7 @@
 
 * `Script` 89
 
-	* 修复在大端模式下计算 hash 值出错的 bug 。
+	* 修复在大端模式下计算 hash 值出错的 BUG 。
 
 * `ForwarderForWindows` 33
 
@@ -1112,7 +1112,7 @@
 
 	* 移除在会话结束后自动退出应用的功能。
 
-	* 修复在 iPhone 上选择目录后原目录被移除的 BUG 。
+	* `iPhone` 修复选择目录后原目录被移除的 BUG 。
 
 * `Script` 92
 
@@ -1120,11 +1120,11 @@
 
 	* 不再允许空字符串作为路径类型输入值。
 
-	* 修复在 Android 系统中使用 ShellGUI 运行工具时执行外部程序无法获取 stdout 与 stderr 的 BUG（需要 ROOT）。
-
-	* 远程 Android 辅助功能现在可用于 Android 系统。在 Android 系统中，工具将调用本地 sh（需要 ROOT），在其他系统中，工具将通过 adb 调用远程 Android 中的 sh（需要 ROOT）。
-
 	* 现在默认使用英文作为交互语言；新增越南语支持（由 Haruma-VN 翻译）。
+
+	* `Android` 修复使用 ShellGUI 运行工具时执行外部程序无法获取 stdout 与 stderr 的 BUG（需要 ROOT）。
+
+	* `Android` 远程 Android 辅助功能现在可用于 Android 系统。在 Android 系统中，工具将调用本地 sh（需要 ROOT），在其他系统中，工具将通过 adb 调用远程 Android 中的 sh（需要 ROOT）。
 
 * `ForwarderForWindows` 34
 
@@ -1134,7 +1134,7 @@
 
 * `Helper` 20
 
-	* 修复无法正常使用 NTFS 长路径的 BUG 。
+	* `Windows` 修复无法正常使用 NTFS 长路径的 BUG 。
 
 ## 23-12-06
 
@@ -1160,7 +1160,7 @@
 
 * `Helper` 21
 
-	* 新增 Package Builder 模块，作为 PvZ-2 Package Project 的 GUI 。
+	* `Package Builder` 新增模块，作为 PvZ-2 Package Project 的 GUI 。
 
 ## 23-12-07
 
@@ -1268,7 +1268,7 @@
 
 * `Script` 101
 
-	* 增加为STEAM版开罗游戏启动DEBUG模式的功能。
+	* 增加为 STEAM 版开罗游戏启动 DEBUG 模式的功能。
 
 * `Helper` 26
 
@@ -1282,15 +1282,15 @@
 
 	* 修复一些对象未正确释放的 BUG 。
 
-	* 修复 Android 平台下无法同时运行多个 MainActivity 并启动工具内核的 BUG ；作为代价，若用户在工具运行期间强制终止了应用，将会在应用内部存储中残留 kernel 的备份文件（约40M），需要用户在系统设置中选择清除应用缓存。
+	* `Android` 移除自定义 intent 。
 
-	* 为 iPhone 实现了路径选择功能（不再依赖 flutter_file_picker ），选取文件或目录时都将得到绝对路径（在 iPadOS 16.5 越狱/非越狱 环境下测试）。
+	* `Android` 修复无法同时运行多个 MainActivity 并启动工具内核的 BUG ；作为代价，若用户在工具运行期间强制终止了应用，将会在应用内部存储中残留 kernel 的备份文件（约40M），需要用户在系统设置中选择清除应用缓存。
 
-	* 移除 Android 的自定义 intent 。
+	* `Android` `iPhone` 新增 URL Scheme twinstar.toolkit.shell-gui:/run?command=... ，用于唤醒应用并传递命令参数。
 
-	* 新增 Android/iPhone 的 URL Scheme twinstar.toolkit.shell-gui:/run?command=... ，用于唤醒应用并传递命令参数。
+	* `Android` 在某些系统环境下（测试用例为 VMOS 虚拟机上的 Android 9 系统），应用会在工具执行完毕后崩溃，这是由 dart-ffi DynamicLibrary.close 函数引起的，目前没有解决方案；此 BUG 相当于在工具执行完毕后强制退出应用。
 
-	* 已知 BUG ：在某些 Android 环境下（测试用例为 VMOS 虚拟机上的 Android 9 系统），应用会在工具执行完毕后崩溃，这是由 dart-ffi DynamicLibrary.close 函数引起的，目前没有解决方案；此 BUG 相当于在工具执行完毕后强制退出应用。
+	* `iPhone` 实现了路径选择功能（不再依赖 flutter_file_picker ），选取文件或目录时都将得到绝对路径（在 iPadOS 16.5 越狱/非越狱 环境下测试）。
 
 * `Script` 102
 
@@ -1322,7 +1322,7 @@
 
 * `ForwarderForIphone` 1
 
-	* 新模块，为 iOS 系统文件分享菜单添加“转发至工具”的选项。
+	* 新模块，为 Iphone 系统文件分享菜单添加“转发至工具”的选项。
 
 * `Helper` 27
 
@@ -1344,7 +1344,7 @@
 
 * `Helper` 28
 
-	* 修复在 Windows 10 设备上可能无法选择目录的 BUG 。
+	* `Windows` 修复在 Windows 10 设备上可能无法选择目录的 BUG 。
 
 ## 24-05-12
 
@@ -1390,7 +1390,7 @@
 
 * `Kernel` 64
 
-	* 修复在 Linux 上无法全量编译的 BUG 。
+	* `Linux` 修复无法全量编译的 BUG 。
 
 * `Shell` 37
 
@@ -1402,7 +1402,7 @@
 
 	* 优化 UI 。
 
-	* 修复在 Android 与 iPhone 平台上拖拽标题栏引起报错的 BUG 。
+	* `Android` `iPhone` 修复拖拽标题栏引起报错的 BUG 。
 
 ## 24-05-22
 
@@ -2838,9 +2838,9 @@
 
 	* **`BUG`** 由于 `WindowsAppSDK` 的 [issue #6829](https://github.com/microsoft/microsoft-ui-xaml/pull/6829) ，暗色模式下，`SplitButton` 的边框与 `Button` 等常规图标不一致。
 
-	* **`BUG`** 由于 `WindowsAppSDK` 的 [issue #8298](https://github.com/microsoft/microsoft-ui-xaml/issues/8298)，应用内的 `TreeViewItem` 可能在禁用状态下的文本并未呈现出禁用颜色，目前暂时通过覆盖默认样式的方式解决该问题。
+	* **`BUG`** 由于 `WindowsAppSDK` 的 [issue #8298](https://github.com/microsoft/microsoft-ui-xaml/issues/8298) ，应用内的 `TreeViewItem` 可能在禁用状态下的文本并未呈现出禁用颜色，目前暂时通过覆盖默认样式的方式解决该问题。
 
-	* **`BUG`** 由于 `WindowsAppSDK 1.6` 的 [issue #10309](https://github.com/microsoft/microsoft-ui-xaml/issues/10309)，应用内的 `TreeViewItem` 可能不遵循所设定的初始 `IsExpanded` 值，致使本应展开的项目呈现为折叠状态。
+	* **`BUG`** 由于 `WindowsAppSDK 1.6` 的 [issue #10309](https://github.com/microsoft/microsoft-ui-xaml/issues/10309) ，应用内的 `TreeViewItem` 可能不遵循所设定的初始 `IsExpanded` 值，致使本应展开的项目呈现为折叠状态。
 
 	* **`BUG`** 由于 `WindowsAppSDK 1.7` 的 [issue #10447](https://github.com/microsoft/microsoft-ui-xaml/issues/10447) ，在新版本的 `WindowsAppSDK` 中，当出现未处理的异常时，程序会直接崩溃，而不被全局异常处理函数处理，因此暂时不更新该依赖项。
 
