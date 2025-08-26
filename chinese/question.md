@@ -28,7 +28,7 @@
 
 当某次更新引入了破坏性更改后，用户需要先使用旧版工具将工程文件编码为二进制格式（如 `*.pam.json` 编码为 `*.pam` 、`*.rsb.bundle` 打包为 `*.rsb` ），再更新到新版，并对这些二进制格式进行解码，得到适用于新版工具的工程文件。
 
-破坏性更改会在 [更新日志](../CHANGELOG.md) 中标注。用户应当始终使用最新版本，并只在需要进行工程文件版本迁移时使用旧版本。GitHub Release 中的分发仅为最新版本，所有历史版本分发可以在我的 [个人网盘](https://1drv.ms/f/s!AkIzoME-1oU-fB6En185husw59Q?e=EKJ1e9) 中找到。
+破坏性更改会在 [更新日志](../CHANGELOG.md) 中标注。用户应当始终使用最新版本，并只在需要进行工程文件版本迁移时使用旧版本。GitHub Release 中仅保留最后一次分发，历史分发可以在我的 [OneDrive](https://1drv.ms/f/c/2d321feb9cd374ed/Qu1005zrHzIggC2EAAAAAAAAiShIb2wbJMeZsw) 中找到。
 
 ## 存储空间访问权限
 

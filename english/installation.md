@@ -60,7 +60,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	View the [Release](https://github.com/twinstar6980/Twinning.Documentation/releases/tag/Latest) page, the bundle distribution is named `<version>.<system>.<architecture>.bundle.zip`, where `system` represents the adapted operating system and `architecture` represents the adapted CPU architecture.
 	
-	> Only the latest bundle is saved in the Release page. If you need historical versions, you can found them on my [Personal OneDrive](https://1drv.ms/f/s!Au1005zrHzItgQSJKEhvbBskx5mz?e=VcmdOo).
+	> Only the last distribution is kept in GitHub Release. Historical distributions can be found in my [OneDrive](https://1drv.ms/f/c/2d321feb9cd374ed/Qu1005zrHzIggC2EAAAAAAAAiShIb2wbJMeZsw).
 	
 	Currently, the platforms that provide precompiled distribution are as follows:
 	
