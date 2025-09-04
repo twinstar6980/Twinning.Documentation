@@ -2,6 +2,8 @@
 
 - [介绍](#介绍)
 
+- [common.utility](#commonutility)
+
 - [script.js](#scriptjs)
 
 - [data.hash](#datahash)
@@ -117,6 +119,16 @@
 > 		`<value>` 则是当用户未指定参数值时的默认值，一般是显式的 `?input` 或 `?automatic` ，可以在配置文件中修改默认值。
 
 以下列出的所有功能都是常规功能，部分常规功能存在对应的批处理版本，则会以 `*` 符号标出。功能的批处理版本与常规版本的参数保持一致，但批处理功能的 ID 附加了 `.batch` 后缀，并且输入参数、输出参数分别指向一个用于输入、输出每次处理对象的目录。
+
+## `common.utility`
+
+* `set_global_configuration`
+	
+	* `data` : `string` = `?input`
+
+* `run_executable_script`
+	
+	* `target` : `string` = `?input`
 
 ## `script.js`
 

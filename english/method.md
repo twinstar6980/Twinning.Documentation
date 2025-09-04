@@ -2,6 +2,8 @@
 
 - [Introduction](#Introduction)
 
+- [common.utility](#commonutility)
+
 - [script.js](#scriptjs)
 
 - [data.hash](#datahash)
@@ -117,6 +119,16 @@ The following will list the methods with their corresponding configuration rules
 > 		`<value>` is the default value when the user does not specify a argument value, typically an explicit `?input` or `?automatic`, the default value can be modified in the configuration file.
 
 All of the methods listed below are regular method. Some of the regular method have a batch version, which is the same as the regular method, but with the `.batch` suffix appended to the method ID .
+
+## `common.utility`
+
+* `set_global_configuration`
+	
+	* `data` : `string` = `?input`
+
+* `run_executable_script`
+	
+	* `target` : `string` = `?input`
 
 ## `script.js`
 
