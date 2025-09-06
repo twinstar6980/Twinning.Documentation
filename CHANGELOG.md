@@ -328,6 +328,8 @@
 
 - [25-09-05](#25-09-05)
 
+- [25-09-06](#25-09-06)
+
 - [已知问题](#已知问题)
 
 ## 23-02-04
@@ -3084,6 +3086,20 @@
 
 	* `Resource Shipper` 改进候选功能匹配逻辑，支持显示无输入值的功能。
 
+## 25-09-06
+
+* `Script` 139
+
+	* 优化代码。
+
+* `Assistant` 111
+
+	* 优化代码。
+
+* `Assistant Plus` 89
+
+	* `Forwarder Extension` 为 MSIX 包添加 VCLibs 依赖项，以避免在未安装 vcredist 的设备上扩展无法生效的问题。
+
 ## 已知问题
 
 * `Kernel`
@@ -3114,6 +3130,8 @@
 
 	* **`BUG` `Forwarder Extension` `Windows`** 扩展所在的 COM Surrogate 进程有时会一直在后台运行，导致无法卸载应用，需要手动在任务管理器中终止。
 
+	* **`BUG` `Forwarder Extension` `Windows`** 在一些低版本的系统（如 Windows 10 2004）中，扩展启动了应用后，应用窗口可能不会被置于前台。
+
 	* **`OK` `Modding Worker`** 在消息列表中，每个文本控件都有各自独立的选择域，无法跨多个文本控件选择文本。
 
 	* **`TODO` `Animation Viewer`** 目前无法选择帧范围，应在未来进行补全。
@@ -3137,6 +3155,8 @@
 	* **`BUG`** 由于 `WindowsAppSDK 1.7` 的 [issue #10447](https://github.com/microsoft/microsoft-ui-xaml/issues/10447) ，在新版本的 `WindowsAppSDK` 中，当出现未处理的异常时，程序会直接崩溃，而不被全局异常处理函数处理，因此暂时不更新该依赖项。
 
 	* **`BUG` `Forwarder Extension`** 扩展所在的 COM Surrogate 进程有时会一直在后台运行，导致无法卸载应用，需要手动在任务管理器中终止。
+
+	* **`BUG` `Forwarder Extension`** 在一些低版本的系统（如 Windows 10 2004）中，扩展启动了应用后，应用窗口可能不会被置于前台。
 
 	* **`OK` `Modding Worker`** 在消息列表中，每个文本控件都有各自独立的选择域，无法跨多个文本控件选择文本。
 
