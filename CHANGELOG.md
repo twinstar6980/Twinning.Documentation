@@ -330,6 +330,8 @@
 
 - [25-09-06](#25-09-06)
 
+- [25-09-07](#25-09-07)
+
 - [已知问题](#已知问题)
 
 ## 23-02-04
@@ -3100,11 +3102,27 @@
 
 	* `Forwarder Extension` 为 MSIX 包添加 VCLibs 依赖项，以避免在未安装 vcredist 的设备上扩展无法生效的问题。
 
+## 25-09-07
+
+* `Script` 140
+
+	* 优化代码。
+
+	* 将 `common.utility.run_executable_script` 功能重命名为 `common.utility.run_embedded_script` 。
+
+	* 将 `script.js.execute` 功能重命名为 `common.utility.run_custom_script` 。
+
+* `Assistant Plus` 90
+
+	* 优化代码。
+
 ## 已知问题
 
 * `Kernel`
 
 	* **`BUG`** 由于 `Clang` 疑似存在的 BUG ，生成异常堆栈信息时，部分源码文件的路径会显示为编译时所在的绝对路径，而非项目根目录的相对路径。
+
+	* **`BUG`** 由于 `libc++` 疑似存在的 BUG ，在通过 `std::filesystem` 中的某些函数进行操作时，若传递的路径中包含非 `ASCII` 字符，且路径指向的目标不存在，将抛出 `length_error` 而非 `filesystem_error` ，因而无法通过报错信息得知错误原因。
 
 	* **`BUG`** 由于 `quickjs-ng` 的 BUG ，当进程使用的 `locale` 环境使用 `.` 之外的字符作为小数点符号时，JS 脚本中的数字将无法被正确解析，目前暂时通过强制设置全局 `locale` 环境为 `C` 的方式解决该问题。
 
