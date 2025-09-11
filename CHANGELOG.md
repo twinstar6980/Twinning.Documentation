@@ -332,6 +332,8 @@
 
 - [25-09-07](#25-09-07)
 
+- [25-09-11](#25-09-11)
+
 - [已知问题](#已知问题)
 
 ## 23-02-04
@@ -3116,6 +3118,12 @@
 
 	* 优化代码。
 
+## 25-09-11
+
+* `Assistant Plus` 91
+
+	* 更新依赖项。
+
 ## 已知问题
 
 * `Kernel`
@@ -3170,7 +3178,7 @@
 
 	* **`BUG`** 由于 `WindowsAppSDK 1.6` 的 [issue #10309](https://github.com/microsoft/microsoft-ui-xaml/issues/10309) ，应用内的 `TreeViewItem` 可能不遵循所设定的初始 `IsExpanded` 值，致使本应展开的项目呈现为折叠状态。
 
-	* **`BUG`** 由于 `WindowsAppSDK 1.7` 的 [issue #10447](https://github.com/microsoft/microsoft-ui-xaml/issues/10447) ，在新版本的 `WindowsAppSDK` 中，当出现未处理的异常时，程序会直接崩溃，而不被全局异常处理函数处理，因此暂时不更新该依赖项。
+	* **`BUG`** 由于 `WindowsAppSDK 1.7` 的 BUG ，当程序在在 Visual Studio 调试环境下运行并调用了 `JumpList.LoadCurrentAsync` 接口，大概率在终止程序后抛出未知异常 `0xc000027b` ，故暂时在 DEBUG 模式下避免该接口的调用。
 
 	* **`BUG` `Forwarder Extension`** 扩展所在的 COM Surrogate 进程有时会一直在后台运行，导致无法卸载应用，需要手动在任务管理器中终止。
 
