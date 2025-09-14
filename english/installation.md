@@ -10,7 +10,7 @@
 
 ## Platform supportability
 
-* Operating systems: `Windows 10+`, `Linux ~`, `Macintosh 11+`, `Android 9+`, `Iphone 15+`.
+* Operating systems: `Windows 10+`, `Linux ~`, `Macintosh 11+`, `Android 11+`, `Iphone 15+`.
 
 * Processor architectures: `x86_64`, `arm_64`.
 
