@@ -206,7 +206,7 @@
 
 工具默认将处理的文件始终视为小端序。但是，用户也可能需要对大端序文件进行处理，例如对从大端序设备 Xbox 中提取的 RSB 文件进行解包。
 
-在将大端序文件转发给工具进行处理前，用户需要修改 `<home>/script/Runner/Runner.json` 配置中的 `byte_stream_use_big_endian` 项为 `true` ，告知工具将传入的文件视为大端序。
+在将大端序文件转发给工具进行处理前，用户需要修改 `<home>/script/Runner/Runner.json` 配置中的 `byte_stream_use_big_endian` 项为 `true` ，或通过 `common.utility.set_global_configuration` 功能在运行时修改该值，告知工具将传入的文件视为大端序。
 
 之后，将大端序文件转发给工具，如果文件本身没有错误，程序将能正常处理这些大端序文件。
 

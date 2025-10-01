@@ -208,7 +208,7 @@ In addition, the tool also implements additional `PopCap Reflection-Object-Notat
 
 By default, the tool always treats the processed files as little-endian. However, users may also need to process big-endian files, such as unpacking RSB files extracted from a big-endian device, Xbox.
 
-Before forwarding the big-endian file to the tool for processing, the user needs to modify the `byte_stream_use_big_endian` item in the `<home>/script/Runner/Runner.json` configuration to `true` to tell the tool to treat the incoming file as big-endian.
+Before forwarding big-endian files to the tool for processing, users need to modify the `byte_stream_use_big_endian` option in the `<home>/script/Runner/Runner.json` configuration file to `true`, or use the `common.utility.set_global_configuration` method to change this value at runtime to tell the tool to treat the incoming files as big-endian.
 
 After that, the big-endian files are forwarded to the tool, and if there are no errors in the files themselves, the program will be able to process the big-endian files normally.
 

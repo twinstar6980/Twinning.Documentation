@@ -96,29 +96,29 @@ You can make the tool execute a method directly without runtime input via comman
 
 The following will list the methods with their corresponding configuration rules in the following agreed format:
 
-> ## `<method-group-id>`
+> ## `method-group-id`
 >
 > The ID of method group, as a prefix to all method's item ID.
 >
-> * `<method-item-id` [ `*` ]
+> * `method-item-id` [ `*` ]
 >	
 > 	The method's item ID, combined with the method's group ID, is the method's ID. For example, if the group ID is `popcap.animation` and the item ID is `decode`, then the method ID is `popcap.animation.decode`. If it is marked with `*`, then the method provides a batch version.
 > 	
-> 	* `variable-name` : `<filter-rule>`
+> 	* `variable-name` : `filter-rule`
 > 		
-> 		The first argument is an input argument, specified by `input` or `argument` of the current command, always of type `path`; `<filter-rule>` specifies the input value filtering rules for the method, e.g. `*.rsb` means that the method is displayed only if the input file has extension `rsb`. Filter rule can be modified in the configuration file.
+> 		A method usually contains an input argument, specified by `input` or `argument` of the current command, and the type is always `path`; `filter-rule` specifies the input value filtering rules of the method, such as `*.rsb`, which means that the method will only be displayed if the input file has the extension `rsb`; the filtering rules can be modified in the configuration file.
 > 	
-> 	* `variable-name` : `variable-type` [ ~ `<default-value>` ] = `<value>`
+> 	* `variable-name` : `variable-type` [ ~ `default-value` ] = `value`
 > 		
-> 		The remaining arguments are specified by the `argument` of the current command, the second of which is usually the output argument, followed by the configuration argument.
+> 		Non-input arguments are specified by the `argument` of the current command, where the first item is usually an output parameter, followed by configuration arguments.
 > 		
 > 		If the argument value is the string `?input`, the user will be asked to enter the argument during execution.
 > 		
 > 		Some arguments can generate automatic by program, and the user can specify the argument value as the string `?automatic` to enable the automatic behavior, which will be identified by `~` in the documentation, followed by the value of the automatic behavior. Generally, output arguments have default behavior, i.e., the value of the input argument is used to generate the value of the output argument, e.g., the `popcap.animation.decode` method takes a `*.pam` file as the input argument and generates a `*.pam.json` file of the same name as the output argument.
 > 		
-> 		`<value>` is the default value when the user does not specify a argument value, typically an explicit `?input` or `?automatic`, the default value can be modified in the configuration file.
+> 		`value` is the default value when the user does not specify a argument value, typically an explicit `?input` or `?automatic`, the default value can be modified in the configuration file.
 
-All of the methods listed below are regular method. Some of the regular method have a batch version, which is the same as the regular method, but with the `.batch` suffix appended to the method ID .
+All of the methods listed below are regular method. Some of the regular method have a batch version, which is the same as the regular method, but with the `!batch` suffix appended to the method ID .
 
 ## `common.utility`
 
@@ -126,15 +126,13 @@ All of the methods listed below are regular method. Some of the regular method h
 	
 	* `data` : `string` = `?input`
 
-* `run_executable_script`
+* `run_embedded_scriptee`
 	
-	* `target` : `string` = `?input`
+	* `target_name` : `string` = `?input`
 
-## `script.js`
-
-* `execute` `*`
+* `run_custom_script` `*`
 	
-	* `script_file` : `*.js`
+	* `target_file` : `*.js`
 	
 	* `is_module` : `boolean` = `?input`
 

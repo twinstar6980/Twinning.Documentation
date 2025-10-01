@@ -72,27 +72,27 @@
 
 下面以 [`Shell`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge) 模块为例介绍应如何集成 `Kernel` ：
 
-1. [`data.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/data.hpp) ：声明 `Kernel` 中的数据类型。
+1. [`data.cppm`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/data.cppm) ：声明 `Kernel` 中的数据类型。
 	
 	> `Kernel` 模块中已经提供了适用于 `C++` 的接口声明 [`interface.hpp`](https://github.com/twinstar6980/Twinning/blob/master/Kernel/kernel/interface/interface.hpp) ，接口需要用户传递 C 式的结构体作为参数值与返回值。
 
-2. [`proxy.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/proxy.hpp) ：创建一个辅助类，负责接口所需的 C 式结构体的解析与构造。
+2. [`proxy.cppm`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/proxy.cppm) ：创建一个辅助类，负责接口所需的 C 式结构体的解析与构造。
 
-3. [`service.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/service.hpp) ：声明 `Kernel` 导出的服务类型。
+3. [`service.cppm`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/service.cppm) ：声明 `Kernel` 导出的服务类型。
 
-4. [`library.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/library.hpp) ：定义 `Kernel` 库的抽象类，它封装了对 `Kernel` 的库加载与符号获取。
+4. [`library.cppm`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/library.cppm) ：定义 `Kernel` 库的抽象类，它封装了对 `Kernel` 库的加载与符号获取。
 
-5. [`client.hpp`](https://github.com/twinstar6980/Twinning/blob/master/Shell/shell/bridge/client.hpp) ：定义 `Shell` 客户端的抽象类。
+5. [`client.cppm`](https://github.com/twinstar6980/Twinning/blob/master/Shell/shell/bridge/client.cppm) ：定义 `Shell` 客户端的抽象类。
 	
-	> [`main_console_bridge_client.hpp`](https://github.com/twinstar6980/Twinning/blob/master/Shell/shell/main_console_bridge_client.hpp) ：实现了对基本的命令行式 `Shell` 客户端的封装。
+	> [`main_console.cppm`](https://github.com/twinstar6980/Twinning/blob/master/Shell/shell/main_console.cppm) ：实现了对基本的命令行式 `Shell` 客户端的封装。
 
-6. [`launcher.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/launcher.hpp) ：创建一个辅助类，配合 `Library` 与 `Client` 实例调用 `Kernel` 接口。
+6. [`launcher.cppm`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/launcher.cppm) ：创建一个辅助类，配合 `Library` 与 `Client` 实例调用 `Kernel` 接口。
 
 ## 自定义脚本
 
 > **以下内容需要用户掌握 TypeScript 编程技能。**
 
-工具的 `Script` 层以 `JavaScript` 作为脚本语言。JS 引擎为第三方开源项目 `quickjs` 。
+工具的 `Script` 层以 `JavaScript` 作为脚本语言。JS 引擎为第三方开源项目 `quickjs-ng` 。
 
 用户可以通过自定义脚本让工具执行出自己想要的结果。
 
@@ -143,7 +143,7 @@ type JS_MainFunction = (
 以下是一些例子：
 
 ```ts
-/ 构造一个值为 true 的内核布尔对象
+// 构造一个值为 true 的内核布尔对象
 let b1 = Kernel.Boolean.value(true); 
 // 通过复制 b1 构造内核布尔对象，b2 值为 true
 let b2 = Kernel.Boolean.copy(b1);

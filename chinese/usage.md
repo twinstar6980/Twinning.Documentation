@@ -128,13 +128,7 @@
 	
 	该模块能够查看 PopCap Animation (PAM) 动画文件。
 	
-	1. 点击本模块页面 ⌈ Stage ⌋ 栏右上方的 ⌈ Animation File ⌋ 文本框的右侧按钮，在弹出的窗口中选择 `*.pam.json` 文件；或是从 ⌈ Explorer ⌋ 中拖拽 `*.pam.json` 文件至应用窗口中并释放。
-		
-		> `*.pam.json` 由工具解码 `*.pam` 文件而得。
-	
-	2. 如果动画所需的分解图位于动画文件同级目录内，则可以正常渲染动画，否则需要点击 ⌈ Texture Directory ⌋ 文本框的右侧按钮，选择分解图所在目录。
-	
-	3. 通过其他 UI 控件可以选择想要播放的子动画、调整播放区间与帧率、设置元件过滤项、等。
+	> 将解码 `*.pam` 文件所得的 `*.pam.json` 文件与动画中引用到的纹理分解图 `*.png` 放置在同一目录内，并在页面中导入 `*.pam.json` 文件即可查看动画。
 
 * `Reflection Descriptor` *`<Plus-Only>`*
 	
@@ -166,23 +160,19 @@
 		
 		指定了命令的输入数据，即一个文件或目录的路径，作为功能的输入参数。
 		
-		如果输入值为 `?` ，则实际值为 `null` 。
-	
-	* **`-filterless`** : *`boolean`*
-		
-		用于禁用候选功能筛选。
-		
-		默认情况下，如果未指定 `-method` ，工具将根据输入对象的类型（主要通过扩展名）筛选出可用功能供用户选择；
-		
-		若禁用候选功能筛选，则将列出所有功能供用户选择。
+		如果输入值为 `?none` ，则输入值为 `null` ，无输入参数的功能只有在输入为 `null` 时才会出现在候选中。
 	
 	* **`-method`** : *`string`*
 		
-		指定需执行的功能，后跟该功能的 ID ，若未指定功能，将在运行时等待用户选择功能。
+		指定需执行的功能，后跟该功能的 ID 。
+		
+		如果输入值为 `?filtered` ，将根据输入值来筛选出可用的功能，并列出给用户候选。
+		
+		如果输入值为 `?unfiltered` ，将列出所有功能给用户候选。
 	
 	* **`-argument`** : *`string`*
 		
-		指定需要传给功能的参数，后跟一个 JSON 字符串，且必须可解析为一个 Object 。
+		指定需要传给功能的参数，后跟一个 JSON 字符串，且必须可解析为一个 `Object` 。
 
 各功能的 ID 与其参数定义参见 [功能](./method.md) 章节。
 
@@ -223,22 +213,23 @@
 	一行文本。
 	
 	> 如果输入的文本为空，则视作输入了空值；\
-	> 如果输入的文本以 `==` 起始，则工具将截取其后的文本作为真实输入，通过这种方式可以输入空字符串而非空值。
+	> 如果输入的文本以 `??` 起始，则工具将截取其后的文本作为真实输入，通过这种方式可以输入空字符串而非空值。
 
 * `Path` 路径
 	
 	可用于本地文件系统的路径，分为输入路径与输出路径，前者指向磁盘上一个已存在的文件或目录的路径，后者指向磁盘上一个不存在的路径。
 	
 	> 如果输入的文本为空，则视作输入了空值；\
-	> 如果输入的文本以 `==` 起始，则工具将截取其后的文本作为真实输入，通过这种方式可以输入空字符串而非空值。
+	> 如果输入的文本以 `??` 起始，则工具将截取其后的文本作为真实输入，通过这种方式可以输入空字符串而非空值。
 	> 
-	> 输入 `=p` 将唤起文件选择窗口；\
-	> 输入 `=g` 将通过所给路径生成可用输出路径（附加后缀）；\
-	> 输入 `=m` 将移动已有文件；\
-	> 输入 `=d` 将删除已有文件；\
-	> 输入 `=o` 将覆写已有文件。
+	> 输入 `?g/generate` 将通过所给路径生成可用输出路径（附加后缀）；\
+	> 输入 `?m/move` 将移动已有文件；\
+	> 输入 `?d/deltet` 将删除已有文件；\
+	> 输入 `?o/overwrite` 将覆写已有文件。
 	> 
-	> 如果输入路径由一对单引号或双引号包围，工具将自动去除引号；如果输入了一段相对路径，则该路径是相对于工具的工作目录 `<home>/workspace` 计算的。
+	> 如果输入路径由一对单引号或双引号包围，工具将自动去除引号；\
+	> 如果输入路径由 `~` 起始，`~` 将被解析为工具的主目录 `<home>` ；\
+	> 如果输入了一段相对路径，则该路径是相对于工具的工作目录 `<home>/workspace` 计算的。
 
 * `Enumeration` 枚举
 	
@@ -264,6 +255,10 @@
 		
 		禁用命令处理器的名称过滤行为。默认情况下，工具会对命令输入的文件路径进行扩展名匹配，不匹配的功能将不对用户显示；禁用后将显示所有功能。
 	
+	* `command_notification_time_limit` : `null | bigint` = `15000`
+		
+		命令通知时限。在某项命令执行完成后，如果有效执行时间超过该值（毫秒），将推送系统通知以提醒用户。设为 `null` 将禁用通知。
+	
 	* `byte_stream_use_big_endian` : `boolean` = `false`
 		
 		内部字节流操作时使用大端序。这个选项对一些大端序文件的处理是必要的。默认禁用，因为大多数时候用户处理的都是小端序文件。
@@ -288,42 +283,24 @@
 		
 		输出 JSON 时禁用对象换行。
 	
-	* `external_program_sh` : `null | string` = `null`
-		
-		指定可能会调用的外部程序的路径，若为 null ，则将在运行时检索 `PATH` 环境变量。
-		
-		用于 `/utility/AndroidHelper.ts` 。
-	
-	* `external_program_adb` : `null | string` = `null`
-		
-		指定可能会调用的外部程序的路径，若为 null ，则将在运行时检索 `PATH` 环境变量。
-		
-		用于 `/utility/AndroidHelper.ts` 。
-	
-	* `external_program_vgmstream` : `null | string` = `null`
-		
-		指定可能会调用的外部程序的路径，若为 null ，则将在运行时检索 `PATH` 环境变量。
-		
-		用于 `/Support/Wwise/Media/Decode.ts` 。
-	
-	* `external_program_wwise` : `null | string` = `null`
-		
-		指定可能会调用的外部程序的路径，若为 null ，则将在运行时检索 `PATH` 环境变量。
-		
-		用于 `/Support/Wwise/Media/Encode.ts` 。
-	
-	* `external_program_il2cpp_dumper` : `null | string` = `null`
-		
-		指定可能会调用的外部程序的路径，若为 null ，则将在运行时检索 `PATH` 环境变量。
-		
-		用于 `/Support/Kairosoft/Game/ModifyProgram.ts` 。
-	
 	* `thread_limit` : `bigint` = `0`
 		
 		线程池上限数。目前无实际作用。
 	
-	* `command_notification_time_limit` : `null | bigint` = `15000`
+	* `external_program_path` : `Record<string, null | string>` = `{ ... }`
 		
-		命令通知时限。在某项命令执行完成后，如果有效执行时间超过该值（毫秒），将推送系统通知以提醒用户。设为 null 将禁用通知。
+		指定可能会调用的外部程序的路径，若为 `null` ，则将在运行时检索 `PATH` 环境变量。
+		
+		* `sh` 用于 `/utility/AndroidHelper.ts` 。
+		
+		* `adb` 用于 `/utility/AndroidHelper.ts` 。
+		
+		* `WwiseConsole.exe` 用于 `/Support/Wwise/Media/Encode.ts` 。
+		
+		* `WwiseConsole.sh` 用于 `/Support/Wwise/Media/Encode.ts` 。
+		
+		* `vgmstream-cli` 用于 `/Support/Wwise/Media/Decode.ts` 。
+		
+		* `Il2CppDumper-x86` 用于 `/Support/Kairosoft/Game/ModifyProgram.ts` 。
 
 > 脚本提供的每组功能都有与之对应的配置文件，参见 [功能列表](./method.md) 章节。

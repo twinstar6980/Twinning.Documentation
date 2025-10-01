@@ -72,27 +72,27 @@ Refer to several shell implementations in this tool:
 
 The following is an example of how to integrate `Kernel` with the [`Shell`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge) modules:
 
-1. [`data.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/data.hpp): Declare the data type of `Kernel`.
+1. [`data.cppm`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/data.cppm): Declare the data type of `Kernel`.
 	
 	> The declaration of the interface for `C++` is already provided in the `Kernel` module [`interface.hpp`](https://github.com/twinstar6980/Twinning/blob/master/Kernel/kernel/interface/interface.hpp)
 
-2. [`proxy.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/proxy.hpp) : Creates a helper class for the `C-style` structure parsing and constructing.
+2. [`proxy.cppm`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/proxy.cppm) : Creates a helper class for the `C-style` structure parsing and constructing.
 
-3. [`service.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/service.hpp): defines the service type of the `Kernel`.
+3. [`service.cppm`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/service.cppm): defines the service type of the `Kernel`.
 
-4. [`library.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/library.hpp): defines the abstract class of the `Kernel` library, which encapsulates the library loading and symbolic getting to `Kernel`.
+4. [`library.cppm`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/library.cppm): defines the abstract class of the `Kernel` library, which encapsulates the loading and symbolic getting to `Kernel` library.
 
-5. [`client.hpp`](https://github.com/twinstar6980/Twinning/blob/master/Shell/shell/bridge/client.hpp): Define a `Shell` client abstract class.
+5. [`client.cppm`](https://github.com/twinstar6980/Twinning/blob/master/Shell/shell/bridge/client.cppm): Define a `Shell` client abstract class.
 	
-	> [`main_console_bridge_client.hpp`](https://github.com/twinstar6980/Twinning/blob/master/Shell/shell/main_console_bridge_client.hpp): implements the CLI-style `Shell` client.
+	> [`main_console.cppm`](https://github.com/twinstar6980/Twinning/blob/master/Shell/shell/main_console.cppm): implements the CLI-style `Shell` client.
 
-6. [`launcher.hpp`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/launcher.hpp) : Create a helper class to call the `Kernel` interface with `Library` and `Client` instances.
+6. [`launcher.cppm`](https://github.com/twinstar6980/Twinning/tree/master/Shell/shell/bridge/launcher.cppm) : Create a helper class to call the `Kernel` interface with `Library` and `Client` instances.
 
 ## Custom Scripts
 
 > **The following requires the user to have TypeScript programming skills.**
 
-The `Script` layer of the tool uses `JavaScript` as the scripting language. JS engine is a third-party open source project called `quickjs`.
+The `Script` layer of the tool uses `JavaScript` as the scripting language. JS engine is a third-party open source project called `quickjs-ng`.
 
 Users can customize scripts to make the tool execute the results they want.
 
@@ -141,7 +141,7 @@ In general, the following functions and methods are provided in the class defini
 The following are some examples:
 
 ```ts
-// Constructs a kernel boolean obj with the value `true`
+// Constructs a kernel boolean object with the value true
 let b1 = Kernel.Boolean.value(true);
 // Construct a kernel boolean object by copying b1 with a b2 value of true
 let b2 = Kernel.Boolean.copy(b1);

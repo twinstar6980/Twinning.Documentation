@@ -130,13 +130,7 @@ The following functional modules are provided by application:
 	
 	This module can view PopCap Animation (PAM) file.
 	
-	1. Click the ⌈ Animation File ⌋ button on the right side of the text box in the upper right corner of the ⌈ Stage ⌋ column on this module page, and select the `*.pam.json` file in the pop-up window; or drag `*.pam.json` file from ⌈ Explorer ⌋ to the application window then drop.
-		
-		> `*.pam.json` is obtained by decoding `*.pam` files by toolkit.
-	
-	2. If the exploded view required for the animation is located in the same directory as the animation file, the animation can be rendered normally. Otherwise, you need to click the button on the right side of the ⌈ Texture Directory ⌋ text box to select the directory where the exploded view is located.
-	
-	3. Through other UI controls, you can select the sub-animation you want to play, adjust the playback interval and frame rate, set component filter items, etc.
+	> Place the `*.pam.json` file obtained by decoding the `*.pam` file and the texture decomposition image `*.png` referenced in the animation in the same directory, and import the `*.pam.json` file in the page to view the animation.
 
 * `Reflection Descriptor` *`<Plus-Only>`*
 	
@@ -168,23 +162,19 @@ The user can pass in additional arguments when starting the tool, or if no addit
 		
 		Specifies the input data of the command, usually the path to a file or directory, as the input argument of the method.
 		
-		If the input value is `?` , the actual value is `null` .
-	
-	* **`-filterless`** : *`boolean`*
-		
-		Used to disable candidate method filtering.
-		
-		By default, if `-method` is not specified, the tool will filter the available methods for user selection based on the type of input object (mainly by extension);
-		
-		If candidate method filtering is disabled, all methods will be listed for user selection. This should not be enabled because toolkit provides too many methods and it is always recommended to have filter on.
+		If the input value is `?none`, then the input value is `null`, and features with no input arguments will only appear in the candidates if the input is `null` .
 	
 	* **`-method`** : *`string`*
 		
-		Specify the method to be executed, followed by the ID of the method. If no method is specified, it will wait for the user to select the method at runtime.
+		Specify the method to be executed, followed by the ID of the method.
+		
+		If the input value is `?filtered`, the available features will be filtered based on the input value and listed for the user to consider.
+		
+		If the input value is `?unfiltered`, all features will be listed for the user to consider.
 	
 	* **`-argument`** : *`string`*
 		
-		Specifies the argument to be passed to the method, followed by a JSON string, and must be parsable as an Object.
+		Specifies the argument to be passed to the method, followed by a JSON string, and must be parsable as an `Object`.
 
 The IDs of the methods and their arguments are defined in [method](. /method.md) section.
 
@@ -225,22 +215,23 @@ When the tool is running, it will output some message to the user or request the
 	A line of text.
 	
 	> If the entered text is empty, it is deemed to have entered a null value;\
-	> If the input text starts with `==` , the tool will intercept the text after it as the real input. In this way, an empty string can be entered instead of a null value.
+	> If the input text starts with `??` , the tool will intercept the text after it as the real input. In this way, an empty string can be entered instead of a null value.
 
 * `Path`
 	
 	The paths that can be used in the local file system, divided into input paths and output paths, the former points to the path of an existing file or directory on the disk, and the latter points to a path that does not exist on the disk.
 	
 	> If the entered text is empty, it is deemed to have entered a null value;\
-	> If the input text starts with `==` , the tool will intercept the text after it as the real input. In this way, an empty string can be entered instead of a null value.
+	> If the input text starts with `??` , the tool will intercept the text after it as the real input. In this way, an empty string can be entered instead of a null value.
 	> 
-	> Enter `=p` will open the system file pick dialog;\
-	> Enter `=g` will generate avaliable path (append suffix);\
-	> Enter `=m` will move original file;\
-	> Enter `=d` will delete original file;\
-	> Enter `=o` will overwrite original file.
-	>
-	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed; If a relative path is entered, the path is calculated relative to the tool's working directory `<home>/workspace` .
+	> Enter `?g/generate` will generate avaliable path (append suffix);\
+	> Enter `?m/move` will move original file;\
+	> Enter `?d/delete` will delete original file;\
+	> Enter `?o/overwrite` will overwrite original file.
+	> 
+	> If the input path is surrounded by a pair of quotes, the quotation marks are automatically removed;\
+	> If the input path starts with `~` , `~` will be interpreted as the tool's home directory `<home>` ;\
+	> If a relative path is entered, the path is calculated relative to the tool's working directory `<home>/workspace` .
 
 * `Enumeration`
 	
@@ -266,6 +257,10 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		
 		Disables the name filtering behavior of the command executor. By default, the tool will match the extension of the file path of the command input, unmatched methods will not be displayed to the user. When disabled, all functions will be displayed.
 	
+	* `command_notification_time_limit` : `null | bigint` = `15000`
+		
+		Command notification time limit. If the vaild execution duration exceeds this value (in milliseconds) after a command has completed, a system notification will be pushed to alert the user to set up the configuration. Setting to null will disable notifications.
+	
 	* `byte_stream_use_big_endian` : `boolean` = `false`
 		
 		Use big end-order for internal byte stream operations. This option is necessary for some big-endian file processing. It is disabled by default, because most of the time the user is dealing with little-endian files.
@@ -290,42 +285,24 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		
 		When outputting JSON, disable object's line breaking.
 	
-	* `external_program_sh` : `null | string` = `null`
-		
-		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
-		
-		Used for `/utility/AndroidHelper.ts` .
-	
-	* `external_program_adb` : `null | string` = `null`
-		
-		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
-		
-		Used for `/utility/AndroidHelper.ts` .
-	
-	* `external_program_vgmstream` : `null | string` = `null`
-		
-		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
-		
-		Used for `/Support/Wwise/Media/Decode.ts` .
-	
-	* `external_program_wwise` : `null | string` = `null`
-		
-		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
-		
-		Used for `/Support/Wwise/Media/Encode.ts` .
-	
-	* `external_program_il2cpp_dumper` : `null | string` = `null`
-		
-		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
-		
-		Used for `/Support/Kairosoft/Game/ModifyProgram.ts` .
-	
 	* `thread_limit` : `bigint` = `0`
 		
 		The maximum number of thread pools. Currently has no practical effect.
 	
-	* `command_notification_time_limit` : `null | bigint` = `15000`
+	* `external_program_path` : `Record<string, null | string>` = `{ ... }`
 		
-		Command notification time limit. If the vaild execution duration exceeds this value (in milliseconds) after a command has completed, a system notification will be pushed to alert the user to set up the configuration. Setting to null will disable notifications.
+		Specifies the path to external programs that may be called, if null, the `PATH` environment variable will be retrieved at runtime.
+		
+		* `sh` used for `/utility/AndroidHelper.ts` 。
+		
+		* `adb` used for `/utility/AndroidHelper.ts` 。
+		
+		* `WwiseConsole.exe` used for `/Support/Wwise/Media/Encode.ts` 。
+		
+		* `WwiseConsole.sh` used for `/Support/Wwise/Media/Encode.ts` 。
+		
+		* `vgmstream-cli` used for `/Support/Wwise/Media/Decode.ts` 。
+		
+		* `Il2CppDumper-x86` used for `/Support/Kairosoft/Game/ModifyProgram.ts` 。
 
 > Each group of functions provided by the script has a corresponding configuration file, see the [Method](./method.md) section.
