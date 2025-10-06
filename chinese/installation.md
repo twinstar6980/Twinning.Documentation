@@ -14,7 +14,7 @@
 
 * 操作系统：`Windows 10+` 、`Linux ~` 、`Macintosh 11+` 、`Android 11+` 、`Iphone 15+` 。
 
-* 处理器架构：`x86_64` 、`arm_64` 。
+* 处理器架构：`AMD64` 、`ARM64` 。
 
 ## 模块组成
 
@@ -66,15 +66,15 @@
 	
 	目前，提供了预编译分发的平台如下：
 	
-	* `Windows` - `x86_64`
+	* `Windows` - `AMD64`
 	
-	* `Macintosh` - `arm_64`
+	* `Linux` - `AMD64`
 	
-	* `Linux` - `x86_64`
+	* `Macintosh` - `ARM64`
 	
-	* `Android` - `arm_64`
+	* `Android` - `ARM64`
 	
-	* `Iphone` - `arm_64`
+	* `Iphone` - `ARM64`
 
 2. 选择主目录。
 	

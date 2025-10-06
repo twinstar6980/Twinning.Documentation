@@ -12,7 +12,7 @@
 
 * Operating systems: `Windows 10+`, `Linux ~`, `Macintosh 11+`, `Android 11+`, `Iphone 15+`.
 
-* Processor architectures: `x86_64`, `arm_64`.
+* Processor architectures: `AMD64`, `ARM64`.
 
 ## Module types
 
@@ -64,15 +64,15 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	Currently, the platforms that provide precompiled distribution are as follows:
 	
-	* `Windows` - `x86_64`
+	* `Windows` - `AMD64`
 	
-	* `Macintosh` - `arm_64`
+	* `Linux` - `AMD64`
 	
-	* `Linux` - `x86_64`
+	* `Macintosh` - `ARM64`
 	
-	* `Android` - `arm_64`
+	* `Android` - `ARM64`
 	
-	* `Iphone` - `arm_64`
+	* `Iphone` - `ARM64`
 
 2. Select the home directory.
 	
