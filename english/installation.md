@@ -78,21 +78,14 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	Move the unzipped directory to a suitable location. It will serve as the home directory of the toolkit. recorded the absolute path as `<home>`.
 
-3. Sign the `kernel` and `shell` files in the home directory.
-	
-	> If you don't need the `Shell` module, you can skip this step. \
-	> This step only required for `Iphone` users.
-	
-	Run these command in the system terminal: `> ldid -S ./kernel` & `> ldid -S ./shell` .
-
-4. Grant executable permissions to the `shell` file in the home directory.
+3. Grant executable permissions to the `shell` file in the home directory.
 	
 	> If you don't need the `Shell` module, you can skip this step. \
 	> This step only required for `Linux`, `Macintosh`, `Android`, `Iphone` users.
 	
 	Run these command in the system terminal: `> chmod +x ./shell` .
 
-5. Install the application installation packages of the `Assistant` and `Assistant Plus` modules in the home directory.
+4. Install the application installation packages of the `Assistant` and `Assistant Plus` modules in the home directory.
 	
 	Application installation package files have extensions such as `msix`, `dmg`, `apk`, `ipa`, etc.
 	
@@ -103,7 +96,7 @@ You can clone this project and compile it, or just download the bundle package o
 	> @ `Iphone` \
 	> Need to self-sign and install `ipa` through AltStore or other tools.
 
-6. Configure the `Assistant` settings.
+5. Configure the `Assistant` settings.
 	
 	> If you don't need the `Assistant` module, you can skip this step.
 	
@@ -145,7 +138,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
-7. Configure the `Assistant Plus` settings.
+6. Configure the `Assistant Plus` settings.
 	
 	> If you don't need the `Assistant Plus` module, you can skip this step.
 	
@@ -169,7 +162,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 
-8. Set the script's interactive language.
+7. Set the script's interactive language.
 	
 	Open and edit `script/Runner/Runner.json` file in the home directory as text, find the `"language": "English"` section, and modify it to switch the interactive language of the tool.
 	
@@ -179,7 +172,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Vietnamese`
 
-9. At this point, all the installation steps have been completed and you can use the tool through the terminal or GUI application.
+8. At this point, all the installation steps have been completed and you can use the tool through the terminal or GUI application.
 
 ## External programs
 

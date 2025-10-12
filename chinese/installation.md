@@ -80,20 +80,14 @@
 	
 	将解压得到的目录移动到适合的位置，它作为工具的主目录，绝对路径记录为 `<home>` 。
 
-3. 为主目录下的 `kernel` 与 `shell` 文件进行签名。
-	
-	> 该步骤只需 `Iphone` 用户操作。
-	
-	在系统终端中运行命令：`> ldid -S ./kernel` & `> ldid -S ./shell` 。
-
-4. 为主目录下的 `shell` 文件赋予可执行权限。
+3. 为主目录下的 `shell` 文件赋予可执行权限。
 	
 	> 如果不需要 `Shell` 模块，可以跳过该步骤。\
 	> 该步骤只需 `Linux` 、`Macintosh` 、`Android` 、`Iphone` 用户操作。
 	
 	在系统终端中运行命令：`> chmod +x ./shell` 。
 
-5. 安装主目录内 `Assistant` 、`Assistant Plus` 模块的应用安装包。
+4. 安装主目录内 `Assistant` 、`Assistant Plus` 模块的应用安装包。
 	
 	应用安装包文件以 `msix` 、`dmg` 、`apk` 、`ipa` 等作为扩展名。
 	
@@ -104,7 +98,7 @@
 	> @ `Iphone` \
 	> 需要通过 AltStore 或其他工具对 `ipa` 进行自签名与安装。
 
-6. 配置 `Assistant` 设置项。
+5. 配置 `Assistant` 设置项。
 	
 	> 如果不需要 `Assistant` 模块，可以跳过该步骤。
 	
@@ -146,7 +140,7 @@
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
-7. 配置 `Assistant Plus` 设置项。
+6. 配置 `Assistant Plus` 设置项。
 	
 	> 如果不需要 `Assistant Plus` 模块，可以跳过该步骤。
 	
@@ -170,7 +164,7 @@
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 
-8. 设置脚本交互语言。
+7. 设置脚本交互语言。
 	
 	以文本形式打开并编辑主目录内的 `script/Runner/Runner.json` 文件，找到 `"language": "English"` 部分，修改它以切换工具的交互语言。
 	
@@ -180,7 +174,7 @@
 	
 	* `Vietnamese` 越文
 
-9. 至此，已经完成了所有安装步骤，你可以通过终端或 GUI 应用使用工具。
+8. 至此，已经完成了所有安装步骤，你可以通过终端或 GUI 应用使用工具。
 
 ## 外部程序
 
