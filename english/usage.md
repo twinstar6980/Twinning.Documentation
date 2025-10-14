@@ -303,6 +303,8 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		
 		* `vgmstream-cli` used for `/Support/Wwise/Media/Decode.ts` 。
 		
-		* `Il2CppDumper-x86` used for `/Support/Kairosoft/Game/ModifyProgram.ts` 。
+		* `dotnet` used for `/Support/Kairosoft/Game/ModifyProgram.ts` 。
+		
+		* `Il2CppDumper.dll` used for `/Support/Kairosoft/Game/ModifyProgram.ts` 。
 
 > Each group of functions provided by the script has a corresponding configuration file, see the [Method](./method.md) section.

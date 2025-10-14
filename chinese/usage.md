@@ -301,6 +301,8 @@
 		
 		* `vgmstream-cli` 用于 `/Support/Wwise/Media/Decode.ts` 。
 		
-		* `Il2CppDumper-x86` 用于 `/Support/Kairosoft/Game/ModifyProgram.ts` 。
+		* `dotnet` 用于 `/Support/Kairosoft/Game/ModifyProgram.ts` 。
+		
+		* `Il2CppDumper.dll` 用于 `/Support/Kairosoft/Game/ModifyProgram.ts` 。
 
 > 脚本提供的每组功能都有与之对应的配置文件，参见 [功能列表](./method.md) 章节。

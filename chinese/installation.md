@@ -212,10 +212,18 @@
 	
 	如果需要编码 `AAC` 格式的 `WEM` ，请确保 `QuickTime` 已正确安装至系统中，该程序会被 `WwiseConsole` 调用。
 
-* [Il2CppDumper](https://github.com/Perfare/Il2CppDumper) `=6.7.40,x86`
+* [dotnet](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) `=7.0.20`
 	
 	用于 **开罗游戏程序修改** 。
 	
-	安装并配置 `PATH` 环境变量，以确保工具能通过 `PATH` 环境变量检索到 `Il2CppDumper-x86` 可执行程序。
+	安装并配置 `PATH` 环境变量，以确保工具能通过 `PATH` 环境变量检索到 `dotnet` 可执行程序。
 	
-	> 该程序仅支持 `Windows` 系统。
+	> 该程序仅支持 `Windows` 、`Linux` 、`Macintosh` 系统。
+
+* [Il2CppDumper.dll](https://github.com/Perfare/Il2CppDumper) `=6.7.46,net7`
+	
+	用于 **开罗游戏程序修改** 。
+	
+	安装并配置 `PATH` 环境变量，以确保工具能通过 `PATH` 环境变量检索到 `Il2CppDumper.dll` 动态库文件。
+	
+	> 该程序仅支持 `Windows` 、`Linux` 、`Macintosh` 系统。

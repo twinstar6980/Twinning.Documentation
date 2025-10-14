@@ -210,10 +210,18 @@ Some methods of the tool require calling external programs, which need to be dow
 	
 	If you need to encode `WEM` in `AAC` format, please make sure that `QuickTime` is correctly installed on the system. This program will be called by `WwiseConsole`.
 
-* [Il2CppDumper](https://github.com/Perfare/Il2CppDumper) `=6.7.40,x86`
+* [dotnet](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) `=7.0.20`
 	
 	Used for **Kairosoft game program modify** .
 	
-	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `Il2CppDumper-x86` executable through the `PATH` environment variable.
+	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `dotnet` executable through the `PATH` environment variable.
 	
-	> This program only supports `Windows` systems.
+	> This program only supports `Windows` and `Linux` and `Macintosh` systems.
+
+* [Il2CppDumper.dll](https://github.com/Perfare/Il2CppDumper) `=6.7.46,net7`
+	
+	Used for **Kairosoft game program modify** .
+	
+	Install and configure the `PATH` environment variable to ensure that the tool can retrieve the `Il2CppDumper.dll` library through the `PATH` environment variable.
+	
+	> This program only supports `Windows` and `Linux` and `Macintosh` systems.
