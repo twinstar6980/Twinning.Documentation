@@ -237,27 +237,13 @@
 
 ## 配置文件
 
-在工具的脚本目录 `<home>/script` 中，扩展名为 `.json` 的文件是工具的配置文件，其中的配置项会影响工具的某些行为，如 JSON 的输出格式，用户可以自行修改配置文件。
+工具的脚本配置目录 `<home>/script/configuration` 中存储了脚本运行时需要的配置项，用户可以自行修改配置文件以改变脚本行为。
 
-`<home>/script/Runner/Runner.json` 是工具的主配置文件，它的配置项如下。
+`<home>/script/configuration/language` 目录内存储了脚本使用到的多语言文本，可以修改或创建新的语言文本文件以改变脚本的交互文本。
+
+`<home>/script/configuration/setting.json` 是脚本设置文件，它的配置项如下。
 
 * `<configuration>`
-
-	* `language` : `string` = `English`
-		
-		交互语言。可以为 `English` 或 `Chinese` 或 `Vietnamese` 。
-	
-	* `console_basic_disable_virtual_terminal_sequence` : `boolean` = `false`
-		
-		禁用命令行虚拟终端序列。仅当使用 `Shell` 时有效。
-	
-	* `executor_typical_method_disable_name_filter` : `boolean` = `false`
-		
-		禁用命令处理器的名称过滤行为。默认情况下，工具会对命令输入的文件路径进行扩展名匹配，不匹配的功能将不对用户显示；禁用后将显示所有功能。
-	
-	* `command_notification_time_limit` : `null | bigint` = `15000`
-		
-		命令通知时限。在某项命令执行完成后，如果有效执行时间超过该值（毫秒），将推送系统通知以提醒用户。设为 `null` 将禁用通知。
 	
 	* `byte_stream_use_big_endian` : `boolean` = `false`
 		
@@ -304,5 +290,33 @@
 		* `dotnet` 用于 `/Support/Kairosoft/Game/ModifyProgram.ts` 。
 		
 		* `Il2CppDumper.dll` 用于 `/Support/Kairosoft/Game/ModifyProgram.ts` 。
+	
+	* `console_basic_disable_virtual_terminal_sequence` : `boolean` = `false`
+		
+		禁用命令行虚拟终端序列。仅当使用 `Shell` 时有效。
+	
+	* `language` : `string` = `english`
+		
+		交互语言。可以为 `english` 或 `chinese` 或 `vietnamese` 。
+	
+	* `executor_typical_method_disable_name_filter` : `boolean` = `false`
+		
+		禁用命令处理器的名称过滤行为。默认情况下，工具会对命令输入的文件路径进行扩展名匹配，不匹配的功能将不对用户显示；禁用后将显示所有功能；同时也会影响批处理功能的名称过滤行为，若禁用，批处理功能将不再跳过名称不匹配的文件。
+	
+	* `executor_typical_method_configuration` : `boolean` = `false`
+		
+		各项功能的名称过滤规则与参数默认值。可以修改以符合自己的使用习惯。
+	
+	* `executor_pvz2_resource_convert_ptx_format_map_list` : `...` = `...`
+		
+		特定功能需要使用的配置数据。用于 `popcap.resource_stream_bundle.resource_convert` 。
+	
+	* `executor_pvz2_package_project_conversion_setting` : `...` = `...`
+		
+		特定功能需要使用的配置数据。用于 `pvz2.package_project.parse` 。
+	
+	* `command_notification_time_limit` : `null | bigint` = `15000`
+		
+		命令通知时限。在某项命令执行完成后，如果有效执行时间超过该值（毫秒），将推送系统通知以提醒用户。设为 `null` 将禁用通知。
 
 > 脚本提供的每组功能都有与之对应的配置文件，参见 [功能列表](./method.md) 章节。

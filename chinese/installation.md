@@ -166,13 +166,13 @@
 
 7. 设置脚本交互语言。
 	
-	以文本形式打开并编辑主目录内的 `script/Runner/Runner.json` 文件，找到 `"language": "English"` 部分，修改它以切换工具的交互语言。
+	以文本形式打开并编辑主目录内的 `<home>/script/configuration/setting.json` 文件，找到 `"language": "english"` 部分，修改它以切换工具的交互语言。
 	
-	* `English` 英文（默认）
+	* `english` 英文（默认）
 	
-	* `Chinese` 中文
+	* `chinese` 中文
 	
-	* `Vietnamese` 越文
+	* `vietnamese` 越文
 
 8. 至此，已经完成了所有安装步骤，你可以通过终端或 GUI 应用使用工具。
 

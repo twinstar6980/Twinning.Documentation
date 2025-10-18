@@ -164,13 +164,13 @@ You can clone this project and compile it, or just download the bundle package o
 
 7. Set the script's interactive language.
 	
-	Open and edit `script/Runner/Runner.json` file in the home directory as text, find the `"language": "English"` section, and modify it to switch the interactive language of the tool.
+	Open and edit `<home>/script/configuration/setting.json` file in the home directory as text, find the `"language": "english"` section, and modify it to switch the interactive language of the tool.
 	
-	* `English` (default)
+	* `english` (default)
 	
-	* `Chinese`
+	* `chinese`
 	
-	* `Vietnamese`
+	* `vietnamese`
 
 8. At this point, all the installation steps have been completed and you can use the tool through the terminal or GUI application.
 

@@ -122,11 +122,11 @@
 
 ## `common.utility`
 
-* `set_global_configuration`
+* `update_global_setting`
 	
 	* `data` : `string` = `?input`
 
-* `run_embedded_scriptee`
+* `run_embedded_script`
 	
 	* `target_name` : `string` = `?input`
 
@@ -851,6 +851,8 @@
 	* `plain_file` : `*.pak`
 	
 	* `cipher_file` : `path` ~ `*.cipher.pak` = `?automatic`
+	
+	* `key` : `integer` = `247`
 
 ## `popcap.resource_stream_group`
 
@@ -1093,6 +1095,12 @@
 	* `action` : `string` = `?input`
 	
 	* `target` : `string` = `?input`
+	
+	* `rton_version_number` : `integer` = `1`
+	
+	* `rton_version_native_string_encoding_use_utf8` : `boolean` = `true`
+	
+	* `rton_encode_buffer_size` : `size` = `4.0m`
 
 ## `kairosoft.game`
 

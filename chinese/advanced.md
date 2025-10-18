@@ -124,7 +124,7 @@ type JS_MainFunction = (
 
 工具的 `Kernel` 负责执行用户提供的脚本，其中定义的内核接口为脚本层提供了多样的功能，例如文件读写、数据操作等基本功能与 BNK 、PAM 编解码等高级功能。
 
-内核接口具有严格的类型限制，因此，在开发层面，应使用 `TypeScript` 作为开发语言，并编译为 `JavaScript` 供工具使用。`Script` 模块中的 [`Kernel.d.ts`](https://github.com/twinstar6980/Twinning/blob/master/Script/Kernel.d.ts) 声明了 `Kernel` 所定义的接口。
+内核接口具有严格的类型限制，因此，在开发层面，应使用 `TypeScript` 作为开发语言，并编译为 `JavaScript` 供工具使用。`Script` 模块中的 [`kernel.d.ts`](https://github.com/twinstar6980/Twinning/blob/master/Script/kernel.d.ts) 声明了 `Kernel` 所定义的接口。
 
 内核接口分为内核类型与内核函数，内核类型是对 `Kernel` 中的 `C++` 类型的封装，例如接口中的 `Kernel.Boolean` 类是对 `Kernel` 中 `C++ Boolean` 类的封装。用户需要借助内核类型才能与内核函数交互。
 
@@ -144,7 +144,7 @@ type JS_MainFunction = (
 
 ```ts
 // 构造一个值为 true 的内核布尔对象
-let b1 = Kernel.Boolean.value(true); 
+let b1 = Kernel.Boolean.value(true);
 // 通过复制 b1 构造内核布尔对象，b2 值为 true
 let b2 = Kernel.Boolean.copy(b1);
 // false ，b1 与 b2 是内存中的不同对象，即使其中的值相等
@@ -163,13 +163,13 @@ b1.value !== b2.value;
 // 通过 JS 字符串构造内核字符串对象
 let s1 = Kernel.String.value('this is a string value.');
 // true
-s1.value === 'this is a string value.'
+s1.value === 'this is a string value.';
 ```
 
 ```ts
 // 测试C盘根目录下是否存在 sample.txt 文件
 // 设定路径对象
-let target_path = Kernel.Path.value(`C:/sample.txt`);
+let target_path = Kernel.Path.value('C:/sample.txt');
 // 调用内核函数，传递路径对象，得到 Kernel.Boolean 对象
 let state = Kernel.Storage.exist_file(target_path);
 // 取出 Kernel.Boolean 对象的值
@@ -269,7 +269,7 @@ for (let e of path_list.value) {
 let j1 = KernelX.JSON.read_s<{
 	int: bigint;
 	num: number;
-}>(`{ "int": 0, "num": 1.2 }`);
+}>(`{ 'int': 0, 'num': 1.2 }`);
 let j2 = Kernel.JSON.Value.value({
 	int: 0,
 	num: 1.2,
@@ -318,14 +318,14 @@ decode_fs(
 
 内核接口的调用较为繁琐，`Script` 中已经对内核接口进行了封装，使用户能够方便地使用内核接口，包括以下内容：
 
-* `utility.KernelX` ：对大部分内核接口进行封装，包括文件系统功能、JSON与XML的字符串或文件式的序列化功能、特殊文件的文件式编码解码功能、等。
+* `utility/kernel_x` ：对大部分内核接口进行封装，包括文件系统功能、JSON与XML的字符串或文件式的序列化功能、特殊文件的文件式编码解码功能、等。
 
-* `utility.ThreadManager` ：对线程功能进行封装。
+* `utility/thread_manager` ：对线程功能进行封装。
 
-* `utility.ProcessHelper` ：对进程功能进行封装，可以通过它执行其他可执行程序。
+* `utility/process_helper` ：对进程功能进行封装，可以通过它执行其他可执行程序。
 
-* `utility.Shell` ：对外壳回调与外壳专有功能的封装。
+* `utility/shell` ：对外壳回调与外壳专有功能的封装。
 
-* `utility.Console` ：对控制台交互的封装，基于不同的 `Shell` 客户端实现提供一致的用户交互。
+* `utility/console` ：对控制台交互的封装，基于不同的 `Shell` 客户端实现提供一致的用户交互。
 
 * `...`

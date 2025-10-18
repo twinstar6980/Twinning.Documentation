@@ -122,7 +122,7 @@ The main function must be synchronous, but asynchronous functions can be called 
 
 The `Kernel` of the tool is responsible for executing the scripts provided by the user. The kernel interface defined therein provides various functions for the scripting layer, such as basic functions like file reading and writing, data manipulation, and advanced functions like BNK, PAM, etc...
 
-The kernel interface has strict type restrictions, so at the development level, `TypeScript` should be used as the development language and compiled to `JavaScript` for use in tools. The [`Kernel.d.ts`](https://github.com/twinstar6980/Twinning/blob/master/Script/Kernel.d.ts) in the `Script` module declares the interfaces defined by `Kernel`.
+The kernel interface has strict type restrictions, so at the development level, `TypeScript` should be used as the development language and compiled to `JavaScript` for use in tools. The [`kernel.d.ts`](https://github.com/twinstar6980/Twinning/blob/master/Script/kernel.d.ts) in the `Script` module declares the interfaces defined by `Kernel`.
 
 Kernel interfaces are divided into kernel types and kernel functions. Kernel types encapsulate the `C++` types in `Kernel`, for example, the `Kernel.Boolean` class in the interface encapsulates the `C++ Boolean` class in `Kernel`. The user needs the kernel type in order to interact with the kernel functions.
 
@@ -146,7 +146,7 @@ let b1 = Kernel.Boolean.value(true);
 // Construct a kernel boolean object by copying b1 with a b2 value of true
 let b2 = Kernel.Boolean.copy(b1);
 // false, b1 and b2 are different objects in memory, even if their values are equal
-b1 == b2.
+b1 == b2;
 // true , the value accessor can get the corresponding JS value in the kernel object
 b1.value === true;
 // true, when the two stored values are equal
@@ -159,15 +159,15 @@ b1.value ! == b2.value;
 
 ```ts
 // Construct a kernel string object from a JS string
-let s1 = Kernel.String.value("this is a string value.");
+let s1 = Kernel.String.value('this is a string value.');
 // true
-s1.value === "this is a string value.";
+s1.value === 'this is a string value.';
 ```
 
 ```ts
 // test if the sample.txt file exists in the root directory of the C drive
 // Set the path object
-let target_path = Kernel.Path.value(`C:/sample.txt`);
+let target_path = Kernel.Path.value('C:/sample.txt');
 // Call the kernel function, pass the path object, and get the Kernel.
 let state = Kernel.Storage.exist_file(target_path);
 // fetch the value of the Kernel.Boolean object
@@ -218,11 +218,11 @@ stream.position();
 // The Kernel.ByteListView need to convert from Kernel.ByteArray, char_view will point to the same memory space as view
 let char_view = Kernel.Miscellaneous.cast_ByteListView_to_CharacterListView(view);
 // Kernel.String object stores UTF-8 strings.
-let string = Kernel.String.value("UTF-8 😄 汉字");
+let string = Kernel.String.value('UTF-8 😄 汉字');
 // Kernel.CharacterListView from Kernel.String object , char_view_of_string will point to the memory space of string string data
 let char_view_of_string = Kernel.Miscellaneous.cast_String_to_CharacterListView(string);
 // If the content of string is reset, this will result in a reallocation of memory for the string data, at which point the memory space pointed to by char_view_of_string should no longer be accessed
-string.value = "xxx";
+string.value = 'xxx';
 // Move the memory from Kernel.String to Kernel.ByteArray, the contents of Kernel.String will become empty and Kernel.ByteArray will hold the memory space originally belonging to Kernel.
 let data = Kernel.Miscellaneous.cast_moveable_String_to_ByteArray(string);
 // Move the memory from Kernel.ByteArray to Kernel.String, but make sure that the memory data is a UTF-8 string.
@@ -236,19 +236,19 @@ The kernel interface provides access to the local file system.
 ```ts
 // Read the text in file.txt as a JS string, make sure that file.txt stores UTF-8 text
 // Set the path to the file
-let path = Kernel.Path.value("file.txt");
+let path = Kernel.Path.value('file.txt');
 // read the file data
 let data = Kernel.Storage.read_file(path);
 // convert Kernel.ByteArray to Kernel.String by moving memory
 let string = Kernel.Miscellaneous.cast_moveable_ByteArray_to_String(data);
-// Get the JS string corresponding to Kernel.
+// Get the JS string corresponding to Kernel
 let string_value = string.value;
 ```
 
 ```ts
 // Iterate through the subfiles in a directory
 // set the path of the directory to be traversed
-let target = Kernel.Path.value("C:/dir1");
+let target = Kernel.Path.value('C:/dir1');
 // set traversal depth, if null, traverse all levels
 let depth = Kernel.SizeOptional.value(2n);
 // get all the subfile paths in the directory
@@ -267,7 +267,7 @@ The kernel interface provides support for JSON, but differs from standard JSON, 
 let j1 = KernelX.JSON.read_s<{
 	int: bigint;
 	num: number;
-}>(`{ "int": 0, "num": 1.2 }`).
+}>(`{ 'int': 0, 'num': 1.2 }`);
 let j2 = Kernel.JSON.Value.value({
 	int: 0,
 	num: 1.2,
@@ -287,7 +287,7 @@ export function decode_fs(
 	data_file: string, // BNK file path
 	definition_file: string, // path to the exported definition file, i.e. the data information in BNK
 	embedded_media_directory: string, // The path to the BNK embedded WEM for export
-	Version: typeof Kernel.Tool.Wwise.SoundBank
+	Version: typeof Kernel.Tool.Wwise.SoundBank, // BNK file version
 ): void {
 	// Version number
 	let version_c = Kernel.Tool.Wwise.SoundBank.Version.value(version);
@@ -302,7 +302,7 @@ export function decode_fs(
 		stream,
 		definition,
 		Kernel.PathOptional.value(embedded_media_directory),
-		version_c
+		version_c,
 	)
 	// Store and save the decoded definition data as a file
 	KernelX.JSON.write_fs(definition_file, definition.get_json(version_c));
@@ -310,9 +310,9 @@ export function decode_fs(
 }
 // Decode the BNK file
 decode_fs(
-	"C:/sample.bnk",
-	"C:/sample.bnk.bundle/definition.json",
-	"C:/sample.bnk.bundle/embedded_media",
+	'C:/sample.bnk',
+	'C:/sample.bnk.bundle/definition.json',
+	'C:/sample.bnk.bundle/embedded_media',
 	{ number: 140n },
 );
 ```
@@ -321,14 +321,14 @@ decode_fs(
 
 Kernel interfaces are cumbersome to call. `Script` has encapsulated the kernel interfaces so that users can use them easily, including the following:
 
-* `KernelX`: encapsulates most of the kernel interfaces, including file system functions, string or file-based serialization of JSON and XML, file-based encoding and decoding of special files, etc.
+* `utility/kernel_x`: encapsulates most of the kernel interfaces, including file system functions, string or file-based serialization of JSON and XML, file-based encoding and decoding of special files, etc.
 
-* `ThreadManager`: encapsulates the threads function.
+* `utility/thread_manager`: encapsulates the threads function.
 
-* `ProcessHelper`: Wraps the process functions, which can be used to execute other executable programs.
+* `utility/process_helper`: Wraps the process functions, which can be used to execute other executable programs.
 
-* `Shell`: Wraps shell callbacks and shell-specific functions.
+* `utility/shell`: Wraps shell callbacks and shell-specific functions.
 
-* `Console`: Wraps console interaction, providing consistent user interaction between difference `Shell` clients.
+* `utility/console`: Wraps console interaction, providing consistent user interaction between difference `Shell` clients.
 
 * `...`

@@ -239,27 +239,13 @@ When the tool is running, it will output some message to the user or request the
 
 ## Configuration file
 
-In the tool's script directory `<home>/script`, the file with the extension `.json` is the configuration file of the tool. The configuration items in it will affect certain behaviors of the tool, such as the output format of JSON. Users can modify the configuration file.
+The tool's script configuration directory `<home>/script/configuration` stores configuration items required for script execution. Users can modify the configuration files to change script behavior.
 
-`<home>/script/Runner/Runner.json` is the main configuration file of the tool, and its configuration items are as follows.
+The `<home>/script/configuration/language` directory stores the multi-language text used by the script. You can modify or create new language text files to change the script's interactive text.
+
+`<home>/script/configuration/setting.json` is the script settings file, and its configuration items are as follows.
 
 * `<configuration>`
-	
-	* `language` : `string` = `English`
-		
-		Interaction language. Can be `English` or `Chinese` or `Vietnamese`.
-	
-	* `console_basic_disable_virtual_terminal_sequence` : `boolean` = `false`
-		
-		Disable command-line virtual terminal sequences. Valid only when using `Shell`.
-	
-	* `executor_typical_method_disable_name_filter` : `boolean` = `false`
-		
-		Disables the name filtering behavior of the command executor. By default, the tool will match the extension of the file path of the command input, unmatched methods will not be displayed to the user. When disabled, all functions will be displayed.
-	
-	* `command_notification_time_limit` : `null | bigint` = `15000`
-		
-		Command notification time limit. If the vaild execution duration exceeds this value (in milliseconds) after a command has completed, a system notification will be pushed to alert the user to set up the configuration. Setting to null will disable notifications.
 	
 	* `byte_stream_use_big_endian` : `boolean` = `false`
 		
@@ -306,5 +292,33 @@ In the tool's script directory `<home>/script`, the file with the extension `.js
 		* `dotnet` used for `/Support/Kairosoft/Game/ModifyProgram.ts` 。
 		
 		* `Il2CppDumper.dll` used for `/Support/Kairosoft/Game/ModifyProgram.ts` 。
+	
+	* `language` : `string` = `english`
+		
+		Interaction language. Can be `english` or `chinese` or `vietnamese`.
+	
+	* `console_basic_disable_virtual_terminal_sequence` : `boolean` = `false`
+		
+		Disable command-line virtual terminal sequences. Valid only when using `Shell`.
+	
+	* `executor_typical_method_disable_name_filter` : `boolean` = `false`
+		
+		Disables the command processor's name filtering behavior. By default, the tool matches the file path extension of the command input, and unmatched methods will not be displayed to the user. Disabling this will display all methods. This also affects the name filtering behavior of the batch method. If disabled, the batch method will no longer skip files with unmatched names.
+	
+	* `executor_typical_method_configuration` : `boolean` = `false`
+		
+		The name filtering rules and argument's default values ​​of each method, can be modified to suit your usage habits.
+	
+	* `executor_pvz2_resource_convert_ptx_format_map_list` : `...` = `...`
+		
+		Configuration data required for specific methods. Used for `popcap.resource_stream_bundle.resource_convert` 。
+	
+	* `executor_pvz2_package_project_conversion_setting` : `...` = `...`
+		
+		Configuration data required for specific methods. Used for `pvz2.package_project.parse` 。
+	
+	* `command_notification_time_limit` : `null | bigint` = `15000`
+		
+		Command notification time limit. If the vaild execution duration exceeds this value (in milliseconds) after a command has completed, a system notification will be pushed to alert the user to set up the configuration. Setting to null will disable notifications.
 
 > Each group of functions provided by the script has a corresponding configuration file, see the [Method](./method.md) section.
