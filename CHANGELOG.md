@@ -364,6 +364,8 @@
 
 - [25-10-26](#25-10-26)
 
+- [25-10-27](#25-10-27)
+
 - [已知问题](#已知问题)
 
 ## 23-02-04
@@ -3361,6 +3363,38 @@
 * `Assistant` 121
 
 * `Assistant Plus` 105
+
+## 25-10-27
+
+> 优化了项目结构。
+
+* `Kernel` 99
+
+	* 优化代码。
+
+	* 破坏性变更了 `PopCap Resource-Stream-Bundle` 与 `Wwise Sound-Bank` 功能相关的 JSON 文件的格式。
+
+* `Script` 148
+
+	* 优化代码。
+
+	* 修复了 `PopCap Resource-Stream-Bundle` 相关功能在获取用户输入阶段报错的 BUG 。
+
+	* 修复了 `PvZ-2 Resource-Manifest Regular Convert to official data` 功能生成的输出文件中部分字段顺序错误的 BUG 。
+
+	* 破坏性变更了 `PvZ-2 Resource-Manifest` 与 `PvZ-2 Package-Project` 功能相关的 JSON 文件的格式。
+
+* `Assistant` 122
+
+	* 优化代码。
+
+	* `Windows` 修改了应用包名，以与其他平台相统一。
+
+* `Assistant Plus` 106
+
+	* 优化代码。
+
+	* `Windows` 修改了应用包名。
 
 ## 已知问题
 
