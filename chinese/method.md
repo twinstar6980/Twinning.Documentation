@@ -96,19 +96,19 @@
 
 下面将列出各功能与对应的配置规则，约定格式如下：
 
-> ## `method-group-id`
+> ## `method-group-identifier`
 > 
-> 功能的组 ID ，作为所有子功能 ID 的前缀。
+> 功能的组标识符，作为所有子功能标识符的前缀。
 > 
-> * `method-item-id` [ `*` ]
+> * `method-item-identifier` [ `*` ]
 > 	
-> 	功能的项 ID ，与功能的组 ID 组合成功能的 ID 。例如组 ID 为 `popcap.animation` 、项 ID 为 `decode` ，则该功能 ID 为 `popcap.animation.decode` 。如果带有 `*` 标识，则表示该功能提供批处理版本。
+> 	功能的项标识符，与功能的组标识符组合成功能的标识符。例如组标识符为 `popcap.animation` 、项标识符为 `decode` ，则该功能标识符为 `popcap.animation.decode` 。如果带有 `*` 标识，则表示该功能提供批处理版本。
 > 	
-> 	* `variable-name` : `filter-rule`
+> 	* `variable-identifier` : `filter-rule`
 > 		
 > 		功能通常会包含一项输入参数，由当前命令的 `input` 或 `argument` 指定，类型始终为 `path` ；`filter-rule` 指定了该功能的输入值过滤规则，如 `*.rsb` 表示只有在输入文件的扩展名为 `rsb` 时才显示该功能；可以在配置文件中修改过滤规则。
 > 	
-> 	* `variable-name` : `variable-type` [ ~ `default-value` ] = `value`
+> 	* `variable-identifier` : `variable-type` [ ~ `default-value` ] = `value`
 > 		
 > 		非输入参数则由当前命令的 `argument` 指定，其中的第一项通常是输出参数，其后则为配置参数。
 > 		
@@ -118,7 +118,7 @@
 > 		
 > 		`value` 则是当用户未指定参数值时的默认值，一般是显式的 `?input` 或 `?automatic` ，可以在配置文件中修改默认值。
 
-以下列出的所有功能都是常规功能，部分常规功能存在对应的批处理版本，会以 `*` 符号标出。功能的批处理版本与常规版本的参数保持一致，但批处理功能的 ID 附加了 `!batch` 后缀，并且输入参数、输出参数分别指向一个用于输入、输出每次处理对象的目录。
+以下列出的所有功能都是常规功能，部分常规功能存在对应的批处理版本，会以 `*` 符号标出。功能的批处理版本与常规版本的参数保持一致，但批处理功能的标识符附加了 `!batch` 后缀，并且输入参数、输出参数分别指向一个用于输入、输出每次处理对象的目录。
 
 ## `common.utility`
 

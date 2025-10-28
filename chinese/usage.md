@@ -74,7 +74,7 @@
 
 也可通过应用链接传递命令，这在 `Windows` 、`Macintosh` 、`Android` 、`Iphone` 系统中可用：
 
-* ***`twinstar.twinning.assistant:/application?`***
+* ***`com.twinstar.twinning.assistant:/application?`***
 	
 	* `command` : *`string...`*
 		
@@ -164,7 +164,7 @@
 	
 	* **`-method`** : *`string`*
 		
-		指定需执行的功能，后跟该功能的 ID 。
+		指定需执行的功能，后跟该功能的标识符。
 		
 		如果输入值为 `?filtered` ，将根据输入值来筛选出可用的功能，并列出给用户候选。
 		
@@ -174,7 +174,7 @@
 		
 		指定需要传给功能的参数，后跟一个 JSON 字符串，且必须可解析为一个 `Object` 。
 
-各功能的 ID 与其参数定义参见 [功能](./method.md) 章节。
+各功能的标识符与其参数定义参见 [功能](./method.md) 章节。
 
 > 例 - 使用工具解码桌面上的 `test.pam` 文件：
 > 

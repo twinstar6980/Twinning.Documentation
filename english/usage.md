@@ -76,7 +76,7 @@ Command can be passed via command line argument, which is available on `Windows`
 
 Command can also be passed via application link, which is available on `Windows`, `Macintosh`, `Android`, and `Iphone` system:
 
-* ***`twinstar.twinning.assistant:/application?`***
+* ***`com.twinstar.twinning.assistant:/application?`***
 	
 	* `command` : *`string...`*
 		
@@ -166,7 +166,7 @@ The user can pass in additional arguments when starting the tool, or if no addit
 	
 	* **`-method`** : *`string`*
 		
-		Specify the method to be executed, followed by the ID of the method.
+		Specify the method to be executed, followed by the identifier of the method.
 		
 		If the input value is `?filtered`, the available features will be filtered based on the input value and listed for the user to consider.
 		
@@ -176,7 +176,7 @@ The user can pass in additional arguments when starting the tool, or if no addit
 		
 		Specifies the argument to be passed to the method, followed by a JSON string, and must be parsable as an `Object`.
 
-The IDs of the methods and their arguments are defined in [method](. /method.md) section.
+The identifier of the methods and their arguments are defined in [method](. /method.md) section.
 
 > Example - Using the tool to decode the `test.pam` file on the desktop:
 >

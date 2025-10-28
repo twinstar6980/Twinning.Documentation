@@ -108,7 +108,7 @@
 	
 	> 默认情况下，工具会使用控制序列来优化输出效果，但如果运行在不支持控制序列的终端中，控制序列将直接输出为字符串，影响用户的阅读。
 	> 
-	> 用户可以通过修改 `<home>/script/configuration/setting.json` 配置中的 `disable_basic_virtual_terminal_sequence` 项为 `true` 以禁用控制序列的使用。
+	> 用户可以通过修改 `<home>/script/configuration/setting.json` 配置中的 `console_basic_disable_virtual_terminal_sequence` 项为 `true` 以禁用控制序列的使用。
 
 3. 完备的字体：可选，若不支持，一些字符（如汉字、emoji ）将无法正常显示。
 

@@ -110,7 +110,7 @@ The following table lists the supported content URI formats, and the application
 	
 	> By default, the tool will use control sequences to optimize the output effect, but if running in a terminal that does not support control sequences, the control sequences will be output directly as strings, which will affect the user's reading.
 	
-	> Users can disable the use of control sequences by modifying the `disable_basic_virtual_terminal_sequence` item to `true` in the `<home>/script/configuration/setting.json` configuration.
+	> Users can disable the use of control sequences by modifying the `console_basic_disable_virtual_terminal_sequence` item to `true` in the `<home>/script/configuration/setting.json` configuration.
 
 3. Full fonts: optional, if not supported, some characters (e.g. Chinese characters, emoji) will not be displayed properly.
 

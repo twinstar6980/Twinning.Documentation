@@ -158,9 +158,9 @@
 	
 	* `Modding Worker` - `Argument` = `<home>` 。
 	
-	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/MethodConfiguration.json` 。
+	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/method_configuration.json` 。
 	
-	* `Resource Shipper` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json` 。
+	* `Resource Shipper` - `Option Configuration` = `<home>/assistant_plus/option_configuration.json` 。
 	
 	> 上述设置中的 `<home>` 需要替换为主目录的绝对路径。
 

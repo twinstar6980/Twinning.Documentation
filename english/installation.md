@@ -91,7 +91,7 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	> @ `Windows` \
 	> You need to trust the signing certificate in MSIX before installation. \
-	> Right-click the properties of `.msix`, switch to the ⌈Digital Signatures ⌋ page, select the first item in the list, and then click ⌈Details ⌋ , and in the pop-up window, select ⌈View Certificate⌋ - ⌈Install Certificate⌋ - ⌈Local machine⌋ - ⌈Place all certificates in the following storage⌋ - ⌈Trusted persons⌋, to complete the installation of the certificates.
+	> Right-click the properties of `.msix`, switch to the ⌈ Digital Signatures ⌋ page, select the first item in the list, and then click ⌈ Details ⌋ , and in the pop-up window, select ⌈ View Certificate ⌋ - ⌈ Install Certificate ⌋ - ⌈ Local machine ⌋ - ⌈ Place all certificates in the following storage ⌋ - ⌈ Trusted persons ⌋, to complete the installation of the certificates.
 	> 
 	> @ `Iphone` \
 	> Need to self-sign and install `ipa` through AltStore or other tools.
@@ -156,9 +156,9 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Modding Worker` - `Argument` = `<home>`.
 	
-	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/MethodConfiguration.json`.
+	* `Command Sender` - `Method Configuration` = `<home>/assistant_plus/method_configuration.json`.
 	
-	* `Resource Shipper` - `Option Configuration` = `<home>/assistant_plus/OptionConfiguration.json`.
+	* `Resource Shipper` - `Option Configuration` = `<home>/assistant_plus/option_configuration.json`.
 	
 	> `<home>` in the above settings needs to be replaced with the absolute path of the home directory.
 

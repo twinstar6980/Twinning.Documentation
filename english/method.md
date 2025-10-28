@@ -96,19 +96,19 @@ You can make the tool execute a method directly without runtime input via comman
 
 The following will list the methods with their corresponding configuration rules in the following agreed format:
 
-> ## `method-group-id`
+> ## `method-group-identifier`
 >
-> The ID of method group, as a prefix to all method's item ID.
+> The identifier of method group, as a prefix to all method's item identifier.
 >
-> * `method-item-id` [ `*` ]
+> * `method-item-identifier` [ `*` ]
 >	
-> 	The method's item ID, combined with the method's group ID, is the method's ID. For example, if the group ID is `popcap.animation` and the item ID is `decode`, then the method ID is `popcap.animation.decode`. If it is marked with `*`, then the method provides a batch version.
+> 	The method's item identifier, combined with the method's group identifier, is the method's identifier. For example, if the group identifier is `popcap.animation` and the item identifier is `decode`, then the method identifier is `popcap.animation.decode`. If it is marked with `*`, then the method provides a batch version.
 > 	
-> 	* `variable-name` : `filter-rule`
+> 	* `variable-identifier` : `filter-rule`
 > 		
 > 		A method usually contains an input argument, specified by `input` or `argument` of the current command, and the type is always `path`; `filter-rule` specifies the input value filtering rules of the method, such as `*.rsb`, which means that the method will only be displayed if the input file has the extension `rsb`; the filtering rules can be modified in the configuration file.
 > 	
-> 	* `variable-name` : `variable-type` [ ~ `default-value` ] = `value`
+> 	* `variable-identifier` : `variable-type` [ ~ `default-value` ] = `value`
 > 		
 > 		Non-input arguments are specified by the `argument` of the current command, where the first item is usually an output parameter, followed by configuration arguments.
 > 		
@@ -118,7 +118,7 @@ The following will list the methods with their corresponding configuration rules
 > 		
 > 		`value` is the default value when the user does not specify a argument value, typically an explicit `?input` or `?automatic`, the default value can be modified in the configuration file.
 
-All of the methods listed below are regular method. Some of the regular method have a batch version, which is the same as the regular method, but with the `!batch` suffix appended to the method ID .
+All of the methods listed below are regular method. Some of the regular method have a batch version, which is the same as the regular method, but with the `!batch` suffix appended to the method identifier.
 
 ## `common.utility`
 
