@@ -90,8 +90,8 @@ You can clone this project and compile it, or just download the bundle package o
 	Application installation package files have extensions such as `msix`, `dmg`, `apk`, `ipa`, etc.
 	
 	> @ `Windows` \
-	> You need to trust the signing certificate in MSIX before installation. \
-	> Right-click the properties of `.msix`, switch to the ⌈ Digital Signatures ⌋ page, select the first item in the list, and then click ⌈ Details ⌋ , and in the pop-up window, select ⌈ View Certificate ⌋ - ⌈ Install Certificate ⌋ - ⌈ Local machine ⌋ - ⌈ Place all certificates in the following storage ⌋ - ⌈ Trusted persons ⌋, to complete the installation of the certificates.
+	> You need to trust the signing certificate in `msix` before installation. \
+	> Right-click the properties of `msix`, switch to the ⌈ Digital Signatures ⌋ page, select the first item in the list, and then click ⌈ Details ⌋ , and in the pop-up window, select ⌈ View Certificate ⌋ - ⌈ Install Certificate ⌋ - ⌈ Local machine ⌋ - ⌈ Place all certificates in the following storage ⌋ - ⌈ Trusted persons ⌋, to complete the installation of the certificates.
 	> 
 	> @ `Iphone` \
 	> Need to self-sign and install `ipa` through AltStore or other tools.
