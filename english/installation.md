@@ -94,7 +94,7 @@ You can clone this project and compile it, or just download the bundle package o
 	> Right-click the properties of `msix`, switch to the ⌈ Digital Signatures ⌋ page, select the first item in the list, and then click ⌈ Details ⌋ , and in the pop-up window, select ⌈ View Certificate ⌋ - ⌈ Install Certificate ⌋ - ⌈ Local machine ⌋ - ⌈ Place all certificates in the following storage ⌋ - ⌈ Trusted persons ⌋, to complete the installation of the certificates.
 	> 
 	> @ `Iphone` \
-	> Need to self-sign and install `ipa` through AltStore or other tools.
+	> Need to self-sign and install `ipa` through `TrollStore` or other tools.
 
 5. Configure the `Assistant` settings.
 	
@@ -112,15 +112,15 @@ You can clone this project and compile it, or just download the bundle package o
 	
 	* `Forwarder Extension` Click to enable the forwarder extension (optional).
 		
-		> `Windows`: The forwarder extension is disabled by application. If you need to change it, please click the switch in the dialog.
+		> `Windows`: The forwarder extension is default disabled by application. If you need to change it, please click the switch in the dialog.
 		
-		> `Macintosh`: The forwarder extension is default disabled by system. If you need to change it, please click the switch in the dialog to jump to the system settings panel, and then switch the corresponding switch of this application in the window.
+		> `Linux`: The application does not implement the extension feature.
 		
-		> `Linux`: The forwarder extension are not supported.
+		> `Macintosh`: The forwarder extension is default disabled by system. If you need to change it, please click the switch in the dialog.
 		
 		> `Android`: The forwarder extension is always enabled by system and cannot be changed by application.
 		
-		> `Iphone`: The forwarder extension is default enabled by system and cannot be changed by application. If you need to change it, open ⌈ File ⌋ , select any file, click ⌈ Share ⌋ - ⌈ Edit Actions... ⌋ - ⌈ Twinning Assistant ⌋ , and check the switch button on the right.
+		> `Iphone`: The forwarder extension is default enabled by system and cannot be changed by application. If you need to change it, open ⌈ Files ⌋ , select any file, click ⌈ Share ⌋ - ⌈ Edit Actions... ⌋ - ⌈ Twinning Assistant ⌋ , and check the switch button on the right.
 	
 	* `Forwarder Default Target` The default forwarding target module for the forwarder extension.
 	
